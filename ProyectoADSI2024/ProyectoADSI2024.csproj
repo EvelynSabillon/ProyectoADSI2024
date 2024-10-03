@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Anticipo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Anticipo.Designer.cs">
+      <DependentUpon>Anticipo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +63,18 @@
     </Compile>
     <Compile Include="Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nomina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nomina.Designer.cs">
+      <DependentUpon>Nomina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Prestamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prestamo.Designer.cs">
+      <DependentUpon>Prestamo.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
