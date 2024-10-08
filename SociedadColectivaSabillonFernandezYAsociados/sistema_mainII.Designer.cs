@@ -207,6 +207,7 @@
         private Button btprestamos;
         private PictureBox pictureBox2;
         private Button btleche;
+        private Button btConsQuincenal;
         private Button btinventario;
         private Button btproveedores;
         private Button btsocios;

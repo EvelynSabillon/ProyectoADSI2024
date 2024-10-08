@@ -189,6 +189,7 @@
         private Button button2;
         private Button gpf;
         private Button cil;
+        private Button cq;
         private Button button1;
         private Panel panel2;
     }

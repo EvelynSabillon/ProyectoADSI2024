@@ -29,17 +29,20 @@ namespace SociedadColectivaSabillonFernandezYAsociados
             sistema_MainII.Show();
         }
 
+        //Boton Cerrarr (x)
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        //Boton de regresar (<-)
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.Close();
             sistema_mainII sistema_MainII = new sistema_mainII();
             sistema_MainII.Show();
         }
+
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
