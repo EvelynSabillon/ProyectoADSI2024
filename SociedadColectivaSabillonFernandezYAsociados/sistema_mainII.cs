@@ -69,5 +69,12 @@ namespace SociedadColectivaSabillonFernandezYAsociados
             about_us about_Us = new about_us();
             about_Us.Show();
         }
+
+        private void btconsultaq_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            consulta_quincenal consulta_Quincenal = new consulta_quincenal();
+            consulta_Quincenal.Show();
+        }
     }
 }

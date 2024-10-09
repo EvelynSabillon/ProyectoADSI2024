@@ -38,6 +38,7 @@
             btproveedores = new Button();
             btsocios = new Button();
             btinfo = new Button();
+            btconsultaq = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -51,7 +52,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(645, 46);
+            panel1.Size = new Size(649, 46);
             panel1.TabIndex = 0;
             // 
             // label1
@@ -172,13 +173,28 @@
             btinfo.UseVisualStyleBackColor = false;
             btinfo.Click += btinfo_Click;
             // 
+            // btconsultaq
+            // 
+            btconsultaq.BackColor = Color.FromArgb(204, 185, 65);
+            btconsultaq.FlatStyle = FlatStyle.Popup;
+            btconsultaq.Font = new Font("Nirmala UI", 14.25F, FontStyle.Bold);
+            btconsultaq.ForeColor = Color.White;
+            btconsultaq.Location = new Point(215, 379);
+            btconsultaq.Name = "btconsultaq";
+            btconsultaq.Size = new Size(195, 88);
+            btconsultaq.TabIndex = 13;
+            btconsultaq.Text = "CONSULTA QUINCENAL";
+            btconsultaq.UseVisualStyleBackColor = false;
+            btconsultaq.Click += btconsultaq_Click;
+            // 
             // sistema_mainII
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Ivory;
-            ClientSize = new Size(645, 386);
+            ClientSize = new Size(649, 479);
             ControlBox = false;
+            Controls.Add(btconsultaq);
             Controls.Add(btinfo);
             Controls.Add(btsocios);
             Controls.Add(btproveedores);
@@ -187,8 +203,6 @@
             Controls.Add(pictureBox2);
             Controls.Add(btprestamos);
             Controls.Add(panel1);
-            MaximumSize = new Size(661, 425);
-            MinimumSize = new Size(661, 425);
             Name = "sistema_mainII";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Sociedad Colectiva Sabillon Fernandez y Asociados";
@@ -212,5 +226,6 @@
         private Button btproveedores;
         private Button btsocios;
         private Button btinfo;
+        private Button btconsultaq;
     }
 }
