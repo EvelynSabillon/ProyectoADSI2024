@@ -35,6 +35,8 @@
             pictureBox5 = new PictureBox();
             label1 = new Label();
             pictureBox1 = new PictureBox();
+            labelDiaID = new Label();
+            tBoxDiaID = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
@@ -116,12 +118,31 @@
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click_1;
             // 
+            // labelDiaID
+            // 
+            labelDiaID.AutoSize = true;
+            labelDiaID.Font = new Font("Segoe UI", 12F);
+            labelDiaID.Location = new Point(83, 140);
+            labelDiaID.Name = "labelDiaID";
+            labelDiaID.Size = new Size(48, 21);
+            labelDiaID.TabIndex = 11;
+            labelDiaID.Text = "DiaID";
+            // 
+            // tBoxDiaID
+            // 
+            tBoxDiaID.Location = new Point(156, 138);
+            tBoxDiaID.Name = "tBoxDiaID";
+            tBoxDiaID.Size = new Size(111, 23);
+            tBoxDiaID.TabIndex = 12;
+            // 
             // control_ingreso_leche
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1003, 585);
             ControlBox = false;
+            Controls.Add(tBoxDiaID);
+            Controls.Add(labelDiaID);
             Controls.Add(panel1);
             Controls.Add(label2);
             Name = "control_ingreso_leche";
@@ -143,5 +164,7 @@
         private Label label1;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
+        private Label labelDiaID;
+        private TextBox tBoxDiaID;
     }
 }
