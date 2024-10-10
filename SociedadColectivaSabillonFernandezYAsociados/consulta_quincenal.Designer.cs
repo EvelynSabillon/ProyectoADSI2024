@@ -36,11 +36,23 @@
             label1 = new Label();
             pictureBox1 = new PictureBox();
             label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            tboxQuincenaID = new TextBox();
+            tboxMes = new TextBox();
+            label5 = new Label();
+            cboxFechaInicio = new ComboBox();
+            cboxFechaFinal = new ComboBox();
+            label6 = new Label();
+            dgConsQuincenal = new DataGridView();
+            btnConsultar = new Button();
+            btnLimpiar = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgConsQuincenal).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -130,11 +142,127 @@
             label2.TabIndex = 12;
             label2.Text = "CONSULTA QUINCENAL DE LECHE INGRESADA";
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F);
+            label3.Location = new Point(52, 137);
+            label3.Name = "label3";
+            label3.Size = new Size(95, 21);
+            label3.TabIndex = 13;
+            label3.Text = "Quincena ID";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F);
+            label4.Location = new Point(424, 137);
+            label4.Name = "label4";
+            label4.Size = new Size(42, 21);
+            label4.TabIndex = 14;
+            label4.Text = "Mes:";
+            // 
+            // tboxQuincenaID
+            // 
+            tboxQuincenaID.Font = new Font("Segoe UI", 12F);
+            tboxQuincenaID.Location = new Point(153, 137);
+            tboxQuincenaID.Name = "tboxQuincenaID";
+            tboxQuincenaID.Size = new Size(135, 29);
+            tboxQuincenaID.TabIndex = 15;
+            // 
+            // tboxMes
+            // 
+            tboxMes.Font = new Font("Segoe UI", 12F);
+            tboxMes.Location = new Point(472, 129);
+            tboxMes.Name = "tboxMes";
+            tboxMes.ReadOnly = true;
+            tboxMes.Size = new Size(100, 29);
+            tboxMes.TabIndex = 16;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 12F);
+            label5.Location = new Point(52, 186);
+            label5.Name = "label5";
+            label5.Size = new Size(94, 21);
+            label5.TabIndex = 17;
+            label5.Text = "Fecha Inicio:";
+            // 
+            // cboxFechaInicio
+            // 
+            cboxFechaInicio.Font = new Font("Segoe UI", 10F);
+            cboxFechaInicio.FormattingEnabled = true;
+            cboxFechaInicio.Location = new Point(152, 186);
+            cboxFechaInicio.Name = "cboxFechaInicio";
+            cboxFechaInicio.Size = new Size(226, 25);
+            cboxFechaInicio.TabIndex = 18;
+            cboxFechaInicio.Text = "Seleccione la fecha de inicio...";
+            // 
+            // cboxFechaFinal
+            // 
+            cboxFechaFinal.Font = new Font("Segoe UI", 10F);
+            cboxFechaFinal.FormattingEnabled = true;
+            cboxFechaFinal.Location = new Point(520, 186);
+            cboxFechaFinal.Name = "cboxFechaFinal";
+            cboxFechaFinal.Size = new Size(226, 25);
+            cboxFechaFinal.TabIndex = 19;
+            cboxFechaFinal.Text = "Seleccione la fecha final...";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 12F);
+            label6.Location = new Point(424, 186);
+            label6.Name = "label6";
+            label6.Size = new Size(90, 21);
+            label6.TabIndex = 20;
+            label6.Text = "Fecha Final:";
+            // 
+            // dgConsQuincenal
+            // 
+            dgConsQuincenal.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgConsQuincenal.Location = new Point(43, 230);
+            dgConsQuincenal.Name = "dgConsQuincenal";
+            dgConsQuincenal.Size = new Size(952, 355);
+            dgConsQuincenal.TabIndex = 21;
+            // 
+            // btnConsultar
+            // 
+            btnConsultar.Font = new Font("Segoe UI", 15F);
+            btnConsultar.Location = new Point(774, 129);
+            btnConsultar.Name = "btnConsultar";
+            btnConsultar.Size = new Size(140, 37);
+            btnConsultar.TabIndex = 22;
+            btnConsultar.Text = "Consultar";
+            btnConsultar.UseVisualStyleBackColor = true;
+            // 
+            // btnLimpiar
+            // 
+            btnLimpiar.Font = new Font("Segoe UI", 15F);
+            btnLimpiar.Location = new Point(774, 172);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(140, 39);
+            btnLimpiar.TabIndex = 23;
+            btnLimpiar.Text = "Limpiar Tabla";
+            btnLimpiar.UseVisualStyleBackColor = true;
+            // 
             // consulta_quincenal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1017, 597);
+            Controls.Add(btnLimpiar);
+            Controls.Add(btnConsultar);
+            Controls.Add(dgConsQuincenal);
+            Controls.Add(label6);
+            Controls.Add(cboxFechaFinal);
+            Controls.Add(cboxFechaInicio);
+            Controls.Add(label5);
+            Controls.Add(tboxMes);
+            Controls.Add(tboxQuincenaID);
+            Controls.Add(label4);
+            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(panel1);
             Name = "consulta_quincenal";
@@ -145,6 +273,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgConsQuincenal).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -158,5 +287,16 @@
         private PictureBox pictureBox1;
         private PictureBox pictureBox3;
         private Label label2;
+        private Label label3;
+        private Label label4;
+        private TextBox tboxQuincenaID;
+        private TextBox tboxMes;
+        private Label label5;
+        private ComboBox cboxFechaInicio;
+        private ComboBox cboxFechaFinal;
+        private Label label6;
+        private DataGridView dgConsQuincenal;
+        private Button btnConsultar;
+        private Button btnLimpiar;
     }
 }
