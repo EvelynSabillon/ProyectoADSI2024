@@ -28,43 +28,68 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.MenuVertical = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnModuloGestionFinanciera = new System.Windows.Forms.Button();
+            this.btnModuloGestionInventario = new System.Windows.Forms.Button();
+            this.btnModuloManejoProveedores = new System.Windows.Forms.Button();
+            this.btnModuloGestionSocios = new System.Windows.Forms.Button();
+            this.btnModuloAdministracionGeneral = new System.Windows.Forms.Button();
+            this.btnModuloIngresoLeche = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.BarraTitulo = new System.Windows.Forms.Panel();
+            this.btnUsuario = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.btnSlide = new System.Windows.Forms.PictureBox();
             this.panelContenedor = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnUsuario = new System.Windows.Forms.PictureBox();
+            this.dropdownMenu1 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
+            this.btn1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dropdownMenu2 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dropdownMenu3 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dropdownMenu4 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dropdownMenu5 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dropdownMenu6 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
+            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.BarraTitulo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSlide)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnUsuario)).BeginInit();
+            this.dropdownMenu1.SuspendLayout();
+            this.dropdownMenu2.SuspendLayout();
+            this.dropdownMenu3.SuspendLayout();
+            this.dropdownMenu4.SuspendLayout();
+            this.dropdownMenu5.SuspendLayout();
+            this.dropdownMenu6.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuVertical
             // 
             this.MenuVertical.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.MenuVertical.Controls.Add(this.button5);
-            this.MenuVertical.Controls.Add(this.button4);
-            this.MenuVertical.Controls.Add(this.button3);
-            this.MenuVertical.Controls.Add(this.button2);
-            this.MenuVertical.Controls.Add(this.button6);
-            this.MenuVertical.Controls.Add(this.button1);
+            this.MenuVertical.Controls.Add(this.btnModuloGestionFinanciera);
+            this.MenuVertical.Controls.Add(this.btnModuloGestionInventario);
+            this.MenuVertical.Controls.Add(this.btnModuloManejoProveedores);
+            this.MenuVertical.Controls.Add(this.btnModuloGestionSocios);
+            this.MenuVertical.Controls.Add(this.btnModuloAdministracionGeneral);
+            this.MenuVertical.Controls.Add(this.btnModuloIngresoLeche);
             this.MenuVertical.Controls.Add(this.pictureBox1);
             this.MenuVertical.Controls.Add(this.label1);
             this.MenuVertical.Dock = System.Windows.Forms.DockStyle.Left;
@@ -73,82 +98,132 @@
             this.MenuVertical.Size = new System.Drawing.Size(230, 650);
             this.MenuVertical.TabIndex = 0;
             // 
-            // button3
+            // btnModuloGestionFinanciera
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(206)))), ((int)(((byte)(18)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(0, 266);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(230, 75);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "         MANEJO DE PROVEEDORES";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button3.UseCompatibleTextRendering = true;
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnModuloGestionFinanciera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.btnModuloGestionFinanciera.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnModuloGestionFinanciera.FlatAppearance.BorderSize = 0;
+            this.btnModuloGestionFinanciera.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(206)))), ((int)(((byte)(18)))));
+            this.btnModuloGestionFinanciera.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModuloGestionFinanciera.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModuloGestionFinanciera.ForeColor = System.Drawing.Color.White;
+            this.btnModuloGestionFinanciera.Image = ((System.Drawing.Image)(resources.GetObject("btnModuloGestionFinanciera.Image")));
+            this.btnModuloGestionFinanciera.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnModuloGestionFinanciera.Location = new System.Drawing.Point(0, 428);
+            this.btnModuloGestionFinanciera.Name = "btnModuloGestionFinanciera";
+            this.btnModuloGestionFinanciera.Size = new System.Drawing.Size(230, 75);
+            this.btnModuloGestionFinanciera.TabIndex = 11;
+            this.btnModuloGestionFinanciera.Text = "         GESTIÓN DE PRÉSTAMOS Y FINANZAS";
+            this.btnModuloGestionFinanciera.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnModuloGestionFinanciera.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnModuloGestionFinanciera.UseCompatibleTextRendering = true;
+            this.btnModuloGestionFinanciera.UseVisualStyleBackColor = false;
+            this.btnModuloGestionFinanciera.Click += new System.EventHandler(this.btnModuloGestionFinanciera_Click);
             // 
-            // button2
+            // btnModuloGestionInventario
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(206)))), ((int)(((byte)(18)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.Location = new System.Drawing.Point(0, 185);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(230, 75);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "              REGISTRO Y GESTIÓN DE SOCIOS";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseCompatibleTextRendering = true;
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnModuloGestionInventario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.btnModuloGestionInventario.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnModuloGestionInventario.FlatAppearance.BorderSize = 0;
+            this.btnModuloGestionInventario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(206)))), ((int)(((byte)(18)))));
+            this.btnModuloGestionInventario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModuloGestionInventario.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModuloGestionInventario.ForeColor = System.Drawing.Color.White;
+            this.btnModuloGestionInventario.Image = ((System.Drawing.Image)(resources.GetObject("btnModuloGestionInventario.Image")));
+            this.btnModuloGestionInventario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnModuloGestionInventario.Location = new System.Drawing.Point(0, 347);
+            this.btnModuloGestionInventario.Name = "btnModuloGestionInventario";
+            this.btnModuloGestionInventario.Size = new System.Drawing.Size(230, 75);
+            this.btnModuloGestionInventario.TabIndex = 10;
+            this.btnModuloGestionInventario.Text = "         GESTIÓN DE INVENTARIO";
+            this.btnModuloGestionInventario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnModuloGestionInventario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnModuloGestionInventario.UseCompatibleTextRendering = true;
+            this.btnModuloGestionInventario.UseVisualStyleBackColor = false;
+            this.btnModuloGestionInventario.Click += new System.EventHandler(this.btnModuloGestionInventario_Click);
             // 
-            // button6
+            // btnModuloManejoProveedores
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(206)))), ((int)(((byte)(18)))));
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.Location = new System.Drawing.Point(0, 575);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(230, 75);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "ADMINISTRACIÓN GENERAL";
-            this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button6.UseVisualStyleBackColor = false;
+            this.btnModuloManejoProveedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.btnModuloManejoProveedores.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnModuloManejoProveedores.FlatAppearance.BorderSize = 0;
+            this.btnModuloManejoProveedores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(206)))), ((int)(((byte)(18)))));
+            this.btnModuloManejoProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModuloManejoProveedores.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModuloManejoProveedores.ForeColor = System.Drawing.Color.White;
+            this.btnModuloManejoProveedores.Image = ((System.Drawing.Image)(resources.GetObject("btnModuloManejoProveedores.Image")));
+            this.btnModuloManejoProveedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnModuloManejoProveedores.Location = new System.Drawing.Point(0, 266);
+            this.btnModuloManejoProveedores.Name = "btnModuloManejoProveedores";
+            this.btnModuloManejoProveedores.Size = new System.Drawing.Size(230, 75);
+            this.btnModuloManejoProveedores.TabIndex = 9;
+            this.btnModuloManejoProveedores.Text = "         MANEJO DE PROVEEDORES";
+            this.btnModuloManejoProveedores.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnModuloManejoProveedores.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnModuloManejoProveedores.UseCompatibleTextRendering = true;
+            this.btnModuloManejoProveedores.UseVisualStyleBackColor = false;
+            this.btnModuloManejoProveedores.Click += new System.EventHandler(this.btnModuloManejoProveedores_Click);
             // 
-            // button1
+            // btnModuloGestionSocios
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(206)))), ((int)(((byte)(18)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(0, 104);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(230, 75);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "           CONTROL DE INGRESO DE LECHE";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseCompatibleTextRendering = true;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnModuloGestionSocios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.btnModuloGestionSocios.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnModuloGestionSocios.FlatAppearance.BorderSize = 0;
+            this.btnModuloGestionSocios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(206)))), ((int)(((byte)(18)))));
+            this.btnModuloGestionSocios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModuloGestionSocios.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModuloGestionSocios.ForeColor = System.Drawing.Color.White;
+            this.btnModuloGestionSocios.Image = ((System.Drawing.Image)(resources.GetObject("btnModuloGestionSocios.Image")));
+            this.btnModuloGestionSocios.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnModuloGestionSocios.Location = new System.Drawing.Point(0, 185);
+            this.btnModuloGestionSocios.Name = "btnModuloGestionSocios";
+            this.btnModuloGestionSocios.Size = new System.Drawing.Size(230, 75);
+            this.btnModuloGestionSocios.TabIndex = 8;
+            this.btnModuloGestionSocios.Text = "              REGISTRO Y GESTIÓN DE SOCIOS";
+            this.btnModuloGestionSocios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnModuloGestionSocios.UseCompatibleTextRendering = true;
+            this.btnModuloGestionSocios.UseVisualStyleBackColor = false;
+            this.btnModuloGestionSocios.Click += new System.EventHandler(this.btnModuloGestionSocios_Click);
+            // 
+            // btnModuloAdministracionGeneral
+            // 
+            this.btnModuloAdministracionGeneral.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnModuloAdministracionGeneral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.btnModuloAdministracionGeneral.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnModuloAdministracionGeneral.FlatAppearance.BorderSize = 0;
+            this.btnModuloAdministracionGeneral.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(206)))), ((int)(((byte)(18)))));
+            this.btnModuloAdministracionGeneral.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModuloAdministracionGeneral.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModuloAdministracionGeneral.ForeColor = System.Drawing.Color.White;
+            this.btnModuloAdministracionGeneral.Image = ((System.Drawing.Image)(resources.GetObject("btnModuloAdministracionGeneral.Image")));
+            this.btnModuloAdministracionGeneral.Location = new System.Drawing.Point(0, 575);
+            this.btnModuloAdministracionGeneral.Name = "btnModuloAdministracionGeneral";
+            this.btnModuloAdministracionGeneral.Size = new System.Drawing.Size(230, 75);
+            this.btnModuloAdministracionGeneral.TabIndex = 7;
+            this.btnModuloAdministracionGeneral.Text = "ADMINISTRACIÓN GENERAL";
+            this.btnModuloAdministracionGeneral.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnModuloAdministracionGeneral.UseVisualStyleBackColor = false;
+            this.btnModuloAdministracionGeneral.Click += new System.EventHandler(this.btnModuloAdministracionGeneral_Click);
+            // 
+            // btnModuloIngresoLeche
+            // 
+            this.btnModuloIngresoLeche.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.btnModuloIngresoLeche.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnModuloIngresoLeche.FlatAppearance.BorderSize = 0;
+            this.btnModuloIngresoLeche.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(206)))), ((int)(((byte)(18)))));
+            this.btnModuloIngresoLeche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModuloIngresoLeche.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModuloIngresoLeche.ForeColor = System.Drawing.Color.White;
+            this.btnModuloIngresoLeche.Image = ((System.Drawing.Image)(resources.GetObject("btnModuloIngresoLeche.Image")));
+            this.btnModuloIngresoLeche.Location = new System.Drawing.Point(0, 104);
+            this.btnModuloIngresoLeche.Name = "btnModuloIngresoLeche";
+            this.btnModuloIngresoLeche.Size = new System.Drawing.Size(230, 75);
+            this.btnModuloIngresoLeche.TabIndex = 2;
+            this.btnModuloIngresoLeche.Text = "           CONTROL DE INGRESO DE LECHE";
+            this.btnModuloIngresoLeche.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnModuloIngresoLeche.UseCompatibleTextRendering = true;
+            this.btnModuloIngresoLeche.UseVisualStyleBackColor = false;
+            this.btnModuloIngresoLeche.Click += new System.EventHandler(this.btnModuloIngresoLeche_Click);
             // 
             // pictureBox1
             // 
@@ -186,6 +261,27 @@
             this.BarraTitulo.Size = new System.Drawing.Size(1070, 55);
             this.BarraTitulo.TabIndex = 1;
             this.BarraTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BarraTitulo_MouseDown);
+            // 
+            // btnUsuario
+            // 
+            this.btnUsuario.Image = ((System.Drawing.Image)(resources.GetObject("btnUsuario.Image")));
+            this.btnUsuario.Location = new System.Drawing.Point(95, 4);
+            this.btnUsuario.Name = "btnUsuario";
+            this.btnUsuario.Size = new System.Drawing.Size(43, 46);
+            this.btnUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnUsuario.TabIndex = 5;
+            this.btnUsuario.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(144, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(104, 25);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "UserName";
             // 
             // btnMinimizar
             // 
@@ -245,70 +341,164 @@
             this.panelContenedor.Location = new System.Drawing.Point(230, 55);
             this.panelContenedor.Name = "panelContenedor";
             this.panelContenedor.Size = new System.Drawing.Size(1070, 595);
-            this.panelContenedor.TabIndex = 2;
+            this.panelContenedor.TabIndex = 4;
             // 
-            // button4
+            // dropdownMenu1
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(206)))), ((int)(((byte)(18)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(0, 347);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(230, 75);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "         GESTIÓN DE INVENTARIO";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button4.UseCompatibleTextRendering = true;
-            this.button4.UseVisualStyleBackColor = false;
+            this.dropdownMenu1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dropdownMenu1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dropdownMenu1.IsMainMenu = false;
+            this.dropdownMenu1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btn1ToolStripMenuItem,
+            this.btn2ToolStripMenuItem});
+            this.dropdownMenu1.MenuItemHeight = 25;
+            this.dropdownMenu1.MenuItemTextColor = System.Drawing.Color.Empty;
+            this.dropdownMenu1.Name = "dropdownMenu1";
+            this.dropdownMenu1.PrimaryColor = System.Drawing.Color.Empty;
+            this.dropdownMenu1.Size = new System.Drawing.Size(230, 56);
             // 
-            // button5
+            // btn1ToolStripMenuItem
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
-            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(206)))), ((int)(((byte)(18)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(0, 428);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(230, 75);
-            this.button5.TabIndex = 11;
-            this.button5.Text = "         GESTIÓN DE PRÉSTAMOS Y FINANZAS";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button5.UseCompatibleTextRendering = true;
-            this.button5.UseVisualStyleBackColor = false;
+            this.btn1ToolStripMenuItem.Name = "btn1ToolStripMenuItem";
+            this.btn1ToolStripMenuItem.Size = new System.Drawing.Size(229, 26);
+            this.btn1ToolStripMenuItem.Text = "Ingreso Diario";
+            this.btn1ToolStripMenuItem.Click += new System.EventHandler(this.btn1ToolStripMenuItem_Click);
             // 
-            // label2
+            // btn2ToolStripMenuItem
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(144, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 25);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "UserName";
+            this.btn2ToolStripMenuItem.Name = "btn2ToolStripMenuItem";
+            this.btn2ToolStripMenuItem.Size = new System.Drawing.Size(229, 26);
+            this.btn2ToolStripMenuItem.Text = "Consulta Quincenal";
             // 
-            // btnUsuario
+            // dropdownMenu2
             // 
-            this.btnUsuario.Image = ((System.Drawing.Image)(resources.GetObject("btnUsuario.Image")));
-            this.btnUsuario.Location = new System.Drawing.Point(95, 4);
-            this.btnUsuario.Name = "btnUsuario";
-            this.btnUsuario.Size = new System.Drawing.Size(43, 46);
-            this.btnUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnUsuario.TabIndex = 5;
-            this.btnUsuario.TabStop = false;
+            this.dropdownMenu2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dropdownMenu2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dropdownMenu2.IsMainMenu = false;
+            this.dropdownMenu2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2});
+            this.dropdownMenu2.MenuItemHeight = 25;
+            this.dropdownMenu2.MenuItemTextColor = System.Drawing.Color.Empty;
+            this.dropdownMenu2.Name = "dropdownMenu1";
+            this.dropdownMenu2.PrimaryColor = System.Drawing.Color.Empty;
+            this.dropdownMenu2.Size = new System.Drawing.Size(116, 56);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(115, 26);
+            this.toolStripMenuItem1.Text = "Btn1";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(115, 26);
+            this.toolStripMenuItem2.Text = "Btn2";
+            // 
+            // dropdownMenu3
+            // 
+            this.dropdownMenu3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dropdownMenu3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dropdownMenu3.IsMainMenu = false;
+            this.dropdownMenu3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4});
+            this.dropdownMenu3.MenuItemHeight = 25;
+            this.dropdownMenu3.MenuItemTextColor = System.Drawing.Color.Empty;
+            this.dropdownMenu3.Name = "dropdownMenu1";
+            this.dropdownMenu3.PrimaryColor = System.Drawing.Color.Empty;
+            this.dropdownMenu3.Size = new System.Drawing.Size(116, 56);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(115, 26);
+            this.toolStripMenuItem3.Text = "Btn1";
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(115, 26);
+            this.toolStripMenuItem4.Text = "Btn2";
+            // 
+            // dropdownMenu4
+            // 
+            this.dropdownMenu4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dropdownMenu4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dropdownMenu4.IsMainMenu = false;
+            this.dropdownMenu4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem5,
+            this.toolStripMenuItem6});
+            this.dropdownMenu4.MenuItemHeight = 25;
+            this.dropdownMenu4.MenuItemTextColor = System.Drawing.Color.Empty;
+            this.dropdownMenu4.Name = "dropdownMenu1";
+            this.dropdownMenu4.PrimaryColor = System.Drawing.Color.Empty;
+            this.dropdownMenu4.Size = new System.Drawing.Size(116, 56);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(115, 26);
+            this.toolStripMenuItem5.Text = "Btn1";
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(115, 26);
+            this.toolStripMenuItem6.Text = "Btn2";
+            // 
+            // dropdownMenu5
+            // 
+            this.dropdownMenu5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dropdownMenu5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dropdownMenu5.IsMainMenu = false;
+            this.dropdownMenu5.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem7,
+            this.toolStripMenuItem8});
+            this.dropdownMenu5.MenuItemHeight = 25;
+            this.dropdownMenu5.MenuItemTextColor = System.Drawing.Color.Empty;
+            this.dropdownMenu5.Name = "dropdownMenu1";
+            this.dropdownMenu5.PrimaryColor = System.Drawing.Color.Empty;
+            this.dropdownMenu5.Size = new System.Drawing.Size(116, 56);
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(115, 26);
+            this.toolStripMenuItem7.Text = "Btn1";
+            // 
+            // toolStripMenuItem8
+            // 
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(115, 26);
+            this.toolStripMenuItem8.Text = "Btn2";
+            // 
+            // dropdownMenu6
+            // 
+            this.dropdownMenu6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dropdownMenu6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dropdownMenu6.IsMainMenu = false;
+            this.dropdownMenu6.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem9,
+            this.toolStripMenuItem10});
+            this.dropdownMenu6.MenuItemHeight = 25;
+            this.dropdownMenu6.MenuItemTextColor = System.Drawing.Color.Empty;
+            this.dropdownMenu6.Name = "dropdownMenu1";
+            this.dropdownMenu6.PrimaryColor = System.Drawing.Color.Empty;
+            this.dropdownMenu6.Size = new System.Drawing.Size(116, 56);
+            // 
+            // toolStripMenuItem9
+            // 
+            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(115, 26);
+            this.toolStripMenuItem9.Text = "Btn1";
+            // 
+            // toolStripMenuItem10
+            // 
+            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(115, 26);
+            this.toolStripMenuItem10.Text = "Btn2";
             // 
             // Menu
             // 
@@ -322,16 +512,23 @@
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Menu_Load);
             this.MenuVertical.ResumeLayout(false);
             this.MenuVertical.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.BarraTitulo.ResumeLayout(false);
             this.BarraTitulo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnUsuario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSlide)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnUsuario)).EndInit();
+            this.dropdownMenu1.ResumeLayout(false);
+            this.dropdownMenu2.ResumeLayout(false);
+            this.dropdownMenu3.ResumeLayout(false);
+            this.dropdownMenu4.ResumeLayout(false);
+            this.dropdownMenu5.ResumeLayout(false);
+            this.dropdownMenu6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -344,17 +541,35 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox btnClose;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panelContenedor;
         private System.Windows.Forms.PictureBox btnMinimizar;
         private System.Windows.Forms.PictureBox btnMaximizar;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnModuloIngresoLeche;
+        private System.Windows.Forms.Button btnModuloAdministracionGeneral;
+        private System.Windows.Forms.Button btnModuloManejoProveedores;
+        private System.Windows.Forms.Button btnModuloGestionSocios;
+        private System.Windows.Forms.Button btnModuloGestionFinanciera;
+        private System.Windows.Forms.Button btnModuloGestionInventario;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox btnUsuario;
+        private Controls.DropdownMenu dropdownMenu1;
+        private System.Windows.Forms.ToolStripMenuItem btn1ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btn2ToolStripMenuItem;
+        private System.Windows.Forms.Panel panelContenedor;
+        private Controls.DropdownMenu dropdownMenu2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private Controls.DropdownMenu dropdownMenu3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private Controls.DropdownMenu dropdownMenu4;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
+        private Controls.DropdownMenu dropdownMenu5;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
+        private Controls.DropdownMenu dropdownMenu6;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
     }
 }
 

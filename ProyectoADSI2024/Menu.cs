@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices; //Libreria para mover la ventana
-using System.Data.SqlClient; //Libreria para conexion a SQL Server
+using System.Data.SqlClient;
+using System.Security.Cryptography; //Libreria para conexion a SQL Server
 
 namespace ProyectoADSI2024
 {
@@ -21,6 +22,23 @@ namespace ProyectoADSI2024
             InitializeComponent();
         }
 
+        private void Menu_Load(object sender, EventArgs e)
+        {
+            dropdownMenu1.IsMainMenu = true;
+            dropdownMenu1.PrimaryColor = Color.FromArgb(204, 185, 65);
+            dropdownMenu2.IsMainMenu = true;
+            dropdownMenu2.PrimaryColor = Color.FromArgb(204, 185, 65);
+            dropdownMenu3.IsMainMenu = true;
+            dropdownMenu3.PrimaryColor = Color.FromArgb(204, 185, 65);
+            dropdownMenu4.IsMainMenu = true;
+            dropdownMenu4.PrimaryColor = Color.FromArgb(204, 185, 65);
+            dropdownMenu5.IsMainMenu = true;
+            dropdownMenu5.PrimaryColor = Color.FromArgb(204, 185, 65);
+            dropdownMenu6.IsMainMenu = true;
+            dropdownMenu6.PrimaryColor = Color.FromArgb(204, 185, 65);
+
+        }
+
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture(); //Metodo para mover la ventana
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -31,10 +49,23 @@ namespace ProyectoADSI2024
             if(MenuVertical.Width == 230)
             {
                 MenuVertical.Width = 66;
+                btnModuloIngresoLeche.Enabled = false;
+                btnModuloGestionSocios.Enabled = false;
+                btnModuloManejoProveedores.Enabled = false;
+                btnModuloGestionInventario.Enabled = false;
+                btnModuloGestionFinanciera.Enabled = false;
+                btnModuloAdministracionGeneral.Enabled = false;
             }
             else
             {
                 MenuVertical.Width = 230;
+                btnModuloIngresoLeche.Enabled = true;
+                btnModuloGestionSocios.Enabled = true;
+                btnModuloManejoProveedores.Enabled = true;
+                btnModuloGestionInventario.Enabled = true;
+                btnModuloGestionFinanciera.Enabled = true;
+                btnModuloAdministracionGeneral.Enabled = true;
+
             }
         }
 
@@ -67,6 +98,53 @@ namespace ProyectoADSI2024
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0); //Mover la ventana
+        }
+
+        private void btnModuloIngresoLeche_Click(object sender, EventArgs e)
+        {
+            dropdownMenu1.Show(btnModuloIngresoLeche, btnModuloIngresoLeche.Width, 0);
+        }
+
+        private void btnModuloGestionSocios_Click(object sender, EventArgs e)
+        {
+            dropdownMenu2.Show(btnModuloGestionSocios, btnModuloGestionSocios.Width, 0);
+        }
+
+        private void btnModuloManejoProveedores_Click(object sender, EventArgs e)
+        {
+            dropdownMenu3.Show(btnModuloManejoProveedores, btnModuloManejoProveedores.Width, 0);
+        }
+
+        private void btnModuloGestionInventario_Click(object sender, EventArgs e)
+        {
+            dropdownMenu4.Show(btnModuloGestionInventario, btnModuloGestionInventario.Width, 0);
+        }
+
+        private void btnModuloGestionFinanciera_Click(object sender, EventArgs e)
+        {
+            dropdownMenu5.Show(btnModuloGestionFinanciera, btnModuloGestionFinanciera.Width, 0);
+        }
+
+        private void btnModuloAdministracionGeneral_Click(object sender, EventArgs e)
+        {
+            dropdownMenu6.Show(btnModuloAdministracionGeneral, btnModuloAdministracionGeneral.Width, 0);
+        }
+
+        private void AbrirFormInPanel(object Formhijo)
+        {
+            if (this.panelContenedor.Controls.Count > 0)
+                this.panelContenedor.Controls.RemoveAt(0);
+            Form fh = Formhijo as Form;
+            fh.TopLevel = false;
+            fh.Dock = DockStyle.Fill;
+            this.panelContenedor.Controls.Add(fh);
+            this.panelContenedor.Tag = fh;
+            fh.Show();
+        }
+
+        private void btn1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new IngresoDiarioLeche());
         }
     }
 }
