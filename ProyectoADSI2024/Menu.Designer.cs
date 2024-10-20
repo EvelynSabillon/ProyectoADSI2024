@@ -60,11 +60,12 @@
             this.ConcentradoToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.GestionMedicamentoToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.dropdownMenu5 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnPrestamoToolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAnticipoToolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
             this.dropdownMenu6 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
             this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnNominaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.BarraTitulo.SuspendLayout();
@@ -435,13 +436,13 @@
             this.dropdownMenu4.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu4.Name = "dropdownMenu1";
             this.dropdownMenu4.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu4.Size = new System.Drawing.Size(194, 78);
+            this.dropdownMenu4.Size = new System.Drawing.Size(194, 56);
             this.dropdownMenu4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dropdownMenu4_MouseClick);
             // 
             // ConcentradoToolStripMenu
             // 
             this.ConcentradoToolStripMenu.Name = "ConcentradoToolStripMenu";
-            this.ConcentradoToolStripMenu.Size = new System.Drawing.Size(180, 26);
+            this.ConcentradoToolStripMenu.Size = new System.Drawing.Size(193, 26);
             this.ConcentradoToolStripMenu.Text = "Concentrado";
             // 
             // GestionMedicamentoToolStripMenu
@@ -456,25 +457,28 @@
             this.dropdownMenu5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dropdownMenu5.IsMainMenu = false;
             this.dropdownMenu5.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem7,
-            this.toolStripMenuItem8});
+            this.btnPrestamoToolStripMenuItem7,
+            this.btnAnticipoToolStripMenuItem8,
+            this.btnNominaToolStripMenuItem});
             this.dropdownMenu5.MenuItemHeight = 25;
             this.dropdownMenu5.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu5.Name = "dropdownMenu1";
             this.dropdownMenu5.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu5.Size = new System.Drawing.Size(116, 56);
+            this.dropdownMenu5.Size = new System.Drawing.Size(181, 104);
             // 
-            // toolStripMenuItem7
+            // btnPrestamoToolStripMenuItem7
             // 
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(115, 26);
-            this.toolStripMenuItem7.Text = "Btn1";
+            this.btnPrestamoToolStripMenuItem7.Name = "btnPrestamoToolStripMenuItem7";
+            this.btnPrestamoToolStripMenuItem7.Size = new System.Drawing.Size(180, 26);
+            this.btnPrestamoToolStripMenuItem7.Text = "Prestamos";
+            this.btnPrestamoToolStripMenuItem7.Click += new System.EventHandler(this.btnPrestamoToolStripMenuItem7_Click);
             // 
-            // toolStripMenuItem8
+            // btnAnticipoToolStripMenuItem8
             // 
-            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(115, 26);
-            this.toolStripMenuItem8.Text = "Btn2";
+            this.btnAnticipoToolStripMenuItem8.Name = "btnAnticipoToolStripMenuItem8";
+            this.btnAnticipoToolStripMenuItem8.Size = new System.Drawing.Size(180, 26);
+            this.btnAnticipoToolStripMenuItem8.Text = "Anticipos";
+            this.btnAnticipoToolStripMenuItem8.Click += new System.EventHandler(this.btnAnticipoToolStripMenuItem8_Click);
             // 
             // dropdownMenu6
             // 
@@ -501,6 +505,13 @@
             this.toolStripMenuItem10.Name = "toolStripMenuItem10";
             this.toolStripMenuItem10.Size = new System.Drawing.Size(115, 26);
             this.toolStripMenuItem10.Text = "Btn2";
+            // 
+            // btnNominaToolStripMenuItem
+            // 
+            this.btnNominaToolStripMenuItem.Name = "btnNominaToolStripMenuItem";
+            this.btnNominaToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.btnNominaToolStripMenuItem.Text = "Nomina";
+            this.btnNominaToolStripMenuItem.Click += new System.EventHandler(this.btnNominaToolStripMenuItem_Click);
             // 
             // Menu
             // 
@@ -567,11 +578,12 @@
         private System.Windows.Forms.ToolStripMenuItem ConcentradoToolStripMenu;
         private System.Windows.Forms.ToolStripMenuItem GestionMedicamentoToolStripMenu;
         private Controls.DropdownMenu dropdownMenu5;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
+        private System.Windows.Forms.ToolStripMenuItem btnPrestamoToolStripMenuItem7;
+        private System.Windows.Forms.ToolStripMenuItem btnAnticipoToolStripMenuItem8;
         private Controls.DropdownMenu dropdownMenu6;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
+        private System.Windows.Forms.ToolStripMenuItem btnNominaToolStripMenuItem;
     }
 }
 

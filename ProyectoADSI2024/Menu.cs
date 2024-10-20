@@ -174,6 +174,19 @@ namespace ProyectoADSI2024
             AbrirFormInPanel(new frmGestionMedicamento());
         }
 
+        private void btnPrestamoToolStripMenuItem7_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new frmPrestamo());
+        }
 
+        private void btnAnticipoToolStripMenuItem8_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new frmAnticipo());
+        }
+
+        private void btnNominaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new frmNomina());
+        }
     }
 }
