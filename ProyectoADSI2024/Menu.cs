@@ -20,6 +20,10 @@ namespace ProyectoADSI2024
         public Menu()
         {
             InitializeComponent();
+            // Aqui creo eventos Click a los ítems del menú de gestion inventario en el constructor
+            //porque no encontre hacerlo graficamente, si se puede de alguna manera me avisan.
+            ConcentradoToolStripMenu.Click +=   ConcentradoToolStrip_click;
+            GestionMedicamentoToolStripMenu.Click += MedicamentoToolStrip_click;
         }
 
         private void Menu_Load(object sender, EventArgs e)
@@ -146,5 +150,30 @@ namespace ProyectoADSI2024
         {
             AbrirFormInPanel(new IngresoDiarioLeche());
         }
+
+        private void MenuVertical_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dropdownMenu4_MouseClick(object sender, MouseEventArgs e)
+        {
+           
+
+        }
+
+        //evento click para gestionInventario/Concentrado
+        private void ConcentradoToolStrip_click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new frmGestionConcentrado());
+        }
+
+        //evento click para gestionInventario/Medicamento
+        private void MedicamentoToolStrip_click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new frmGestionMedicamento());
+        }
+
+
     }
 }

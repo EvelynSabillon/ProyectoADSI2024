@@ -57,6 +57,18 @@
     </Compile>
     <Compile Include="Controls\MenuColorTable.cs" />
     <Compile Include="Controls\MenuRenderer.cs" />
+    <Compile Include="frmGestionConcentrado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGestionConcentrado.Designer.cs">
+      <DependentUpon>frmGestionConcentrado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGestionMedicamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGestionMedicamento.Designer.cs">
+      <DependentUpon>frmGestionMedicamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="IngresoDiarioLeche.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +85,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AboutUs.resx">
       <DependentUpon>AboutUs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGestionConcentrado.resx">
+      <DependentUpon>frmGestionConcentrado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGestionMedicamento.resx">
+      <DependentUpon>frmGestionMedicamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IngresoDiarioLeche.resx">
       <DependentUpon>IngresoDiarioLeche.cs</DependentUpon>

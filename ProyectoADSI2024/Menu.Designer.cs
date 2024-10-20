@@ -57,8 +57,8 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.dropdownMenu4 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ConcentradoToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.GestionMedicamentoToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.dropdownMenu5 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,6 +97,7 @@
             this.MenuVertical.Name = "MenuVertical";
             this.MenuVertical.Size = new System.Drawing.Size(230, 650);
             this.MenuVertical.TabIndex = 0;
+            this.MenuVertical.Paint += new System.Windows.Forms.PaintEventHandler(this.MenuVertical_Paint);
             // 
             // btnModuloGestionFinanciera
             // 
@@ -428,25 +429,26 @@
             this.dropdownMenu4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dropdownMenu4.IsMainMenu = false;
             this.dropdownMenu4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem5,
-            this.toolStripMenuItem6});
+            this.ConcentradoToolStripMenu,
+            this.GestionMedicamentoToolStripMenu});
             this.dropdownMenu4.MenuItemHeight = 25;
             this.dropdownMenu4.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu4.Name = "dropdownMenu1";
             this.dropdownMenu4.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu4.Size = new System.Drawing.Size(116, 56);
+            this.dropdownMenu4.Size = new System.Drawing.Size(194, 78);
+            this.dropdownMenu4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dropdownMenu4_MouseClick);
             // 
-            // toolStripMenuItem5
+            // ConcentradoToolStripMenu
             // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(115, 26);
-            this.toolStripMenuItem5.Text = "Btn1";
+            this.ConcentradoToolStripMenu.Name = "ConcentradoToolStripMenu";
+            this.ConcentradoToolStripMenu.Size = new System.Drawing.Size(180, 26);
+            this.ConcentradoToolStripMenu.Text = "Concentrado";
             // 
-            // toolStripMenuItem6
+            // GestionMedicamentoToolStripMenu
             // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(115, 26);
-            this.toolStripMenuItem6.Text = "Btn2";
+            this.GestionMedicamentoToolStripMenu.Name = "GestionMedicamentoToolStripMenu";
+            this.GestionMedicamentoToolStripMenu.Size = new System.Drawing.Size(193, 26);
+            this.GestionMedicamentoToolStripMenu.Text = "Medicamentos";
             // 
             // dropdownMenu5
             // 
@@ -562,8 +564,8 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private Controls.DropdownMenu dropdownMenu4;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem ConcentradoToolStripMenu;
+        private System.Windows.Forms.ToolStripMenuItem GestionMedicamentoToolStripMenu;
         private Controls.DropdownMenu dropdownMenu5;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
