@@ -76,6 +76,12 @@
     <Compile Include="frmGestionMedicamento.Designer.cs">
       <DependentUpon>frmGestionMedicamento.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmNomina.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,12 @@
     </Compile>
     <Compile Include="frmPrestamo.Designer.cs">
       <DependentUpon>frmPrestamo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSplashScreen.Designer.cs">
+      <DependentUpon>frmSplashScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="IngresoDiarioLeche.cs">
       <SubType>Form</SubType>
@@ -113,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmGestionMedicamento.resx">
       <DependentUpon>frmGestionMedicamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNomina.resx">
       <DependentUpon>frmNomina.cs</DependentUpon>
@@ -152,8 +167,12 @@
   <ItemGroup>
     <Content Include="Resources\admin_icon.png" />
     <Content Include="Resources\cow-icon2.png" />
+    <Content Include="Resources\fluent--minimize-16-filled.png" />
     <Content Include="Resources\inventoy_icon.png" />
+    <Content Include="Resources\line.png" />
+    <Content Include="Resources\line2.png" />
     <Content Include="Resources\logo_png.png" />
+    <Content Include="Resources\maki--cross.png" />
     <Content Include="Resources\milk_icon6.png" />
     <Content Include="Resources\nav_icon.png" />
     <Content Include="Resources\pay_icon.png" />

@@ -8,16 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices; //Libreria para mover la ventana
-using System.Data.SqlClient;
-using System.Security.Cryptography; //Libreria para conexion a SQL Server
+using System.Data.SqlClient; //Libreria para conexion a SQL Server
+using System.Security.Cryptography;
 
 namespace ProyectoADSI2024
 {
 
     public partial class Menu : Form
     {
-        SqlConnection conexion = new SqlConnection(); //Conexion a SQL Server
-        SqlCommand comando = new SqlCommand(); //Comando SQL
+        SqlConnection myconexion; //Conexion a SQL Server
         public Menu()
         {
             InitializeComponent();          
@@ -38,6 +37,14 @@ namespace ProyectoADSI2024
             dropdownMenu5.PrimaryColor = Color.FromArgb(204, 185, 65);
             dropdownMenu6.IsMainMenu = true;
             dropdownMenu6.PrimaryColor = Color.FromArgb(204, 185, 65);
+
+            frmLogin frm = new frmLogin();
+            frm.ShowDialog();
+
+            if (frm.Conectado)
+                myconexion = frm.Conexion;
+            else
+                Dispose();
 
         }
 
