@@ -13,17 +13,15 @@ using System.Security.Cryptography; //Libreria para conexion a SQL Server
 
 namespace ProyectoADSI2024
 {
+
     public partial class Menu : Form
     {
         SqlConnection conexion = new SqlConnection(); //Conexion a SQL Server
         SqlCommand comando = new SqlCommand(); //Comando SQL
         public Menu()
         {
-            InitializeComponent();
-            // Aqui creo eventos Click a los ítems del menú de gestion inventario en el constructor
-            //porque no encontre hacerlo graficamente, si se puede de alguna manera me avisan.
-            ConcentradoToolStripMenu.Click +=   ConcentradoToolStrip_click;
-            GestionMedicamentoToolStripMenu.Click += MedicamentoToolStrip_click;
+            InitializeComponent();          
+
         }
 
         private void Menu_Load(object sender, EventArgs e)
@@ -163,7 +161,7 @@ namespace ProyectoADSI2024
         }
 
         //evento click para gestionInventario/Concentrado
-        private void ConcentradoToolStrip_click(object sender, EventArgs e)
+      /*  private void ConcentradoToolStrip_click(object sender, EventArgs e)
         {
             AbrirFormInPanel(new frmGestionConcentrado());
         }
@@ -172,7 +170,7 @@ namespace ProyectoADSI2024
         private void MedicamentoToolStrip_click(object sender, EventArgs e)
         {
             AbrirFormInPanel(new frmGestionMedicamento());
-        }
+        }*/
 
         private void btnPrestamoToolStripMenuItem7_Click(object sender, EventArgs e)
         {
@@ -187,6 +185,22 @@ namespace ProyectoADSI2024
         private void btnNominaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AbrirFormInPanel(new frmNomina());
+        }
+
+        private void compraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        
+        }
+
+        private void articuloExistenteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new frmGestionConcentrado());
+
+        }
+
+        private void nuevoMedicamentoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new frmGestionMedicamento()); //nueva compra de medicamento
         }
     }
 }

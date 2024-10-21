@@ -52,6 +52,7 @@
     <Compile Include="AboutUs.Designer.cs">
       <DependentUpon>AboutUs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Conexion.cs" />
     <Compile Include="Controls\DropdownMenu.cs">
       <SubType>Component</SubType>
     </Compile>

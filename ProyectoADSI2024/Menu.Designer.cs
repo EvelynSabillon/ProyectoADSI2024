@@ -58,14 +58,22 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.dropdownMenu4 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
             this.ConcentradoToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.compraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GestionMedicamentoToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.dropdownMenu5 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
             this.btnPrestamoToolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAnticipoToolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnNominaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dropdownMenu6 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
             this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnNominaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.articuloExistenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevoArticuloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compraToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.salidaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevoMedicamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.medicamentoExistenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.BarraTitulo.SuspendLayout();
@@ -436,17 +444,43 @@
             this.dropdownMenu4.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu4.Name = "dropdownMenu1";
             this.dropdownMenu4.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu4.Size = new System.Drawing.Size(194, 56);
+            this.dropdownMenu4.Size = new System.Drawing.Size(194, 78);
             this.dropdownMenu4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dropdownMenu4_MouseClick);
             // 
             // ConcentradoToolStripMenu
             // 
+            this.ConcentradoToolStripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.compraToolStripMenuItem,
+            this.salidaToolStripMenuItem});
             this.ConcentradoToolStripMenu.Name = "ConcentradoToolStripMenu";
             this.ConcentradoToolStripMenu.Size = new System.Drawing.Size(193, 26);
             this.ConcentradoToolStripMenu.Text = "Concentrado";
             // 
+            // compraToolStripMenuItem
+            // 
+            this.compraToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.compraToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.articuloExistenteToolStripMenuItem,
+            this.nuevoArticuloToolStripMenuItem});
+            this.compraToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.compraToolStripMenuItem.Name = "compraToolStripMenuItem";
+            this.compraToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.compraToolStripMenuItem.Text = "Compra";
+            this.compraToolStripMenuItem.Click += new System.EventHandler(this.compraToolStripMenuItem_Click);
+            // 
+            // salidaToolStripMenuItem
+            // 
+            this.salidaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.salidaToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.salidaToolStripMenuItem.Name = "salidaToolStripMenuItem";
+            this.salidaToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.salidaToolStripMenuItem.Text = "Salida";
+            // 
             // GestionMedicamentoToolStripMenu
             // 
+            this.GestionMedicamentoToolStripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.compraToolStripMenuItem1,
+            this.salidaToolStripMenuItem1});
             this.GestionMedicamentoToolStripMenu.Name = "GestionMedicamentoToolStripMenu";
             this.GestionMedicamentoToolStripMenu.Size = new System.Drawing.Size(193, 26);
             this.GestionMedicamentoToolStripMenu.Text = "Medicamentos";
@@ -464,21 +498,28 @@
             this.dropdownMenu5.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu5.Name = "dropdownMenu1";
             this.dropdownMenu5.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu5.Size = new System.Drawing.Size(181, 104);
+            this.dropdownMenu5.Size = new System.Drawing.Size(160, 82);
             // 
             // btnPrestamoToolStripMenuItem7
             // 
             this.btnPrestamoToolStripMenuItem7.Name = "btnPrestamoToolStripMenuItem7";
-            this.btnPrestamoToolStripMenuItem7.Size = new System.Drawing.Size(180, 26);
+            this.btnPrestamoToolStripMenuItem7.Size = new System.Drawing.Size(159, 26);
             this.btnPrestamoToolStripMenuItem7.Text = "Prestamos";
             this.btnPrestamoToolStripMenuItem7.Click += new System.EventHandler(this.btnPrestamoToolStripMenuItem7_Click);
             // 
             // btnAnticipoToolStripMenuItem8
             // 
             this.btnAnticipoToolStripMenuItem8.Name = "btnAnticipoToolStripMenuItem8";
-            this.btnAnticipoToolStripMenuItem8.Size = new System.Drawing.Size(180, 26);
+            this.btnAnticipoToolStripMenuItem8.Size = new System.Drawing.Size(159, 26);
             this.btnAnticipoToolStripMenuItem8.Text = "Anticipos";
             this.btnAnticipoToolStripMenuItem8.Click += new System.EventHandler(this.btnAnticipoToolStripMenuItem8_Click);
+            // 
+            // btnNominaToolStripMenuItem
+            // 
+            this.btnNominaToolStripMenuItem.Name = "btnNominaToolStripMenuItem";
+            this.btnNominaToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.btnNominaToolStripMenuItem.Text = "Nomina";
+            this.btnNominaToolStripMenuItem.Click += new System.EventHandler(this.btnNominaToolStripMenuItem_Click);
             // 
             // dropdownMenu6
             // 
@@ -506,12 +547,58 @@
             this.toolStripMenuItem10.Size = new System.Drawing.Size(115, 26);
             this.toolStripMenuItem10.Text = "Btn2";
             // 
-            // btnNominaToolStripMenuItem
+            // articuloExistenteToolStripMenuItem
             // 
-            this.btnNominaToolStripMenuItem.Name = "btnNominaToolStripMenuItem";
-            this.btnNominaToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
-            this.btnNominaToolStripMenuItem.Text = "Nomina";
-            this.btnNominaToolStripMenuItem.Click += new System.EventHandler(this.btnNominaToolStripMenuItem_Click);
+            this.articuloExistenteToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.articuloExistenteToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.articuloExistenteToolStripMenuItem.Name = "articuloExistenteToolStripMenuItem";
+            this.articuloExistenteToolStripMenuItem.Size = new System.Drawing.Size(252, 26);
+            this.articuloExistenteToolStripMenuItem.Text = "Nuevo concentrado";
+            this.articuloExistenteToolStripMenuItem.Click += new System.EventHandler(this.articuloExistenteToolStripMenuItem_Click);
+            // 
+            // nuevoArticuloToolStripMenuItem
+            // 
+            this.nuevoArticuloToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.nuevoArticuloToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.nuevoArticuloToolStripMenuItem.Name = "nuevoArticuloToolStripMenuItem";
+            this.nuevoArticuloToolStripMenuItem.Size = new System.Drawing.Size(252, 26);
+            this.nuevoArticuloToolStripMenuItem.Text = "Concentrado existente";
+            // 
+            // compraToolStripMenuItem1
+            // 
+            this.compraToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.compraToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nuevoMedicamentoToolStripMenuItem,
+            this.medicamentoExistenteToolStripMenuItem});
+            this.compraToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.compraToolStripMenuItem1.Name = "compraToolStripMenuItem1";
+            this.compraToolStripMenuItem1.Size = new System.Drawing.Size(180, 26);
+            this.compraToolStripMenuItem1.Text = "Compra";
+            // 
+            // salidaToolStripMenuItem1
+            // 
+            this.salidaToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.salidaToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.salidaToolStripMenuItem1.Name = "salidaToolStripMenuItem1";
+            this.salidaToolStripMenuItem1.Size = new System.Drawing.Size(180, 26);
+            this.salidaToolStripMenuItem1.Text = "Salida";
+            // 
+            // nuevoMedicamentoToolStripMenuItem
+            // 
+            this.nuevoMedicamentoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.nuevoMedicamentoToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.nuevoMedicamentoToolStripMenuItem.Name = "nuevoMedicamentoToolStripMenuItem";
+            this.nuevoMedicamentoToolStripMenuItem.Size = new System.Drawing.Size(260, 26);
+            this.nuevoMedicamentoToolStripMenuItem.Text = "Nuevo medicamento";
+            this.nuevoMedicamentoToolStripMenuItem.Click += new System.EventHandler(this.nuevoMedicamentoToolStripMenuItem_Click);
+            // 
+            // medicamentoExistenteToolStripMenuItem
+            // 
+            this.medicamentoExistenteToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.medicamentoExistenteToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.medicamentoExistenteToolStripMenuItem.Name = "medicamentoExistenteToolStripMenuItem";
+            this.medicamentoExistenteToolStripMenuItem.Size = new System.Drawing.Size(260, 26);
+            this.medicamentoExistenteToolStripMenuItem.Text = "Medicamento existente";
             // 
             // Menu
             // 
@@ -584,6 +671,14 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
         private System.Windows.Forms.ToolStripMenuItem btnNominaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem compraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem salidaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem articuloExistenteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nuevoArticuloToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem compraToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem nuevoMedicamentoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem medicamentoExistenteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem salidaToolStripMenuItem1;
     }
 }
 
