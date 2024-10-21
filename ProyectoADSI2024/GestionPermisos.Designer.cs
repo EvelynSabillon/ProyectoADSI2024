@@ -1,6 +1,6 @@
 ﻿namespace ProyectoADSI2024
 {
-    partial class frmPrestamo
+    partial class GestionPermisos
     {
         /// <summary>
         /// Required designer variable.
@@ -28,23 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrestamo));
-            this.label1 = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionPermisos));
             this.btnAtras = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.label1.Location = new System.Drawing.Point(253, 27);
-            this.label1.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(593, 38);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "REGISTRO Y GESTIÓN DE PRÉSTAMOS";
             // 
             // btnAtras
             // 
@@ -59,16 +47,28 @@
             this.btnAtras.TabStop = false;
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
-            // frmPrestamo
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.label1.Location = new System.Drawing.Point(235, 27);
+            this.label1.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(552, 38);
+            this.label1.TabIndex = 40;
+            this.label1.Text = "GESTIÓN DE PERMISOS DE ACCESO";
+            // 
+            // GestionPermisos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1070, 595);
-            this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnAtras);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmPrestamo";
-            this.Text = "frmPrestamo";
+            this.Name = "GestionPermisos";
+            this.Text = "GestionPermisos";
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -77,7 +77,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox btnAtras;
+        private System.Windows.Forms.Label label1;
     }
 }

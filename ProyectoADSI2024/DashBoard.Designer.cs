@@ -1,6 +1,6 @@
 ﻿namespace ProyectoADSI2024
 {
-    partial class AboutUs
+    partial class DashBoard
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // AboutUs
+            // DashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1070, 595);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "AboutUs";
+            this.Name = "DashBoard";
             this.Text = "AboutUs";
             this.ResumeLayout(false);
 

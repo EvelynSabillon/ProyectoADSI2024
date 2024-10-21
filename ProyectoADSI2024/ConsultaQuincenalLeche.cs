@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProyectoADSI2024
 {
-    public partial class frmNomina : Form
+    public partial class ConsultaQuincenalLeche : Form
     {
-        public frmNomina()
+        public ConsultaQuincenalLeche()
         {
             InitializeComponent();
         }

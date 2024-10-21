@@ -1,6 +1,6 @@
 ﻿namespace ProyectoADSI2024
 {
-    partial class frmPrestamo
+    partial class PagoProveedores
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrestamo));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PagoProveedores));
             this.label1 = new System.Windows.Forms.Label();
             this.btnAtras = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
@@ -39,12 +39,12 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.label1.Location = new System.Drawing.Point(253, 27);
+            this.label1.Location = new System.Drawing.Point(252, 27);
             this.label1.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(593, 38);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "REGISTRO Y GESTIÓN DE PRÉSTAMOS";
+            this.label1.Size = new System.Drawing.Size(580, 38);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "CONTROL DE PAGO A PROVEEDORES";
             // 
             // btnAtras
             // 
@@ -55,11 +55,11 @@
             this.btnAtras.Name = "btnAtras";
             this.btnAtras.Size = new System.Drawing.Size(55, 55);
             this.btnAtras.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.btnAtras.TabIndex = 39;
+            this.btnAtras.TabIndex = 40;
             this.btnAtras.TabStop = false;
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
-            // frmPrestamo
+            // PagoProveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -67,8 +67,8 @@
             this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmPrestamo";
-            this.Text = "frmPrestamo";
+            this.Name = "PagoProveedores";
+            this.Text = "PagoProveedores";
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

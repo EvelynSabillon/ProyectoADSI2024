@@ -209,5 +209,40 @@ namespace ProyectoADSI2024
         {
             AbrirFormInPanel(new frmGestionMedicamento()); //nueva compra de medicamento
         }
+
+        private void btnConsultaQuincenalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new ConsultaQuincenalLeche());
+        }
+
+        private void btnSociostoolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new GestionSocios());
+        }
+
+        private void btnRegistroProvtoolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new RegistroProveedores());
+        }
+
+        private void btnPagoProvtoolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new PagoProveedores());
+        }
+
+        private void btnUsuariostoolStripMenuItem9_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new GestionUsuarios());
+        }
+
+        private void btnPermisostoolStripMenuItem10_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new GestionPermisos());
+        }
+
+        private void btnAyudatoolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new ManualAyuda());
+        }
     }
 }

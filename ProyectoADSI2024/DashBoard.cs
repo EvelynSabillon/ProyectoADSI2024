@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProyectoADSI2024
 {
-    public partial class AboutUs : Form
+    public partial class DashBoard : Form
     {
-        public AboutUs()
+        public DashBoard()
         {
             InitializeComponent();
         }

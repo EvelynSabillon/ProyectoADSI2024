@@ -124,7 +124,7 @@ namespace ProyectoADSI2024
                     cmdAgregarCompra.Parameters.AddWithValue("@precio", Convert.ToDouble(txtPrecio.Text));
                     cmdAgregarCompra.Parameters.AddWithValue("@fechaVencimiento", txtVencimiento.Text);
                     cmdAgregarCompra.Parameters.AddWithValue("@cantidad", Convert.ToInt32(txtCantidad.Text));
-                    cmdAgregarCompra.Parameters.AddWithValue("@fechacompra", txtFechaCompra.Text);
+                    cmdAgregarCompra.Parameters.AddWithValue("@fechacompra", Convert.ToDateTime(txtFechaCompra.Text));
                     cmdAgregarCompra.Parameters.AddWithValue("@documento", txtDocumento.Text);
                     cmdAgregarCompra.Parameters.AddWithValue("@tipo", cbxTipo.SelectedItem.ToString());
                     cmdAgregarCompra.Parameters.AddWithValue("@estado", cbxEstadoCompra.SelectedItem.ToString());
@@ -142,7 +142,7 @@ namespace ProyectoADSI2024
                     txtPrecio.Text = "";
                     txtVencimiento.Text = "";
                     txtCantidad.Text = "";
-                    txtFechaCompra.Text = "";
+                    txtFechaCompra.ResetText();
                     txtDocumento.Text = "";
                     txtCosto.Text = "";
                     cbxProveedor.SelectedIndex = -1;  // Deseleccionar proveedor
@@ -197,5 +197,10 @@ namespace ProyectoADSI2024
             }
         }
 
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Desea volver al menu principal?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                this.Dispose();
+        }
     }
 }

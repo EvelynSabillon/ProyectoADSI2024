@@ -46,13 +46,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutUs.cs">
+    <Compile Include="DashBoard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AboutUs.Designer.cs">
-      <DependentUpon>AboutUs.cs</DependentUpon>
+    <Compile Include="DashBoard.Designer.cs">
+      <DependentUpon>DashBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BotonesUtilidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BotonesUtilidades.Designer.cs">
+      <DependentUpon>BotonesUtilidades.cs</DependentUpon>
     </Compile>
     <Compile Include="Conexion.cs" />
+    <Compile Include="ConsultaQuincenalLeche.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultaQuincenalLeche.Designer.cs">
+      <DependentUpon>ConsultaQuincenalLeche.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\DropdownMenu.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -100,11 +112,35 @@
     <Compile Include="frmSplashScreen.Designer.cs">
       <DependentUpon>frmSplashScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="GestionPermisos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionPermisos.Designer.cs">
+      <DependentUpon>GestionPermisos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionSocios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionSocios.Designer.cs">
+      <DependentUpon>GestionSocios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionUsuarios.Designer.cs">
+      <DependentUpon>GestionUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="IngresoDiarioLeche.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="IngresoDiarioLeche.Designer.cs">
       <DependentUpon>IngresoDiarioLeche.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManualAyuda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManualAyuda.Designer.cs">
+      <DependentUpon>ManualAyuda.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
@@ -112,10 +148,28 @@
     <Compile Include="Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
+    <Compile Include="PagoProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PagoProveedores.Designer.cs">
+      <DependentUpon>PagoProveedores.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AboutUs.resx">
-      <DependentUpon>AboutUs.cs</DependentUpon>
+    <Compile Include="RegistroProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistroProveedores.Designer.cs">
+      <DependentUpon>RegistroProveedores.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="BotonesUtilidades.resx">
+      <DependentUpon>BotonesUtilidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DashBoard.resx">
+      <DependentUpon>DashBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultaQuincenalLeche.resx">
+      <DependentUpon>ConsultaQuincenalLeche.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAnticipo.resx">
       <DependentUpon>frmAnticipo.cs</DependentUpon>
@@ -135,11 +189,26 @@
     <EmbeddedResource Include="frmPrestamo.resx">
       <DependentUpon>frmPrestamo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GestionPermisos.resx">
+      <DependentUpon>GestionPermisos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionSocios.resx">
+      <DependentUpon>GestionSocios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionUsuarios.resx">
+      <DependentUpon>GestionUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IngresoDiarioLeche.resx">
       <DependentUpon>IngresoDiarioLeche.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ManualAyuda.resx">
+      <DependentUpon>ManualAyuda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PagoProveedores.resx">
+      <DependentUpon>PagoProveedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -151,6 +220,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RegistroProveedores.resx">
+      <DependentUpon>RegistroProveedores.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -166,11 +238,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\admin_icon.png" />
+    <Content Include="Resources\back.png" />
+    <Content Include="Resources\back2.png" />
+    <Content Include="Resources\back3.png" />
+    <Content Include="Resources\back4.png" />
+    <Content Include="Resources\back5.png" />
+    <Content Include="Resources\back6.png" />
     <Content Include="Resources\cow-icon2.png" />
     <Content Include="Resources\fluent--minimize-16-filled.png" />
     <Content Include="Resources\inventoy_icon.png" />
     <Content Include="Resources\line.png" />
     <Content Include="Resources\line2.png" />
+    <Content Include="Resources\logo.JPG" />
     <Content Include="Resources\logo_png.png" />
     <Content Include="Resources\maki--cross.png" />
     <Content Include="Resources\milk_icon6.png" />

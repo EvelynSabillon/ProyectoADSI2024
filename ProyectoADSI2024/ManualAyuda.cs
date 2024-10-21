@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProyectoADSI2024
 {
-    public partial class frmNomina : Form
+    public partial class ManualAyuda : Form
     {
-        public frmNomina()
+        public ManualAyuda()
         {
             InitializeComponent();
         }
@@ -22,5 +22,6 @@ namespace ProyectoADSI2024
             if (MessageBox.Show("¿Desea volver al menu principal?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 this.Dispose();
         }
+
     }
 }
