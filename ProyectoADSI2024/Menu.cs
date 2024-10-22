@@ -254,5 +254,25 @@ namespace ProyectoADSI2024
         {
             AbrirFormInPanel(new frmKardexMedicamento());
         }
+
+        private void nuevoArticuloToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new frmConcentradoExistente());
+        }
+
+        private void medicamentoExistenteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new frmMedicamentoExistente());
+        }
+
+        private void btnSalidaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new frmSalidaConcentrado());
+        }
+
+        private void btnSalidaMedToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new frmSalidaMedicamento());
+        }
     }
 }

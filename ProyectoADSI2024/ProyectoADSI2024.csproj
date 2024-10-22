@@ -106,17 +106,41 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMedicamentoExistente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMedicamentoExistente.Designer.cs">
+      <DependentUpon>frmMedicamentoExistente.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmNomina.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmNomina.Designer.cs">
       <DependentUpon>frmNomina.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmConcentradoExistente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConcentradoExistente.Designer.cs">
+      <DependentUpon>frmConcentradoExistente.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPrestamo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmPrestamo.Designer.cs">
       <DependentUpon>frmPrestamo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSalidaConcentrado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSalidaConcentrado.Designer.cs">
+      <DependentUpon>frmSalidaConcentrado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSalidaMedicamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSalidaMedicamento.Designer.cs">
+      <DependentUpon>frmSalidaMedicamento.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSplashScreen.cs">
       <SubType>Form</SubType>
@@ -186,6 +210,9 @@
     <EmbeddedResource Include="frmAnticipo.resx">
       <DependentUpon>frmAnticipo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmConcentradoExistente.resx">
+      <DependentUpon>frmConcentradoExistente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmGestionConcentrado.resx">
       <DependentUpon>frmGestionConcentrado.cs</DependentUpon>
     </EmbeddedResource>
@@ -201,11 +228,20 @@
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmMedicamentoExistente.resx">
+      <DependentUpon>frmMedicamentoExistente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmNomina.resx">
       <DependentUpon>frmNomina.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrestamo.resx">
       <DependentUpon>frmPrestamo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSalidaConcentrado.resx">
+      <DependentUpon>frmSalidaConcentrado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSalidaMedicamento.resx">
+      <DependentUpon>frmSalidaMedicamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GestionPermisos.resx">
       <DependentUpon>GestionPermisos.cs</DependentUpon>
