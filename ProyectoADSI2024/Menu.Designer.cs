@@ -48,13 +48,14 @@
             this.compraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.articuloExistenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevoArticuloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.kardexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSalidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnKardexConToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GestionMedicamentoToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.compraToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevoMedicamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.medicamentoExistenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salidaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSalidaMedToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnKardexMedToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dropdownMenu5 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
             this.btnPrestamoToolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAnticipoToolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,7 +64,6 @@
             this.btnUsuariostoolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnPermisostoolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAyudatoolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.kardexToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnUsuario = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
@@ -245,15 +245,15 @@
             this.dropdownMenu4.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu4.Name = "dropdownMenu1";
             this.dropdownMenu4.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu4.Size = new System.Drawing.Size(194, 56);
+            this.dropdownMenu4.Size = new System.Drawing.Size(194, 78);
             this.dropdownMenu4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dropdownMenu4_MouseClick);
             // 
             // ConcentradoToolStripMenu
             // 
             this.ConcentradoToolStripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.compraToolStripMenuItem,
-            this.salidaToolStripMenuItem,
-            this.kardexToolStripMenuItem});
+            this.btnSalidaToolStripMenuItem,
+            this.btnKardexConToolStripMenuItem});
             this.ConcentradoToolStripMenu.Name = "ConcentradoToolStripMenu";
             this.ConcentradoToolStripMenu.Size = new System.Drawing.Size(193, 26);
             this.ConcentradoToolStripMenu.Text = "Concentrado";
@@ -266,7 +266,7 @@
             this.nuevoArticuloToolStripMenuItem});
             this.compraToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.compraToolStripMenuItem.Name = "compraToolStripMenuItem";
-            this.compraToolStripMenuItem.Size = new System.Drawing.Size(140, 26);
+            this.compraToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.compraToolStripMenuItem.Text = "Compra";
             this.compraToolStripMenuItem.Click += new System.EventHandler(this.compraToolStripMenuItem_Click);
             // 
@@ -287,28 +287,29 @@
             this.nuevoArticuloToolStripMenuItem.Size = new System.Drawing.Size(252, 26);
             this.nuevoArticuloToolStripMenuItem.Text = "Concentrado existente";
             // 
-            // salidaToolStripMenuItem
+            // btnSalidaToolStripMenuItem
             // 
-            this.salidaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.salidaToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.salidaToolStripMenuItem.Name = "salidaToolStripMenuItem";
-            this.salidaToolStripMenuItem.Size = new System.Drawing.Size(140, 26);
-            this.salidaToolStripMenuItem.Text = "Salida";
+            this.btnSalidaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.btnSalidaToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSalidaToolStripMenuItem.Name = "btnSalidaToolStripMenuItem";
+            this.btnSalidaToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.btnSalidaToolStripMenuItem.Text = "Salida";
             // 
-            // kardexToolStripMenuItem
+            // btnKardexConToolStripMenuItem
             // 
-            this.kardexToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.kardexToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.kardexToolStripMenuItem.Name = "kardexToolStripMenuItem";
-            this.kardexToolStripMenuItem.Size = new System.Drawing.Size(140, 26);
-            this.kardexToolStripMenuItem.Text = "Kardex";
+            this.btnKardexConToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.btnKardexConToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnKardexConToolStripMenuItem.Name = "btnKardexConToolStripMenuItem";
+            this.btnKardexConToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.btnKardexConToolStripMenuItem.Text = "Kardex";
+            this.btnKardexConToolStripMenuItem.Click += new System.EventHandler(this.btnKardexConToolStripMenuItem_Click);
             // 
             // GestionMedicamentoToolStripMenu
             // 
             this.GestionMedicamentoToolStripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.compraToolStripMenuItem1,
-            this.salidaToolStripMenuItem1,
-            this.kardexToolStripMenuItem1});
+            this.btnSalidaMedToolStripMenuItem1,
+            this.btnKardexMedToolStripMenuItem1});
             this.GestionMedicamentoToolStripMenu.Name = "GestionMedicamentoToolStripMenu";
             this.GestionMedicamentoToolStripMenu.Size = new System.Drawing.Size(193, 26);
             this.GestionMedicamentoToolStripMenu.Text = "Medicamentos";
@@ -321,7 +322,7 @@
             this.medicamentoExistenteToolStripMenuItem});
             this.compraToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.compraToolStripMenuItem1.Name = "compraToolStripMenuItem1";
-            this.compraToolStripMenuItem1.Size = new System.Drawing.Size(140, 26);
+            this.compraToolStripMenuItem1.Size = new System.Drawing.Size(180, 26);
             this.compraToolStripMenuItem1.Text = "Compra";
             // 
             // nuevoMedicamentoToolStripMenuItem
@@ -341,13 +342,22 @@
             this.medicamentoExistenteToolStripMenuItem.Size = new System.Drawing.Size(260, 26);
             this.medicamentoExistenteToolStripMenuItem.Text = "Medicamento existente";
             // 
-            // salidaToolStripMenuItem1
+            // btnSalidaMedToolStripMenuItem1
             // 
-            this.salidaToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.salidaToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.salidaToolStripMenuItem1.Name = "salidaToolStripMenuItem1";
-            this.salidaToolStripMenuItem1.Size = new System.Drawing.Size(140, 26);
-            this.salidaToolStripMenuItem1.Text = "Salida";
+            this.btnSalidaMedToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.btnSalidaMedToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSalidaMedToolStripMenuItem1.Name = "btnSalidaMedToolStripMenuItem1";
+            this.btnSalidaMedToolStripMenuItem1.Size = new System.Drawing.Size(180, 26);
+            this.btnSalidaMedToolStripMenuItem1.Text = "Salida";
+            // 
+            // btnKardexMedToolStripMenuItem1
+            // 
+            this.btnKardexMedToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.btnKardexMedToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnKardexMedToolStripMenuItem1.Name = "btnKardexMedToolStripMenuItem1";
+            this.btnKardexMedToolStripMenuItem1.Size = new System.Drawing.Size(180, 26);
+            this.btnKardexMedToolStripMenuItem1.Text = "Kardex";
+            this.btnKardexMedToolStripMenuItem1.Click += new System.EventHandler(this.btnKardexMedToolStripMenuItem1_Click);
             // 
             // dropdownMenu5
             // 
@@ -398,7 +408,7 @@
             this.dropdownMenu6.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu6.Name = "dropdownMenu1";
             this.dropdownMenu6.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu6.Size = new System.Drawing.Size(235, 104);
+            this.dropdownMenu6.Size = new System.Drawing.Size(235, 82);
             // 
             // btnUsuariostoolStripMenuItem9
             // 
@@ -420,14 +430,6 @@
             this.btnAyudatoolStripMenuItem1.Size = new System.Drawing.Size(234, 26);
             this.btnAyudatoolStripMenuItem1.Text = "Manual de Usuario";
             this.btnAyudatoolStripMenuItem1.Click += new System.EventHandler(this.btnAyudatoolStripMenuItem1_Click);
-            // 
-            // kardexToolStripMenuItem1
-            // 
-            this.kardexToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.kardexToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.kardexToolStripMenuItem1.Name = "kardexToolStripMenuItem1";
-            this.kardexToolStripMenuItem1.Size = new System.Drawing.Size(140, 26);
-            this.kardexToolStripMenuItem1.Text = "Kardex";
             // 
             // btnUsuario
             // 
@@ -698,16 +700,16 @@
         private System.Windows.Forms.ToolStripMenuItem btnPermisostoolStripMenuItem10;
         private System.Windows.Forms.ToolStripMenuItem btnNominaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem compraToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem salidaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnSalidaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem articuloExistenteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevoArticuloToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem compraToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem nuevoMedicamentoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem medicamentoExistenteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem salidaToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem kardexToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnSalidaMedToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem btnKardexConToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem btnAyudatoolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem kardexToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem btnKardexMedToolStripMenuItem1;
     }
 }
 

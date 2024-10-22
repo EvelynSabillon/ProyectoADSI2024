@@ -1,6 +1,6 @@
 ﻿namespace ProyectoADSI2024
 {
-    partial class frmAnticipo
+    partial class frmKardexConcentrado
     {
         /// <summary>
         /// Required designer variable.
@@ -28,24 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAnticipo));
-            this.label1 = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmKardexConcentrado));
             this.btnAtras = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.label1.Location = new System.Drawing.Point(327, 27);
-            this.label1.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(398, 38);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "REGISTRO DE ANTICIPOS";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // btnAtras
             // 
@@ -56,11 +43,23 @@
             this.btnAtras.Name = "btnAtras";
             this.btnAtras.Size = new System.Drawing.Size(55, 55);
             this.btnAtras.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.btnAtras.TabIndex = 38;
+            this.btnAtras.TabIndex = 40;
             this.btnAtras.TabStop = false;
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
-            // frmAnticipo
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.label1.Location = new System.Drawing.Point(227, 27);
+            this.label1.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(590, 38);
+            this.label1.TabIndex = 39;
+            this.label1.Text = "LISTA DE KARDEX DE CONCENTRADO";
+            // 
+            // frmKardexConcentrado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -68,8 +67,8 @@
             this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmAnticipo";
-            this.Text = "frmAnticipo";
+            this.Name = "frmKardexConcentrado";
+            this.Text = "frmKardexConcentrado";
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -78,7 +77,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox btnAtras;
+        private System.Windows.Forms.Label label1;
     }
 }

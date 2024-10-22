@@ -88,6 +88,18 @@
     <Compile Include="frmGestionMedicamento.Designer.cs">
       <DependentUpon>frmGestionMedicamento.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmKardexConcentrado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKardexConcentrado.Designer.cs">
+      <DependentUpon>frmKardexConcentrado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmKardexMedicamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKardexMedicamento.Designer.cs">
+      <DependentUpon>frmKardexMedicamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +191,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmGestionMedicamento.resx">
       <DependentUpon>frmGestionMedicamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmKardexConcentrado.resx">
+      <DependentUpon>frmKardexConcentrado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmKardexMedicamento.resx">
+      <DependentUpon>frmKardexMedicamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

@@ -244,5 +244,15 @@ namespace ProyectoADSI2024
         {
             AbrirFormInPanel(new ManualAyuda());
         }
+
+        private void btnKardexConToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new frmKardexConcentrado());
+        }
+
+        private void btnKardexMedToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new frmKardexMedicamento());
+        }
     }
 }

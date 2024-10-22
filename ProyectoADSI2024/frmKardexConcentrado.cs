@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProyectoADSI2024
 {
-    public partial class frmAnticipo : Form
+    public partial class frmKardexConcentrado : Form
     {
-        public frmAnticipo()
+        public frmKardexConcentrado()
         {
             InitializeComponent();
         }
@@ -21,11 +21,6 @@ namespace ProyectoADSI2024
         {
             if (MessageBox.Show("¿Desea volver al menu principal?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 this.Dispose();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
