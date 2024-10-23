@@ -40,6 +40,7 @@ namespace ProyectoADSI2024
 
             frmSplashScreen frm1 = new frmSplashScreen();
             frm1.ShowDialog();
+
             frmLogin frm = new frmLogin();
             frm.ShowDialog();
 
