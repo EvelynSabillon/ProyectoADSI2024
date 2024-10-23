@@ -243,6 +243,9 @@
     <EmbeddedResource Include="frmSalidaMedicamento.resx">
       <DependentUpon>frmSalidaMedicamento.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSplashScreen.resx">
+      <DependentUpon>frmSplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GestionPermisos.resx">
       <DependentUpon>GestionPermisos.cs</DependentUpon>
     </EmbeddedResource>
@@ -319,6 +322,24 @@
     <Content Include="Resources\white_minus_icon.png" />
     <Content Include="Resources\white_square_icon.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <PackageReference Include="CircularProgressBar">
+      <Version>2.8.0.16</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="NuGet.CommandLine">
+      <Version>6.11.1</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="NuGet.Frameworks">
+      <Version>6.11.1</Version>
+    </PackageReference>
+    <PackageReference Include="Platform.NET">
+      <Version>1.2.5</Version>
+    </PackageReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

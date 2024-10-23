@@ -38,6 +38,8 @@ namespace ProyectoADSI2024
             dropdownMenu6.IsMainMenu = true;
             dropdownMenu6.PrimaryColor = Color.FromArgb(204, 185, 65);
 
+            frmSplashScreen frm1 = new frmSplashScreen();
+            frm1.ShowDialog();
             frmLogin frm = new frmLogin();
             frm.ShowDialog();
 
