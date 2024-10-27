@@ -50,12 +50,12 @@ namespace ProyectoADSI2024
             chart3.Series["Series1"].Name = "Series1";
 
             // Agrega puntos de datos manualmente
-            chart3.Series["Venta"].Points.AddXY("Enero", 120);
-            chart3.Series["Venta"].Points.AddXY("Febrero", 80);
-            chart3.Series["Venta"].Points.AddXY("Marzo", 130);
-            chart3.Series["Venta"].Points.AddXY("Abril", 90);
-            chart3.Series["Venta"].Points.AddXY("Mayo", 150);
-            chart3.Series["Venta"].Points.AddXY("Junio", 110);
+            chart3.Series["Series1"].Points.AddXY("Enero", 120);
+            chart3.Series["Series1"].Points.AddXY("Febrero", 80);
+            chart3.Series["Series1"].Points.AddXY("Marzo", 130);
+            chart3.Series["Series1"].Points.AddXY("Abril", 90);
+            chart3.Series["Series1"].Points.AddXY("Mayo", 150);
+            chart3.Series["Series1"].Points.AddXY("Junio", 110);
 
         }
     }
