@@ -122,7 +122,7 @@ namespace ProyectoADSI2024
                     cmdAgregarCompra.Parameters.AddWithValue("@nombrearticulo", txtNombeArticulo.Text);
                     cmdAgregarCompra.Parameters.AddWithValue("@codigo", txtCodigo.Text);
                     cmdAgregarCompra.Parameters.AddWithValue("@precio", Convert.ToDouble(txtPrecio.Text));
-                    cmdAgregarCompra.Parameters.AddWithValue("@fechaVencimiento", txtVencimiento.Text);
+                    //cmdAgregarCompra.Parameters.AddWithValue("@fechaVencimiento", txtVencimiento.Text);
                     cmdAgregarCompra.Parameters.AddWithValue("@cantidad", Convert.ToInt32(txtCantidad.Text));
                     cmdAgregarCompra.Parameters.AddWithValue("@fechacompra", Convert.ToDateTime(txtFechaCompra.Text));
                     cmdAgregarCompra.Parameters.AddWithValue("@documento", txtDocumento.Text);
@@ -140,7 +140,7 @@ namespace ProyectoADSI2024
                     txtNombeArticulo.Text = "";
                     txtCodigo.Text = "";
                     txtPrecio.Text = "";
-                    txtVencimiento.Text = "";
+                    //txtVencimiento.Text = "";
                     txtCantidad.Text = "";
                     txtFechaCompra.ResetText();
                     txtDocumento.Text = "";
@@ -202,5 +202,6 @@ namespace ProyectoADSI2024
             if (MessageBox.Show("¿Desea volver al menu principal?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 this.Dispose();
         }
+
     }
 }

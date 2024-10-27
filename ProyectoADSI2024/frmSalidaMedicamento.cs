@@ -22,5 +22,7 @@ namespace ProyectoADSI2024
             if (MessageBox.Show("¿Desea volver al menu principal?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 this.Dispose();
         }
+
+
     }
 }
