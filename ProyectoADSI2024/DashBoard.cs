@@ -16,5 +16,12 @@ namespace ProyectoADSI2024
         {
             InitializeComponent();
         }
+
+        private void horaFecha_Tick(object sender, EventArgs e)
+        {
+           lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
+            lblFecha.Text = DateTime.Now.ToLongDateString();
+        }
+
     }
 }

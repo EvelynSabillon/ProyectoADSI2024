@@ -149,7 +149,7 @@ namespace ProyectoADSI2024
                 conexion.Open();
                 conectado = true;
                 MessageBox.Show("Se conecto correctamente a la base de datos", "Conexion Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Dispose();
+                this.Dispose();
 
             }
             catch (SqlException ex)

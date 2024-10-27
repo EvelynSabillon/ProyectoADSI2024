@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IngresoDiarioLeche));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAtras = new System.Windows.Forms.PictureBox();
             this.dateTimePickerFecha = new System.Windows.Forms.DateTimePicker();
-            this.chboxActivo = new System.Windows.Forms.CheckBox();
             this.cboxSocios = new System.Windows.Forms.ComboBox();
             this.tBoxDiaID = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -58,6 +57,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.tboxBuscar = new System.Windows.Forms.TextBox();
             this.btnGenReporte = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgIngresoLeche)).BeginInit();
             this.SuspendLayout();
@@ -90,28 +91,17 @@
             // dateTimePickerFecha
             // 
             this.dateTimePickerFecha.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerFecha.Location = new System.Drawing.Point(163, 219);
+            this.dateTimePickerFecha.Location = new System.Drawing.Point(179, 234);
             this.dateTimePickerFecha.Name = "dateTimePickerFecha";
             this.dateTimePickerFecha.Size = new System.Drawing.Size(262, 25);
             this.dateTimePickerFecha.TabIndex = 46;
-            // 
-            // chboxActivo
-            // 
-            this.chboxActivo.AutoSize = true;
-            this.chboxActivo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chboxActivo.Location = new System.Drawing.Point(163, 445);
-            this.chboxActivo.Name = "chboxActivo";
-            this.chboxActivo.Size = new System.Drawing.Size(78, 25);
-            this.chboxActivo.TabIndex = 45;
-            this.chboxActivo.Text = "Activo";
-            this.chboxActivo.UseVisualStyleBackColor = true;
             // 
             // cboxSocios
             // 
             this.cboxSocios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxSocios.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboxSocios.FormattingEnabled = true;
-            this.cboxSocios.Location = new System.Drawing.Point(240, 174);
+            this.cboxSocios.Location = new System.Drawing.Point(256, 189);
             this.cboxSocios.Name = "cboxSocios";
             this.cboxSocios.Size = new System.Drawing.Size(185, 25);
             this.cboxSocios.TabIndex = 44;
@@ -119,7 +109,7 @@
             // tBoxDiaID
             // 
             this.tBoxDiaID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBoxDiaID.Location = new System.Drawing.Point(163, 129);
+            this.tBoxDiaID.Location = new System.Drawing.Point(179, 144);
             this.tBoxDiaID.Name = "tBoxDiaID";
             this.tBoxDiaID.Size = new System.Drawing.Size(121, 25);
             this.tBoxDiaID.TabIndex = 43;
@@ -128,7 +118,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(30, 129);
+            this.label7.Location = new System.Drawing.Point(46, 144);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 21);
             this.label7.TabIndex = 42;
@@ -140,27 +130,27 @@
             this.dgIngresoLeche.AllowUserToDeleteRows = false;
             this.dgIngresoLeche.AllowUserToResizeColumns = false;
             this.dgIngresoLeche.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgIngresoLeche.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dgIngresoLeche.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgIngresoLeche.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgIngresoLeche.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgIngresoLeche.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgIngresoLeche.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgIngresoLeche.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgIngresoLeche.Location = new System.Drawing.Point(499, 129);
             this.dgIngresoLeche.MultiSelect = false;
             this.dgIngresoLeche.Name = "dgIngresoLeche";
             this.dgIngresoLeche.ReadOnly = true;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgIngresoLeche.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dgIngresoLeche.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgIngresoLeche.Size = new System.Drawing.Size(547, 375);
             this.dgIngresoLeche.TabIndex = 52;
             // 
@@ -168,7 +158,7 @@
             // 
             this.tboxSocioID.Enabled = false;
             this.tboxSocioID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxSocioID.Location = new System.Drawing.Point(163, 174);
+            this.tboxSocioID.Location = new System.Drawing.Point(179, 189);
             this.tboxSocioID.Name = "tboxSocioID";
             this.tboxSocioID.Size = new System.Drawing.Size(71, 25);
             this.tboxSocioID.TabIndex = 55;
@@ -177,7 +167,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(30, 175);
+            this.label2.Location = new System.Drawing.Point(46, 190);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 21);
             this.label2.TabIndex = 54;
@@ -187,7 +177,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(29, 222);
+            this.label3.Location = new System.Drawing.Point(45, 237);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 21);
             this.label3.TabIndex = 56;
@@ -197,7 +187,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(30, 264);
+            this.label4.Location = new System.Drawing.Point(46, 279);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 21);
             this.label4.TabIndex = 57;
@@ -207,7 +197,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(30, 309);
+            this.label5.Location = new System.Drawing.Point(46, 324);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(81, 21);
             this.label5.TabIndex = 58;
@@ -217,7 +207,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(30, 354);
+            this.label6.Location = new System.Drawing.Point(46, 369);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(122, 21);
             this.label6.TabIndex = 59;
@@ -227,7 +217,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(30, 399);
+            this.label8.Location = new System.Drawing.Point(46, 414);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(91, 21);
             this.label8.TabIndex = 60;
@@ -260,9 +250,9 @@
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
-            this.btnEliminar.Location = new System.Drawing.Point(225, 522);
+            this.btnEliminar.Location = new System.Drawing.Point(499, 522);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(140, 43);
+            this.btnEliminar.Size = new System.Drawing.Size(112, 43);
             this.btnEliminar.TabIndex = 63;
             this.btnEliminar.Text = "ELIMINAR";
             this.btnEliminar.UseVisualStyleBackColor = false;
@@ -277,9 +267,9 @@
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(70, 522);
+            this.btnGuardar.Location = new System.Drawing.Point(45, 522);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(140, 43);
+            this.btnGuardar.Size = new System.Drawing.Size(112, 43);
             this.btnGuardar.TabIndex = 61;
             this.btnGuardar.Text = "GUARDAR";
             this.btnGuardar.UseVisualStyleBackColor = false;
@@ -288,7 +278,7 @@
             // tboxLAM
             // 
             this.tboxLAM.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxLAM.Location = new System.Drawing.Point(163, 264);
+            this.tboxLAM.Location = new System.Drawing.Point(179, 279);
             this.tboxLAM.Name = "tboxLAM";
             this.tboxLAM.Size = new System.Drawing.Size(121, 25);
             this.tboxLAM.TabIndex = 65;
@@ -296,7 +286,7 @@
             // tboxLPM
             // 
             this.tboxLPM.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxLPM.Location = new System.Drawing.Point(163, 309);
+            this.tboxLPM.Location = new System.Drawing.Point(179, 324);
             this.tboxLPM.Name = "tboxLPM";
             this.tboxLPM.Size = new System.Drawing.Size(121, 25);
             this.tboxLPM.TabIndex = 66;
@@ -304,7 +294,7 @@
             // tboxObs
             // 
             this.tboxObs.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxObs.Location = new System.Drawing.Point(163, 354);
+            this.tboxObs.Location = new System.Drawing.Point(179, 369);
             this.tboxObs.Name = "tboxObs";
             this.tboxObs.Size = new System.Drawing.Size(262, 25);
             this.tboxObs.TabIndex = 67;
@@ -312,7 +302,7 @@
             // tboxEncargado
             // 
             this.tboxEncargado.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxEncargado.Location = new System.Drawing.Point(163, 399);
+            this.tboxEncargado.Location = new System.Drawing.Point(179, 414);
             this.tboxEncargado.Name = "tboxEncargado";
             this.tboxEncargado.Size = new System.Drawing.Size(262, 25);
             this.tboxEncargado.TabIndex = 68;
@@ -355,18 +345,54 @@
             this.btnGenReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGenReporte.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGenReporte.ForeColor = System.Drawing.Color.White;
-            this.btnGenReporte.Location = new System.Drawing.Point(499, 522);
+            this.btnGenReporte.Location = new System.Drawing.Point(653, 522);
             this.btnGenReporte.Name = "btnGenReporte";
-            this.btnGenReporte.Size = new System.Drawing.Size(231, 43);
+            this.btnGenReporte.Size = new System.Drawing.Size(192, 43);
             this.btnGenReporte.TabIndex = 72;
             this.btnGenReporte.Text = "GENERAR REPORTE";
             this.btnGenReporte.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(313, 522);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(112, 43);
+            this.button1.TabIndex = 101;
+            this.button1.Text = "LIMPIAR";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(179, 522);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(112, 43);
+            this.button2.TabIndex = 102;
+            this.button2.Text = "EDITAR";
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // IngresoDiarioLeche
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 38F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1070, 595);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnGenReporte);
             this.Controls.Add(this.tboxBuscar);
             this.Controls.Add(this.label9);
@@ -387,7 +413,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgIngresoLeche);
             this.Controls.Add(this.dateTimePickerFecha);
-            this.Controls.Add(this.chboxActivo);
             this.Controls.Add(this.cboxSocios);
             this.Controls.Add(this.tBoxDiaID);
             this.Controls.Add(this.label7);
@@ -412,7 +437,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox btnAtras;
         private System.Windows.Forms.DateTimePicker dateTimePickerFecha;
-        private System.Windows.Forms.CheckBox chboxActivo;
         private System.Windows.Forms.ComboBox cboxSocios;
         private System.Windows.Forms.TextBox tBoxDiaID;
         private System.Windows.Forms.Label label7;
@@ -435,5 +459,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox tboxBuscar;
         private System.Windows.Forms.Button btnGenReporte;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

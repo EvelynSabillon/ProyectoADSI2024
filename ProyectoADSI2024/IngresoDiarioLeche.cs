@@ -45,7 +45,6 @@ namespace ProyectoADSI2024
                 cmd.Parameters.AddWithValue("@LitrosPM", Convert.ToDecimal(tboxLPM.Text));
                 cmd.Parameters.AddWithValue("@Observaciones", tboxObs.Text);
                 cmd.Parameters.AddWithValue("@Encargado", tboxEncargado.Text);
-                cmd.Parameters.AddWithValue("@Activo", chboxActivo.Checked ? 1 : 0);
 
                 conexion.Open();
                 cmd.ExecuteNonQuery();
@@ -106,6 +105,7 @@ namespace ProyectoADSI2024
                 tboxSocioID.Text = cboxSocios.SelectedValue.ToString();
             }
         }
+
 
     }
 }

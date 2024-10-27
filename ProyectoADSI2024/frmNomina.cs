@@ -22,5 +22,15 @@ namespace ProyectoADSI2024
             if (MessageBox.Show("¿Desea volver al menu principal?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 this.Dispose();
         }
+
+        private void frmNomina_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timerMes_Tick(object sender, EventArgs e)
+        {
+            lblMes.Text = DateTime.Now.ToString("MMMM");
+        }
     }
 }

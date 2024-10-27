@@ -19,7 +19,7 @@ namespace ProyectoADSI2024
         SqlConnection myconexion; //Conexion a SQL Server
         public Menu()
         {
-            InitializeComponent();          
+            InitializeComponent();
 
         }
 
@@ -37,17 +37,10 @@ namespace ProyectoADSI2024
             dropdownMenu5.PrimaryColor = Color.FromArgb(204, 185, 65);
             dropdownMenu6.IsMainMenu = true;
             dropdownMenu6.PrimaryColor = Color.FromArgb(204, 185, 65);
+            dropdownMenu7.IsMainMenu = true;
+            dropdownMenu7.PrimaryColor = Color.FromArgb(204, 185, 65);
 
-            frmSplashScreen frm1 = new frmSplashScreen();
-            frm1.ShowDialog();
-
-            frmLogin frm = new frmLogin();
-            frm.ShowDialog();
-
-            if (frm.Conectado)
-                myconexion = frm.Conexion;
-            else
-                Dispose();
+            AbrirDashboardEnPanel();
 
         }
 
@@ -67,6 +60,7 @@ namespace ProyectoADSI2024
                 btnModuloGestionInventario.Enabled = false;
                 btnModuloGestionFinanciera.Enabled = false;
                 btnModuloAdministracionGeneral.Enabled = false;
+                btnReportes.Enabled = false;
             }
             else
             {
@@ -77,6 +71,7 @@ namespace ProyectoADSI2024
                 btnModuloGestionInventario.Enabled = true;
                 btnModuloGestionFinanciera.Enabled = true;
                 btnModuloAdministracionGeneral.Enabled = true;
+                btnReportes.Enabled = true;
 
             }
         }
@@ -140,6 +135,11 @@ namespace ProyectoADSI2024
         private void btnModuloAdministracionGeneral_Click(object sender, EventArgs e)
         {
             dropdownMenu6.Show(btnModuloAdministracionGeneral, btnModuloAdministracionGeneral.Width, 0);
+        }
+
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            dropdownMenu7.Show(btnReportes, btnReportes.Width, 0);
         }
 
         private void AbrirFormInPanel(object Formhijo)
@@ -277,5 +277,23 @@ namespace ProyectoADSI2024
         {
             AbrirFormInPanel(new frmSalidaMedicamento());
         }
+
+        public void AbrirDashboardEnPanel()
+        {
+            // Limpia el panel
+            panelContenedor.Controls.Clear();
+
+            // Crea una instancia del Dashboard y lo configura para que se muestre en el panel
+            DashBoard dashboard = new DashBoard();
+            dashboard.TopLevel = false;
+            dashboard.FormBorderStyle = FormBorderStyle.None;
+            dashboard.Dock = DockStyle.Fill;
+
+            // Agrega el Dashboard al panel principal y lo muestra
+            panelContenedor.Controls.Add(dashboard);
+            dashboard.Show();
+        }
+
+
     }
 }

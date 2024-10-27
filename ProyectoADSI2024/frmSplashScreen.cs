@@ -43,9 +43,7 @@ namespace ProyectoADSI2024
             if (prograssbar1.Value == 100)
             {
                 timer1.Enabled = false;
-                frmLogin login = new frmLogin();
-                login.Show();
-                this.Dispose();
+                this.Close();
             }
         }
     }

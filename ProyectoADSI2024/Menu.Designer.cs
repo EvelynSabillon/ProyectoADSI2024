@@ -40,6 +40,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.BarraTitulo = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnUsuario = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
@@ -47,6 +48,7 @@
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.btnSlide = new System.Windows.Forms.PictureBox();
             this.panelContenedor = new System.Windows.Forms.Panel();
+            this.btnReportes = new System.Windows.Forms.Button();
             this.dropdownMenu1 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
             this.btn1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnConsultaQuincenalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,9 +78,15 @@
             this.btnUsuariostoolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnPermisostoolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAyudatoolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dropdownMenu7 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
+            this.reporteDeInventarioExistenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteDeProducciónQuincenalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteDeProducciónMensualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteDePrestamoDeSocioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.BarraTitulo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
@@ -90,11 +98,13 @@
             this.dropdownMenu4.SuspendLayout();
             this.dropdownMenu5.SuspendLayout();
             this.dropdownMenu6.SuspendLayout();
+            this.dropdownMenu7.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuVertical
             // 
             this.MenuVertical.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.MenuVertical.Controls.Add(this.btnReportes);
             this.MenuVertical.Controls.Add(this.btnModuloGestionFinanciera);
             this.MenuVertical.Controls.Add(this.btnModuloGestionInventario);
             this.MenuVertical.Controls.Add(this.btnModuloManejoProveedores);
@@ -121,9 +131,9 @@
             this.btnModuloGestionFinanciera.ForeColor = System.Drawing.Color.White;
             this.btnModuloGestionFinanciera.Image = ((System.Drawing.Image)(resources.GetObject("btnModuloGestionFinanciera.Image")));
             this.btnModuloGestionFinanciera.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnModuloGestionFinanciera.Location = new System.Drawing.Point(0, 428);
+            this.btnModuloGestionFinanciera.Location = new System.Drawing.Point(0, 381);
             this.btnModuloGestionFinanciera.Name = "btnModuloGestionFinanciera";
-            this.btnModuloGestionFinanciera.Size = new System.Drawing.Size(230, 75);
+            this.btnModuloGestionFinanciera.Size = new System.Drawing.Size(230, 68);
             this.btnModuloGestionFinanciera.TabIndex = 11;
             this.btnModuloGestionFinanciera.Text = "         GESTIÓN DE PRÉSTAMOS Y FINANZAS";
             this.btnModuloGestionFinanciera.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -143,9 +153,9 @@
             this.btnModuloGestionInventario.ForeColor = System.Drawing.Color.White;
             this.btnModuloGestionInventario.Image = ((System.Drawing.Image)(resources.GetObject("btnModuloGestionInventario.Image")));
             this.btnModuloGestionInventario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnModuloGestionInventario.Location = new System.Drawing.Point(0, 347);
+            this.btnModuloGestionInventario.Location = new System.Drawing.Point(0, 307);
             this.btnModuloGestionInventario.Name = "btnModuloGestionInventario";
-            this.btnModuloGestionInventario.Size = new System.Drawing.Size(230, 75);
+            this.btnModuloGestionInventario.Size = new System.Drawing.Size(230, 68);
             this.btnModuloGestionInventario.TabIndex = 10;
             this.btnModuloGestionInventario.Text = "         GESTIÓN DE INVENTARIO";
             this.btnModuloGestionInventario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -165,9 +175,9 @@
             this.btnModuloManejoProveedores.ForeColor = System.Drawing.Color.White;
             this.btnModuloManejoProveedores.Image = ((System.Drawing.Image)(resources.GetObject("btnModuloManejoProveedores.Image")));
             this.btnModuloManejoProveedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnModuloManejoProveedores.Location = new System.Drawing.Point(0, 266);
+            this.btnModuloManejoProveedores.Location = new System.Drawing.Point(0, 233);
             this.btnModuloManejoProveedores.Name = "btnModuloManejoProveedores";
-            this.btnModuloManejoProveedores.Size = new System.Drawing.Size(230, 75);
+            this.btnModuloManejoProveedores.Size = new System.Drawing.Size(230, 68);
             this.btnModuloManejoProveedores.TabIndex = 9;
             this.btnModuloManejoProveedores.Text = "         MANEJO DE PROVEEDORES";
             this.btnModuloManejoProveedores.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -187,9 +197,9 @@
             this.btnModuloGestionSocios.ForeColor = System.Drawing.Color.White;
             this.btnModuloGestionSocios.Image = ((System.Drawing.Image)(resources.GetObject("btnModuloGestionSocios.Image")));
             this.btnModuloGestionSocios.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnModuloGestionSocios.Location = new System.Drawing.Point(0, 185);
+            this.btnModuloGestionSocios.Location = new System.Drawing.Point(0, 159);
             this.btnModuloGestionSocios.Name = "btnModuloGestionSocios";
-            this.btnModuloGestionSocios.Size = new System.Drawing.Size(230, 75);
+            this.btnModuloGestionSocios.Size = new System.Drawing.Size(230, 68);
             this.btnModuloGestionSocios.TabIndex = 8;
             this.btnModuloGestionSocios.Text = "              REGISTRO Y GESTIÓN DE SOCIOS";
             this.btnModuloGestionSocios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -227,9 +237,9 @@
             this.btnModuloIngresoLeche.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModuloIngresoLeche.ForeColor = System.Drawing.Color.White;
             this.btnModuloIngresoLeche.Image = ((System.Drawing.Image)(resources.GetObject("btnModuloIngresoLeche.Image")));
-            this.btnModuloIngresoLeche.Location = new System.Drawing.Point(0, 104);
+            this.btnModuloIngresoLeche.Location = new System.Drawing.Point(0, 85);
             this.btnModuloIngresoLeche.Name = "btnModuloIngresoLeche";
-            this.btnModuloIngresoLeche.Size = new System.Drawing.Size(230, 75);
+            this.btnModuloIngresoLeche.Size = new System.Drawing.Size(230, 68);
             this.btnModuloIngresoLeche.TabIndex = 2;
             this.btnModuloIngresoLeche.Text = "           CONTROL DE INGRESO DE LECHE";
             this.btnModuloIngresoLeche.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -261,6 +271,7 @@
             // BarraTitulo
             // 
             this.BarraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.BarraTitulo.Controls.Add(this.pictureBox2);
             this.BarraTitulo.Controls.Add(this.btnUsuario);
             this.BarraTitulo.Controls.Add(this.label2);
             this.BarraTitulo.Controls.Add(this.btnMinimizar);
@@ -273,6 +284,16 @@
             this.BarraTitulo.Size = new System.Drawing.Size(1070, 55);
             this.BarraTitulo.TabIndex = 1;
             this.BarraTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BarraTitulo_MouseDown);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(278, 4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(43, 46);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox2.TabIndex = 6;
+            this.pictureBox2.TabStop = false;
             // 
             // btnUsuario
             // 
@@ -354,6 +375,28 @@
             this.panelContenedor.Name = "panelContenedor";
             this.panelContenedor.Size = new System.Drawing.Size(1070, 595);
             this.panelContenedor.TabIndex = 4;
+            // 
+            // btnReportes
+            // 
+            this.btnReportes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.btnReportes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReportes.FlatAppearance.BorderSize = 0;
+            this.btnReportes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(206)))), ((int)(((byte)(18)))));
+            this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReportes.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportes.ForeColor = System.Drawing.Color.White;
+            this.btnReportes.Image = ((System.Drawing.Image)(resources.GetObject("btnReportes.Image")));
+            this.btnReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReportes.Location = new System.Drawing.Point(0, 455);
+            this.btnReportes.Name = "btnReportes";
+            this.btnReportes.Size = new System.Drawing.Size(230, 65);
+            this.btnReportes.TabIndex = 12;
+            this.btnReportes.Text = "         REPORTES";
+            this.btnReportes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnReportes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnReportes.UseCompatibleTextRendering = true;
+            this.btnReportes.UseVisualStyleBackColor = false;
+            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
             // 
             // dropdownMenu1
             // 
@@ -464,7 +507,7 @@
             this.nuevoArticuloToolStripMenuItem});
             this.compraToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.compraToolStripMenuItem.Name = "compraToolStripMenuItem";
-            this.compraToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.compraToolStripMenuItem.Size = new System.Drawing.Size(140, 26);
             this.compraToolStripMenuItem.Text = "Compra";
             this.compraToolStripMenuItem.Click += new System.EventHandler(this.compraToolStripMenuItem_Click);
             // 
@@ -491,7 +534,7 @@
             this.btnSalidaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
             this.btnSalidaToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSalidaToolStripMenuItem.Name = "btnSalidaToolStripMenuItem";
-            this.btnSalidaToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.btnSalidaToolStripMenuItem.Size = new System.Drawing.Size(140, 26);
             this.btnSalidaToolStripMenuItem.Text = "Salida";
             this.btnSalidaToolStripMenuItem.Click += new System.EventHandler(this.btnSalidaToolStripMenuItem_Click);
             // 
@@ -500,7 +543,7 @@
             this.btnKardexConToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
             this.btnKardexConToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnKardexConToolStripMenuItem.Name = "btnKardexConToolStripMenuItem";
-            this.btnKardexConToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.btnKardexConToolStripMenuItem.Size = new System.Drawing.Size(140, 26);
             this.btnKardexConToolStripMenuItem.Text = "Kardex";
             this.btnKardexConToolStripMenuItem.Click += new System.EventHandler(this.btnKardexConToolStripMenuItem_Click);
             // 
@@ -522,7 +565,7 @@
             this.medicamentoExistenteToolStripMenuItem});
             this.compraToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.compraToolStripMenuItem1.Name = "compraToolStripMenuItem1";
-            this.compraToolStripMenuItem1.Size = new System.Drawing.Size(180, 26);
+            this.compraToolStripMenuItem1.Size = new System.Drawing.Size(140, 26);
             this.compraToolStripMenuItem1.Text = "Compra";
             // 
             // nuevoMedicamentoToolStripMenuItem
@@ -548,7 +591,7 @@
             this.btnSalidaMedToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
             this.btnSalidaMedToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSalidaMedToolStripMenuItem1.Name = "btnSalidaMedToolStripMenuItem1";
-            this.btnSalidaMedToolStripMenuItem1.Size = new System.Drawing.Size(180, 26);
+            this.btnSalidaMedToolStripMenuItem1.Size = new System.Drawing.Size(140, 26);
             this.btnSalidaMedToolStripMenuItem1.Text = "Salida";
             this.btnSalidaMedToolStripMenuItem1.Click += new System.EventHandler(this.btnSalidaMedToolStripMenuItem1_Click);
             // 
@@ -633,6 +676,46 @@
             this.btnAyudatoolStripMenuItem1.Text = "Manual de Usuario";
             this.btnAyudatoolStripMenuItem1.Click += new System.EventHandler(this.btnAyudatoolStripMenuItem1_Click);
             // 
+            // dropdownMenu7
+            // 
+            this.dropdownMenu7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dropdownMenu7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.dropdownMenu7.IsMainMenu = false;
+            this.dropdownMenu7.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reporteDeInventarioExistenteToolStripMenuItem,
+            this.reporteDeProducciónQuincenalToolStripMenuItem,
+            this.reporteDeProducciónMensualToolStripMenuItem,
+            this.reporteDePrestamoDeSocioToolStripMenuItem});
+            this.dropdownMenu7.MenuItemHeight = 25;
+            this.dropdownMenu7.MenuItemTextColor = System.Drawing.Color.Empty;
+            this.dropdownMenu7.Name = "dropdownMenu7";
+            this.dropdownMenu7.PrimaryColor = System.Drawing.Color.Empty;
+            this.dropdownMenu7.Size = new System.Drawing.Size(341, 108);
+            // 
+            // reporteDeInventarioExistenteToolStripMenuItem
+            // 
+            this.reporteDeInventarioExistenteToolStripMenuItem.Name = "reporteDeInventarioExistenteToolStripMenuItem";
+            this.reporteDeInventarioExistenteToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.reporteDeInventarioExistenteToolStripMenuItem.Text = "Reporte de Inventario Existente";
+            // 
+            // reporteDeProducciónQuincenalToolStripMenuItem
+            // 
+            this.reporteDeProducciónQuincenalToolStripMenuItem.Name = "reporteDeProducciónQuincenalToolStripMenuItem";
+            this.reporteDeProducciónQuincenalToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.reporteDeProducciónQuincenalToolStripMenuItem.Text = "Reporte de Producción Quincenal ";
+            // 
+            // reporteDeProducciónMensualToolStripMenuItem
+            // 
+            this.reporteDeProducciónMensualToolStripMenuItem.Name = "reporteDeProducciónMensualToolStripMenuItem";
+            this.reporteDeProducciónMensualToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.reporteDeProducciónMensualToolStripMenuItem.Text = "Reporte de Producción Mensual";
+            // 
+            // reporteDePrestamoDeSocioToolStripMenuItem
+            // 
+            this.reporteDePrestamoDeSocioToolStripMenuItem.Name = "reporteDePrestamoDeSocioToolStripMenuItem";
+            this.reporteDePrestamoDeSocioToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.reporteDePrestamoDeSocioToolStripMenuItem.Text = "Reporte de Prestamo de Socio";
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -651,6 +734,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.BarraTitulo.ResumeLayout(false);
             this.BarraTitulo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnUsuario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
@@ -662,6 +746,7 @@
             this.dropdownMenu4.ResumeLayout(false);
             this.dropdownMenu5.ResumeLayout(false);
             this.dropdownMenu6.ResumeLayout(false);
+            this.dropdownMenu7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -714,6 +799,13 @@
         private System.Windows.Forms.ToolStripMenuItem btnKardexConToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem btnAyudatoolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem btnKardexMedToolStripMenuItem1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnReportes;
+        private Controls.DropdownMenu dropdownMenu7;
+        private System.Windows.Forms.ToolStripMenuItem reporteDeInventarioExistenteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteDeProducciónQuincenalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteDeProducciónMensualToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteDePrestamoDeSocioToolStripMenuItem;
     }
 }
 
