@@ -16,11 +16,7 @@ namespace ProyectoADSI2024
         public IngresoDiarioLeche()
         {
             InitializeComponent();
-        }
-
-        private void IngresoDiarioLeche_Load(object sender, EventArgs e)
-        {
-            CargarSocios(); // Llenar el ComboBox al abrir el formulario
+            this.Load += new EventHandler(IngresoDiarioLeche_Load);
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -41,10 +37,11 @@ namespace ProyectoADSI2024
                 cmd.Parameters.AddWithValue("@DiaID", diaIDDate);
                 cmd.Parameters.AddWithValue("@SocioID", Convert.ToInt32(cboxSocios.SelectedValue));
                 cmd.Parameters.AddWithValue("@Fecha", dateTimePickerFecha.Value);
-                cmd.Parameters.AddWithValue("@LitrosAM", Convert.ToDecimal(tboxLAM.Text));
-                cmd.Parameters.AddWithValue("@LitrosPM", Convert.ToDecimal(tboxLPM.Text));
+                cmd.Parameters.AddWithValue("@LitrosAM", Convert.ToDouble(tboxLAM.Text));
+                cmd.Parameters.AddWithValue("@LitrosPM", Convert.ToDouble(tboxLPM.Text));
                 cmd.Parameters.AddWithValue("@Observaciones", tboxObs.Text);
                 cmd.Parameters.AddWithValue("@Encargado", tboxEncargado.Text);
+               
 
                 conexion.Open();
                 cmd.ExecuteNonQuery();
@@ -56,53 +53,45 @@ namespace ProyectoADSI2024
             }
         }
 
-        //Metodo para cargar la lista de Socios en el combo box
-        private void CargarSocios()
+        private void IngresoDiarioLeche_Load(object sender, EventArgs e)
+        {
+            LlenarComboBoxSocios();
+        }
+
+        private void LlenarComboBoxSocios()
         {
             string connectionString = "Server=3.128.144.165; database=DB20212030388;User ID=eugene.wu; password=EW20212030388";
+            string query = "SELECT SocioID, Nombre FROM proyecto.Socio";
 
-            using (SqlConnection conexion = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                try
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                var socios = new List<KeyValuePair<int, string> >();
+
+                while (reader.Read())
                 {
-                    SqlCommand cmd = new SqlCommand("spProyectoIngLecheSocioInsert", conexion);
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-
-                    // Abre la conexión
-                    conexion.Open();
-
-                    // Llena el DataTable con los resultados del SP
-                    da.Fill(dt);
-
-                    cboxSocios.DataSource = dt;
-                    cboxSocios.DisplayMember = "Nombre";   // Mostrar nombres en el ComboBox
-                    cboxSocios.ValueMember = "SocioID";    // SocioID será el valor asociado a cada nombre
+                    socios.Add(new KeyValuePair<int, string>((int)reader["SocioID"], reader["Nombre"].ToString()));
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al cargar la lista de socios: " + ex.Message);
-                }
-                finally
-                {
-                    // Cierra la conexión
-                    if (conexion.State == ConnectionState.Open)
-                    {
-                        conexion.Close();
-                    }
-                }
+
+                reader.Close();
+
+                // Asignar la lista al ComboBox
+                cboxSocios.DataSource = new BindingSource(socios, null);
+                cboxSocios.DisplayMember = "Value"; // Mostrar el nombre del socio
+                cboxSocios.ValueMember = "Key";     // Guardar el SocioID como valor
             }
         }
 
         //Modificable
         private void cboxSocios_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboxSocios.SelectedValue != null)
+            // Muestra el SocioID en el  tBoxSocioID cuando se selecciona un nombre.
+            if (cboxSocios.SelectedItem != null)
             {
-                // Muestra el SocioID en el TextBox
-                tboxSocioID.Text = cboxSocios.SelectedValue.ToString();
+                tboxSocioID.Text = ((KeyValuePair<int, string>)cboxSocios.SelectedItem).Key.ToString();
             }
         }
 
