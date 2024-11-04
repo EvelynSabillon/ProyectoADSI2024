@@ -59,6 +59,7 @@
             this.btnGenReporte = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
+            this.checkBoxActivo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgIngresoLeche)).BeginInit();
             this.SuspendLayout();
@@ -71,7 +72,7 @@
             this.label1.Location = new System.Drawing.Point(218, 27);
             this.label1.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(638, 38);
+            this.label1.Size = new System.Drawing.Size(793, 48);
             this.label1.TabIndex = 0;
             this.label1.Text = "CONTROL DE INGRESO DE LECHE DIARIO";
             // 
@@ -93,7 +94,7 @@
             this.dateTimePickerFecha.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerFecha.Location = new System.Drawing.Point(179, 234);
             this.dateTimePickerFecha.Name = "dateTimePickerFecha";
-            this.dateTimePickerFecha.Size = new System.Drawing.Size(262, 25);
+            this.dateTimePickerFecha.Size = new System.Drawing.Size(262, 29);
             this.dateTimePickerFecha.TabIndex = 46;
             // 
             // cboxSocios
@@ -103,7 +104,7 @@
             this.cboxSocios.FormattingEnabled = true;
             this.cboxSocios.Location = new System.Drawing.Point(256, 189);
             this.cboxSocios.Name = "cboxSocios";
-            this.cboxSocios.Size = new System.Drawing.Size(185, 25);
+            this.cboxSocios.Size = new System.Drawing.Size(185, 29);
             this.cboxSocios.TabIndex = 44;
             // 
             // tBoxDiaID
@@ -111,7 +112,7 @@
             this.tBoxDiaID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tBoxDiaID.Location = new System.Drawing.Point(179, 144);
             this.tBoxDiaID.Name = "tBoxDiaID";
-            this.tBoxDiaID.Size = new System.Drawing.Size(121, 25);
+            this.tBoxDiaID.Size = new System.Drawing.Size(121, 29);
             this.tBoxDiaID.TabIndex = 43;
             // 
             // label7
@@ -120,7 +121,7 @@
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(46, 144);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 21);
+            this.label7.Size = new System.Drawing.Size(65, 28);
             this.label7.TabIndex = 42;
             this.label7.Text = "DiaID";
             // 
@@ -148,6 +149,7 @@
             this.dgIngresoLeche.MultiSelect = false;
             this.dgIngresoLeche.Name = "dgIngresoLeche";
             this.dgIngresoLeche.ReadOnly = true;
+            this.dgIngresoLeche.RowHeadersWidth = 51;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
             this.dgIngresoLeche.RowsDefaultCellStyle = dataGridViewCellStyle3;
@@ -160,8 +162,10 @@
             this.tboxSocioID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxSocioID.Location = new System.Drawing.Point(179, 189);
             this.tboxSocioID.Name = "tboxSocioID";
-            this.tboxSocioID.Size = new System.Drawing.Size(71, 25);
+            this.tboxSocioID.ReadOnly = true;
+            this.tboxSocioID.Size = new System.Drawing.Size(71, 29);
             this.tboxSocioID.TabIndex = 55;
+            this.tboxSocioID.TextChanged += new System.EventHandler(this.tboxSocioID_TextChanged);
             // 
             // label2
             // 
@@ -169,7 +173,7 @@
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(46, 190);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 21);
+            this.label2.Size = new System.Drawing.Size(84, 28);
             this.label2.TabIndex = 54;
             this.label2.Text = "SocioID";
             // 
@@ -179,7 +183,7 @@
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(45, 237);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 21);
+            this.label3.Size = new System.Drawing.Size(66, 28);
             this.label3.TabIndex = 56;
             this.label3.Text = "Fecha";
             // 
@@ -189,7 +193,7 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(46, 279);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(82, 21);
+            this.label4.Size = new System.Drawing.Size(104, 28);
             this.label4.TabIndex = 57;
             this.label4.Text = "Litros AM";
             // 
@@ -199,7 +203,7 @@
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(46, 324);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 21);
+            this.label5.Size = new System.Drawing.Size(102, 28);
             this.label5.TabIndex = 58;
             this.label5.Text = "Litros PM";
             // 
@@ -209,7 +213,7 @@
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(46, 369);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(122, 21);
+            this.label6.Size = new System.Drawing.Size(150, 28);
             this.label6.TabIndex = 59;
             this.label6.Text = "Observaciones";
             // 
@@ -219,7 +223,7 @@
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(46, 414);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(91, 21);
+            this.label8.Size = new System.Drawing.Size(111, 28);
             this.label8.TabIndex = 60;
             this.label8.Text = "Encargado";
             // 
@@ -280,7 +284,7 @@
             this.tboxLAM.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxLAM.Location = new System.Drawing.Point(179, 279);
             this.tboxLAM.Name = "tboxLAM";
-            this.tboxLAM.Size = new System.Drawing.Size(121, 25);
+            this.tboxLAM.Size = new System.Drawing.Size(121, 29);
             this.tboxLAM.TabIndex = 65;
             // 
             // tboxLPM
@@ -288,7 +292,7 @@
             this.tboxLPM.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxLPM.Location = new System.Drawing.Point(179, 324);
             this.tboxLPM.Name = "tboxLPM";
-            this.tboxLPM.Size = new System.Drawing.Size(121, 25);
+            this.tboxLPM.Size = new System.Drawing.Size(121, 29);
             this.tboxLPM.TabIndex = 66;
             // 
             // tboxObs
@@ -296,7 +300,7 @@
             this.tboxObs.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxObs.Location = new System.Drawing.Point(179, 369);
             this.tboxObs.Name = "tboxObs";
-            this.tboxObs.Size = new System.Drawing.Size(262, 25);
+            this.tboxObs.Size = new System.Drawing.Size(262, 29);
             this.tboxObs.TabIndex = 67;
             // 
             // tboxEncargado
@@ -304,7 +308,7 @@
             this.tboxEncargado.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxEncargado.Location = new System.Drawing.Point(179, 414);
             this.tboxEncargado.Name = "tboxEncargado";
-            this.tboxEncargado.Size = new System.Drawing.Size(262, 25);
+            this.tboxEncargado.Size = new System.Drawing.Size(262, 29);
             this.tboxEncargado.TabIndex = 68;
             // 
             // cboxBuscar
@@ -314,7 +318,7 @@
             this.cboxBuscar.FormattingEnabled = true;
             this.cboxBuscar.Location = new System.Drawing.Point(499, 94);
             this.cboxBuscar.Name = "cboxBuscar";
-            this.cboxBuscar.Size = new System.Drawing.Size(144, 25);
+            this.cboxBuscar.Size = new System.Drawing.Size(144, 29);
             this.cboxBuscar.TabIndex = 69;
             // 
             // label9
@@ -323,7 +327,7 @@
             this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(649, 94);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(60, 21);
+            this.label9.Size = new System.Drawing.Size(75, 28);
             this.label9.TabIndex = 70;
             this.label9.Text = "Buscar";
             // 
@@ -332,7 +336,7 @@
             this.tboxBuscar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxBuscar.Location = new System.Drawing.Point(715, 94);
             this.tboxBuscar.Name = "tboxBuscar";
-            this.tboxBuscar.Size = new System.Drawing.Size(331, 25);
+            this.tboxBuscar.Size = new System.Drawing.Size(331, 29);
             this.tboxBuscar.TabIndex = 71;
             // 
             // btnGenReporte
@@ -386,11 +390,23 @@
             this.btnEditar.Text = "EDITAR";
             this.btnEditar.UseVisualStyleBackColor = false;
             // 
+            // checkBoxActivo
+            // 
+            this.checkBoxActivo.AutoSize = true;
+            this.checkBoxActivo.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxActivo.Location = new System.Drawing.Point(57, 464);
+            this.checkBoxActivo.Name = "checkBoxActivo";
+            this.checkBoxActivo.Size = new System.Drawing.Size(93, 28);
+            this.checkBoxActivo.TabIndex = 103;
+            this.checkBoxActivo.Text = "Activo";
+            this.checkBoxActivo.UseVisualStyleBackColor = true;
+            // 
             // IngresoDiarioLeche
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 38F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(24F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1070, 595);
+            this.Controls.Add(this.checkBoxActivo);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnGenReporte);
@@ -461,5 +477,6 @@
         private System.Windows.Forms.Button btnGenReporte;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.CheckBox checkBoxActivo;
     }
 }

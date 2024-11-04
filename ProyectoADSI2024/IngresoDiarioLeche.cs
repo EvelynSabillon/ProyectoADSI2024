@@ -16,7 +16,7 @@ namespace ProyectoADSI2024
         public IngresoDiarioLeche()
         {
             InitializeComponent();
-            this.Load += new EventHandler(IngresoDiarioLeche_Load);
+            this.Load += new EventHandler(IngresoDiarioLeche_Load); //Con este evento me aseguro que la lista de socios me cargue en tiempo real
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -30,6 +30,14 @@ namespace ProyectoADSI2024
             try
             {
                 DateTime diaIDDate = DateTime.Parse(tBoxDiaID.Text);
+
+                if (!DateTime.TryParse(tBoxDiaID.Text, out diaIDDate))
+                {
+                    MessageBox.Show("Por favor ingrese una fecha válida para DiaID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return; // Detener el proceso de guardado si la fecha no es válida
+                }
+
+                //cadena para conectarme a la bd
                 string url = "Server=3.128.144.165; database=DB20212030388;User ID=eugene.wu; password=EW20212030388";
                 SqlConnection conexion = new SqlConnection(url);
                 SqlCommand cmd = new SqlCommand("spProyectoIngLecheInsert", conexion);
@@ -41,7 +49,8 @@ namespace ProyectoADSI2024
                 cmd.Parameters.AddWithValue("@LitrosPM", Convert.ToDouble(tboxLPM.Text));
                 cmd.Parameters.AddWithValue("@Observaciones", tboxObs.Text);
                 cmd.Parameters.AddWithValue("@Encargado", tboxEncargado.Text);
-               
+                cmd.Parameters.AddWithValue("@Activo", Convert.ToInt32(checkBoxActivo.Checked));
+
 
                 conexion.Open();
                 cmd.ExecuteNonQuery();
@@ -88,7 +97,6 @@ namespace ProyectoADSI2024
         //Modificable
         private void cboxSocios_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Muestra el SocioID en el  tBoxSocioID cuando se selecciona un nombre.
             if (cboxSocios.SelectedItem != null)
             {
                 tboxSocioID.Text = ((KeyValuePair<int, string>)cboxSocios.SelectedItem).Key.ToString();
@@ -96,5 +104,9 @@ namespace ProyectoADSI2024
         }
 
 
+        private void tboxSocioID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
