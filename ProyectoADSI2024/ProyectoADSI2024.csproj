@@ -316,6 +316,8 @@
     <Content Include="Resources\back6.png" />
     <Content Include="Resources\cow-icon2.png" />
     <Content Include="Resources\fluent--minimize-16-filled.png" />
+    <Content Include="Resources\game-icons--cow %281%29.png" />
+    <Content Include="Resources\game-icons--cow.png" />
     <Content Include="Resources\inventoy_icon.png" />
     <Content Include="Resources\line.png" />
     <Content Include="Resources\line2.png" />
@@ -329,7 +331,6 @@
     <Content Include="Resources\reports.png" />
     <Content Include="Resources\truck_icon.png" />
     <Content Include="Resources\users_icon2.png" />
-    <Content Include="Resources\user_icon.png" />
     <Content Include="Resources\user_icon2.png" />
     <Content Include="Resources\white_arrow_icon.png" />
     <Content Include="Resources\white_cross_icon.png" />
