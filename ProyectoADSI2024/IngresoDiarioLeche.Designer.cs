@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IngresoDiarioLeche));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAtras = new System.Windows.Forms.PictureBox();
             this.dateTimePickerFecha = new System.Windows.Forms.DateTimePicker();
@@ -39,7 +39,6 @@
             this.tBoxDiaID = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dgIngresoLeche = new System.Windows.Forms.DataGridView();
-            this.tboxSocioID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -60,6 +59,7 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.checkBoxActivo = new System.Windows.Forms.CheckBox();
+            this.tBoxSocioID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgIngresoLeche)).BeginInit();
             this.SuspendLayout();
@@ -99,12 +99,13 @@
             // 
             // cboxSocios
             // 
+            this.cboxSocios.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cboxSocios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxSocios.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboxSocios.FormattingEnabled = true;
-            this.cboxSocios.Location = new System.Drawing.Point(256, 189);
+            this.cboxSocios.Location = new System.Drawing.Point(255, 188);
             this.cboxSocios.Name = "cboxSocios";
-            this.cboxSocios.Size = new System.Drawing.Size(185, 29);
+            this.cboxSocios.Size = new System.Drawing.Size(199, 29);
             this.cboxSocios.TabIndex = 44;
             // 
             // tBoxDiaID
@@ -131,41 +132,30 @@
             this.dgIngresoLeche.AllowUserToDeleteRows = false;
             this.dgIngresoLeche.AllowUserToResizeColumns = false;
             this.dgIngresoLeche.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgIngresoLeche.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dgIngresoLeche.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dgIngresoLeche.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgIngresoLeche.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgIngresoLeche.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgIngresoLeche.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgIngresoLeche.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgIngresoLeche.Location = new System.Drawing.Point(499, 129);
             this.dgIngresoLeche.MultiSelect = false;
             this.dgIngresoLeche.Name = "dgIngresoLeche";
             this.dgIngresoLeche.ReadOnly = true;
             this.dgIngresoLeche.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgIngresoLeche.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dgIngresoLeche.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgIngresoLeche.Size = new System.Drawing.Size(547, 375);
             this.dgIngresoLeche.TabIndex = 52;
-            // 
-            // tboxSocioID
-            // 
-            this.tboxSocioID.Enabled = false;
-            this.tboxSocioID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxSocioID.Location = new System.Drawing.Point(179, 189);
-            this.tboxSocioID.Name = "tboxSocioID";
-            this.tboxSocioID.ReadOnly = true;
-            this.tboxSocioID.Size = new System.Drawing.Size(71, 29);
-            this.tboxSocioID.TabIndex = 55;
-            this.tboxSocioID.TextChanged += new System.EventHandler(this.tboxSocioID_TextChanged);
             // 
             // label2
             // 
@@ -349,7 +339,7 @@
             this.btnGenReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGenReporte.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGenReporte.ForeColor = System.Drawing.Color.White;
-            this.btnGenReporte.Location = new System.Drawing.Point(653, 522);
+            this.btnGenReporte.Location = new System.Drawing.Point(708, 522);
             this.btnGenReporte.Name = "btnGenReporte";
             this.btnGenReporte.Size = new System.Drawing.Size(192, 43);
             this.btnGenReporte.TabIndex = 72;
@@ -372,6 +362,7 @@
             this.btnLimpiar.TabIndex = 101;
             this.btnLimpiar.Text = "LIMPIAR";
             this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnEditar
             // 
@@ -389,6 +380,7 @@
             this.btnEditar.TabIndex = 102;
             this.btnEditar.Text = "EDITAR";
             this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // checkBoxActivo
             // 
@@ -401,11 +393,21 @@
             this.checkBoxActivo.Text = "Activo";
             this.checkBoxActivo.UseVisualStyleBackColor = true;
             // 
+            // tBoxSocioID
+            // 
+            this.tBoxSocioID.Font = new System.Drawing.Font("Gadugi", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxSocioID.Location = new System.Drawing.Point(179, 190);
+            this.tBoxSocioID.Name = "tBoxSocioID";
+            this.tBoxSocioID.ReadOnly = true;
+            this.tBoxSocioID.Size = new System.Drawing.Size(70, 27);
+            this.tBoxSocioID.TabIndex = 104;
+            // 
             // IngresoDiarioLeche
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(24F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1070, 595);
+            this.Controls.Add(this.tBoxSocioID);
             this.Controls.Add(this.checkBoxActivo);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnLimpiar);
@@ -425,7 +427,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.tboxSocioID);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgIngresoLeche);
             this.Controls.Add(this.dateTimePickerFecha);
@@ -457,7 +458,6 @@
         private System.Windows.Forms.TextBox tBoxDiaID;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dgIngresoLeche;
-        private System.Windows.Forms.TextBox tboxSocioID;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -478,5 +478,6 @@
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.CheckBox checkBoxActivo;
+        private System.Windows.Forms.TextBox tBoxSocioID;
     }
 }
