@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -205,6 +208,12 @@
     <Compile Include="RegistroProveedores.Designer.cs">
       <DependentUpon>RegistroProveedores.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\PlantillaReporte\Formato_Plantilla1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Formato_Plantilla.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="BotonesUtilidades.resx">
       <DependentUpon>BotonesUtilidades.cs</DependentUpon>
     </EmbeddedResource>
@@ -290,6 +299,10 @@
     <EmbeddedResource Include="RegistroProveedores.resx">
       <DependentUpon>RegistroProveedores.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PlantillaReporte\Formato_Plantilla.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Formato_Plantilla1.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -299,6 +312,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\Fonts\TT_Fors_Black.ttf" />
+    <None Include="Resources\Fonts\TT_Fors_Bold.ttf" />
+    <None Include="Resources\Fonts\TT_Fors_DemiBold.ttf" />
+    <None Include="Resources\Fonts\TT_Fors_Italic.ttf" />
+    <None Include="Resources\Fonts\TT_Fors_Light.ttf" />
     <None Include="Resources\ManualUsuario.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -321,6 +339,7 @@
     <Content Include="Resources\back5.png" />
     <Content Include="Resources\back6.png" />
     <Content Include="Resources\cow-icon2.png" />
+    <Content Include="Resources\cow_image.png" />
     <Content Include="Resources\fluent--minimize-16-filled.png" />
     <Content Include="Resources\game-icons--cow %281%29.png" />
     <Content Include="Resources\game-icons--cow.png" />
@@ -334,6 +353,7 @@
     <Content Include="Resources\milk_icon6.png" />
     <Content Include="Resources\nav_icon.png" />
     <Content Include="Resources\pay_icon.png" />
+    <Content Include="Resources\pie_reporte.PNG" />
     <Content Include="Resources\reports.png" />
     <Content Include="Resources\truck_icon.png" />
     <Content Include="Resources\users_icon2.png" />
@@ -372,6 +392,8 @@
       <Version>1.2.5</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
