@@ -366,5 +366,13 @@
       <Version>1.2.5</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Reportes\ReporteGestionInventario\" />
+    <Folder Include="Reportes\ReporteModuloControlIngresoLeche\" />
+    <Folder Include="Reportes\ReporteModuloRegistroYGestionSocios\" />
+    <Folder Include="Reportes\ReporteModuloReportes\" />
+    <Folder Include="Reportes\ReportePrestamosFinanzas\" />
+    <Folder Include="Reportes\ReporteProveedores\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

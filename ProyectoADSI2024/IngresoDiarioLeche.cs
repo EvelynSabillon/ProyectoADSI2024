@@ -15,12 +15,12 @@ namespace ProyectoADSI2024
     {
         //Variables globlales
 
-        //Varibale de conexio a BD
+        //Varibale de conexion a BD
         string url = "Server=3.128.144.165; database=DB20212030388;User ID=eugene.wu; password=EW20212030388";
         SqlConnection conexion;
         SqlDataAdapter adp;
 
-        //Objetos de la capa desconectada
+        private DataGridViewRow filaSeleccionada = null;
         DataTable tabIngresoLeche;
 
 
@@ -42,16 +42,17 @@ namespace ProyectoADSI2024
 
             //TootTips para los textBox
             toolTip = new ToolTip();
-            toolTip.SetToolTip(tBoxDiaID, "Ingrese un número del 1 al 7 según el día de la semana en el que esté.");
+            toolTip.SetToolTip(tBoxDiaID, "Ingrese la fecha de hoy");
             toolTip.SetToolTip(tboxLAM, "Se espera que ingrese un número.");
             toolTip.SetToolTip(tboxLPM, "Se espera que ingrese un número.");
             toolTip.SetToolTip(tboxObs, "Escriba observaciones detalladas para este registro.");
             toolTip.SetToolTip(tboxEncargado, "Ingrese el nombre del encargado.");
             toolTip.SetToolTip(btnGuardar, "Al hacer click se guardará la información previa.");
-            toolTip.SetToolTip(btnEditar, "Al hacer click se mostrará toda la información, seleccione o busque lo que quiere editar y al hacer cambios se guardarán automáticamente.")
+            toolTip.SetToolTip(btnEditar, "Al hacer click se mostrará toda la información, seleccione o busque lo que quiere editar y al hacer cambios se guardarán automáticamente.");
             toolTip.SetToolTip(btnLimpiar, "Al hacer click se vaciarán los cuadros de texto.");
-            toolTip.SetToolTip(btnEliminar, "Algo hace");
-            toolTip.SetToolTip(btnGenReporte, "Generará un reporte.");
+            toolTip.SetToolTip(btnEliminar, "Se eliminará un registro al hacer click");
+            toolTip.SetToolTip(btnGenReporte, "Generará un reporte de ingreso diario.");
+            toolTip.SetToolTip(checkBoxActivo,"Al activarlo se ocultará el registro actual.");
         
         }
 
@@ -109,11 +110,6 @@ namespace ProyectoADSI2024
             }
         }
 
-        private void tboxSocioID_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             //Limpiar los text box, regresar el combobox a index 0 y desmarcar el checkbox
@@ -130,8 +126,20 @@ namespace ProyectoADSI2024
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+
             CargarDatosDG();
             dgIngresoLeche.ReadOnly = false;
+
+            try
+            {
+                // Conexion con la base de datos
+                // SqlCommand updateCommand = new SqlCommand("spProyectoIngLecheUpdate", conexion);
+                // updateCommand.CommandType = CommandType.StoredProcedure;
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         //OTROS METODOS
@@ -168,14 +176,6 @@ namespace ProyectoADSI2024
             }
         }
 
-        private void cboxSocios_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cboxSocios.SelectedItem != null)
-            {
-                tBoxSocioID.Text = ((KeyValuePair<int, string>)cboxSocios.SelectedItem).Key.ToString();
-            }
-        }
-
 
         //METODO PARA CARGAR DATOS DE LA BD EN EL DATAGRIDVIEW
         private void CargarDatosDG()
@@ -201,6 +201,5 @@ namespace ProyectoADSI2024
             }
         }
 
-        
     }
 }
