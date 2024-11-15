@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IngresoDiarioLeche));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -59,8 +60,10 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.checkBoxActivo = new System.Windows.Forms.CheckBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgIngresoLeche)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -394,6 +397,11 @@
             this.checkBoxActivo.Text = "Activo";
             this.checkBoxActivo.UseVisualStyleBackColor = true;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider1.ContainerControl = this;
+            // 
             // IngresoDiarioLeche
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(24F, 48F);
@@ -435,6 +443,7 @@
             this.Load += new System.EventHandler(this.IngresoDiarioLeche_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgIngresoLeche)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -469,5 +478,6 @@
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.CheckBox checkBoxActivo;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

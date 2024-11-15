@@ -31,6 +31,7 @@ namespace ProyectoADSI2024
         private List<KeyValuePair<int, string>> socios;
 
 
+
         public IngresoDiarioLeche()
         {
             InitializeComponent();
@@ -80,50 +81,79 @@ namespace ProyectoADSI2024
             {
                 DateTime diaIDDate = DateTime.Parse(tBoxDiaID.Text);
 
-                if (!DateTime.TryParse(tBoxDiaID.Text, out diaIDDate))
+                
+                // Convertir y validar datos numéricos
+                double litrosAM;
+                if (!double.TryParse(tboxLAM.Text, out litrosAM))
                 {
-                    MessageBox.Show("Por favor ingrese una fecha válida para DiaID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return; // Detener el proceso de guardado si la fecha no es válida
+                    MessageBox.Show("El valor de LitrosAM debe ser numérico.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
-                //cadena para conectarme a la bd
-                SqlCommand cmd = new SqlCommand("spProyectoIngLecheInsert", conexion);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.AddWithValue("@DiaID", diaIDDate);
-                cmd.Parameters.AddWithValue("@SocioID", Convert.ToInt32(cboxSocios.SelectedValue));
-                cmd.Parameters.AddWithValue("@Fecha", dateTimePickerFecha.Value);
-                cmd.Parameters.AddWithValue("@LitrosAM", Convert.ToDouble(tboxLAM.Text));
-                cmd.Parameters.AddWithValue("@LitrosPM", Convert.ToDouble(tboxLPM.Text));
-                cmd.Parameters.AddWithValue("@Observaciones", tboxObs.Text);
-                cmd.Parameters.AddWithValue("@Encargado", tboxEncargado.Text);
-                cmd.Parameters.AddWithValue("@Activo", Convert.ToInt32(checkBoxActivo.Checked));
+                double litrosPM;
+                if (!double.TryParse(tboxLPM.Text, out litrosPM))
+                {
+                    MessageBox.Show("El valor de LitrosPM debe ser numérico.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
 
-                conexion.Open();
-                cmd.ExecuteNonQuery();
-                conexion.Close();
+                // Verificar si estamos en modo de edición
+                if (filaSeleccionada != null)
+                {
+                    // Modo de edición: Actualizar la fila seleccionada
+                    SqlCommand cmd = new SqlCommand("spProyectoIngLecheUpdate", conexion);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-                //Limpiamos text boxs al guardar y regresamos el combobox al index 0
-                tBoxDiaID.Clear();
-                tboxLAM.Clear();
-                tboxLPM.Clear();
-                tboxObs.Clear();
-                tboxEncargado.Clear();
-                checkBoxActivo.Checked = false;
-                cboxSocios.SelectedIndex = 0;
+                    // Parámetros del procedimiento almacenado para actualizar
+                    cmd.Parameters.AddWithValue("@DiaID", DateTime.Parse(tBoxDiaID.Text));
+                    cmd.Parameters.AddWithValue("@SocioID", Convert.ToInt32(cboxSocios.SelectedValue));
+                    cmd.Parameters.AddWithValue("@Fecha", dateTimePickerFecha.Value);
+                    cmd.Parameters.AddWithValue("@LitroAM", Convert.ToDouble(tboxLAM.Text));
+                    cmd.Parameters.AddWithValue("@LitroPM", Convert.ToDouble(tboxLPM.Text));
+                    cmd.Parameters.AddWithValue("@Observaciones", tboxObs.Text);
+                    cmd.Parameters.AddWithValue("@Encargado", tboxEncargado.Text);
+                    cmd.Parameters.AddWithValue("@Activo", checkBoxActivo.Checked);
+
+                    conexion.Open();
+                    cmd.ExecuteNonQuery();
+                    conexion.Close();
+
+                    MessageBox.Show("Registro actualizado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Recargar datos en el DataGridView
+                    CargarDatosDG();
+                }
+                else
+                {
+                    // Modo de insert: Guardar un nuevo registro
+                    SqlCommand cmd = new SqlCommand("spProyectoIngLecheInsert", conexion);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@DiaID", DateTime.Parse(tBoxDiaID.Text));
+                    cmd.Parameters.AddWithValue("@SocioID", Convert.ToInt32(cboxSocios.SelectedValue));
+                    cmd.Parameters.AddWithValue("@Fecha", dateTimePickerFecha.Value);
+                    cmd.Parameters.AddWithValue("@LitroAM", Convert.ToDouble(tboxLAM.Text));
+                    cmd.Parameters.AddWithValue("@LitroPM", Convert.ToDouble(tboxLPM.Text));
+                    cmd.Parameters.AddWithValue("@Observaciones", tboxObs.Text);
+                    cmd.Parameters.AddWithValue("@Encargado", tboxEncargado.Text);
+                    cmd.Parameters.AddWithValue("@Activo", checkBoxActivo.Checked);
+
+                    conexion.Open();
+                    cmd.ExecuteNonQuery();
+                    conexion.Close();
 
 
-                MessageBox.Show("Datos guardados exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    tBoxDiaID.Clear();
+                    tboxLAM.Clear();
+                    tboxLPM.Clear();
+                    tboxObs.Clear();
+                    tboxEncargado.Clear();
+                    checkBoxActivo.Checked = false;
+                    cboxSocios.SelectedIndex = 0;
 
-                // Limpiar los campos después de guardar
-                tBoxDiaID.Clear();
-                tboxLAM.Clear();
-                tboxLPM.Clear();
-                tboxObs.Clear();
-                tboxEncargado.Clear();
-                checkBoxActivo.Checked = false;
-                cboxSocios.SelectedIndex = 0;
+                    MessageBox.Show("Datos guardados exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {
@@ -148,17 +178,20 @@ namespace ProyectoADSI2024
         private void btnEditar_Click(object sender, EventArgs e)
         {
 
-            CargarDatosDG();
-            dgIngresoLeche.ReadOnly = true;
-
             try
             {
-                // Conexion con la base de datos
-                // SqlCommand updateCommand = new SqlCommand("spProyectoIngLecheUpdate", conexion);
-                // updateCommand.CommandType = CommandType.StoredProcedure;
+                // Cargar los datos al DataGridView desde la base de datos
+                CargarDatosDG();
+
+                // Habilitar selección de fila y edición
+                dgIngresoLeche.ReadOnly = false;
+                filaSeleccionada = null; // Limpiar cualquier fila previamente seleccionada
+
+                MessageBox.Show("Seleccione la fila que desea editar.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (Exception ex) {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -226,37 +259,27 @@ namespace ProyectoADSI2024
         //Evento para seleccionar la fila que se quiera editar y mandarlo a los textbox
         private void dgIngresoLeche_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgIngresoLeche.CurrentRow != null)
+            if (dgIngresoLeche.CurrentRow != null) // Validar que hay una fila seleccionada
             {
+                filaSeleccionada = dgIngresoLeche.CurrentRow; // Asignar la fila seleccionada
+
                 try
                 {
-                    // Obtener el SocioID de la fila seleccionada
-                    int socioID = Convert.ToInt32(dgIngresoLeche.CurrentRow.Cells["SocioID"].Value);
+                    // Pasar datos de la fila seleccionada a los TextBox
+                    tBoxDiaID.Text = filaSeleccionada.Cells["DiaID"].Value.ToString();
+                    dateTimePickerFecha.Value = Convert.ToDateTime(filaSeleccionada.Cells["Fecha"].Value);
+                    tboxLAM.Text = filaSeleccionada.Cells["LitroAM"].Value.ToString();
+                    tboxLPM.Text = filaSeleccionada.Cells["LitroPM"].Value.ToString();
+                    tboxObs.Text = filaSeleccionada.Cells["Observaciones"].Value.ToString();
+                    tboxEncargado.Text = filaSeleccionada.Cells["Encargado"].Value.ToString();
+                    checkBoxActivo.Checked = Convert.ToBoolean(filaSeleccionada.Cells["Activo"].Value);
 
-                    // Buscar en la lista global 'socios' en lugar de consultar la base de datos
-                    var socio = socios.FirstOrDefault(s => s.Key == socioID);
-                    if (socio.Key != 0)
-                    {
-                        cboxSocios.SelectedValue = socioID; // Seleccionar el socio en el ComboBox
-                    }
-                    else
-                    {
-                        cboxSocios.SelectedIndex = 0; // Volver al índice predeterminado si no se encuentra el socio
-                    }
-
-                    // Campos del DataGridView
-                    DateTime DiaID = Convert.ToDateTime(dgIngresoLeche.CurrentRow.Cells["DiaID"].Value);
-                    tBoxDiaID.Text = DiaID.ToString();
-                    dateTimePickerFecha.Value = Convert.ToDateTime(dgIngresoLeche.CurrentRow.Cells["Fecha"].Value);
-                    tboxLAM.Text = Convert.ToString(dgIngresoLeche.CurrentRow.Cells["LitroAM"].Value);
-                    tboxLPM.Text = Convert.ToString(dgIngresoLeche.CurrentRow.Cells["LitroPM"].Value);
-                    tboxObs.Text = Convert.ToString(dgIngresoLeche.CurrentRow.Cells["Observaciones"].Value);
-                    tboxEncargado.Text = Convert.ToString(dgIngresoLeche.CurrentRow.Cells["Encargado"].Value);
-                    checkBoxActivo.Checked = Convert.ToBoolean(dgIngresoLeche.CurrentRow.Cells["Activo"].Value);
+                    // Asignar el valor del SocioID al ComboBox
+                    cboxSocios.SelectedValue = Convert.ToInt32(filaSeleccionada.Cells["SocioID"].Value);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Error al cargar datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
