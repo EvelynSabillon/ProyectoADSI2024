@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ProyectoADSI2024
 {
@@ -25,7 +26,8 @@ namespace ProyectoADSI2024
 
 
         //ToolTips
-        ToolTip toolTip;
+        System.Windows.Forms.ToolTip toolTip1;
+
         public IngresoDiarioLeche()
         {
             InitializeComponent();
@@ -41,19 +43,26 @@ namespace ProyectoADSI2024
             adp.InsertCommand.CommandType = CommandType.StoredProcedure;
 
             //TootTips para los textBox
-            toolTip = new ToolTip();
-            toolTip.SetToolTip(tBoxDiaID, "Ingrese la fecha de hoy");
-            toolTip.SetToolTip(tboxLAM, "Se espera que ingrese un número.");
-            toolTip.SetToolTip(tboxLPM, "Se espera que ingrese un número.");
-            toolTip.SetToolTip(tboxObs, "Escriba observaciones detalladas para este registro.");
-            toolTip.SetToolTip(tboxEncargado, "Ingrese el nombre del encargado.");
-            toolTip.SetToolTip(btnGuardar, "Al hacer click se guardará la información previa.");
-            toolTip.SetToolTip(btnEditar, "Al hacer click se mostrará toda la información, seleccione o busque lo que quiere editar y al hacer cambios se guardarán automáticamente.");
-            toolTip.SetToolTip(btnLimpiar, "Al hacer click se vaciarán los cuadros de texto.");
-            toolTip.SetToolTip(btnEliminar, "Se eliminará un registro al hacer click");
-            toolTip.SetToolTip(btnGenReporte, "Generará un reporte de ingreso diario.");
-            toolTip.SetToolTip(checkBoxActivo,"Al activarlo se ocultará el registro actual.");
-        
+            toolTip1 = new System.Windows.Forms.ToolTip();
+            toolTip1.SetToolTip(tBoxDiaID, "Ingrese la fecha de hoy");
+            toolTip1.SetToolTip(tboxLAM, "Se espera que ingrese un número.");
+            toolTip1.SetToolTip(tboxLPM, "Se espera que ingrese un número.");
+            toolTip1.SetToolTip(tboxObs, "Escriba observaciones detalladas para este registro.");
+            toolTip1.SetToolTip(tboxEncargado, "Ingrese el nombre del encargado.");
+            toolTip1.SetToolTip(btnGuardar, "Al hacer click se guardará la información previa.");
+            toolTip1.SetToolTip(btnEditar, "Al hacer click se mostrará toda la información, seleccione o busque lo que quiere editar y al hacer cambios se guardarán automáticamente.");
+            toolTip1.SetToolTip(btnLimpiar, "Al hacer click se vaciarán los cuadros de texto.");
+            toolTip1.SetToolTip(btnEliminar, "Se eliminará un registro al hacer click");
+            toolTip1.SetToolTip(btnGenReporte, "Generará un reporte de ingreso diario.");
+            toolTip1.SetToolTip(checkBoxActivo,"Al activarlo se ocultará el registro actual.");
+
+            //Cambiar el tamaño de fuente del datagridview
+            dgIngresoLeche.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 14,FontStyle.Bold); //Los titulos de columna
+            dgIngresoLeche.DefaultCellStyle.Font = new Font("Arial", 12); //Letra global del grid para filas
+
+            //Impedir Resize de columnas y filas
+            dgIngresoLeche.AllowUserToResizeColumns = false;
+            dgIngresoLeche.AllowUserToResizeRows = false;
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -148,6 +157,7 @@ namespace ProyectoADSI2024
             LlenarComboBoxSocios();
         }
 
+        //Esta funcion es para llenar el comboBox con la lista de socios
         private void LlenarComboBoxSocios()
         {
             string connectionString = "Server=3.128.144.165; database=DB20212030388;User ID=eugene.wu; password=EW20212030388";
@@ -201,5 +211,22 @@ namespace ProyectoADSI2024
             }
         }
 
+        private void dgIngresoLeche_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgIngresoLeche.CurrentRow != null)
+            {
+                DateTime DiaID = Convert.ToDateTime(dgIngresoLeche.CurrentRow.Cells["DiaID"].Value);
+                tBoxDiaID.Text = DiaID.ToString();
+
+                cboxSocios.SelectedValue = Convert.ToInt32(dgIngresoLeche.CurrentRow.Cells["SocioID"].Value);
+                dateTimePickerFecha.Value = Convert.ToDateTime(dgIngresoLeche.CurrentRow.Cells["Fecha"].Value);
+                tboxLAM.Text = Convert.ToString(dgIngresoLeche.CurrentRow.Cells["LitroAM"].Value);
+                tboxLPM.Text = Convert.ToString(dgIngresoLeche.CurrentRow.Cells["LitroPM"].Value);
+                tboxObs.Text = Convert.ToString(dgIngresoLeche.CurrentRow.Cells["Observaciones"].Value);
+                tboxEncargado.Text = Convert.ToString(dgIngresoLeche.CurrentRow.Cells["Encargado"].Value);
+                checkBoxActivo.Checked = Convert.ToBoolean(dgIngresoLeche.CurrentRow.Cells["Activo"].Value);
+            }   
+
+        }
     }
 }

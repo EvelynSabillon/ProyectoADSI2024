@@ -307,6 +307,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Reportes\ReporteGestionInventario\ReporteGestionInv1.txt" />
+    <Content Include="Reportes\ReporteModuloControlIngresoLeche\ReporteModuloControlIngreso.txt" />
+    <Content Include="Reportes\ReporteModuloRegistroYGestionSocios\ReporteModuloRegistroYGestionSocios.txt" />
+    <Content Include="Reportes\ReporteModuloReportes\ReporteModulosReportes.txt" />
+    <Content Include="Reportes\ReportePrestamosFinanzas\ReportePrestamosFinanzas.txt" />
+    <Content Include="Reportes\ReporteProveedores\ReporteProveedores.txt" />
     <Content Include="Resources\admin_icon.png" />
     <Content Include="Resources\back.png" />
     <Content Include="Resources\back2.png" />
@@ -366,13 +372,6 @@
       <Version>1.2.5</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Reportes\ReporteGestionInventario\" />
-    <Folder Include="Reportes\ReporteModuloControlIngresoLeche\" />
-    <Folder Include="Reportes\ReporteModuloRegistroYGestionSocios\" />
-    <Folder Include="Reportes\ReporteModuloReportes\" />
-    <Folder Include="Reportes\ReportePrestamosFinanzas\" />
-    <Folder Include="Reportes\ReporteProveedores\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
