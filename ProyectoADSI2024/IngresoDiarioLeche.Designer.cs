@@ -155,8 +155,7 @@
             this.dgIngresoLeche.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgIngresoLeche.Size = new System.Drawing.Size(547, 375);
             this.dgIngresoLeche.TabIndex = 52;
-            this.dgIngresoLeche.SelectionChanged += new System.EventHandler(this.dgIngresoLeche_SelectionChanged);
-            // 
+          
             // label2
             // 
             this.label2.AutoSize = true;
