@@ -30,7 +30,6 @@ namespace ProyectoADSI2024
         //Lista global de los socios que estan en la bd
         private List<KeyValuePair<int, string>> socios;
 
-
         public IngresoDiarioLeche()
         {
             InitializeComponent();
@@ -69,6 +68,8 @@ namespace ProyectoADSI2024
             // Cargar los datos al DataGridView desde la base de datos
             CargarDatosDG();
 
+            //MODIFICABLE O BORRABLE
+            dgIngresoLeche.DataBindingComplete += DgIngresoLeche_Load;
         }
 
         
@@ -177,8 +178,14 @@ namespace ProyectoADSI2024
 
                     // Recargar datos en el DataGridView
                     CargarDatosDG();
-                    filaSeleccionada = null; // Limpiar cualquier fila previamente seleccionada
-     
+                //filaSeleccionada = null; // Limpiar cualquier fila previamente seleccionada
+                tBoxDiaID.Clear();
+                tboxLAM.Clear();
+                tboxLPM.Clear();
+                tboxObs.Clear();
+                tboxEncargado.Clear();
+                checkBoxActivo.Checked = false;
+                cboxSocios.SelectedIndex = 0;
                 // Habilitar selección de fila y edición
                 dgIngresoLeche.ReadOnly = false;
             }
@@ -241,6 +248,7 @@ namespace ProyectoADSI2024
 
                     // Asignar el DataTable al DataGridView
                     dgIngresoLeche.DataSource = tabIngresoLeche;
+                    dgIngresoLeche.ClearSelection();
                 }
             }
             catch (Exception ex)
@@ -252,31 +260,50 @@ namespace ProyectoADSI2024
         //Evento para seleccionar la fila que se quiera editar y mandarlo a los textbox
         private void dgIngresoLeche_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgIngresoLeche.CurrentRow != null) // Validar que hay una fila seleccionada
+            if ( dgIngresoLeche.CurrentRow == null) return; // No hacer nada si está cargando
+
+            try
             {
-           
-                filaSeleccionada = dgIngresoLeche.CurrentRow; // Asignar la fila seleccionada
+                // Pasar datos al formulario desde la fila seleccionada
+                DataGridViewRow filaSeleccionada = dgIngresoLeche.CurrentRow;
 
-                try
-                {
-                    // Pasar datos de la fila seleccionada a los TextBox
-                    tBoxDiaID.Text = filaSeleccionada.Cells["DiaID"].Value.ToString();
-                    dateTimePickerFecha.Value = Convert.ToDateTime(filaSeleccionada.Cells["Fecha"].Value);
-                    tboxLAM.Text = filaSeleccionada.Cells["LitroAM"].Value.ToString();
-                    tboxLPM.Text = filaSeleccionada.Cells["LitroPM"].Value.ToString();
-                    tboxObs.Text = filaSeleccionada.Cells["Observaciones"].Value.ToString();
-                    tboxEncargado.Text = filaSeleccionada.Cells["Encargado"].Value.ToString();
-                    checkBoxActivo.Checked = Convert.ToBoolean(filaSeleccionada.Cells["Activo"].Value);
-
-                    // Asignar el valor del SocioID al ComboBox
-                    cboxSocios.SelectedValue = Convert.ToInt32(filaSeleccionada.Cells["SocioID"].Value);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error al cargar datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                tBoxDiaID.Text = filaSeleccionada.Cells["DiaID"].Value.ToString();
+                dateTimePickerFecha.Value = Convert.ToDateTime(filaSeleccionada.Cells["Fecha"].Value);
+                tboxLAM.Text = filaSeleccionada.Cells["LitroAM"].Value.ToString();
+                tboxLPM.Text = filaSeleccionada.Cells["LitroPM"].Value.ToString();
+                tboxObs.Text = filaSeleccionada.Cells["Observaciones"].Value.ToString();
+                tboxEncargado.Text = filaSeleccionada.Cells["Encargado"].Value.ToString();
+                checkBoxActivo.Checked = Convert.ToBoolean(filaSeleccionada.Cells["Activo"].Value);
+                cboxSocios.SelectedValue = Convert.ToInt32(filaSeleccionada.Cells["SocioID"].Value);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+        private void IngresoDiarioLeche_Load(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+
+            LlenarComboBoxSocios(); // Llenar el ComboBox de socios
+            CargarDatosDG();        // Cargar datos al DataGridView
+
+            dgIngresoLeche.ClearSelection();
+        }
+
+
+
+        private void DgIngresoLeche_Load(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            // Validar si el DataGridView tiene datos
+            if (dgIngresoLeche.Rows.Count > 0)
+            {
+                dgIngresoLeche.ClearSelection(); // Deseleccionar cualquier fila inicial
+            }
+           
+        }
+
 
     }
 }
