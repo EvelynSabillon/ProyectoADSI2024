@@ -158,7 +158,6 @@
             this.dgIngresoLeche.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgIngresoLeche.Size = new System.Drawing.Size(547, 375);
             this.dgIngresoLeche.TabIndex = 52;
-            //this.dgIngresoLeche.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgIngresoLeche_DataBindingComplete);
             this.dgIngresoLeche.SelectionChanged += new System.EventHandler(this.dgIngresoLeche_SelectionChanged);
             // 
             // label2
@@ -254,6 +253,7 @@
             this.btnEliminar.TabIndex = 63;
             this.btnEliminar.Text = "ELIMINAR";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnGuardar
             // 

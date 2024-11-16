@@ -52,11 +52,11 @@ namespace ProyectoADSI2024
             toolTip1.SetToolTip(tboxObs, "Escriba observaciones detalladas para este registro.");
             toolTip1.SetToolTip(tboxEncargado, "Ingrese el nombre del encargado.");
             toolTip1.SetToolTip(btnGuardar, "Al hacer click se guardará la información previa.");
-            toolTip1.SetToolTip(btnEditar, "Al hacer click se se guardarálo seleccionado en la tabla.");
+            toolTip1.SetToolTip(btnEditar, "Seleccione una fila de la tabla para editar. Hacer click en el botón de Editar para guardar los cam");
             toolTip1.SetToolTip(btnLimpiar, "Al hacer click se vaciarán los cuadros de texto.");
             toolTip1.SetToolTip(btnEliminar, "Se eliminará un registro al hacer click");
             toolTip1.SetToolTip(btnGenReporte, "Generará un reporte de ingreso diario.");
-            toolTip1.SetToolTip(checkBoxActivo, "Al activarlo se ocultará el registro actual.");
+            toolTip1.SetToolTip(checkBoxActivo, "Al desmarcarlo se ocultará el registro actual.");
 
             //Cambiar el tamaño de fuente del datagridview
             dgIngresoLeche.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Bold); //Los titulos de columna
@@ -83,8 +83,8 @@ namespace ProyectoADSI2024
         {
             try
             {
+                //Convertir a formato DateTime 
                 DateTime diaIDDate = DateTime.Parse(tBoxDiaID.Text);
-
 
                 // Convertir y validar datos numéricos
                 double litrosAM;
@@ -119,13 +119,7 @@ namespace ProyectoADSI2024
                 conexion.Close();
 
 
-                tBoxDiaID.Clear();
-                tboxLAM.Clear();
-                tboxLPM.Clear();
-                tboxObs.Clear();
-                tboxEncargado.Clear();
-                checkBoxActivo.Checked = false;
-                cboxSocios.SelectedIndex = 0;
+                LimpiarTxtBox();
 
                 MessageBox.Show("Datos guardados exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -139,13 +133,7 @@ namespace ProyectoADSI2024
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             //Limpiar los text box, regresar el combobox a index 0 y desmarcar el checkbox
-            tBoxDiaID.Clear();
-            tboxLAM.Clear();
-            tboxLPM.Clear();
-            tboxObs.Clear();
-            tboxEncargado.Clear();
-            checkBoxActivo.Checked = false;
-            cboxSocios.SelectedIndex = 0;
+            LimpiarTxtBox();
 
             MessageBox.Show("Se limpió con éxito los cuadros de texto.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -178,14 +166,9 @@ namespace ProyectoADSI2024
 
                     // Recargar datos en el DataGridView
                     CargarDatosDG();
-                //filaSeleccionada = null; // Limpiar cualquier fila previamente seleccionada
-                tBoxDiaID.Clear();
-                tboxLAM.Clear();
-                tboxLPM.Clear();
-                tboxObs.Clear();
-                tboxEncargado.Clear();
-                checkBoxActivo.Checked = false;
-                cboxSocios.SelectedIndex = 0;
+
+                LimpiarTxtBox();
+
                 // Habilitar selección de fila y edición
                 dgIngresoLeche.ReadOnly = false;
             }
@@ -196,11 +179,45 @@ namespace ProyectoADSI2024
 
         }
 
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if(dgIngresoLeche.CurrentRow == null)
+            {
+                MessageBox.Show("No hay ninguna fila seleccionada","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                // Obtener el valor de la celda DiaID como DateTime
+                DateTime diaid = Convert.ToDateTime(dgIngresoLeche.CurrentRow.Cells["DiaID"].Value);
+                SqlCommand cmdEliminar = new SqlCommand("spEliminarIngresoLecheDiario", conexion);
+                cmdEliminar.CommandType = CommandType.StoredProcedure;
+                cmdEliminar.Parameters.AddWithValue("DiaID", diaid);
+
+                conexion.Open();
+                cmdEliminar .ExecuteNonQuery();
+                conexion.Close();
+
+                MessageBox.Show("Registro eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Recargar los datos del DataGridView
+                CargarDatosEliminar();
+            }
+            catch (Exception ex) {
+
+                MessageBox.Show($"Error al eliminar el registro: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+
+
         //OTROS METODOS
         private void IngresoDiarioLeche_Load(object sender, EventArgs e)
         {
             LlenarComboBoxSocios();
         }
+
 
         //Esta funcion es para llenar el comboBox con la lista de socios
         private void LlenarComboBoxSocios()
@@ -243,7 +260,9 @@ namespace ProyectoADSI2024
                     string query = "SELECT * FROM proyecto.IngresoLeche";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexion);
 
+                    //Instancia del datatable
                     tabIngresoLeche = new DataTable();
+                    //LLenamos con la informacion la tablaa
                     adapter.Fill(tabIngresoLeche);
 
                     // Asignar el DataTable al DataGridView
@@ -256,6 +275,7 @@ namespace ProyectoADSI2024
                 MessageBox.Show($"Error al cargar datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         //Evento para seleccionar la fila que se quiera editar y mandarlo a los textbox
         private void dgIngresoLeche_SelectionChanged(object sender, EventArgs e)
@@ -292,8 +312,6 @@ namespace ProyectoADSI2024
             dgIngresoLeche.ClearSelection();
         }
 
-
-
         private void DgIngresoLeche_Load(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             // Validar si el DataGridView tiene datos
@@ -303,6 +321,50 @@ namespace ProyectoADSI2024
             }
            
         }
+
+        //Funcion para limpiar textboxs
+        private void LimpiarTxtBox()
+        {
+            tBoxDiaID.Clear();
+            tboxLAM.Clear();
+            tboxLPM.Clear();
+            tboxObs.Clear();
+            tboxEncargado.Clear();
+            checkBoxActivo.Checked = false;
+            cboxSocios.SelectedIndex = 0;
+        }
+
+
+        private void CargarDatosEliminar()
+        {
+            try
+            {
+                // Conexión a la base de datos
+                using (SqlConnection conexion = new SqlConnection(url))
+                {
+                    // Abrir la conexión
+                    conexion.Open();
+
+                    // Configurar el comando para ejecutar el procedimiento almacenado
+                    SqlCommand cmd = new SqlCommand("spMostrarIngresoLecheDiario", conexion);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Crear el adaptador SQL y llenar el DataTable
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    tabIngresoLeche = new DataTable();
+                    adapter.Fill(tabIngresoLeche);
+
+                    // Asignar el DataTable al DataGridView
+                    dgIngresoLeche.DataSource = tabIngresoLeche;
+                    dgIngresoLeche.ClearSelection(); // Limpiar selección inicial
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
 
     }
