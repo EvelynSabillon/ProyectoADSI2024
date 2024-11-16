@@ -31,19 +31,18 @@ namespace ProyectoADSI2024
         private List<KeyValuePair<int, string>> socios;
 
 
-
         public IngresoDiarioLeche()
         {
             InitializeComponent();
             this.Load += new EventHandler(IngresoDiarioLeche_Load); //Con este evento me aseguro que la lista de socios me cargue en tiempo real
-          
+
             conexion = new SqlConnection(url);
 
             adp = new SqlDataAdapter();
             adp.SelectCommand = new SqlCommand();
-            
+
             //Adapter para el insert a la base de datos
-            adp.InsertCommand = new SqlCommand("spProyectoIngLecheInsert",conexion);
+            adp.InsertCommand = new SqlCommand("spProyectoIngLecheInsert", conexion);
             adp.InsertCommand.CommandType = CommandType.StoredProcedure;
 
             //TootTips para los textBox
@@ -54,21 +53,25 @@ namespace ProyectoADSI2024
             toolTip1.SetToolTip(tboxObs, "Escriba observaciones detalladas para este registro.");
             toolTip1.SetToolTip(tboxEncargado, "Ingrese el nombre del encargado.");
             toolTip1.SetToolTip(btnGuardar, "Al hacer click se guardará la información previa.");
-            toolTip1.SetToolTip(btnEditar, "Al hacer click se mostrará toda la información, seleccione o busque lo que quiere editar y al hacer cambios se guardarán automáticamente.");
+            toolTip1.SetToolTip(btnEditar, "Al hacer click se se guardarálo seleccionado en la tabla.");
             toolTip1.SetToolTip(btnLimpiar, "Al hacer click se vaciarán los cuadros de texto.");
             toolTip1.SetToolTip(btnEliminar, "Se eliminará un registro al hacer click");
             toolTip1.SetToolTip(btnGenReporte, "Generará un reporte de ingreso diario.");
-            toolTip1.SetToolTip(checkBoxActivo,"Al activarlo se ocultará el registro actual.");
+            toolTip1.SetToolTip(checkBoxActivo, "Al activarlo se ocultará el registro actual.");
 
             //Cambiar el tamaño de fuente del datagridview
-            dgIngresoLeche.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 14,FontStyle.Bold); //Los titulos de columna
+            dgIngresoLeche.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Bold); //Los titulos de columna
             dgIngresoLeche.DefaultCellStyle.Font = new Font("Arial", 12); //Letra global del grid para filas
 
             //Impedir Resize de columnas y filas
             dgIngresoLeche.AllowUserToResizeColumns = false;
             dgIngresoLeche.AllowUserToResizeRows = false;
+            // Cargar los datos al DataGridView desde la base de datos
+            CargarDatosDG();
+
         }
 
+        
         private void btnAtras_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Desea volver al menu principal?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -81,7 +84,7 @@ namespace ProyectoADSI2024
             {
                 DateTime diaIDDate = DateTime.Parse(tBoxDiaID.Text);
 
-                
+
                 // Convertir y validar datos numéricos
                 double litrosAM;
                 if (!double.TryParse(tboxLAM.Text, out litrosAM))
@@ -97,63 +100,34 @@ namespace ProyectoADSI2024
                     return;
                 }
 
+                // Modo de insert: Guardar un nuevo registro
+                SqlCommand cmd = new SqlCommand("spProyectoIngLecheInsert", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                // Verificar si estamos en modo de edición
-                if (filaSeleccionada != null)
-                {
-                    // Modo de edición: Actualizar la fila seleccionada
-                    SqlCommand cmd = new SqlCommand("spProyectoIngLecheUpdate", conexion);
-                    cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@DiaID", DateTime.Parse(tBoxDiaID.Text));
+                cmd.Parameters.AddWithValue("@SocioID", Convert.ToInt32(cboxSocios.SelectedValue));
+                cmd.Parameters.AddWithValue("@Fecha", dateTimePickerFecha.Value);
+                cmd.Parameters.AddWithValue("@LitroAM", Convert.ToDouble(tboxLAM.Text));
+                cmd.Parameters.AddWithValue("@LitroPM", Convert.ToDouble(tboxLPM.Text));
+                cmd.Parameters.AddWithValue("@Observaciones", tboxObs.Text);
+                cmd.Parameters.AddWithValue("@Encargado", tboxEncargado.Text);
+                cmd.Parameters.AddWithValue("@Activo", checkBoxActivo.Checked);
 
-                    // Parámetros del procedimiento almacenado para actualizar
-                    cmd.Parameters.AddWithValue("@DiaID", DateTime.Parse(tBoxDiaID.Text));
-                    cmd.Parameters.AddWithValue("@SocioID", Convert.ToInt32(cboxSocios.SelectedValue));
-                    cmd.Parameters.AddWithValue("@Fecha", dateTimePickerFecha.Value);
-                    cmd.Parameters.AddWithValue("@LitroAM", Convert.ToDouble(tboxLAM.Text));
-                    cmd.Parameters.AddWithValue("@LitroPM", Convert.ToDouble(tboxLPM.Text));
-                    cmd.Parameters.AddWithValue("@Observaciones", tboxObs.Text);
-                    cmd.Parameters.AddWithValue("@Encargado", tboxEncargado.Text);
-                    cmd.Parameters.AddWithValue("@Activo", checkBoxActivo.Checked);
-
-                    conexion.Open();
-                    cmd.ExecuteNonQuery();
-                    conexion.Close();
-
-                    MessageBox.Show("Registro actualizado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // Recargar datos en el DataGridView
-                    CargarDatosDG();
-                }
-                else
-                {
-                    // Modo de insert: Guardar un nuevo registro
-                    SqlCommand cmd = new SqlCommand("spProyectoIngLecheInsert", conexion);
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    cmd.Parameters.AddWithValue("@DiaID", DateTime.Parse(tBoxDiaID.Text));
-                    cmd.Parameters.AddWithValue("@SocioID", Convert.ToInt32(cboxSocios.SelectedValue));
-                    cmd.Parameters.AddWithValue("@Fecha", dateTimePickerFecha.Value);
-                    cmd.Parameters.AddWithValue("@LitroAM", Convert.ToDouble(tboxLAM.Text));
-                    cmd.Parameters.AddWithValue("@LitroPM", Convert.ToDouble(tboxLPM.Text));
-                    cmd.Parameters.AddWithValue("@Observaciones", tboxObs.Text);
-                    cmd.Parameters.AddWithValue("@Encargado", tboxEncargado.Text);
-                    cmd.Parameters.AddWithValue("@Activo", checkBoxActivo.Checked);
-
-                    conexion.Open();
-                    cmd.ExecuteNonQuery();
-                    conexion.Close();
+                conexion.Open();
+                cmd.ExecuteNonQuery();
+                conexion.Close();
 
 
-                    tBoxDiaID.Clear();
-                    tboxLAM.Clear();
-                    tboxLPM.Clear();
-                    tboxObs.Clear();
-                    tboxEncargado.Clear();
-                    checkBoxActivo.Checked = false;
-                    cboxSocios.SelectedIndex = 0;
+                tBoxDiaID.Clear();
+                tboxLAM.Clear();
+                tboxLPM.Clear();
+                tboxObs.Clear();
+                tboxEncargado.Clear();
+                checkBoxActivo.Checked = false;
+                cboxSocios.SelectedIndex = 0;
 
-                    MessageBox.Show("Datos guardados exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                MessageBox.Show("Datos guardados exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
             catch (Exception ex)
             {
@@ -180,14 +154,33 @@ namespace ProyectoADSI2024
 
             try
             {
-                // Cargar los datos al DataGridView desde la base de datos
-                CargarDatosDG();
 
+                    // Modo de edición: Actualizar la fila seleccionada
+                    SqlCommand cmd = new SqlCommand("spProyectoIngLecheUpdate", conexion);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Parámetros del procedimiento almacenado para actualizar
+                    cmd.Parameters.AddWithValue("@DiaID", DateTime.Parse(tBoxDiaID.Text));
+                    cmd.Parameters.AddWithValue("@SocioID", Convert.ToInt32(cboxSocios.SelectedValue));
+                    cmd.Parameters.AddWithValue("@Fecha", dateTimePickerFecha.Value);
+                    cmd.Parameters.AddWithValue("@LitroAM", Convert.ToDouble(tboxLAM.Text));
+                    cmd.Parameters.AddWithValue("@LitroPM", Convert.ToDouble(tboxLPM.Text));
+                    cmd.Parameters.AddWithValue("@Observaciones", tboxObs.Text);
+                    cmd.Parameters.AddWithValue("@Encargado", tboxEncargado.Text);
+                    cmd.Parameters.AddWithValue("@Activo", checkBoxActivo.Checked);
+
+                    conexion.Open();
+                    cmd.ExecuteNonQuery();
+                    conexion.Close();
+
+                    MessageBox.Show("Registro actualizado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Recargar datos en el DataGridView
+                    CargarDatosDG();
+                    filaSeleccionada = null; // Limpiar cualquier fila previamente seleccionada
+     
                 // Habilitar selección de fila y edición
                 dgIngresoLeche.ReadOnly = false;
-                filaSeleccionada = null; // Limpiar cualquier fila previamente seleccionada
-
-                MessageBox.Show("Seleccione la fila que desea editar.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -240,7 +233,7 @@ namespace ProyectoADSI2024
                 // Conexión a la base de datos
                 using (SqlConnection conexion = new SqlConnection(url))
                 {
-                    string query = "SELECT * FROM proyecto.IngresoLeche"; 
+                    string query = "SELECT * FROM proyecto.IngresoLeche";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexion);
 
                     tabIngresoLeche = new DataTable();
@@ -261,6 +254,7 @@ namespace ProyectoADSI2024
         {
             if (dgIngresoLeche.CurrentRow != null) // Validar que hay una fila seleccionada
             {
+           
                 filaSeleccionada = dgIngresoLeche.CurrentRow; // Asignar la fila seleccionada
 
                 try
@@ -286,3 +280,6 @@ namespace ProyectoADSI2024
 
     }
 }
+
+    
+
