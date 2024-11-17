@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.MenuVertical = new System.Windows.Forms.Panel();
+            this.btnReportes = new System.Windows.Forms.Button();
             this.btnModuloGestionFinanciera = new System.Windows.Forms.Button();
             this.btnModuloGestionInventario = new System.Windows.Forms.Button();
             this.btnModuloManejoProveedores = new System.Windows.Forms.Button();
@@ -48,7 +49,6 @@
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.btnSlide = new System.Windows.Forms.PictureBox();
             this.panelContenedor = new System.Windows.Forms.Panel();
-            this.btnReportes = new System.Windows.Forms.Button();
             this.dropdownMenu1 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
             this.btn1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnConsultaQuincenalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -119,6 +119,28 @@
             this.MenuVertical.Size = new System.Drawing.Size(230, 650);
             this.MenuVertical.TabIndex = 0;
             this.MenuVertical.Paint += new System.Windows.Forms.PaintEventHandler(this.MenuVertical_Paint);
+            // 
+            // btnReportes
+            // 
+            this.btnReportes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.btnReportes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReportes.FlatAppearance.BorderSize = 0;
+            this.btnReportes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(206)))), ((int)(((byte)(18)))));
+            this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReportes.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportes.ForeColor = System.Drawing.Color.White;
+            this.btnReportes.Image = ((System.Drawing.Image)(resources.GetObject("btnReportes.Image")));
+            this.btnReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReportes.Location = new System.Drawing.Point(0, 455);
+            this.btnReportes.Name = "btnReportes";
+            this.btnReportes.Size = new System.Drawing.Size(230, 65);
+            this.btnReportes.TabIndex = 12;
+            this.btnReportes.Text = "         REPORTES";
+            this.btnReportes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnReportes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnReportes.UseCompatibleTextRendering = true;
+            this.btnReportes.UseVisualStyleBackColor = false;
+            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
             // 
             // btnModuloGestionFinanciera
             // 
@@ -375,28 +397,6 @@
             this.panelContenedor.Name = "panelContenedor";
             this.panelContenedor.Size = new System.Drawing.Size(1070, 595);
             this.panelContenedor.TabIndex = 4;
-            // 
-            // btnReportes
-            // 
-            this.btnReportes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
-            this.btnReportes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReportes.FlatAppearance.BorderSize = 0;
-            this.btnReportes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(206)))), ((int)(((byte)(18)))));
-            this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReportes.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReportes.ForeColor = System.Drawing.Color.White;
-            this.btnReportes.Image = ((System.Drawing.Image)(resources.GetObject("btnReportes.Image")));
-            this.btnReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReportes.Location = new System.Drawing.Point(0, 455);
-            this.btnReportes.Name = "btnReportes";
-            this.btnReportes.Size = new System.Drawing.Size(230, 65);
-            this.btnReportes.TabIndex = 12;
-            this.btnReportes.Text = "         REPORTES";
-            this.btnReportes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnReportes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnReportes.UseCompatibleTextRendering = true;
-            this.btnReportes.UseVisualStyleBackColor = false;
-            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
             // 
             // dropdownMenu1
             // 
@@ -695,25 +695,25 @@
             // reporteDeInventarioExistenteToolStripMenuItem
             // 
             this.reporteDeInventarioExistenteToolStripMenuItem.Name = "reporteDeInventarioExistenteToolStripMenuItem";
-            this.reporteDeInventarioExistenteToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.reporteDeInventarioExistenteToolStripMenuItem.Size = new System.Drawing.Size(340, 26);
             this.reporteDeInventarioExistenteToolStripMenuItem.Text = "Reporte de Inventario Existente";
             // 
             // reporteDeProducciónQuincenalToolStripMenuItem
             // 
             this.reporteDeProducciónQuincenalToolStripMenuItem.Name = "reporteDeProducciónQuincenalToolStripMenuItem";
-            this.reporteDeProducciónQuincenalToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.reporteDeProducciónQuincenalToolStripMenuItem.Size = new System.Drawing.Size(340, 26);
             this.reporteDeProducciónQuincenalToolStripMenuItem.Text = "Reporte de Producción Quincenal ";
             // 
             // reporteDeProducciónMensualToolStripMenuItem
             // 
             this.reporteDeProducciónMensualToolStripMenuItem.Name = "reporteDeProducciónMensualToolStripMenuItem";
-            this.reporteDeProducciónMensualToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.reporteDeProducciónMensualToolStripMenuItem.Size = new System.Drawing.Size(340, 26);
             this.reporteDeProducciónMensualToolStripMenuItem.Text = "Reporte de Producción Mensual";
             // 
             // reporteDePrestamoDeSocioToolStripMenuItem
             // 
             this.reporteDePrestamoDeSocioToolStripMenuItem.Name = "reporteDePrestamoDeSocioToolStripMenuItem";
-            this.reporteDePrestamoDeSocioToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.reporteDePrestamoDeSocioToolStripMenuItem.Size = new System.Drawing.Size(340, 26);
             this.reporteDePrestamoDeSocioToolStripMenuItem.Text = "Reporte de Prestamo de Socio";
             // 
             // Menu

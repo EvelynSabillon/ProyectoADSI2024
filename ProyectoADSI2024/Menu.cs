@@ -20,7 +20,6 @@ namespace ProyectoADSI2024
         public Menu()
         {
             InitializeComponent();
-
         }
 
         private void Menu_Load(object sender, EventArgs e)
@@ -149,9 +148,14 @@ namespace ProyectoADSI2024
             Form fh = Formhijo as Form;
             fh.TopLevel = false;
             fh.Dock = DockStyle.Fill;
+            fh.Disposed += new EventHandler(FormHijo_Disposed);
             this.panelContenedor.Controls.Add(fh);
             this.panelContenedor.Tag = fh;
             fh.Show();
+        }
+        private void FormHijo_Disposed(object sender, EventArgs e)
+        {
+            AbrirDashboardEnPanel(); // Mostrar el Dashboard cuando se cierre el formulario hijo
         }
 
         private void btn1ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -294,6 +298,11 @@ namespace ProyectoADSI2024
             dashboard.Show();
         }
 
-
+        //Cada vez que se abra el Menu principal o se cierren los forms que van dentro del panelContenedor 
+        //se muestre predeterminadamente el dashboard
+        private void Menu_Activated(object sender, EventArgs e)
+        {
+            AbrirDashboardEnPanel();
+        }
     }
 }
