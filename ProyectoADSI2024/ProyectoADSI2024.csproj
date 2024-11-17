@@ -235,11 +235,10 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Reportes\ReportePrestamosFinanzas\ReporteQuincena.cs">
+    <Compile Include="Reportes\ReportePrestamosFinanzas\ReporteNominaQuincenal.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ReporteQuincena.rpt</DependentUpon>
-      <SubType>Component</SubType>
+      <DependentUpon>ReporteNominaQuincenal.rpt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="BotonesUtilidades.resx">
       <DependentUpon>BotonesUtilidades.cs</DependentUpon>
@@ -341,9 +340,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Reporte_Kardex.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\ReportePrestamosFinanzas\ReporteQuincena.rpt">
+    <EmbeddedResource Include="Reportes\ReportePrestamosFinanzas\ReporteNominaQuincenal.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ReporteQuincena.cs</LastGenOutput>
+      <LastGenOutput>ReporteNominaQuincenal.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
