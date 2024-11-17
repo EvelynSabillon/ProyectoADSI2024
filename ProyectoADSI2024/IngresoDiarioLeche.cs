@@ -257,7 +257,7 @@ namespace ProyectoADSI2024
                 // Conexión a la base de datos
                 using (SqlConnection conexion = new SqlConnection(url))
                 {
-                    string query = "SELECT * FROM proyecto.IngresoLeche";
+                    string query = "SELECT * FROM proyecto.IngresoLeche ORDER BY DiaID desc";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexion);
 
                     //Instancia del datatable

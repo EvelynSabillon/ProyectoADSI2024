@@ -211,6 +211,12 @@
     <Compile Include="RegistroProveedores.Designer.cs">
       <DependentUpon>RegistroProveedores.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReporteIngresoLeche.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteIngresoLeche.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\PlantillaReporte\Formato_Plantilla1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -307,6 +313,10 @@
     </Compile>
     <EmbeddedResource Include="RegistroProveedores.resx">
       <DependentUpon>RegistroProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteIngresoLeche.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteIngresoLeche.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\PlantillaReporte\Formato_Plantilla.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
