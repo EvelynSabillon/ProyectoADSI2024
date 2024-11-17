@@ -66,7 +66,7 @@ namespace ProyectoADSI2024
             dgIngresoLeche.AllowUserToResizeColumns = false;
             dgIngresoLeche.AllowUserToResizeRows = false;
             // Cargar los datos al DataGridView desde la base de datos
-            CargarDatosDG();
+            CargarDatosActualizados();
 
             //MODIFICABLE O BORRABLE
             dgIngresoLeche.DataBindingComplete += DgIngresoLeche_Load;
@@ -164,8 +164,8 @@ namespace ProyectoADSI2024
 
                     MessageBox.Show("Registro actualizado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Recargar datos en el DataGridView
-                    CargarDatosDG();
+                // Recargar datos en el DataGridView
+                CargarDatosActualizados();
 
                 LimpiarTxtBox();
 
@@ -201,7 +201,7 @@ namespace ProyectoADSI2024
                 MessageBox.Show("Registro eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Recargar los datos del DataGridView
-                CargarDatosEliminar();
+                CargarDatosActualizados();
             }
             catch (Exception ex) {
 
@@ -307,7 +307,7 @@ namespace ProyectoADSI2024
         {
 
             LlenarComboBoxSocios(); // Llenar el ComboBox de socios
-            CargarDatosDG();        // Cargar datos al DataGridView
+            CargarDatosActualizados();        // Cargar datos al DataGridView
 
             dgIngresoLeche.ClearSelection();
         }
@@ -332,10 +332,11 @@ namespace ProyectoADSI2024
             tboxEncargado.Clear();
             checkBoxActivo.Checked = false;
             cboxSocios.SelectedIndex = 0;
+            dateTimePickerFecha.Value = DateTime.Now;
         }
 
 
-        private void CargarDatosEliminar()
+        private void CargarDatosActualizados()
         {
             try
             {
@@ -364,7 +365,6 @@ namespace ProyectoADSI2024
                 MessageBox.Show($"Error al cargar datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
 
     }
