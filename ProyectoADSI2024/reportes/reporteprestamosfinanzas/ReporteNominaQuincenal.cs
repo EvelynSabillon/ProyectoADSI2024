@@ -16,14 +16,14 @@ namespace ProyectoADSI2024.Reportes.ReportePrestamosFinanzas {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class ReporteQuincena : ReportClass {
+    public class ReporteNominaQuincenal : ReportClass {
         
-        public ReporteQuincena() {
+        public ReporteNominaQuincenal() {
         }
         
         public override string ResourceName {
             get {
-                return "ReporteQuincena.rpt";
+                return "ReporteNominaQuincenal.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace ProyectoADSI2024.Reportes.ReportePrestamosFinanzas {
         
         public override string FullResourceName {
             get {
-                return "ProyectoADSI2024.Reportes.ReportePrestamosFinanzas.ReporteQuincena.rpt";
+                return "ProyectoADSI2024.Reportes.ReportePrestamosFinanzas.ReporteNominaQuincenal.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace ProyectoADSI2024.Reportes.ReportePrestamosFinanzas {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedReporteQuincena : Component, ICachedReport {
+    public class CachedReporteNominaQuincenal : Component, ICachedReport {
         
-        public CachedReporteQuincena() {
+        public CachedReporteNominaQuincenal() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace ProyectoADSI2024.Reportes.ReportePrestamosFinanzas {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            ReporteQuincena rpt = new ReporteQuincena();
+            ReporteNominaQuincenal rpt = new ReporteNominaQuincenal();
             rpt.Site = this.Site;
             return rpt;
         }
