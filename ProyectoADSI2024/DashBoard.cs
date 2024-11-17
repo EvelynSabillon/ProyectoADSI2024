@@ -24,38 +24,7 @@ namespace ProyectoADSI2024
         }
 
         private void DashBoard_Load(object sender, EventArgs e)
-        {
-            chart1.Series["Produccion Mensual"].Name = "Produccion Mensual";
-
-            // Agrega puntos de datos manualmente
-            chart1.Series["Produccion Mensual"].Points.AddXY("Enero", 120);
-            chart1.Series["Produccion Mensual"].Points.AddXY("Febrero", 80);
-            chart1.Series["Produccion Mensual"].Points.AddXY("Marzo", 130);
-            chart1.Series["Produccion Mensual"].Points.AddXY("Abril", 90);
-            chart1.Series["Produccion Mensual"].Points.AddXY("Mayo", 150);
-            chart1.Series["Produccion Mensual"].Points.AddXY("Junio", 110);
-
-
-            chart2.Series["Consumo de Inventario"].Name = "Consumo de Inventario";
-
-            // Agrega puntos de datos manualmente
-            chart2.Series["Consumo de Inventario"].Points.AddXY("Enero", 120);
-            chart2.Series["Consumo de Inventario"].Points.AddXY("Febrero", 80);
-            chart2.Series["Consumo de Inventario"].Points.AddXY("Marzo", 130);
-            chart2.Series["Consumo de Inventario"].Points.AddXY("Abril", 90);
-            chart2.Series["Consumo de Inventario"].Points.AddXY("Mayo", 150);
-            chart2.Series["Consumo de Inventario"].Points.AddXY("Junio", 110);
-
-
-            chart3.Series["Series1"].Name = "Series1";
-
-            // Agrega puntos de datos manualmente
-            chart3.Series["Series1"].Points.AddXY("Enero", 120);
-            chart3.Series["Series1"].Points.AddXY("Febrero", 80);
-            chart3.Series["Series1"].Points.AddXY("Marzo", 130);
-            chart3.Series["Series1"].Points.AddXY("Abril", 90);
-            chart3.Series["Series1"].Points.AddXY("Mayo", 150);
-            chart3.Series["Series1"].Points.AddXY("Junio", 110);
+        { 
 
         }
     }

@@ -40,7 +40,7 @@ namespace ProyectoADSI2024
             prograssbar1.Value += 1;
             prograssbar1.Text = prograssbar1.Value.ToString() + "%";
 
-            if (prograssbar1.Value == 100)
+            if (prograssbar1.Value == 3/*100*/)
             {
                 timer1.Enabled = false;
                 this.Close();

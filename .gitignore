@@ -23,3 +23,5 @@ Thumbs.db    # Windows
 # Ignorar archivos binarios y de depuración
 *.exe
 *.pdb
+/ProyectoADSI2024/CrystalReport1.cs
+/ProyectoADSI2024/CrystalReport1.rpt
