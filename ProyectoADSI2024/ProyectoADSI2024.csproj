@@ -95,6 +95,12 @@
     <Compile Include="frmGestionConcentrado.Designer.cs">
       <DependentUpon>frmGestionConcentrado.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmGestionConcentradoEditar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGestionConcentradoEditar.Designer.cs">
+      <DependentUpon>frmGestionConcentradoEditar.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmGestionMedicamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,6 +255,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmGestionConcentrado.resx">
       <DependentUpon>frmGestionConcentrado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGestionConcentradoEditar.resx">
+      <DependentUpon>frmGestionConcentradoEditar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmGestionMedicamento.resx">
       <DependentUpon>frmGestionMedicamento.cs</DependentUpon>

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Data.Common;
 
 
 namespace ProyectoADSI2024
@@ -16,6 +17,8 @@ namespace ProyectoADSI2024
     public partial class frmGestionConcentrado : Form
     {
         private Conexion cnxconcentrado;
+        SqlDataAdapter  adapterCompraConcen;
+        DataTable dtCompraConcen;
 
 
 
@@ -24,6 +27,10 @@ namespace ProyectoADSI2024
             
             InitializeComponent();
             cnxconcentrado = new Conexion();
+
+            dtCompraConcen = new DataTable();
+            adapterCompraConcen = new SqlDataAdapter("SpComprasActivas", cnxconcentrado.ObtenerConexion());
+            adapterCompraConcen.SelectCommand.CommandType = CommandType.StoredProcedure;
 
 
         }
@@ -57,6 +64,8 @@ namespace ProyectoADSI2024
         {
             //Conexion cnxconcentrado = new Conexion();
             LlenarComboProveedores(); //llena el cbx con los proveedores
+            adapterCompraConcen.Fill(dtCompraConcen);
+           dgGestionConcentrado.DataSource = dtCompraConcen;
         }
 
         private void label6_Click(object sender, EventArgs e)
@@ -122,9 +131,9 @@ namespace ProyectoADSI2024
                     cmdAgregarCompra.Parameters.AddWithValue("@nombrearticulo", txtNombeArticulo.Text);
                     cmdAgregarCompra.Parameters.AddWithValue("@codigo", txtCodigo.Text);
                     cmdAgregarCompra.Parameters.AddWithValue("@precio", Convert.ToDouble(txtPrecio.Text));
-                    //cmdAgregarCompra.Parameters.AddWithValue("@fechaVencimiento", txtVencimiento.Text);
+                    cmdAgregarCompra.Parameters.AddWithValue("@fechaVencimiento", dtpFechaVencimiento.Value);
                     cmdAgregarCompra.Parameters.AddWithValue("@cantidad", Convert.ToInt32(txtCantidad.Text));
-                    cmdAgregarCompra.Parameters.AddWithValue("@fechacompra", Convert.ToDateTime(txtFechaCompra.Text));
+                    cmdAgregarCompra.Parameters.AddWithValue("@fechacompra", Convert.ToDateTime(dtpFehcaCompra.Value));
                     cmdAgregarCompra.Parameters.AddWithValue("@documento", txtDocumento.Text);
                     cmdAgregarCompra.Parameters.AddWithValue("@tipo", cbxTipo.SelectedItem.ToString());
                     cmdAgregarCompra.Parameters.AddWithValue("@estado", cbxEstadoCompra.SelectedItem.ToString());
@@ -142,7 +151,7 @@ namespace ProyectoADSI2024
                     txtPrecio.Text = "";
                     //txtVencimiento.Text = "";
                     txtCantidad.Text = "";
-                    txtFechaCompra.ResetText();
+                    dtpFehcaCompra.ResetText();
                     txtDocumento.Text = "";
                     txtCosto.Text = "";
                     cbxProveedor.SelectedIndex = -1;  // Deseleccionar proveedor
@@ -166,7 +175,7 @@ namespace ProyectoADSI2024
         {
             try
             {
-                // Obtener la conexión abierta desde tu clase de conexión
+                
                 SqlConnection conexion = cnxconcentrado.ObtenerConexion();
 
                 // Crear el comando SQL para seleccionar los proveedores
@@ -203,5 +212,58 @@ namespace ProyectoADSI2024
                 this.Dispose();
         }
 
+        private void btnEditarCompraCon_Click(object sender, EventArgs e)
+        {
+            Form frmGestionConcentradoEditar = new frmGestionConcentradoEditar();
+            frmGestionConcentradoEditar.Show();
+        }
+
+        //metodo para el boton limpiar
+
+        private void LimpiarDatos()
+        {
+
+            txtNombeArticulo.Clear();
+            txtCodigo.Clear();
+            txtPrecio.Clear();
+            txtCantidad.Clear();
+            txtDocumento.Clear();
+            txtCosto.Clear();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           LimpiarDatos();
+        }
+
+        private void btnEliminarCompraCon_Click(object sender, EventArgs e)
+        {
+            if (dgGestionConcentrado.CurrentRow ==null)
+            {
+                MessageBox.Show("No hay ninguna fila seleccionada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            int compraid = Convert.ToInt32(dgGestionConcentrado.CurrentRow.Cells["CompraID"].Value);
+            SqlCommand cmdEliminar = new SqlCommand("SpEliminarCompraConcentrado", cnxconcentrado.ObtenerConexion());
+            cmdEliminar.CommandType = CommandType.StoredProcedure;
+            cmdEliminar.Parameters.AddWithValue("@CompraID",compraid);
+
+
+
+            try
+            {
+
+
+                cmdEliminar.ExecuteNonQuery();
+                MessageBox.Show("Compra eliminada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dtCompraConcen.Clear();
+                adapterCompraConcen.Fill(dtCompraConcen);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar la compra: " + ex.Message,  "Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
     }
 }

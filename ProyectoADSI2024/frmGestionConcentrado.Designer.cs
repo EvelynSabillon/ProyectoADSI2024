@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionConcentrado));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -57,13 +57,13 @@
             this.btnAgregarCompraCon = new System.Windows.Forms.Button();
             this.btnEditarCompraCon = new System.Windows.Forms.Button();
             this.btnEliminarCompraCon = new System.Windows.Forms.Button();
-            this.txtFechaCompra = new System.Windows.Forms.DateTimePicker();
+            this.dtpFehcaCompra = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaVencimiento = new System.Windows.Forms.DateTimePicker();
+            this.dgGestionConcentrado = new System.Windows.Forms.DataGridView();
+            this.btnLimpiarConcentradoCompara = new System.Windows.Forms.Button();
             this.btnAtras = new System.Windows.Forms.PictureBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dgIngresoLeche = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgGestionConcentrado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgIngresoLeche)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -332,6 +332,7 @@
             this.btnEditarCompraCon.TabIndex = 33;
             this.btnEditarCompraCon.Text = "EDITAR";
             this.btnEditarCompraCon.UseVisualStyleBackColor = false;
+            this.btnEditarCompraCon.Click += new System.EventHandler(this.btnEditarCompraCon_Click);
             // 
             // btnEliminarCompraCon
             // 
@@ -349,14 +350,71 @@
             this.btnEliminarCompraCon.TabIndex = 34;
             this.btnEliminarCompraCon.Text = "ELIMINAR";
             this.btnEliminarCompraCon.UseVisualStyleBackColor = false;
+            this.btnEliminarCompraCon.Click += new System.EventHandler(this.btnEliminarCompraCon_Click);
             // 
-            // txtFechaCompra
+            // dtpFehcaCompra
             // 
-            this.txtFechaCompra.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFechaCompra.Location = new System.Drawing.Point(569, 137);
-            this.txtFechaCompra.Name = "txtFechaCompra";
-            this.txtFechaCompra.Size = new System.Drawing.Size(200, 25);
-            this.txtFechaCompra.TabIndex = 35;
+            this.dtpFehcaCompra.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFehcaCompra.Location = new System.Drawing.Point(569, 137);
+            this.dtpFehcaCompra.Name = "dtpFehcaCompra";
+            this.dtpFehcaCompra.Size = new System.Drawing.Size(200, 25);
+            this.dtpFehcaCompra.TabIndex = 35;
+            // 
+            // dtpFechaVencimiento
+            // 
+            this.dtpFechaVencimiento.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaVencimiento.Location = new System.Drawing.Point(203, 222);
+            this.dtpFechaVencimiento.Name = "dtpFechaVencimiento";
+            this.dtpFechaVencimiento.Size = new System.Drawing.Size(234, 25);
+            this.dtpFechaVencimiento.TabIndex = 37;
+            // 
+            // dgGestionConcentrado
+            // 
+            this.dgGestionConcentrado.AllowUserToAddRows = false;
+            this.dgGestionConcentrado.AllowUserToDeleteRows = false;
+            this.dgGestionConcentrado.AllowUserToResizeColumns = false;
+            this.dgGestionConcentrado.AllowUserToResizeRows = false;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dgGestionConcentrado.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgGestionConcentrado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgGestionConcentrado.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgGestionConcentrado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgGestionConcentrado.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dgGestionConcentrado.Location = new System.Drawing.Point(23, 356);
+            this.dgGestionConcentrado.MultiSelect = false;
+            this.dgGestionConcentrado.Name = "dgGestionConcentrado";
+            this.dgGestionConcentrado.ReadOnly = true;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dgGestionConcentrado.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgGestionConcentrado.Size = new System.Drawing.Size(1023, 223);
+            this.dgGestionConcentrado.TabIndex = 79;
+            // 
+            // btnLimpiarConcentradoCompara
+            // 
+            this.btnLimpiarConcentradoCompara.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.btnLimpiarConcentradoCompara.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLimpiarConcentradoCompara.FlatAppearance.BorderSize = 0;
+            this.btnLimpiarConcentradoCompara.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.btnLimpiarConcentradoCompara.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.btnLimpiarConcentradoCompara.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiarConcentradoCompara.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiarConcentradoCompara.ForeColor = System.Drawing.Color.White;
+            this.btnLimpiarConcentradoCompara.Location = new System.Drawing.Point(851, 238);
+            this.btnLimpiarConcentradoCompara.Name = "btnLimpiarConcentradoCompara";
+            this.btnLimpiarConcentradoCompara.Size = new System.Drawing.Size(160, 38);
+            this.btnLimpiarConcentradoCompara.TabIndex = 80;
+            this.btnLimpiarConcentradoCompara.Text = "LIMPIAR";
+            this.btnLimpiarConcentradoCompara.UseVisualStyleBackColor = false;
+            this.btnLimpiarConcentradoCompara.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnAtras
             // 
@@ -371,71 +429,16 @@
             this.btnAtras.TabStop = false;
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(203, 222);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(234, 25);
-            this.dateTimePicker1.TabIndex = 37;
-            // 
-            // dgIngresoLeche
-            // 
-            this.dgIngresoLeche.AllowUserToAddRows = false;
-            this.dgIngresoLeche.AllowUserToDeleteRows = false;
-            this.dgIngresoLeche.AllowUserToResizeColumns = false;
-            this.dgIngresoLeche.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgIngresoLeche.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgIngresoLeche.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgIngresoLeche.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgIngresoLeche.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgIngresoLeche.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgIngresoLeche.Location = new System.Drawing.Point(23, 356);
-            this.dgIngresoLeche.MultiSelect = false;
-            this.dgIngresoLeche.Name = "dgIngresoLeche";
-            this.dgIngresoLeche.ReadOnly = true;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgIngresoLeche.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgIngresoLeche.Size = new System.Drawing.Size(1023, 223);
-            this.dgIngresoLeche.TabIndex = 79;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(851, 238);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(160, 38);
-            this.button1.TabIndex = 80;
-            this.button1.Text = "LIMPIAR";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // frmGestionConcentrado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1070, 595);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dgIngresoLeche);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.btnLimpiarConcentradoCompara);
+            this.Controls.Add(this.dgGestionConcentrado);
+            this.Controls.Add(this.dtpFechaVencimiento);
             this.Controls.Add(this.btnAtras);
-            this.Controls.Add(this.txtFechaCompra);
+            this.Controls.Add(this.dtpFehcaCompra);
             this.Controls.Add(this.btnEliminarCompraCon);
             this.Controls.Add(this.btnEditarCompraCon);
             this.Controls.Add(this.btnAgregarCompraCon);
@@ -465,8 +468,8 @@
             this.Name = "frmGestionConcentrado";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.frmGestionConcentrado_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgGestionConcentrado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgIngresoLeche)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -499,10 +502,10 @@
         private System.Windows.Forms.Button btnAgregarCompraCon;
         private System.Windows.Forms.Button btnEditarCompraCon;
         private System.Windows.Forms.Button btnEliminarCompraCon;
-        private System.Windows.Forms.DateTimePicker txtFechaCompra;
+        private System.Windows.Forms.DateTimePicker dtpFehcaCompra;
         private System.Windows.Forms.PictureBox btnAtras;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DataGridView dgIngresoLeche;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DateTimePicker dtpFechaVencimiento;
+        private System.Windows.Forms.DataGridView dgGestionConcentrado;
+        private System.Windows.Forms.Button btnLimpiarConcentradoCompara;
     }
 }

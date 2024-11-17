@@ -29,41 +29,41 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionMedicamento));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAtras = new System.Windows.Forms.PictureBox();
-            this.dgIngresoLeche = new System.Windows.Forms.DataGridView();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.txtFechaCompra = new System.Windows.Forms.DateTimePicker();
-            this.cbxProveedor = new System.Windows.Forms.ComboBox();
+            this.dgGestionMedCompra = new System.Windows.Forms.DataGridView();
+            this.dtpFechaVenMed = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaCompraMed = new System.Windows.Forms.DateTimePicker();
+            this.cbxProveedorMed = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.txtPrecioMed = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.txtNombeArticulo = new System.Windows.Forms.TextBox();
+            this.txtCodigoMed = new System.Windows.Forms.TextBox();
+            this.txtNombeArticuloMed = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtCosto = new System.Windows.Forms.TextBox();
+            this.txtCostoMed = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtCantidad = new System.Windows.Forms.TextBox();
+            this.txtCantidadMed = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.cbxEstadoCompra = new System.Windows.Forms.ComboBox();
+            this.cbxEstadoCompraMed = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.cbxTipo = new System.Windows.Forms.ComboBox();
+            this.cbxTipoMed = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtDocumento = new System.Windows.Forms.TextBox();
+            this.txtDocumentoMed = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnEliminarCompraCon = new System.Windows.Forms.Button();
+            this.btnEliminarCompraMed = new System.Windows.Forms.Button();
             this.btnEditarCompraCon = new System.Windows.Forms.Button();
-            this.btnAgregarCompraCon = new System.Windows.Forms.Button();
+            this.btnAgregarCompraMed = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgIngresoLeche)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgGestionMedCompra)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -101,61 +101,61 @@
             this.btnAtras.TabStop = false;
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
-            // dgIngresoLeche
+            // dgGestionMedCompra
             // 
-            this.dgIngresoLeche.AllowUserToAddRows = false;
-            this.dgIngresoLeche.AllowUserToDeleteRows = false;
-            this.dgIngresoLeche.AllowUserToResizeColumns = false;
-            this.dgIngresoLeche.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgIngresoLeche.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgIngresoLeche.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgIngresoLeche.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgIngresoLeche.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgIngresoLeche.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dgIngresoLeche.Location = new System.Drawing.Point(23, 360);
-            this.dgIngresoLeche.MultiSelect = false;
-            this.dgIngresoLeche.Name = "dgIngresoLeche";
-            this.dgIngresoLeche.ReadOnly = true;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgIngresoLeche.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgIngresoLeche.Size = new System.Drawing.Size(1023, 223);
-            this.dgIngresoLeche.TabIndex = 105;
+            this.dgGestionMedCompra.AllowUserToAddRows = false;
+            this.dgGestionMedCompra.AllowUserToDeleteRows = false;
+            this.dgGestionMedCompra.AllowUserToResizeColumns = false;
+            this.dgGestionMedCompra.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dgGestionMedCompra.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgGestionMedCompra.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgGestionMedCompra.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgGestionMedCompra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgGestionMedCompra.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgGestionMedCompra.Location = new System.Drawing.Point(23, 360);
+            this.dgGestionMedCompra.MultiSelect = false;
+            this.dgGestionMedCompra.Name = "dgGestionMedCompra";
+            this.dgGestionMedCompra.ReadOnly = true;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dgGestionMedCompra.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgGestionMedCompra.Size = new System.Drawing.Size(1023, 223);
+            this.dgGestionMedCompra.TabIndex = 105;
             // 
-            // dateTimePicker1
+            // dtpFechaVenMed
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(203, 226);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(234, 25);
-            this.dateTimePicker1.TabIndex = 104;
+            this.dtpFechaVenMed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaVenMed.Location = new System.Drawing.Point(203, 226);
+            this.dtpFechaVenMed.Name = "dtpFechaVenMed";
+            this.dtpFechaVenMed.Size = new System.Drawing.Size(234, 25);
+            this.dtpFechaVenMed.TabIndex = 104;
             // 
-            // txtFechaCompra
+            // dtpFechaCompraMed
             // 
-            this.txtFechaCompra.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFechaCompra.Location = new System.Drawing.Point(569, 141);
-            this.txtFechaCompra.Name = "txtFechaCompra";
-            this.txtFechaCompra.Size = new System.Drawing.Size(200, 25);
-            this.txtFechaCompra.TabIndex = 103;
+            this.dtpFechaCompraMed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaCompraMed.Location = new System.Drawing.Point(569, 141);
+            this.dtpFechaCompraMed.Name = "dtpFechaCompraMed";
+            this.dtpFechaCompraMed.Size = new System.Drawing.Size(200, 25);
+            this.dtpFechaCompraMed.TabIndex = 103;
             // 
-            // cbxProveedor
+            // cbxProveedorMed
             // 
-            this.cbxProveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxProveedor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxProveedor.FormattingEnabled = true;
-            this.cbxProveedor.Location = new System.Drawing.Point(203, 313);
-            this.cbxProveedor.Name = "cbxProveedor";
-            this.cbxProveedor.Size = new System.Drawing.Size(234, 25);
-            this.cbxProveedor.TabIndex = 99;
+            this.cbxProveedorMed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxProveedorMed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxProveedorMed.FormattingEnabled = true;
+            this.cbxProveedorMed.Location = new System.Drawing.Point(203, 313);
+            this.cbxProveedorMed.Name = "cbxProveedorMed";
+            this.cbxProveedorMed.Size = new System.Drawing.Size(234, 25);
+            this.cbxProveedorMed.TabIndex = 99;
             // 
             // label13
             // 
@@ -177,13 +177,13 @@
             this.label12.TabIndex = 97;
             this.label12.Text = "FechaVencimiento";
             // 
-            // txtPrecio
+            // txtPrecioMed
             // 
-            this.txtPrecio.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrecio.Location = new System.Drawing.Point(316, 184);
-            this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(121, 25);
-            this.txtPrecio.TabIndex = 96;
+            this.txtPrecioMed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrecioMed.Location = new System.Drawing.Point(316, 184);
+            this.txtPrecioMed.Name = "txtPrecioMed";
+            this.txtPrecioMed.Size = new System.Drawing.Size(121, 25);
+            this.txtPrecioMed.TabIndex = 96;
             // 
             // label11
             // 
@@ -195,21 +195,21 @@
             this.label11.TabIndex = 95;
             this.label11.Text = "Precio";
             // 
-            // txtCodigo
+            // txtCodigoMed
             // 
-            this.txtCodigo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.Location = new System.Drawing.Point(125, 182);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(121, 25);
-            this.txtCodigo.TabIndex = 94;
+            this.txtCodigoMed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigoMed.Location = new System.Drawing.Point(125, 182);
+            this.txtCodigoMed.Name = "txtCodigoMed";
+            this.txtCodigoMed.Size = new System.Drawing.Size(121, 25);
+            this.txtCodigoMed.TabIndex = 94;
             // 
-            // txtNombeArticulo
+            // txtNombeArticuloMed
             // 
-            this.txtNombeArticulo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombeArticulo.Location = new System.Drawing.Point(125, 141);
-            this.txtNombeArticulo.Name = "txtNombeArticulo";
-            this.txtNombeArticulo.Size = new System.Drawing.Size(312, 25);
-            this.txtNombeArticulo.TabIndex = 93;
+            this.txtNombeArticuloMed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombeArticuloMed.Location = new System.Drawing.Point(125, 141);
+            this.txtNombeArticuloMed.Name = "txtNombeArticuloMed";
+            this.txtNombeArticuloMed.Size = new System.Drawing.Size(312, 25);
+            this.txtNombeArticuloMed.TabIndex = 93;
             // 
             // label10
             // 
@@ -231,13 +231,13 @@
             this.label9.TabIndex = 91;
             this.label9.Text = "Nombre";
             // 
-            // txtCosto
+            // txtCostoMed
             // 
-            this.txtCosto.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCosto.Location = new System.Drawing.Point(648, 313);
-            this.txtCosto.Name = "txtCosto";
-            this.txtCosto.Size = new System.Drawing.Size(121, 25);
-            this.txtCosto.TabIndex = 90;
+            this.txtCostoMed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCostoMed.Location = new System.Drawing.Point(648, 313);
+            this.txtCostoMed.Name = "txtCostoMed";
+            this.txtCostoMed.Size = new System.Drawing.Size(121, 25);
+            this.txtCostoMed.TabIndex = 90;
             // 
             // label7
             // 
@@ -249,13 +249,13 @@
             this.label7.TabIndex = 89;
             this.label7.Text = "Costo";
             // 
-            // txtCantidad
+            // txtCantidadMed
             // 
-            this.txtCantidad.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCantidad.Location = new System.Drawing.Point(203, 270);
-            this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(121, 25);
-            this.txtCantidad.TabIndex = 88;
+            this.txtCantidadMed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCantidadMed.Location = new System.Drawing.Point(203, 270);
+            this.txtCantidadMed.Name = "txtCantidadMed";
+            this.txtCantidadMed.Size = new System.Drawing.Size(121, 25);
+            this.txtCantidadMed.TabIndex = 88;
             // 
             // label6
             // 
@@ -267,18 +267,18 @@
             this.label6.TabIndex = 87;
             this.label6.Text = "Cantidad";
             // 
-            // cbxEstadoCompra
+            // cbxEstadoCompraMed
             // 
-            this.cbxEstadoCompra.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxEstadoCompra.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxEstadoCompra.FormattingEnabled = true;
-            this.cbxEstadoCompra.Items.AddRange(new object[] {
+            this.cbxEstadoCompraMed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxEstadoCompraMed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxEstadoCompraMed.FormattingEnabled = true;
+            this.cbxEstadoCompraMed.Items.AddRange(new object[] {
             "Pagada",
             "Por pagar"});
-            this.cbxEstadoCompra.Location = new System.Drawing.Point(648, 270);
-            this.cbxEstadoCompra.Name = "cbxEstadoCompra";
-            this.cbxEstadoCompra.Size = new System.Drawing.Size(121, 25);
-            this.cbxEstadoCompra.TabIndex = 86;
+            this.cbxEstadoCompraMed.Location = new System.Drawing.Point(648, 270);
+            this.cbxEstadoCompraMed.Name = "cbxEstadoCompraMed";
+            this.cbxEstadoCompraMed.Size = new System.Drawing.Size(121, 25);
+            this.cbxEstadoCompraMed.TabIndex = 86;
             // 
             // label5
             // 
@@ -290,20 +290,20 @@
             this.label5.TabIndex = 85;
             this.label5.Text = "Estado de Compra";
             // 
-            // cbxTipo
+            // cbxTipoMed
             // 
-            this.cbxTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxTipo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxTipo.FormattingEnabled = true;
-            this.cbxTipo.Items.AddRange(new object[] {
+            this.cbxTipoMed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxTipoMed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxTipoMed.FormattingEnabled = true;
+            this.cbxTipoMed.Items.AddRange(new object[] {
             "Mantenimiento",
             "Lechera",
             "18% Lechera",
             "Churro"});
-            this.cbxTipo.Location = new System.Drawing.Point(648, 226);
-            this.cbxTipo.Name = "cbxTipo";
-            this.cbxTipo.Size = new System.Drawing.Size(121, 25);
-            this.cbxTipo.TabIndex = 84;
+            this.cbxTipoMed.Location = new System.Drawing.Point(648, 226);
+            this.cbxTipoMed.Name = "cbxTipoMed";
+            this.cbxTipoMed.Size = new System.Drawing.Size(121, 25);
+            this.cbxTipoMed.TabIndex = 84;
             // 
             // label8
             // 
@@ -315,13 +315,13 @@
             this.label8.TabIndex = 83;
             this.label8.Text = "Tipo";
             // 
-            // txtDocumento
+            // txtDocumentoMed
             // 
-            this.txtDocumento.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDocumento.Location = new System.Drawing.Point(648, 182);
-            this.txtDocumento.Name = "txtDocumento";
-            this.txtDocumento.Size = new System.Drawing.Size(121, 25);
-            this.txtDocumento.TabIndex = 82;
+            this.txtDocumentoMed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDocumentoMed.Location = new System.Drawing.Point(648, 182);
+            this.txtDocumentoMed.Name = "txtDocumentoMed";
+            this.txtDocumentoMed.Size = new System.Drawing.Size(121, 25);
+            this.txtDocumentoMed.TabIndex = 82;
             // 
             // label4
             // 
@@ -343,22 +343,23 @@
             this.label3.TabIndex = 80;
             this.label3.Text = "Fecha";
             // 
-            // btnEliminarCompraCon
+            // btnEliminarCompraMed
             // 
-            this.btnEliminarCompraCon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.btnEliminarCompraCon.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEliminarCompraCon.FlatAppearance.BorderSize = 0;
-            this.btnEliminarCompraCon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
-            this.btnEliminarCompraCon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
-            this.btnEliminarCompraCon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminarCompraCon.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminarCompraCon.ForeColor = System.Drawing.Color.White;
-            this.btnEliminarCompraCon.Location = new System.Drawing.Point(851, 300);
-            this.btnEliminarCompraCon.Name = "btnEliminarCompraCon";
-            this.btnEliminarCompraCon.Size = new System.Drawing.Size(160, 38);
-            this.btnEliminarCompraCon.TabIndex = 102;
-            this.btnEliminarCompraCon.Text = "ELIMINAR";
-            this.btnEliminarCompraCon.UseVisualStyleBackColor = false;
+            this.btnEliminarCompraMed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.btnEliminarCompraMed.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminarCompraMed.FlatAppearance.BorderSize = 0;
+            this.btnEliminarCompraMed.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.btnEliminarCompraMed.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.btnEliminarCompraMed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminarCompraMed.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarCompraMed.ForeColor = System.Drawing.Color.White;
+            this.btnEliminarCompraMed.Location = new System.Drawing.Point(851, 300);
+            this.btnEliminarCompraMed.Name = "btnEliminarCompraMed";
+            this.btnEliminarCompraMed.Size = new System.Drawing.Size(160, 38);
+            this.btnEliminarCompraMed.TabIndex = 102;
+            this.btnEliminarCompraMed.Text = "ELIMINAR";
+            this.btnEliminarCompraMed.UseVisualStyleBackColor = false;
+            this.btnEliminarCompraMed.Click += new System.EventHandler(this.btnEliminarCompraMed_Click);
             // 
             // btnEditarCompraCon
             // 
@@ -377,22 +378,23 @@
             this.btnEditarCompraCon.Text = "EDITAR";
             this.btnEditarCompraCon.UseVisualStyleBackColor = false;
             // 
-            // btnAgregarCompraCon
+            // btnAgregarCompraMed
             // 
-            this.btnAgregarCompraCon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.btnAgregarCompraCon.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAgregarCompraCon.FlatAppearance.BorderSize = 0;
-            this.btnAgregarCompraCon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
-            this.btnAgregarCompraCon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
-            this.btnAgregarCompraCon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarCompraCon.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarCompraCon.ForeColor = System.Drawing.Color.White;
-            this.btnAgregarCompraCon.Location = new System.Drawing.Point(851, 141);
-            this.btnAgregarCompraCon.Name = "btnAgregarCompraCon";
-            this.btnAgregarCompraCon.Size = new System.Drawing.Size(160, 38);
-            this.btnAgregarCompraCon.TabIndex = 100;
-            this.btnAgregarCompraCon.Text = "AGREGAR";
-            this.btnAgregarCompraCon.UseVisualStyleBackColor = false;
+            this.btnAgregarCompraMed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.btnAgregarCompraMed.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgregarCompraMed.FlatAppearance.BorderSize = 0;
+            this.btnAgregarCompraMed.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.btnAgregarCompraMed.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.btnAgregarCompraMed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarCompraMed.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarCompraMed.ForeColor = System.Drawing.Color.White;
+            this.btnAgregarCompraMed.Location = new System.Drawing.Point(851, 141);
+            this.btnAgregarCompraMed.Name = "btnAgregarCompraMed";
+            this.btnAgregarCompraMed.Size = new System.Drawing.Size(160, 38);
+            this.btnAgregarCompraMed.TabIndex = 100;
+            this.btnAgregarCompraMed.Text = "AGREGAR";
+            this.btnAgregarCompraMed.UseVisualStyleBackColor = false;
+            this.btnAgregarCompraMed.Click += new System.EventHandler(this.btnAgregarCompraCon_Click);
             // 
             // button1
             // 
@@ -410,6 +412,7 @@
             this.button1.TabIndex = 106;
             this.button1.Text = "LIMPIAR";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmGestionMedicamento
             // 
@@ -417,30 +420,30 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1070, 595);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.dgIngresoLeche);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.txtFechaCompra);
-            this.Controls.Add(this.btnEliminarCompraCon);
+            this.Controls.Add(this.dgGestionMedCompra);
+            this.Controls.Add(this.dtpFechaVenMed);
+            this.Controls.Add(this.dtpFechaCompraMed);
+            this.Controls.Add(this.btnEliminarCompraMed);
             this.Controls.Add(this.btnEditarCompraCon);
-            this.Controls.Add(this.btnAgregarCompraCon);
-            this.Controls.Add(this.cbxProveedor);
+            this.Controls.Add(this.btnAgregarCompraMed);
+            this.Controls.Add(this.cbxProveedorMed);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.txtPrecio);
+            this.Controls.Add(this.txtPrecioMed);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.txtCodigo);
-            this.Controls.Add(this.txtNombeArticulo);
+            this.Controls.Add(this.txtCodigoMed);
+            this.Controls.Add(this.txtNombeArticuloMed);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.txtCosto);
+            this.Controls.Add(this.txtCostoMed);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtCantidad);
+            this.Controls.Add(this.txtCantidadMed);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.cbxEstadoCompra);
+            this.Controls.Add(this.cbxEstadoCompraMed);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.cbxTipo);
+            this.Controls.Add(this.cbxTipoMed);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.txtDocumento);
+            this.Controls.Add(this.txtDocumentoMed);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnAtras);
@@ -450,8 +453,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmGestionMedicamento";
             this.Text = "frmGestionMedicamento";
+            this.Load += new System.EventHandler(this.frmGestionMedicamento_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgIngresoLeche)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgGestionMedCompra)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -462,32 +466,32 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox btnAtras;
-        private System.Windows.Forms.DataGridView dgIngresoLeche;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker txtFechaCompra;
-        private System.Windows.Forms.ComboBox cbxProveedor;
+        private System.Windows.Forms.DataGridView dgGestionMedCompra;
+        private System.Windows.Forms.DateTimePicker dtpFechaVenMed;
+        private System.Windows.Forms.DateTimePicker dtpFechaCompraMed;
+        private System.Windows.Forms.ComboBox cbxProveedorMed;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtPrecio;
+        private System.Windows.Forms.TextBox txtPrecioMed;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtCodigo;
-        private System.Windows.Forms.TextBox txtNombeArticulo;
+        private System.Windows.Forms.TextBox txtCodigoMed;
+        private System.Windows.Forms.TextBox txtNombeArticuloMed;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtCosto;
+        private System.Windows.Forms.TextBox txtCostoMed;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtCantidad;
+        private System.Windows.Forms.TextBox txtCantidadMed;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cbxEstadoCompra;
+        private System.Windows.Forms.ComboBox cbxEstadoCompraMed;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cbxTipo;
+        private System.Windows.Forms.ComboBox cbxTipoMed;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtDocumento;
+        private System.Windows.Forms.TextBox txtDocumentoMed;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnEliminarCompraCon;
+        private System.Windows.Forms.Button btnEliminarCompraMed;
         private System.Windows.Forms.Button btnEditarCompraCon;
-        private System.Windows.Forms.Button btnAgregarCompraCon;
+        private System.Windows.Forms.Button btnAgregarCompraMed;
         private System.Windows.Forms.Button button1;
     }
 }
