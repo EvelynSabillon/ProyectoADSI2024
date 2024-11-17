@@ -77,7 +77,8 @@ namespace ProyectoADSI2024
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            if (MessageBox.Show("¿Desea salir del sistema?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                Application.ExitThread();
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)
