@@ -215,6 +215,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ReporteIngresoLeche.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\PlantillaReporte\Formato_Plantilla1.cs">
       <AutoGen>True</AutoGen>
