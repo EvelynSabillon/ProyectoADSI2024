@@ -37,27 +37,27 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.provEmail = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.provTelef = new System.Windows.Forms.MaskedTextBox();
+            this.provRTN = new System.Windows.Forms.MaskedTextBox();
             this.tboxBuscar = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cboxBuscar = new System.Windows.Forms.ComboBox();
-            this.tboxDireccion = new System.Windows.Forms.TextBox();
+            this.provDirec = new System.Windows.Forms.TextBox();
             this.btnSalir = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.tboxSocioID = new System.Windows.Forms.TextBox();
+            this.provId = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.dgIngresoLeche = new System.Windows.Forms.DataGridView();
+            this.dgRegProv = new System.Windows.Forms.DataGridView();
             this.chboxActivo = new System.Windows.Forms.CheckBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.provName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgIngresoLeche)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgRegProv)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -101,6 +101,7 @@
             this.button2.TabIndex = 124;
             this.button2.Text = "LIMPIAR";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnEliminar
             // 
@@ -118,6 +119,7 @@
             this.btnEliminar.TabIndex = 123;
             this.btnEliminar.Text = "ELIMINAR";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnGuardar
             // 
@@ -135,14 +137,15 @@
             this.btnGuardar.TabIndex = 122;
             this.btnGuardar.Text = "GUARDAR";
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // textBox1
+            // provEmail
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(182, 405);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(263, 25);
-            this.textBox1.TabIndex = 121;
+            this.provEmail.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.provEmail.Location = new System.Drawing.Point(182, 405);
+            this.provEmail.Name = "provEmail";
+            this.provEmail.Size = new System.Drawing.Size(263, 25);
+            this.provEmail.TabIndex = 121;
             // 
             // label6
             // 
@@ -154,23 +157,23 @@
             this.label6.TabIndex = 120;
             this.label6.Text = "E-mail";
             // 
-            // maskedTextBox2
+            // provTelef
             // 
-            this.maskedTextBox2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox2.Location = new System.Drawing.Point(182, 361);
-            this.maskedTextBox2.Mask = "(000)0000-0000";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(181, 25);
-            this.maskedTextBox2.TabIndex = 119;
+            this.provTelef.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.provTelef.Location = new System.Drawing.Point(182, 361);
+            this.provTelef.Mask = "(000)0000-0000";
+            this.provTelef.Name = "provTelef";
+            this.provTelef.Size = new System.Drawing.Size(181, 25);
+            this.provTelef.TabIndex = 119;
             // 
-            // maskedTextBox1
+            // provRTN
             // 
-            this.maskedTextBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(182, 235);
-            this.maskedTextBox1.Mask = "0000-0000-00000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(181, 25);
-            this.maskedTextBox1.TabIndex = 118;
+            this.provRTN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.provRTN.Location = new System.Drawing.Point(182, 235);
+            this.provRTN.Mask = "0000-0000-00000";
+            this.provRTN.Name = "provRTN";
+            this.provRTN.Size = new System.Drawing.Size(181, 25);
+            this.provRTN.TabIndex = 118;
             // 
             // tboxBuscar
             // 
@@ -200,14 +203,14 @@
             this.cboxBuscar.Size = new System.Drawing.Size(144, 25);
             this.cboxBuscar.TabIndex = 115;
             // 
-            // tboxDireccion
+            // provDirec
             // 
-            this.tboxDireccion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxDireccion.Location = new System.Drawing.Point(183, 279);
-            this.tboxDireccion.Multiline = true;
-            this.tboxDireccion.Name = "tboxDireccion";
-            this.tboxDireccion.Size = new System.Drawing.Size(262, 63);
-            this.tboxDireccion.TabIndex = 114;
+            this.provDirec.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.provDirec.Location = new System.Drawing.Point(183, 279);
+            this.provDirec.Multiline = true;
+            this.provDirec.Name = "provDirec";
+            this.provDirec.Size = new System.Drawing.Size(262, 63);
+            this.provDirec.TabIndex = 114;
             // 
             // btnSalir
             // 
@@ -256,13 +259,13 @@
             this.label3.TabIndex = 110;
             this.label3.Text = "RTN";
             // 
-            // tboxSocioID
+            // provId
             // 
-            this.tboxSocioID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxSocioID.Location = new System.Drawing.Point(182, 147);
-            this.tboxSocioID.Name = "tboxSocioID";
-            this.tboxSocioID.Size = new System.Drawing.Size(121, 25);
-            this.tboxSocioID.TabIndex = 109;
+            this.provId.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.provId.Location = new System.Drawing.Point(182, 147);
+            this.provId.Name = "provId";
+            this.provId.Size = new System.Drawing.Size(121, 25);
+            this.provId.TabIndex = 109;
             // 
             // label2
             // 
@@ -274,18 +277,18 @@
             this.label2.TabIndex = 108;
             this.label2.Text = "ProveedorID";
             // 
-            // dgIngresoLeche
+            // dgRegProv
             // 
-            this.dgIngresoLeche.AllowUserToAddRows = false;
-            this.dgIngresoLeche.AllowUserToDeleteRows = false;
-            this.dgIngresoLeche.AllowUserToResizeColumns = false;
-            this.dgIngresoLeche.AllowUserToResizeRows = false;
+            this.dgRegProv.AllowUserToAddRows = false;
+            this.dgRegProv.AllowUserToDeleteRows = false;
+            this.dgRegProv.AllowUserToResizeColumns = false;
+            this.dgRegProv.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgIngresoLeche.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgIngresoLeche.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgIngresoLeche.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgIngresoLeche.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgRegProv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgRegProv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgRegProv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgRegProv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -293,16 +296,16 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgIngresoLeche.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgIngresoLeche.Location = new System.Drawing.Point(499, 133);
-            this.dgIngresoLeche.MultiSelect = false;
-            this.dgIngresoLeche.Name = "dgIngresoLeche";
-            this.dgIngresoLeche.ReadOnly = true;
+            this.dgRegProv.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgRegProv.Location = new System.Drawing.Point(499, 133);
+            this.dgRegProv.MultiSelect = false;
+            this.dgRegProv.Name = "dgRegProv";
+            this.dgRegProv.ReadOnly = true;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgIngresoLeche.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgIngresoLeche.Size = new System.Drawing.Size(547, 375);
-            this.dgIngresoLeche.TabIndex = 107;
+            this.dgRegProv.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgRegProv.Size = new System.Drawing.Size(547, 375);
+            this.dgRegProv.TabIndex = 107;
             // 
             // chboxActivo
             // 
@@ -315,13 +318,13 @@
             this.chboxActivo.Text = "Activo";
             this.chboxActivo.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // provName
             // 
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(182, 191);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(263, 25);
-            this.textBox2.TabIndex = 126;
+            this.provName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.provName.Location = new System.Drawing.Point(182, 191);
+            this.provName.Name = "provName";
+            this.provName.Size = new System.Drawing.Size(263, 25);
+            this.provName.TabIndex = 126;
             // 
             // label7
             // 
@@ -349,6 +352,7 @@
             this.button1.TabIndex = 127;
             this.button1.Text = "EDITAR";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // RegistroProveedores
             // 
@@ -356,34 +360,35 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1070, 595);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.provName);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.provEmail);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.maskedTextBox2);
-            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.provTelef);
+            this.Controls.Add(this.provRTN);
             this.Controls.Add(this.tboxBuscar);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.cboxBuscar);
-            this.Controls.Add(this.tboxDireccion);
+            this.Controls.Add(this.provDirec);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.tboxSocioID);
+            this.Controls.Add(this.provId);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dgIngresoLeche);
+            this.Controls.Add(this.dgRegProv);
             this.Controls.Add(this.chboxActivo);
             this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RegistroProveedores";
             this.Text = "RegistroProveedores";
+            this.Load += new System.EventHandler(this.RegistroProveedores_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgIngresoLeche)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgRegProv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -396,23 +401,23 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox provEmail;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox provTelef;
+        private System.Windows.Forms.MaskedTextBox provRTN;
         private System.Windows.Forms.TextBox tboxBuscar;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cboxBuscar;
-        private System.Windows.Forms.TextBox tboxDireccion;
+        private System.Windows.Forms.TextBox provDirec;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tboxSocioID;
+        private System.Windows.Forms.TextBox provId;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dgIngresoLeche;
+        private System.Windows.Forms.DataGridView dgRegProv;
         private System.Windows.Forms.CheckBox chboxActivo;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox provName;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button1;
     }

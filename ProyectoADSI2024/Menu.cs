@@ -305,5 +305,11 @@ namespace ProyectoADSI2024
         {
             AbrirDashboardEnPanel();
         }
+
+        private void reporteConsumoInsumoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frmvistasociosreporteconsumoinsumo = new frmVistaDeSocioParaReporteConsumoInsumo();
+            frmvistasociosreporteconsumoinsumo.Show();
+        }
     }
 }

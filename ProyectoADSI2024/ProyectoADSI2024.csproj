@@ -53,6 +53,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="crReporteConsumoMedCon.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crReporteConsumoMedCon.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DashBoard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,6 +156,12 @@
     <Compile Include="frmPrestamo.Designer.cs">
       <DependentUpon>frmPrestamo.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReporteConsumoMedCon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteConsumoMedCon.Designer.cs">
+      <DependentUpon>frmReporteConsumoMedCon.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSalidaConcentrado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +179,12 @@
     </Compile>
     <Compile Include="frmSplashScreen.Designer.cs">
       <DependentUpon>frmSplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmVistaDeSocioParaReporteConsumoInsumo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVistaDeSocioParaReporteConsumoInsumo.Designer.cs">
+      <DependentUpon>frmVistaDeSocioParaReporteConsumoInsumo.cs</DependentUpon>
     </Compile>
     <Compile Include="GestionPermisos.cs">
       <SubType>Form</SubType>
@@ -223,6 +242,12 @@
       <DependentUpon>ReporteIngresoLeche.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\ReportePrestamosFinanzas\ReporteNomina.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteNomina.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\PlantillaReporte\Formato_Plantilla1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -235,11 +260,11 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Reportes\ReportePrestamosFinanzas\ReporteNominaQuincenal.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ReporteNominaQuincenal.rpt</DependentUpon>
-      <SubType>Component</SubType>
+    <Compile Include="Reportes\ReportePrestamosFinanzas\FrmReporteNomina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReportePrestamosFinanzas\FrmReporteNomina.Designer.cs">
+      <DependentUpon>FrmReporteNomina.cs</DependentUpon>
     </Compile>
     <Compile Include="Vista_ArticuloCon.cs">
       <SubType>Form</SubType>
@@ -249,6 +274,11 @@
     </Compile>
     <EmbeddedResource Include="BotonesUtilidades.resx">
       <DependentUpon>BotonesUtilidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="crReporteConsumoMedCon.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crReporteConsumoMedCon.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="DashBoard.resx">
       <DependentUpon>DashBoard.cs</DependentUpon>
@@ -292,6 +322,9 @@
     <EmbeddedResource Include="frmPrestamo.resx">
       <DependentUpon>frmPrestamo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteConsumoMedCon.resx">
+      <DependentUpon>frmReporteConsumoMedCon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSalidaConcentrado.resx">
       <DependentUpon>frmSalidaConcentrado.cs</DependentUpon>
     </EmbeddedResource>
@@ -300,6 +333,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSplashScreen.resx">
       <DependentUpon>frmSplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVistaDeSocioParaReporteConsumoInsumo.resx">
+      <DependentUpon>frmVistaDeSocioParaReporteConsumoInsumo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GestionPermisos.resx">
       <DependentUpon>GestionPermisos.cs</DependentUpon>
@@ -339,6 +375,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteIngresoLeche.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReportePrestamosFinanzas\ReporteNomina.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteNomina.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\PlantillaReporte\Formato_Plantilla.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Formato_Plantilla1.cs</LastGenOutput>
@@ -347,9 +387,8 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Reporte_Kardex.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\ReportePrestamosFinanzas\ReporteNominaQuincenal.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ReporteNominaQuincenal.cs</LastGenOutput>
+    <EmbeddedResource Include="Reportes\ReportePrestamosFinanzas\FrmReporteNomina.resx">
+      <DependentUpon>FrmReporteNomina.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista_ArticuloCon.resx">
       <DependentUpon>Vista_ArticuloCon.cs</DependentUpon>

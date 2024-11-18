@@ -83,6 +83,7 @@
             this.reporteDeProducciónQuincenalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteDeProducciónMensualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteDePrestamoDeSocioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteConsumoInsumoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.BarraTitulo.SuspendLayout();
@@ -685,12 +686,13 @@
             this.reporteDeInventarioExistenteToolStripMenuItem,
             this.reporteDeProducciónQuincenalToolStripMenuItem,
             this.reporteDeProducciónMensualToolStripMenuItem,
-            this.reporteDePrestamoDeSocioToolStripMenuItem});
+            this.reporteDePrestamoDeSocioToolStripMenuItem,
+            this.reporteConsumoInsumoToolStripMenuItem});
             this.dropdownMenu7.MenuItemHeight = 25;
             this.dropdownMenu7.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu7.Name = "dropdownMenu7";
             this.dropdownMenu7.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu7.Size = new System.Drawing.Size(341, 108);
+            this.dropdownMenu7.Size = new System.Drawing.Size(341, 156);
             // 
             // reporteDeInventarioExistenteToolStripMenuItem
             // 
@@ -715,6 +717,13 @@
             this.reporteDePrestamoDeSocioToolStripMenuItem.Name = "reporteDePrestamoDeSocioToolStripMenuItem";
             this.reporteDePrestamoDeSocioToolStripMenuItem.Size = new System.Drawing.Size(340, 26);
             this.reporteDePrestamoDeSocioToolStripMenuItem.Text = "Reporte de Prestamo de Socio";
+            // 
+            // reporteConsumoInsumoToolStripMenuItem
+            // 
+            this.reporteConsumoInsumoToolStripMenuItem.Name = "reporteConsumoInsumoToolStripMenuItem";
+            this.reporteConsumoInsumoToolStripMenuItem.Size = new System.Drawing.Size(340, 26);
+            this.reporteConsumoInsumoToolStripMenuItem.Text = "Reporte Consumo Insumo";
+            this.reporteConsumoInsumoToolStripMenuItem.Click += new System.EventHandler(this.reporteConsumoInsumoToolStripMenuItem_Click);
             // 
             // Menu
             // 
@@ -806,6 +815,7 @@
         private System.Windows.Forms.ToolStripMenuItem reporteDeProducciónQuincenalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteDeProducciónMensualToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteDePrestamoDeSocioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteConsumoInsumoToolStripMenuItem;
     }
 }
 

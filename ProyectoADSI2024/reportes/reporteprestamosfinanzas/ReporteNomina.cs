@@ -16,14 +16,14 @@ namespace ProyectoADSI2024.Reportes.ReportePrestamosFinanzas {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class ReporteNominaQuincenal : ReportClass {
+    public class ReporteNomina : ReportClass {
         
-        public ReporteNominaQuincenal() {
+        public ReporteNomina() {
         }
         
         public override string ResourceName {
             get {
-                return "ReporteNominaQuincenal.rpt";
+                return "ReporteNomina.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace ProyectoADSI2024.Reportes.ReportePrestamosFinanzas {
         
         public override string FullResourceName {
             get {
-                return "ProyectoADSI2024.Reportes.ReportePrestamosFinanzas.ReporteNominaQuincenal.rpt";
+                return "ProyectoADSI2024.Reportes.ReportePrestamosFinanzas.ReporteNomina.rpt";
             }
             set {
                 // Do nothing
@@ -87,20 +87,12 @@ namespace ProyectoADSI2024.Reportes.ReportePrestamosFinanzas {
                 return this.ReportDefinition.Sections[4];
             }
         }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Nombre {
-            get {
-                return this.DataDefinition.ParameterFields[0];
-            }
-        }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedReporteNominaQuincenal : Component, ICachedReport {
+    public class CachedReporteNomina : Component, ICachedReport {
         
-        public CachedReporteNominaQuincenal() {
+        public CachedReporteNomina() {
         }
         
         [Browsable(false)]
@@ -137,7 +129,7 @@ namespace ProyectoADSI2024.Reportes.ReportePrestamosFinanzas {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            ReporteNominaQuincenal rpt = new ReporteNominaQuincenal();
+            ReporteNomina rpt = new ReporteNomina();
             rpt.Site = this.Site;
             return rpt;
         }
