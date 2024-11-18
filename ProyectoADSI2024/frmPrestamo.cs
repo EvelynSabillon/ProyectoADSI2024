@@ -266,6 +266,7 @@ namespace ProyectoADSI2024
         {
             //LIMPIAR TODOS LOS CAMPOS
             txtTexto.Enabled = false;
+            txtTexto.Text = "";
             txtPrestamoID.Text = "";
             txtSocioID.Text = "";
             cmbNombreSocio.SelectedIndex = -1;  // Deseleccionar socio
