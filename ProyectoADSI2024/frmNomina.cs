@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProyectoADSI2024.Reportes.ReportePrestamosFinanzas; //Mandar a llamar el form del reporte de la nomina
 
 namespace ProyectoADSI2024
 {
@@ -31,6 +32,12 @@ namespace ProyectoADSI2024
         private void timerMes_Tick(object sender, EventArgs e)
         {
             lblMes.Text = DateTime.Now.ToString("MMMM");
+        }
+
+        private void btnGenReporte_Click(object sender, EventArgs e)
+        {
+            FrmReporteNomina frmReporteNomina = new FrmReporteNomina();
+            frmReporteNomina.ShowDialog();
         }
     }
 }

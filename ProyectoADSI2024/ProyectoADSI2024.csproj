@@ -58,6 +58,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>crReporteConsumoMedCon.rpt</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DashBoard.cs">
       <SubType>Form</SubType>
@@ -241,6 +242,12 @@
       <DependentUpon>ReporteIngresoLeche.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\ReportePrestamosFinanzas\ReporteNomina.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteNomina.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\PlantillaReporte\Formato_Plantilla1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -253,11 +260,11 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Reportes\ReportePrestamosFinanzas\ReporteNominaQuincenal.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ReporteNominaQuincenal.rpt</DependentUpon>
-      <SubType>Component</SubType>
+    <Compile Include="Reportes\ReportePrestamosFinanzas\FrmReporteNomina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReportePrestamosFinanzas\FrmReporteNomina.Designer.cs">
+      <DependentUpon>FrmReporteNomina.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="BotonesUtilidades.resx">
       <DependentUpon>BotonesUtilidades.cs</DependentUpon>
@@ -362,6 +369,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteIngresoLeche.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReportePrestamosFinanzas\ReporteNomina.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteNomina.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\PlantillaReporte\Formato_Plantilla.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Formato_Plantilla1.cs</LastGenOutput>
@@ -370,9 +381,8 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Reporte_Kardex.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\ReportePrestamosFinanzas\ReporteNominaQuincenal.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ReporteNominaQuincenal.cs</LastGenOutput>
+    <EmbeddedResource Include="Reportes\ReportePrestamosFinanzas\FrmReporteNomina.resx">
+      <DependentUpon>FrmReporteNomina.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
