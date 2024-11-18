@@ -241,6 +241,12 @@
       <DependentUpon>ReporteNominaQuincenal.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Vista_ArticuloCon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista_ArticuloCon.Designer.cs">
+      <DependentUpon>Vista_ArticuloCon.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="BotonesUtilidades.resx">
       <DependentUpon>BotonesUtilidades.cs</DependentUpon>
     </EmbeddedResource>
@@ -344,6 +350,9 @@
     <EmbeddedResource Include="Reportes\ReportePrestamosFinanzas\ReporteNominaQuincenal.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteNominaQuincenal.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista_ArticuloCon.resx">
+      <DependentUpon>Vista_ArticuloCon.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

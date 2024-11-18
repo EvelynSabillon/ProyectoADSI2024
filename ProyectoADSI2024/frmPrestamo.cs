@@ -208,6 +208,15 @@ namespace ProyectoADSI2024
                                 tabla.Clear();
                                 adaptador.Fill(tabla);
 
+                                //LIMPIO TODOS LOS CAMPOS LUEGO DEL REGISTRO.
+                                txtSocioID.Text = "";
+                                cmbNombreSocio.SelectedIndex = -1;  // Deseleccionar socio
+                                dtpFecha.ResetText();
+                                txtMonto.Text = "";
+                                txtCuota.Text = "";
+                                txtPago.Text = "";
+                                chkPagado.Checked = false;
+
                                 //Actualizar el llenado del cmbNombreSocio
                                 LlenarComboSocios();
                             }
@@ -300,6 +309,15 @@ namespace ProyectoADSI2024
                             tabla.Clear();
                             adaptador.Fill(tabla);
 
+                            //LIMPIO TODOS LOS CAMPOS LUEGO DEL REGISTRO.
+                            txtSocioID.Text = "";
+                            cmbNombreSocio.SelectedIndex = -1;  // Deseleccionar socio
+                            dtpFecha.ResetText();
+                            txtMonto.Text = "";
+                            txtCuota.Text = "";
+                            txtPago.Text = "";
+                            chkPagado.Checked = false;
+
                             //Actualizar el llenado del cmbNombreSocio
                             LlenarComboSocios();
 
@@ -347,30 +365,76 @@ namespace ProyectoADSI2024
         {
             if (txtTexto.Text.Length == 0)
             {
-                tabla.DefaultView.RowFilter = "";
+                tabla.DefaultView.RowFilter = ""; // Mostrar todo si el texto está vacío
             }
             else
             {
-                if (tabla.Columns[cmbCampo.Text].DataType == typeof(string))
+                try
                 {
-                    tabla.DefaultView.RowFilter = cmbCampo.Text + " LIKE '%" + txtTexto.Text + "%'";
-                }
-                else
-                {
-                    int numero;
-                    if (int.TryParse(txtTexto.Text, out numero))
+                    var columnType = tabla.Columns[cmbCampo.Text].DataType;
+
+                    if (columnType == typeof(string)) // Filtro para cadenas
                     {
-                        tabla.DefaultView.RowFilter = cmbCampo.Text + " = " + numero;
+                        tabla.DefaultView.RowFilter = cmbCampo.Text + " LIKE '%" + txtTexto.Text + "%'";
+                    }
+                    else if (columnType == typeof(int)) // Filtro para enteros
+                    {
+                        if (int.TryParse(txtTexto.Text, out int numero))
+                        {
+                            tabla.DefaultView.RowFilter = cmbCampo.Text + " = " + numero;
+                        }
+                        else
+                        {
+                            tabla.DefaultView.RowFilter = "1 = 0"; // Sin coincidencias
+                        }
+                    }
+                    else if (columnType == typeof(decimal) || columnType == typeof(float) || columnType == typeof(double)) // Filtro para números decimales
+                    {
+                        if (decimal.TryParse(txtTexto.Text, out decimal numeroDecimal))
+                        {
+                            tabla.DefaultView.RowFilter = cmbCampo.Text + " = " + numeroDecimal.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                        }
+                        else
+                        {
+                            tabla.DefaultView.RowFilter = "1 = 0"; // Sin coincidencias
+                        }
+                    }
+                    else if (columnType == typeof(DateTime)) // Filtro para fechas (día/mes/año)
+                    {
+                        string inputFecha = txtTexto.Text.Trim();
+                        string[] formatosFecha = { "dd/MM/yyyy", "dd/MM" }; // Soportar "día/mes/año" y "día/mes"
+                        DateTime dateValue;
+
+                        if (DateTime.TryParseExact(inputFecha, formatosFecha, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dateValue))
+                        {
+                            // Si no se proporciona el año, agregar el año actual
+                            if (inputFecha.Length <= 5) // Formato corto: "dd/MM"
+                            {
+                                dateValue = new DateTime(DateTime.Now.Year, dateValue.Month, dateValue.Day);
+                            }
+
+                            // Convertir la fecha al formato requerido por RowFilter: "MM/dd/yyyy"
+                            tabla.DefaultView.RowFilter = cmbCampo.Text + " = #" + dateValue.ToString("MM/dd/yyyy") + "#";
+                        }
+                        else
+                        {
+                            tabla.DefaultView.RowFilter = "1 = 0"; // Sin coincidencias
+                        }
                     }
                     else
                     {
-                        tabla.DefaultView.RowFilter = "1 = 0";
+                        tabla.DefaultView.RowFilter = "1 = 0"; // Tipo no compatible
                     }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error en el filtrado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
             dataGridView1.DataSource = tabla.DefaultView.ToTable();
         }
+
 
         private void cmbCampo_Click(object sender, EventArgs e)
         {

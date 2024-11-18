@@ -31,6 +31,18 @@ namespace ProyectoADSI2024
         {
             InitializeComponent();
             this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+
+            // Configurar ToolTips
+            toolTip1.IsBalloon = true;
+            toolTip1.ToolTipIcon = ToolTipIcon.Info;
+            toolTip1.ToolTipTitle = "Ayuda";
+            toolTip1.UseAnimation = true;
+
+            toolTip1.SetToolTip(btnAcceder, "Haga click para acceder al sistema");
+            toolTip1.SetToolTip(txtUsuario, "Ingrese su usuario previamente registrado y valido");
+            toolTip1.SetToolTip(txtContrasena, "Ingrese su contraseña previamente establecida");
+            toolTip1.SetToolTip(linkPass, "Haga click aquí para reestablcer su contraseña");
+            toolTip1.SetToolTip(chkMostrarContra, "Click aquí para mostrar la contraseña");
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
