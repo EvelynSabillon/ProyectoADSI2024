@@ -43,10 +43,13 @@ namespace ProyectoADSI2024
             toolTip1.UseAnimation = true;
 
             toolTip1.SetToolTip(btnAtras, "Volver al menú principal");
-            toolTip1.SetToolTip(btnGuardar, "Guardar registro de Salida o de los detalles de la salida de concentrado");
+            toolTip1.SetToolTip(btnGuardar, "Guardar registro de Salida de concentrado");
+            toolTip1.SetToolTip(btnGuardarDet, "Guardar registro de los detalles de la salida de concentrado");
             toolTip1.SetToolTip(btnEditar, "Editar registro de Salida o de los detalles de la salida de concentrado");
+            toolTip1.SetToolTip(btnEditarDet, "Editar registro de los detalles de la salida de concentrado");
             toolTip1.SetToolTip(btnLimpiar, "Limpiar todos los campos");
             toolTip1.SetToolTip(btnEliminar, "Eliminar registro de Salida y los detalles de la salida de concentrado");
+            toolTip1.SetToolTip(btnEliminarDet, "Eliminar registro de los detalles de la salida de concentrado");
             toolTip1.SetToolTip(btnSeleccionar, "Seleccionar un articulo/concentrado de las existencias");
             toolTip1.SetToolTip(dgvSalida, "Seleccionar una Salida para editar o eliminar");
             toolTip1.SetToolTip(dgvDetalle, "Seleccionar un detalle de Salida para editar o eliminar");
@@ -285,17 +288,15 @@ namespace ProyectoADSI2024
                             cmdSalidaDet.ExecuteNonQuery();
                             MessageBox.Show("Detalle de salida registrada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                            //Actualizar la tabla
+                            CargarDetalles();
+
                             //LIMPIO TODOS LOS CAMPOS LUEGO DEL REGISTRO.
                             txtSalidaID.Text = "";
                             txtArticuloID.Text = "";
                             txtNombreArt.Text = "";
                             txtPrecio.Text = "";
                             txtCantidad.Text = "";  // Deseleccionar socio
-
-                            //Actualizar la tabla
-                            tablaDetalle.Clear();
-                            adapterDetalle.Fill(tablaDetalle);
-
 
                             //Actualizar el llenado del cmbNombreSocio
                             LlenarComboSocios();
@@ -335,8 +336,8 @@ namespace ProyectoADSI2024
                                 MessageBox.Show("Detalle de salida actualizado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                                 //Actualizar la tabla
-                                tablaDetalle.Clear();
-                                adapterDetalle.Fill(tablaDetalle);
+                                CargarDetalles();
+
 
                                 txtSalidaID.Text = "";
                                 txtArticuloID.Text = "";
@@ -425,6 +426,17 @@ namespace ProyectoADSI2024
             txtCantidad.Text = "";
             cmbCampoSalida.SelectedIndex = -1;
             cmbCampoDetalle.SelectedIndex = -1;
+
+            try
+            {
+                // Recargar todos los detalles (restablecer el estado inicial)
+                CargarDetalles();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al limpiar los detalles: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -449,8 +461,8 @@ namespace ProyectoADSI2024
                             tablaSalida.Clear();
                             adapterSalida.Fill(tablaSalida);
                             
-                            tablaDetalle.Clear();
-                            adapterDetalle.Fill(tablaDetalle);
+                            //Actualizar la tabla
+                            CargarDetalles();
 
                             txtSalidaID.Text = "";
                             dtpFecha.ResetText();
@@ -494,9 +506,8 @@ namespace ProyectoADSI2024
                             cmdSalidaDet.ExecuteNonQuery();
                             MessageBox.Show("Detalle eliminado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            tablaDetalle.Clear();
-                            adapterDetalle.Fill(tablaDetalle);
-                           
+                            //Actualizar la tabla
+                            CargarDetalles();
 
                             txtSalidaID.Text = "";
                             txtArticuloID.Text = "";
@@ -522,29 +533,48 @@ namespace ProyectoADSI2024
 
         private void dgvSalida_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvSalida.SelectedRows.Count > 0)
+            try
             {
-                DataGridViewRow row = dgvSalida.SelectedRows[0];
-                txtSalidaID.Text = row.Cells["SalidaID"].Value.ToString();
-                txtSocioID.Text = row.Cells["SocioID"].Value.ToString();
-                //Cuando aparezca el ID de Socio se debe autoseleccionar el valor en el cmbNombre Socio
-                cmbNombreSocio.SelectedValue = row.Cells["SocioID"].Value;
-                dtpFecha.Value = Convert.ToDateTime(row.Cells["Fecha"].Value);
+                if (dgvSalida.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow row = dgvSalida.SelectedRows[0];
+                    txtSalidaID.Text = row.Cells["SalidaID"].Value.ToString();
+                    txtSocioID.Text = row.Cells["SocioID"].Value.ToString();
+                    //Cuando aparezca el ID de Socio se debe autoseleccionar el valor en el cmbNombre Socio
+                    cmbNombreSocio.SelectedValue = row.Cells["SocioID"].Value;
+                    dtpFecha.Value = Convert.ToDateTime(row.Cells["Fecha"].Value);
+                }
+
             }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error al cargar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void dgvDetalle_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvDetalle.SelectedRows.Count > 0)
+            try
             {
-                DataGridViewRow row = dgvDetalle.SelectedRows[0];
-                txtSalidaID.Text = row.Cells["SalidaID"].Value.ToString();
-                txtArticuloID.Text = row.Cells["ArticuloConID"].Value.ToString();
-                //Cuando aparezca el ID de Articulo se debe autoseleccionar el valor en el txtNombreArt 
-                txtNombreArt.Text = row.Cells["NombreArt"].Value.ToString();
-                txtPrecio.Text = row.Cells["Precio"].Value.ToString();
-                txtCantidad.Text = row.Cells["Cantidad"].Value.ToString();
+                if (dgvDetalle.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow row = dgvDetalle.SelectedRows[0];
+                    txtSalidaID.Text = row.Cells["SalidaID"].Value.ToString();
+                    txtArticuloID.Text = row.Cells["ArticuloConID"].Value.ToString();
+                    //Cuando aparezca el ID de Articulo se debe autoseleccionar el valor en el txtNombreArt 
+                    txtNombreArt.Text = row.Cells["NombreArt"].Value.ToString();
+                    txtPrecio.Text = row.Cells["Precio"].Value.ToString();
+                    txtCantidad.Text = row.Cells["Cantidad"].Value.ToString();
+                }
             }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error al cargar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void txtTextoSalida_TextChanged(object sender, EventArgs e)
@@ -728,34 +758,35 @@ namespace ProyectoADSI2024
                 }
             }
         }
+        private void CargarDetalles()
+        {
+            try
+            {
+                SqlConnection con = conexion.ObtenerConexion();
+                using (SqlCommand cmd = new SqlCommand("spSalidaDetalleConSelect", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable tablaDetalles = new DataTable();
 
+                    tablaDetalles.Clear();
+                    adapter.Fill(tablaDetalles);
+
+                    // Asigna todas las filas al dgvDetalle
+                    dgvDetalle.DataSource = tablaDetalles;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los detalles: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void dgvSalida_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Verifica que haya una fila seleccionada y que no sea la fila de encabezado
             if (e.RowIndex >= 0)
             {
-                try
-                {
-                    // Restablecer todas las filas en el dgvDetalle
-                    SqlConnection con = conexion.ObtenerConexion();
-                    using (SqlCommand cmd = new SqlCommand("spSalidaDetalleConSelect", con))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.ExecuteNonQuery();
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                        DataTable tablaDetalles = new DataTable();
-
-                        tablaDetalles.Clear();
-                        adapter.Fill(tablaDetalles);
-
-                        // Asigna todas las filas al dgvDetalle
-                        dgvDetalle.DataSource = tablaDetalles;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al mostrar todos los detalles: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                CargarDetalles();
             }
         }
     }

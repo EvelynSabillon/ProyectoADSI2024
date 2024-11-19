@@ -346,19 +346,28 @@ namespace ProyectoADSI2024
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
+            try
             {
-                DataGridViewRow row = dataGridView1.SelectedRows[0];
-                txtPrestamoID.Text = row.Cells["PrestamoID"].Value.ToString();
-                txtSocioID.Text = row.Cells["SocioID"].Value.ToString();
-                //Cuando aparezca el ID de Socio se debe autoseleccionar el valor en el cmbNombre Socio
-                cmbNombreSocio.SelectedValue = row.Cells["SocioID"].Value;
-                dtpFecha.Value = Convert.ToDateTime(row.Cells["Fecha"].Value);
-                txtMonto.Text = row.Cells["Monto"].Value.ToString();
-                txtCuota.Text = row.Cells["CuotaQuincenal"].Value.ToString();
-                txtPago.Text = row.Cells["PagoParcial"].Value.ToString();
-                chkPagado.Checked = Convert.ToBoolean(row.Cells["Pagado"].Value);
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow row = dataGridView1.SelectedRows[0];
+                    txtPrestamoID.Text = row.Cells["PrestamoID"].Value.ToString();
+                    txtSocioID.Text = row.Cells["SocioID"].Value.ToString();
+                    //Cuando aparezca el ID de Socio se debe autoseleccionar el valor en el cmbNombre Socio
+                    cmbNombreSocio.SelectedValue = row.Cells["SocioID"].Value;
+                    dtpFecha.Value = Convert.ToDateTime(row.Cells["Fecha"].Value);
+                    txtMonto.Text = row.Cells["Monto"].Value.ToString();
+                    txtCuota.Text = row.Cells["CuotaQuincenal"].Value.ToString();
+                    txtPago.Text = row.Cells["PagoParcial"].Value.ToString();
+                    chkPagado.Checked = Convert.ToBoolean(row.Cells["Pagado"].Value);
+                }
             }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error al seleccionar el registro: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void txtTexto_TextChanged(object sender, EventArgs e)

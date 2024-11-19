@@ -320,15 +320,23 @@ namespace ProyectoADSI2024
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
+            try
             {
-                DataGridViewRow row = dataGridView1.SelectedRows[0];
-                txtAnticipoID.Text = row.Cells["AnticipoID"].Value.ToString();
-                txtSocioID.Text = row.Cells["SocioID"].Value.ToString();
-                //Cuando aparezca el ID de Socio se debe autoseleccionar el valor en el cmbNombre Socio
-                cmbNombreSocio.SelectedValue = row.Cells["SocioID"].Value;
-                dtpFecha.Value = Convert.ToDateTime(row.Cells["Fecha"].Value);
-                txtMonto.Text = row.Cells["Monto"].Value.ToString();
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow row = dataGridView1.SelectedRows[0];
+                    txtAnticipoID.Text = row.Cells["AnticipoID"].Value.ToString();
+                    txtSocioID.Text = row.Cells["SocioID"].Value.ToString();
+                    //Cuando aparezca el ID de Socio se debe autoseleccionar el valor en el cmbNombre Socio
+                    cmbNombreSocio.SelectedValue = row.Cells["SocioID"].Value;
+                    dtpFecha.Value = Convert.ToDateTime(row.Cells["Fecha"].Value);
+                    txtMonto.Text = row.Cells["Monto"].Value.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error al seleccionar el registro: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

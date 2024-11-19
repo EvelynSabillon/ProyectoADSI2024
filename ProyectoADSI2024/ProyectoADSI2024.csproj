@@ -84,6 +84,12 @@
     </Compile>
     <Compile Include="Controls\MenuColorTable.cs" />
     <Compile Include="Controls\MenuRenderer.cs" />
+    <Compile Include="Vista_ArticuloMed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista_ArticuloMed.Designer.cs">
+      <DependentUpon>Vista_ArticuloMed.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMessageBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -392,6 +398,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vista_ArticuloCon.resx">
       <DependentUpon>Vista_ArticuloCon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista_ArticuloMed.resx">
+      <DependentUpon>Vista_ArticuloMed.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

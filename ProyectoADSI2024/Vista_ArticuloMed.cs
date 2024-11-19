@@ -2,42 +2,41 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using System.Runtime.InteropServices;
 
 namespace ProyectoADSI2024
 {
-    public partial class Vista_ArticuloCon : Form
+    public partial class Vista_ArticuloMed : Form
     {
         private Conexion con;
         SqlDataAdapter adapter;
         DataTable tabla;
-        frmSalidaConcentrado frmSalida;
-
-        public Vista_ArticuloCon()
+        frmSalidaMedicamento frmSalida;
+        public Vista_ArticuloMed()
         {
             InitializeComponent();
         }
 
-        public Vista_ArticuloCon(SqlConnection conexion, frmSalidaConcentrado SalidaCon)
+        public Vista_ArticuloMed(SqlConnection conexion, frmSalidaMedicamento SalidaMed)
         {
             InitializeComponent();
             cmbCampoSalida.SelectedIndex = 0;
             con = new Conexion();
-            frmSalida = SalidaCon;
-            adapter = new SqlDataAdapter("spArticuloConSelect", conexion);
+            frmSalida = SalidaMed;
+            adapter = new SqlDataAdapter("spArticuloMedSelect", conexion);
             adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture(); //Metodo para mover la ventana
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam); //Metodo para mover la ventana
+        private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
         private void BarraTitulo_MouseDown(object sender, MouseEventArgs e)
         {
@@ -45,7 +44,7 @@ namespace ProyectoADSI2024
             SendMessage(this.Handle, 0x112, 0xf012, 0); //Mover la ventana
         }
 
-        private void Vista_ArticuloCon_MouseDown(object sender, MouseEventArgs e)
+        private void Vista_ArticuloMed_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0); //Mover la ventana
@@ -53,8 +52,8 @@ namespace ProyectoADSI2024
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Desea salir de la selección del concentrado?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-               this.Close();
+            if (MessageBox.Show("¿Desea salir de la selección del medicamento/articulo?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                this.Close();
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)
@@ -62,7 +61,7 @@ namespace ProyectoADSI2024
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void Vista_ArticuloCon_Load(object sender, EventArgs e)
+        private void Vista_ArticuloMed_Load(object sender, EventArgs e)
         {
             try
             {
@@ -166,7 +165,7 @@ namespace ProyectoADSI2024
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 // Obtener el ID del Articulo seleccionado
-                int articuloID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["ArticuloConID"].Value);
+                int articuloID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["ArticuloMedID"].Value);
                 string nombre = Convert.ToString(dataGridView1.SelectedRows[0].Cells["Nombre"].Value);
                 double precio = Convert.ToDouble(dataGridView1.SelectedRows[0].Cells["Precio"].Value);
 
