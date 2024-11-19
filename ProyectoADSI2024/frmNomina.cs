@@ -34,7 +34,7 @@ namespace ProyectoADSI2024
             lblMes.Text = DateTime.Now.ToString("MMMM");
         }
 
-        private void btnGenReporte_Click(object sender, EventArgs e)
+        private void btnGenReporte_Click_1(object sender, EventArgs e)
         {
             FrmReporteNomina frmReporteNomina = new FrmReporteNomina();
             frmReporteNomina.ShowDialog();
