@@ -343,7 +343,6 @@ namespace ProyectoADSI2024
                 // Conexión a la base de datos
                 using (SqlConnection conexion = new SqlConnection(url))
                 {
-                    // Abrir la conexión
                     conexion.Open();
 
                     // Configurar el comando para ejecutar el procedimiento almacenado
@@ -357,7 +356,6 @@ namespace ProyectoADSI2024
 
                     // Asignar el DataTable al DataGridView
                     dgIngresoLeche.DataSource = tabIngresoLeche;
-                    dgIngresoLeche.ClearSelection(); // Limpiar selección inicial
                 }
             }
             catch (Exception ex)
