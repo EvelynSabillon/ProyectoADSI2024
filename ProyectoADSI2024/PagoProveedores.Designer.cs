@@ -29,17 +29,16 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PagoProveedores));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAtras = new System.Windows.Forms.PictureBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.provId = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tboxBuscar = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cboxBuscar = new System.Windows.Forms.ComboBox();
@@ -47,25 +46,26 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.tboxSocioID = new System.Windows.Forms.TextBox();
+            this.pagoId = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.dgIngresoLeche = new System.Windows.Forms.DataGridView();
+            this.dgPagoProv = new System.Windows.Forms.DataGridView();
             this.chboxActivo = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.datePago = new System.Windows.Forms.DateTimePicker();
+            this.pagoMonto = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.chboxPen = new System.Windows.Forms.CheckBox();
             this.button4 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboMetodo = new System.Windows.Forms.ComboBox();
+            this.comboName = new System.Windows.Forms.ComboBox();
+            this.rdCon = new System.Windows.Forms.RadioButton();
+            this.rdMed = new System.Windows.Forms.RadioButton();
+            this.compraId = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgIngresoLeche)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPagoProv)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -93,13 +93,14 @@
             this.btnAtras.TabStop = false;
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
-            // textBox2
+            // provId
             // 
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(191, 154);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(122, 25);
-            this.textBox2.TabIndex = 147;
+            this.provId.Enabled = false;
+            this.provId.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.provId.Location = new System.Drawing.Point(191, 154);
+            this.provId.Name = "provId";
+            this.provId.Size = new System.Drawing.Size(122, 25);
+            this.provId.TabIndex = 147;
             // 
             // label7
             // 
@@ -127,6 +128,7 @@
             this.button2.TabIndex = 145;
             this.button2.Text = "LIMPIAR";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnEliminar
             // 
@@ -161,14 +163,7 @@
             this.btnGuardar.TabIndex = 143;
             this.btnGuardar.Text = "GUARDAR";
             this.btnGuardar.UseVisualStyleBackColor = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(191, 281);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(125, 25);
-            this.textBox1.TabIndex = 142;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // tboxBuscar
             // 
@@ -245,13 +240,13 @@
             this.label3.TabIndex = 131;
             this.label3.Text = "CompraID";
             // 
-            // tboxSocioID
+            // pagoId
             // 
-            this.tboxSocioID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxSocioID.Location = new System.Drawing.Point(191, 112);
-            this.tboxSocioID.Name = "tboxSocioID";
-            this.tboxSocioID.Size = new System.Drawing.Size(121, 25);
-            this.tboxSocioID.TabIndex = 130;
+            this.pagoId.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pagoId.Location = new System.Drawing.Point(191, 112);
+            this.pagoId.Name = "pagoId";
+            this.pagoId.Size = new System.Drawing.Size(121, 25);
+            this.pagoId.TabIndex = 130;
             // 
             // label2
             // 
@@ -263,35 +258,35 @@
             this.label2.TabIndex = 129;
             this.label2.Text = "Referencia Pago";
             // 
-            // dgIngresoLeche
+            // dgPagoProv
             // 
-            this.dgIngresoLeche.AllowUserToAddRows = false;
-            this.dgIngresoLeche.AllowUserToDeleteRows = false;
-            this.dgIngresoLeche.AllowUserToResizeColumns = false;
-            this.dgIngresoLeche.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgIngresoLeche.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgIngresoLeche.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgIngresoLeche.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgIngresoLeche.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgIngresoLeche.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgIngresoLeche.Location = new System.Drawing.Point(499, 124);
-            this.dgIngresoLeche.MultiSelect = false;
-            this.dgIngresoLeche.Name = "dgIngresoLeche";
-            this.dgIngresoLeche.ReadOnly = true;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgIngresoLeche.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgIngresoLeche.Size = new System.Drawing.Size(547, 387);
-            this.dgIngresoLeche.TabIndex = 128;
+            this.dgPagoProv.AllowUserToAddRows = false;
+            this.dgPagoProv.AllowUserToDeleteRows = false;
+            this.dgPagoProv.AllowUserToResizeColumns = false;
+            this.dgPagoProv.AllowUserToResizeRows = false;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dgPagoProv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle22;
+            this.dgPagoProv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgPagoProv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgPagoProv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgPagoProv.DefaultCellStyle = dataGridViewCellStyle23;
+            this.dgPagoProv.Location = new System.Drawing.Point(499, 124);
+            this.dgPagoProv.MultiSelect = false;
+            this.dgPagoProv.Name = "dgPagoProv";
+            this.dgPagoProv.ReadOnly = true;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dgPagoProv.RowsDefaultCellStyle = dataGridViewCellStyle24;
+            this.dgPagoProv.Size = new System.Drawing.Size(547, 387);
+            this.dgPagoProv.TabIndex = 128;
             // 
             // chboxActivo
             // 
@@ -324,43 +319,21 @@
             this.label10.TabIndex = 151;
             this.label10.Text = "Monto de Pago ";
             // 
-            // dateTimePicker1
+            // datePago
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(191, 324);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(266, 25);
-            this.dateTimePicker1.TabIndex = 155;
+            this.datePago.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.datePago.Location = new System.Drawing.Point(191, 324);
+            this.datePago.Name = "datePago";
+            this.datePago.Size = new System.Drawing.Size(266, 25);
+            this.datePago.TabIndex = 155;
             // 
-            // checkBox1
+            // pagoMonto
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(191, 237);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(117, 24);
-            this.checkBox1.TabIndex = 154;
-            this.checkBox1.Text = "Concentrado";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(314, 237);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(177, 24);
-            this.checkBox2.TabIndex = 156;
-            this.checkBox2.Text = "Medicamentos/Otros";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(191, 369);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(125, 25);
-            this.textBox4.TabIndex = 157;
+            this.pagoMonto.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pagoMonto.Location = new System.Drawing.Point(191, 369);
+            this.pagoMonto.Name = "pagoMonto";
+            this.pagoMonto.Size = new System.Drawing.Size(125, 25);
+            this.pagoMonto.TabIndex = 157;
             // 
             // label6
             // 
@@ -372,33 +345,16 @@
             this.label6.TabIndex = 158;
             this.label6.Text = "Nombre";
             // 
-            // button3
+            // chboxPen
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(331, 280);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(125, 25);
-            this.button3.TabIndex = 159;
-            this.button3.Text = "SELECCIONAR ";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox3.Location = new System.Drawing.Point(191, 465);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(98, 24);
-            this.checkBox3.TabIndex = 160;
-            this.checkBox3.Text = "Pendiente";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.chboxPen.AutoSize = true;
+            this.chboxPen.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chboxPen.Location = new System.Drawing.Point(191, 465);
+            this.chboxPen.Name = "chboxPen";
+            this.chboxPen.Size = new System.Drawing.Size(98, 24);
+            this.chboxPen.TabIndex = 160;
+            this.chboxPen.Text = "Pendiente";
+            this.chboxPen.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
@@ -427,50 +383,102 @@
             this.label11.TabIndex = 152;
             this.label11.Text = "Método de Pago";
             // 
-            // comboBox1
+            // comboMetodo
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(191, 415);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(125, 25);
-            this.comboBox1.TabIndex = 153;
+            this.comboMetodo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboMetodo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboMetodo.FormattingEnabled = true;
+            this.comboMetodo.Location = new System.Drawing.Point(191, 415);
+            this.comboMetodo.Name = "comboMetodo";
+            this.comboMetodo.Size = new System.Drawing.Size(125, 25);
+            this.comboMetodo.TabIndex = 153;
             // 
-            // comboBox2
+            // comboName
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(191, 196);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(265, 25);
-            this.comboBox2.TabIndex = 162;
+            this.comboName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboName.FormattingEnabled = true;
+            this.comboName.Location = new System.Drawing.Point(191, 196);
+            this.comboName.Name = "comboName";
+            this.comboName.Size = new System.Drawing.Size(265, 25);
+            this.comboName.TabIndex = 162;
+            this.comboName.SelectedIndexChanged += new System.EventHandler(this.comboName_SelectedIndexChanged);
+            // 
+            // rdCon
+            // 
+            this.rdCon.AutoSize = true;
+            this.rdCon.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdCon.Location = new System.Drawing.Point(191, 234);
+            this.rdCon.Name = "rdCon";
+            this.rdCon.Size = new System.Drawing.Size(116, 24);
+            this.rdCon.TabIndex = 163;
+            this.rdCon.TabStop = true;
+            this.rdCon.Text = "Concentrado";
+            this.rdCon.UseVisualStyleBackColor = true;
+            this.rdCon.CheckedChanged += new System.EventHandler(this.rdCon_CheckedChanged);
+            // 
+            // rdMed
+            // 
+            this.rdMed.AutoSize = true;
+            this.rdMed.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdMed.Location = new System.Drawing.Point(314, 234);
+            this.rdMed.Name = "rdMed";
+            this.rdMed.Size = new System.Drawing.Size(169, 24);
+            this.rdMed.TabIndex = 164;
+            this.rdMed.TabStop = true;
+            this.rdMed.Text = "Medicamento/Otros";
+            this.rdMed.UseVisualStyleBackColor = true;
+            this.rdMed.CheckedChanged += new System.EventHandler(this.rdMed_CheckedChanged);
+            // 
+            // compraId
+            // 
+            this.compraId.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.compraId.Location = new System.Drawing.Point(191, 281);
+            this.compraId.Name = "compraId";
+            this.compraId.Size = new System.Drawing.Size(125, 25);
+            this.compraId.TabIndex = 142;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(331, 280);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(125, 25);
+            this.button3.TabIndex = 159;
+            this.button3.Text = "SELECCIONAR ";
+            this.button3.UseVisualStyleBackColor = false;
             // 
             // PagoProveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1070, 595);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.rdMed);
+            this.Controls.Add(this.rdCon);
+            this.Controls.Add(this.comboName);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.checkBox3);
+            this.Controls.Add(this.chboxPen);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.pagoMonto);
+            this.Controls.Add(this.datePago);
+            this.Controls.Add(this.comboMetodo);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.provId);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.compraId);
             this.Controls.Add(this.tboxBuscar);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.cboxBuscar);
@@ -478,17 +486,18 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.tboxSocioID);
+            this.Controls.Add(this.pagoId);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dgIngresoLeche);
+            this.Controls.Add(this.dgPagoProv);
             this.Controls.Add(this.chboxActivo);
             this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PagoProveedores";
             this.Text = "PagoProveedores";
+            this.Load += new System.EventHandler(this.PagoProveedores_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgIngresoLeche)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPagoProv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -498,12 +507,11 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox btnAtras;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox provId;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox tboxBuscar;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cboxBuscar;
@@ -511,22 +519,23 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tboxSocioID;
+        private System.Windows.Forms.TextBox pagoId;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dgIngresoLeche;
+        private System.Windows.Forms.DataGridView dgPagoProv;
         private System.Windows.Forms.CheckBox chboxActivo;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.DateTimePicker datePago;
+        private System.Windows.Forms.TextBox pagoMonto;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox chboxPen;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboMetodo;
+        private System.Windows.Forms.ComboBox comboName;
+        private System.Windows.Forms.RadioButton rdCon;
+        private System.Windows.Forms.RadioButton rdMed;
+        private System.Windows.Forms.TextBox compraId;
+        private System.Windows.Forms.Button button3;
     }
 }
