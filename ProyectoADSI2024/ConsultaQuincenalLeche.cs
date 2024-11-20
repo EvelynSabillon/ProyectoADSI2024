@@ -40,34 +40,26 @@ namespace ProyectoADSI2024
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            try
+            int quincenaID = int.Parse(tboxQuincenaid.Text);
+            DateTime fechaInicio = dtpFechaInicio.Value;
+            DateTime fechaFinal = dtpFechaFinal.Value;
+            
+            // Determinar si es un INSERT o UPDATE
+            if (EsNuevoRegistro(quincenaID)) // Función para verificar si el registro ya existe
             {
-                SqlCommand insertCmd = new SqlCommand("spConsultaQuincenalInsert", conexion);
-                insertCmd.CommandType = CommandType.StoredProcedure;
-
-                // Asignar parámetros desde los controles
-                insertCmd.Parameters.AddWithValue("@QuincenaID", int.Parse(tboxQuincenaid.Text));
-                insertCmd.Parameters.AddWithValue("@FechaInicio", dtpFechaInicio.Value);
-                insertCmd.Parameters.AddWithValue("@FechaFinal", dtpFechaFinal.Value);
-                insertCmd.Parameters.AddWithValue("@Activo", 1);
-
-                int filasAfectadas = insertCmd.ExecuteNonQuery();
-                MessageBox.Show($"Registros insertados: {filasAfectadas}");
-
-                conexion.Open();
-                insertCmd.ExecuteNonQuery();
-                conexion.Close();
-                // Refrescar los datos
-                CargarDatos();
+                // Llamar a procedimiento almacenado para INSERT
+                InsertarQuincena(quincenaID, fechaInicio, fechaFinal);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Error al guardar: {ex.Message}");
+                // Llamar a procedimiento almacenado para UPDATE
+                ActualizarQuincena(quincenaID, fechaInicio, fechaFinal);
             }
         }
 
         //FUNCIONES
 
+        //SELECT
         private void CargarDatos()
         {
             try
@@ -93,6 +85,74 @@ namespace ProyectoADSI2024
             }
         }
 
-        
+        //INSERT
+        private void InsertarQuincena(int quincenaID, DateTime fechaInicio, DateTime fechaFinal)
+        {
+            
+                using (SqlCommand cmd = new SqlCommand("spConsultaQuincenalInsert", conexion))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Agregar parámetros
+                    cmd.Parameters.AddWithValue("@QuincenaID", quincenaID);
+                    cmd.Parameters.AddWithValue("@FechaInicio", fechaInicio);
+                    cmd.Parameters.AddWithValue("@FechaFinal", fechaFinal);
+
+                    
+                    conexion.Open();
+                    cmd.ExecuteNonQuery();
+                    conexion.Close();
+
+                    MessageBox.Show("Datos guardados exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);   
+                }
+            
+        }
+
+        //UPDATE
+        private void ActualizarQuincena(int quincenaID, DateTime fechaInicio, DateTime fechaFinal)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("spConsultaLecheUpdate", conexion))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Agregar parámetros
+                    cmd.Parameters.AddWithValue("@QuincenaID", quincenaID);
+                    cmd.Parameters.AddWithValue("@FechaInicio", fechaInicio);
+                    cmd.Parameters.AddWithValue("@FechaFinal", fechaFinal);
+
+                    conexion.Open();
+                    cmd.ExecuteNonQuery();
+                    conexion.Close();
+                    MessageBox.Show("Quincena actualizada exitosamente.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar la quincena: " + ex.Message);
+            }
+        }
+
+
+        private bool EsNuevoRegistro(int quincenaID)
+        {
+            using (SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM proyecto.Quincena WHERE QuincenaID = @QuincenaID", conexion))
+            {
+                cmd.Parameters.AddWithValue("@QuincenaID", quincenaID);
+
+                try
+                {
+                    conexion.Open();
+                    int count = (int)cmd.ExecuteScalar();
+                    return count == 0; // Si no existe, es un nuevo registro
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al verificar el registro: " + ex.Message);
+                    return false; // Considerar que no es nuevo en caso de error
+                }
+            }
+        }
     }
 }
