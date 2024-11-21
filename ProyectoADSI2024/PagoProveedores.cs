@@ -17,9 +17,13 @@ namespace ProyectoADSI2024
         private string connectionString2 = "Server=3.128.144.165; database=DB20212030388;User ID=carlos.osegueda; password=CO20212030669";
         SqlConnection conexion;
         SqlDataAdapter adp;
+        //Tooltip
+        System.Windows.Forms.ToolTip toolTip1;
         public PagoProveedores()
         {
             InitializeComponent();
+            toolTip1 = new System.Windows.Forms.ToolTip();
+            toolTip1.SetToolTip(compraId, "El ID de Compra debe ser un ID existente.");
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -33,10 +37,22 @@ namespace ProyectoADSI2024
             LimpiarTxtBox();
             CargarDatos();
             CargarComboProveedores();
-            
+
+            //cargar combos
+            comboBusca.Items.Add("ProveedorID");
+            comboBusca.Items.Add("CompraConID");
+            comboBusca.Items.Add("CompraMedID");
+            comboBusca.Items.Add("MontoPago");
+            comboBusca.Items.Add("MetodoPago");
+            comboBusca.SelectedIndex = -1;
 
             comboMetodo.Items.Add("Crédito");
             comboMetodo.Items.Add("Efectivo");
+
+            comboEstado.Items.Add("Pagado");
+            comboEstado.Items.Add("Pendiente");
+
+
 
         }
 
@@ -169,11 +185,9 @@ namespace ProyectoADSI2024
                         cmd.Parameters.AddWithValue("@MontoPago", decimal.Parse(pagoMonto.Text));
                         cmd.Parameters.AddWithValue("@MetodoPago", comboMetodo.SelectedItem.ToString());
 
-                        // Valores de Checkbox (true o false)
-                        string estadoPago = chboxPen.Checked ? "Pendiente" : "Completado";
-                        cmd.Parameters.AddWithValue("@EstadoPago", estadoPago);
+                        cmd.Parameters.AddWithValue("@EstadoPago", comboEstado.SelectedItem.ToString());
 
-                        cmd.Parameters.AddWithValue("@Activo", chboxActivo.Checked);
+                        cmd.Parameters.AddWithValue("@Activo", true);
 
                         // Ejecutar el comando
                         cmd.ExecuteNonQuery();
@@ -205,8 +219,7 @@ namespace ProyectoADSI2024
                 comboMetodo.SelectedIndex = -1; // Establecer el índice a -1, lo que significa que no hay selección
 
                 // Limpiar CheckBoxes
-                chboxPen.Checked = false; // Desmarcar el CheckBox
-                chboxActivo.Checked = false; // Desmarcar el CheckBox
+                comboEstado.SelectedIndex = -1;
                 rdCon.Checked = false;
                 rdMed.Checked = false;
 
@@ -235,6 +248,208 @@ namespace ProyectoADSI2024
         {
            
             
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString2))
+                {
+                    conn.Open();
+
+                    using (SqlCommand cmd = new SqlCommand("spPagoProvUpdate", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Agrega los parámetros
+                        cmd.Parameters.AddWithValue("@PagoID", int.Parse(pagoId.Text));
+                        cmd.Parameters.AddWithValue("@ProveedorID", int.Parse(provId.Text));
+
+                        // Lógica para CompraConID o CompraMedID
+                        if (rdCon.Checked)
+                        {
+                            cmd.Parameters.AddWithValue("@CompraConID", int.Parse(compraId.Text));
+                            cmd.Parameters.AddWithValue("@CompraMedID", DBNull.Value); // NULL para el otro campo
+                        }
+                        else if (rdMed.Checked)
+                        {
+                            cmd.Parameters.AddWithValue("@CompraConID", DBNull.Value); // NULL para el otro campo
+                            cmd.Parameters.AddWithValue("@CompraMedID", int.Parse(compraId.Text));
+                        }
+
+                        cmd.Parameters.AddWithValue("@FechaPago", DateTime.Parse(datePago.Text));
+                        cmd.Parameters.AddWithValue("@MontoPago", decimal.Parse(pagoMonto.Text));
+                        cmd.Parameters.AddWithValue("@MetodoPago", comboMetodo.SelectedItem.ToString());
+
+
+                        cmd.Parameters.AddWithValue("@EstadoPago", comboEstado.SelectedItem.ToString());
+
+                        cmd.Parameters.AddWithValue("@Activo", true);
+
+                        // Ejecutar el comando
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("Pago guardado exitosamente.");
+
+                        CargarDatos();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al guardar el pago: " + ex.Message);
+            }
+
+           
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dgPagoProv.CurrentRow == null)
+            {
+                MessageBox.Show("No hay ninguna fila seleccionada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            int pagoID = Convert.ToInt32(dgPagoProv.CurrentRow.Cells["PagoID"].Value);
+
+            // Confirmar eliminación
+            DialogResult resultado = MessageBox.Show("¿Está seguro de que desea eliminar este proveedor?",
+                                                     "Confirmar Eliminación",
+                                                     MessageBoxButtons.YesNo,
+                                                     MessageBoxIcon.Warning);
+            if (resultado != DialogResult.Yes) return;
+
+            // Ejecutar el procedimiento almacenado para eliminar el proveedor
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString2))
+                {
+                    conn.Open();
+
+                    using (SqlCommand cmd = new SqlCommand("spPagoProvDelete", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@pagoID", pagoID);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Proveedor eliminado correctamente.");
+
+                // Recargar los datos del DataGridView
+                CargarDatos();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error al eliminar el registro: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+        private void FiltrarDatos()
+        {
+            DataTable dt = ObtenerDatosDePago(); // Método que recupera los datos de productos
+            DataView dv = new DataView(dt);  // Inicializar el DataView con el DataTable obtenido
+            string columnaSeleccionada = comboBusca.SelectedItem.ToString();
+            string filtro = txBusca.Text.ToLower();
+
+            // Verificar si el filtro está vacío y no aplicar el RowFilter si es el caso
+            if (string.IsNullOrEmpty(filtro))
+            {
+                dv.RowFilter = string.Empty; // No aplicar filtro
+            }
+            else
+            {
+                // Verificar que la columna seleccionada existe en el DataTable
+                if (dt.Columns.Contains(columnaSeleccionada))
+                {
+                    // Obtener el tipo de la columna
+                    Type tipoColumna = dt.Columns[columnaSeleccionada].DataType;
+
+                    // Si la columna es de tipo string (texto), usar LIKE
+                    if (tipoColumna == typeof(string))
+                    {
+                        dv.RowFilter = $"[{columnaSeleccionada}] LIKE '%{filtro}%'";
+                    }
+                    // Si la columna es de tipo numerico (int, decimal, etc.), usar un filtro con el valor exacto
+                    else if (tipoColumna == typeof(int) || tipoColumna == typeof(decimal) || tipoColumna == typeof(double) || tipoColumna == typeof(float))
+                    {
+                        // Verificar que el filtro sea un número válido
+                        if (decimal.TryParse(filtro, out decimal valorFiltro))
+                        {
+                            dv.RowFilter = $"[{columnaSeleccionada}] = {valorFiltro}";
+                        }
+                        else
+                        {
+                            // Si el filtro no es un número válido, limpiar el filtro
+                            dv.RowFilter = string.Empty;
+                            MessageBox.Show("El filtro no es un número válido.");
+                        }
+                    }
+                    // Si la columna es de tipo fecha, hacer un filtro basado en la fecha
+                    else if (tipoColumna == typeof(DateTime))
+                    {
+                        // Verificar que el filtro sea una fecha válida
+                        if (DateTime.TryParse(filtro, out DateTime valorFiltroFecha))
+                        {
+                            dv.RowFilter = $"[{columnaSeleccionada}] = #{valorFiltroFecha.ToString("MM/dd/yyyy")}#";
+                        }
+                        else
+                        {
+                            // Si el filtro no es una fecha válida, limpiar el filtro
+                            dv.RowFilter = string.Empty;
+                            MessageBox.Show("El filtro no es una fecha válida.");
+                        }
+                    }
+                    else
+                    {
+                        // Si el tipo de columna no es ni string, ni numérico, ni fecha, no aplicar filtro
+                        dv.RowFilter = string.Empty;
+                        MessageBox.Show($"El tipo de la columna {columnaSeleccionada} no es compatible para este filtro.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show($"La columna {columnaSeleccionada} no existe en la tabla.");
+                }
+            }
+
+            // Asignar el DataView filtrado al DataGridView
+            dgPagoProv.DataSource = dv;
+        }
+
+
+
+        private DataTable ObtenerDatosDePago()
+        {
+            // Suponiendo que tienes una conexión a la base de datos y ejecutas una consulta
+            DataTable dt = new DataTable();
+            string query = "SELECT * FROM proyecto.PagoCompraCredito"; // Modificar según tus columnas
+
+            using (SqlConnection conn = new SqlConnection(connectionString2))
+            {
+                using (SqlDataAdapter da = new SqlDataAdapter(query, conn))
+                {
+                    da.Fill(dt);
+                }
+            }
+
+            return dt;
+        }
+
+        private void txBusca_TextChanged(object sender, EventArgs e)
+        {
+            FiltrarDatos();
+        }
+
+        private void comboBusca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FiltrarDatos();
         }
     }
 }

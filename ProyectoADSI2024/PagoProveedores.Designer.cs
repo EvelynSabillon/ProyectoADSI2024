@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PagoProveedores));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAtras = new System.Windows.Forms.PictureBox();
             this.provId = new System.Windows.Forms.TextBox();
@@ -39,23 +39,20 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.tboxBuscar = new System.Windows.Forms.TextBox();
+            this.txBusca = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.cboxBuscar = new System.Windows.Forms.ComboBox();
-            this.btnSalir = new System.Windows.Forms.Button();
+            this.comboBusca = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pagoId = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgPagoProv = new System.Windows.Forms.DataGridView();
-            this.chboxActivo = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.datePago = new System.Windows.Forms.DateTimePicker();
             this.pagoMonto = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.chboxPen = new System.Windows.Forms.CheckBox();
             this.button4 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.comboMetodo = new System.Windows.Forms.ComboBox();
@@ -63,7 +60,7 @@
             this.rdCon = new System.Windows.Forms.RadioButton();
             this.rdMed = new System.Windows.Forms.RadioButton();
             this.compraId = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.comboEstado = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgPagoProv)).BeginInit();
             this.SuspendLayout();
@@ -146,6 +143,7 @@
             this.btnEliminar.TabIndex = 144;
             this.btnEliminar.Text = "ELIMINAR";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnGuardar
             // 
@@ -165,13 +163,14 @@
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // tboxBuscar
+            // txBusca
             // 
-            this.tboxBuscar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxBuscar.Location = new System.Drawing.Point(715, 89);
-            this.tboxBuscar.Name = "tboxBuscar";
-            this.tboxBuscar.Size = new System.Drawing.Size(331, 25);
-            this.tboxBuscar.TabIndex = 138;
+            this.txBusca.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txBusca.Location = new System.Drawing.Point(715, 89);
+            this.txBusca.Name = "txBusca";
+            this.txBusca.Size = new System.Drawing.Size(331, 25);
+            this.txBusca.TabIndex = 138;
+            this.txBusca.TextChanged += new System.EventHandler(this.txBusca_TextChanged);
             // 
             // label9
             // 
@@ -183,32 +182,16 @@
             this.label9.TabIndex = 137;
             this.label9.Text = "Buscar";
             // 
-            // cboxBuscar
+            // comboBusca
             // 
-            this.cboxBuscar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboxBuscar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboxBuscar.FormattingEnabled = true;
-            this.cboxBuscar.Location = new System.Drawing.Point(499, 89);
-            this.cboxBuscar.Name = "cboxBuscar";
-            this.cboxBuscar.Size = new System.Drawing.Size(144, 25);
-            this.cboxBuscar.TabIndex = 136;
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.btnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSalir.FlatAppearance.BorderSize = 0;
-            this.btnSalir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
-            this.btnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
-            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalir.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.ForeColor = System.Drawing.Color.White;
-            this.btnSalir.Location = new System.Drawing.Point(906, 528);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(140, 43);
-            this.btnSalir.TabIndex = 134;
-            this.btnSalir.Text = "SALIR";
-            this.btnSalir.UseVisualStyleBackColor = false;
+            this.comboBusca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBusca.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBusca.FormattingEnabled = true;
+            this.comboBusca.Location = new System.Drawing.Point(499, 89);
+            this.comboBusca.Name = "comboBusca";
+            this.comboBusca.Size = new System.Drawing.Size(144, 25);
+            this.comboBusca.TabIndex = 136;
+            this.comboBusca.SelectedIndexChanged += new System.EventHandler(this.comboBusca_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -264,40 +247,29 @@
             this.dgPagoProv.AllowUserToDeleteRows = false;
             this.dgPagoProv.AllowUserToResizeColumns = false;
             this.dgPagoProv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgPagoProv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dgPagoProv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dgPagoProv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgPagoProv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgPagoProv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgPagoProv.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgPagoProv.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgPagoProv.Location = new System.Drawing.Point(499, 124);
             this.dgPagoProv.MultiSelect = false;
             this.dgPagoProv.Name = "dgPagoProv";
             this.dgPagoProv.ReadOnly = true;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgPagoProv.RowsDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dgPagoProv.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgPagoProv.Size = new System.Drawing.Size(547, 387);
             this.dgPagoProv.TabIndex = 128;
-            // 
-            // chboxActivo
-            // 
-            this.chboxActivo.AutoSize = true;
-            this.chboxActivo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chboxActivo.Location = new System.Drawing.Point(314, 465);
-            this.chboxActivo.Name = "chboxActivo";
-            this.chboxActivo.Size = new System.Drawing.Size(87, 25);
-            this.chboxActivo.TabIndex = 127;
-            this.chboxActivo.Text = "Pagado";
-            this.chboxActivo.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -345,17 +317,6 @@
             this.label6.TabIndex = 158;
             this.label6.Text = "Nombre";
             // 
-            // chboxPen
-            // 
-            this.chboxPen.AutoSize = true;
-            this.chboxPen.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chboxPen.Location = new System.Drawing.Point(191, 465);
-            this.chboxPen.Name = "chboxPen";
-            this.chboxPen.Size = new System.Drawing.Size(98, 24);
-            this.chboxPen.TabIndex = 160;
-            this.chboxPen.Text = "Pendiente";
-            this.chboxPen.UseVisualStyleBackColor = true;
-            // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
@@ -372,6 +333,7 @@
             this.button4.TabIndex = 161;
             this.button4.Text = "EDITAR";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label11
             // 
@@ -438,34 +400,26 @@
             this.compraId.Size = new System.Drawing.Size(125, 25);
             this.compraId.TabIndex = 142;
             // 
-            // button3
+            // comboEstado
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(331, 280);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(125, 25);
-            this.button3.TabIndex = 159;
-            this.button3.Text = "SELECCIONAR ";
-            this.button3.UseVisualStyleBackColor = false;
+            this.comboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboEstado.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboEstado.FormattingEnabled = true;
+            this.comboEstado.Location = new System.Drawing.Point(188, 461);
+            this.comboEstado.Name = "comboEstado";
+            this.comboEstado.Size = new System.Drawing.Size(265, 25);
+            this.comboEstado.TabIndex = 165;
             // 
             // PagoProveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1070, 595);
+            this.Controls.Add(this.comboEstado);
             this.Controls.Add(this.rdMed);
             this.Controls.Add(this.rdCon);
             this.Controls.Add(this.comboName);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.chboxPen);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pagoMonto);
             this.Controls.Add(this.datePago);
@@ -479,17 +433,15 @@
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.compraId);
-            this.Controls.Add(this.tboxBuscar);
+            this.Controls.Add(this.txBusca);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.cboxBuscar);
-            this.Controls.Add(this.btnSalir);
+            this.Controls.Add(this.comboBusca);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pagoId);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgPagoProv);
-            this.Controls.Add(this.chboxActivo);
             this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -512,23 +464,20 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.TextBox tboxBuscar;
+        private System.Windows.Forms.TextBox txBusca;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox cboxBuscar;
-        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.ComboBox comboBusca;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox pagoId;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgPagoProv;
-        private System.Windows.Forms.CheckBox chboxActivo;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker datePago;
         private System.Windows.Forms.TextBox pagoMonto;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox chboxPen;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox comboMetodo;
@@ -536,6 +485,6 @@
         private System.Windows.Forms.RadioButton rdCon;
         private System.Windows.Forms.RadioButton rdMed;
         private System.Windows.Forms.TextBox compraId;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox comboEstado;
     }
 }

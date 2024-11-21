@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistroProveedores));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAtras = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -41,11 +41,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.provTelef = new System.Windows.Forms.MaskedTextBox();
             this.provRTN = new System.Windows.Forms.MaskedTextBox();
-            this.tboxBuscar = new System.Windows.Forms.TextBox();
+            this.txBusca = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.cboxBuscar = new System.Windows.Forms.ComboBox();
+            this.comboBusca = new System.Windows.Forms.ComboBox();
             this.provDirec = new System.Windows.Forms.TextBox();
-            this.btnSalir = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -175,13 +174,14 @@
             this.provRTN.Size = new System.Drawing.Size(181, 25);
             this.provRTN.TabIndex = 118;
             // 
-            // tboxBuscar
+            // txBusca
             // 
-            this.tboxBuscar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxBuscar.Location = new System.Drawing.Point(715, 98);
-            this.tboxBuscar.Name = "tboxBuscar";
-            this.tboxBuscar.Size = new System.Drawing.Size(331, 25);
-            this.tboxBuscar.TabIndex = 117;
+            this.txBusca.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txBusca.Location = new System.Drawing.Point(715, 98);
+            this.txBusca.Name = "txBusca";
+            this.txBusca.Size = new System.Drawing.Size(331, 25);
+            this.txBusca.TabIndex = 117;
+            this.txBusca.TextChanged += new System.EventHandler(this.tboxBuscar_TextChanged);
             // 
             // label9
             // 
@@ -193,15 +193,16 @@
             this.label9.TabIndex = 116;
             this.label9.Text = "Buscar";
             // 
-            // cboxBuscar
+            // comboBusca
             // 
-            this.cboxBuscar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboxBuscar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboxBuscar.FormattingEnabled = true;
-            this.cboxBuscar.Location = new System.Drawing.Point(499, 98);
-            this.cboxBuscar.Name = "cboxBuscar";
-            this.cboxBuscar.Size = new System.Drawing.Size(144, 25);
-            this.cboxBuscar.TabIndex = 115;
+            this.comboBusca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBusca.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBusca.FormattingEnabled = true;
+            this.comboBusca.Location = new System.Drawing.Point(499, 98);
+            this.comboBusca.Name = "comboBusca";
+            this.comboBusca.Size = new System.Drawing.Size(144, 25);
+            this.comboBusca.TabIndex = 115;
+            this.comboBusca.SelectedIndexChanged += new System.EventHandler(this.comboBusca_SelectedIndexChanged);
             // 
             // provDirec
             // 
@@ -211,23 +212,6 @@
             this.provDirec.Name = "provDirec";
             this.provDirec.Size = new System.Drawing.Size(262, 63);
             this.provDirec.TabIndex = 114;
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.btnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSalir.FlatAppearance.BorderSize = 0;
-            this.btnSalir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
-            this.btnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
-            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalir.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.ForeColor = System.Drawing.Color.White;
-            this.btnSalir.Location = new System.Drawing.Point(906, 526);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(140, 43);
-            this.btnSalir.TabIndex = 113;
-            this.btnSalir.Text = "SALIR";
-            this.btnSalir.UseVisualStyleBackColor = false;
             // 
             // label5
             // 
@@ -283,27 +267,27 @@
             this.dgRegProv.AllowUserToDeleteRows = false;
             this.dgRegProv.AllowUserToResizeColumns = false;
             this.dgRegProv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgRegProv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dgRegProv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgRegProv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgRegProv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgRegProv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgRegProv.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgRegProv.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgRegProv.Location = new System.Drawing.Point(499, 133);
             this.dgRegProv.MultiSelect = false;
             this.dgRegProv.Name = "dgRegProv";
             this.dgRegProv.ReadOnly = true;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgRegProv.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dgRegProv.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgRegProv.Size = new System.Drawing.Size(547, 375);
             this.dgRegProv.TabIndex = 107;
             // 
@@ -369,11 +353,10 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.provTelef);
             this.Controls.Add(this.provRTN);
-            this.Controls.Add(this.tboxBuscar);
+            this.Controls.Add(this.txBusca);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.cboxBuscar);
+            this.Controls.Add(this.comboBusca);
             this.Controls.Add(this.provDirec);
-            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -405,11 +388,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.MaskedTextBox provTelef;
         private System.Windows.Forms.MaskedTextBox provRTN;
-        private System.Windows.Forms.TextBox tboxBuscar;
+        private System.Windows.Forms.TextBox txBusca;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox cboxBuscar;
+        private System.Windows.Forms.ComboBox comboBusca;
         private System.Windows.Forms.TextBox provDirec;
-        private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;

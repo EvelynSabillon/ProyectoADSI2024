@@ -19,9 +19,13 @@ namespace ProyectoADSI2024
         SqlConnection conexion;
         SqlDataAdapter adp;
 
+ 
+
         public RegistroProveedores()
         {
             InitializeComponent();
+          
+
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -99,7 +103,7 @@ namespace ProyectoADSI2024
                 {
                     conn.Open();
 
-                    using (SqlCommand cmd = new SqlCommand("SELECT * FROM proyecto.Proveedor ORDER BY Nombre desc", conn))
+                    using (SqlCommand cmd = new SqlCommand("SELECT * FROM proyecto.Proveedor WHERE Activo = 1 ORDER BY Nombre desc", conn))
                     {
                         SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
@@ -130,6 +134,16 @@ namespace ProyectoADSI2024
         private void RegistroProveedores_Load(object sender, EventArgs e)
         {
             CargarDatos();
+            LimpiarTxtBox();
+
+            comboBusca.Items.Add("ProveedorID");
+            comboBusca.Items.Add("Nombre");
+            comboBusca.Items.Add("RTN");
+            comboBusca.Items.Add("Direccion");
+            comboBusca.Items.Add("Telefono");
+            comboBusca.Items.Add("Email");
+            comboBusca.SelectedIndex = -1;
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -232,6 +246,56 @@ namespace ProyectoADSI2024
 
                 MessageBox.Show($"Error al eliminar el registro: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void tboxBuscar_TextChanged(object sender, EventArgs e)
+        {
+            FiltrarDatos();
+        }
+
+        private void FiltrarDatos()
+        {
+            // Suponiendo que ya tienes un DataTable como origen de datos para el DataGridView
+            DataTable dt = ObtenerDatosDeProveedor(); // Método que recupera los datos de proveedores
+            string columnaSeleccionada = comboBusca.SelectedItem.ToString();
+            string filtro = txBusca.Text.ToLower();
+
+            // Filtrar la DataTable según la columna seleccionada y el valor de búsqueda
+            DataView dv = dt.DefaultView;
+            if (string.IsNullOrEmpty(filtro))
+            {
+                dv.RowFilter = string.Empty; // Si no hay texto, mostrar todos
+            }
+            else
+            {
+                dv.RowFilter = $"{columnaSeleccionada} LIKE '%{filtro}%'";
+            }
+
+            // Asignar el DataView filtrado al DataGridView
+            dgRegProv.DataSource = dv;
+        }
+
+
+        private DataTable ObtenerDatosDeProveedor()
+        {
+            // Suponiendo que tienes una conexión a la base de datos y ejecutas una consulta
+            DataTable dt = new DataTable();
+            string query = "SELECT * FROM proyecto.Proveedor"; // Modificar según tus columnas
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                using (SqlDataAdapter da = new SqlDataAdapter(query, conn))
+                {
+                    da.Fill(dt);
+                }
+            }
+
+            return dt;
+        }
+
+        private void comboBusca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FiltrarDatos();
         }
     }
 }
