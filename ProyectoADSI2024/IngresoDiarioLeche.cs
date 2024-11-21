@@ -216,6 +216,7 @@ namespace ProyectoADSI2024
         private void IngresoDiarioLeche_Load(object sender, EventArgs e)
         {
             LlenarComboBoxSocios();
+            txtTexto.Enabled = false;
         }
 
 
@@ -364,7 +365,93 @@ namespace ProyectoADSI2024
             }
         }
 
+        private void txtTexto_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTexto.Text.Length == 0)
+            {
+                tabIngresoLeche.DefaultView.RowFilter = ""; // Mostrar todo si el texto está vacío
+            }
+            else
+            {
+                try
+                {
+                    var columnType = tabIngresoLeche.Columns[cmbCampo.Text].DataType;
 
+                    if (columnType == typeof(string)) // Filtro para cadenas
+                    {
+                        tabIngresoLeche.DefaultView.RowFilter = cmbCampo.Text + " LIKE '%" + txtTexto.Text + "%'";
+                    }
+                    else if (columnType == typeof(int)) // Filtro para enteros
+                    {
+                        if (int.TryParse(txtTexto.Text, out int numero))
+                        {
+                            tabIngresoLeche.DefaultView.RowFilter = cmbCampo.Text + " = " + numero;
+                        }
+                        else
+                        {
+                            tabIngresoLeche.DefaultView.RowFilter = "1 = 0"; // Sin coincidencias
+                        }
+                    }
+                    else if (columnType == typeof(decimal) || columnType == typeof(float) || columnType == typeof(double)) // Filtro para números decimales
+                    {
+                        if (decimal.TryParse(txtTexto.Text, out decimal numeroDecimal))
+                        {
+                            tabIngresoLeche.DefaultView.RowFilter = cmbCampo.Text + " = " + numeroDecimal.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                        }
+                        else
+                        {
+                            tabIngresoLeche.DefaultView.RowFilter = "1 = 0"; // Sin coincidencias
+                        }
+                    }
+                    else if (columnType == typeof(DateTime)) // Filtro para fechas (día/mes/año)
+                    {
+                        string inputFecha = txtTexto.Text.Trim();
+                        string[] formatosFecha = { "dd/MM/yyyy", "dd/MM" }; // Soportar "día/mes/año" y "día/mes"
+                        DateTime dateValue;
+
+                        if (DateTime.TryParseExact(inputFecha, formatosFecha, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dateValue))
+                        {
+                            // Si no se proporciona el año, agregar el año actual
+                            if (inputFecha.Length <= 5) // Formato corto: "dd/MM"
+                            {
+                                dateValue = new DateTime(DateTime.Now.Year, dateValue.Month, dateValue.Day);
+                            }
+
+                            // Convertir la fecha al formato requerido por RowFilter: "MM/dd/yyyy"
+                            tabIngresoLeche.DefaultView.RowFilter = cmbCampo.Text + " = #" + dateValue.ToString("MM/dd/yyyy") + "#";
+                        }
+                        else
+                        {
+                            tabIngresoLeche.DefaultView.RowFilter = "1 = 0"; // Sin coincidencias
+                        }
+                    }
+                    else
+                    {
+                        tabIngresoLeche.DefaultView.RowFilter = "1 = 0"; // Tipo no compatible
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error en el filtrado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            dgIngresoLeche.DataSource = tabIngresoLeche.DefaultView.ToTable();
+        }
+        private void cboxBuscar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTexto_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cmbCampo_Click(object sender, EventArgs e)
+        {
+            txtTexto.Enabled = true;
+        }
     }
 }
 

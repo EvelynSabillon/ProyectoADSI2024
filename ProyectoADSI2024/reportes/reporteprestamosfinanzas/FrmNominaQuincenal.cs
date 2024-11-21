@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProyectoADSI2024.Reportes.ReportePrestamosFinanzas
 {
-    public partial class FrmReporteQuincenal : Form
+    public partial class FrmNominaQuincenal : Form
     {
-        public FrmReporteQuincenal()
+        public FrmNominaQuincenal()
         {
             InitializeComponent();
         }

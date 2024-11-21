@@ -84,17 +84,17 @@
     </Compile>
     <Compile Include="Controls\MenuColorTable.cs" />
     <Compile Include="Controls\MenuRenderer.cs" />
-    <Compile Include="Reportes\ReportePrestamosFinanzas\ReporteConsultaQuincenal.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ReporteConsultaQuincenal.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reportes\ReportePrestamosFinanzas\FrmReporteQuincenal.cs">
+    <Compile Include="Reportes\ReportePrestamosFinanzas\FrmNominaQuincenal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reportes\ReportePrestamosFinanzas\FrmReporteQuincenal.Designer.cs">
-      <DependentUpon>FrmReporteQuincenal.cs</DependentUpon>
+    <Compile Include="Reportes\ReportePrestamosFinanzas\FrmNominaQuincenal.Designer.cs">
+      <DependentUpon>FrmNominaQuincenal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ReportePrestamosFinanzas\Reporte_Nomina.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reporte_Nomina.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Vista_ArticuloMed.cs">
       <SubType>Form</SubType>
@@ -377,10 +377,6 @@
     <EmbeddedResource Include="RegistroProveedores.resx">
       <DependentUpon>RegistroProveedores.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\ReportePrestamosFinanzas\ReporteConsultaQuincenal.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ReporteConsultaQuincenal.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="ReporteIngresoLeche.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteIngresoLeche.cs</LastGenOutput>
@@ -393,8 +389,12 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Reporte_Kardex.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\ReportePrestamosFinanzas\FrmReporteQuincenal.resx">
-      <DependentUpon>FrmReporteQuincenal.cs</DependentUpon>
+    <EmbeddedResource Include="Reportes\ReportePrestamosFinanzas\FrmNominaQuincenal.resx">
+      <DependentUpon>FrmNominaQuincenal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReportePrestamosFinanzas\Reporte_Nomina.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Reporte_Nomina.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista_ArticuloCon.resx">
       <DependentUpon>Vista_ArticuloCon.cs</DependentUpon>
