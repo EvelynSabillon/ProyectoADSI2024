@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Security.Policy;
 
 namespace ProyectoADSI2024
 {
@@ -16,19 +18,22 @@ namespace ProyectoADSI2024
         SqlConnection conexion;
         SqlDataAdapter adapter;
         DataTable tabQuincena;
-        
+
+        System.Windows.Forms.ToolTip toolTips;
+
         public ConsultaQuincenalLeche()
         
         {
             InitializeComponent();
             string connectionString = "Server=3.128.144.165; Database=DB20212030388; User ID=eugene.wu; Password=EW20212030388;";
-            conexion = new SqlConnection(connectionString); 
+            conexion = new SqlConnection(connectionString);
+            toolTipsTxts();
         }
 
 
         private void ConsultaQuincenalLeche_Load(object sender, EventArgs e)
         {
-            
+            CargarDatos();
         }
 
         //BOTONES
@@ -40,23 +45,91 @@ namespace ProyectoADSI2024
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            int quincenaID = int.Parse(tboxQuincenaid.Text);
-            DateTime fechaInicio = dtpFechaInicio.Value;
-            DateTime fechaFinal = dtpFechaFinal.Value;
-            
-            // Determinar si es un INSERT o UPDATE
-            if (EsNuevoRegistro(quincenaID)) // Función para verificar si el registro ya existe
+            if(string.IsNullOrWhiteSpace(tboxQuincenaid.Text))
             {
-                // Llamar a procedimiento almacenado para INSERT
-                InsertarQuincena(quincenaID, fechaInicio, fechaFinal);
+                MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
+
+            SqlCommand cmd = new SqlCommand("spConsultaQuincenalInsert", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            int quincenaID = int.Parse(tboxQuincenaid.Text);
+
+            cmd.Parameters.AddWithValue("@QuincenaID", quincenaID);
+            cmd.Parameters.AddWithValue("@FechaInicio", dtpFechaInicio.Value); //datetimepicker
+            cmd.Parameters.AddWithValue("@FechaFinal", dtpFechaFinal.Value); //datetimepicker
+
+            conexion.Open();
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+
+            //Limpiar txbos y dtp
+            Limpiar();
+
+            //Actualizar tabla
+            CargarDatos();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Desea eliminar el préstamo?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                // Llamar a procedimiento almacenado para UPDATE
-                ActualizarQuincena(quincenaID, fechaInicio, fechaFinal);
+                //ELIMINAR UN REGISTRO seleccionado en el DataGridView
+                try
+                {
+                    if (dgConsultaLeche.SelectedRows.Count > 0)
+                    {
+                        int QuincenaID = Convert.ToInt32(dgConsultaLeche.SelectedRows[0].Cells["QuincenaID"].Value);
+                        using (SqlConnection con = new SqlConnection("Server=3.128.144.165; Database=DB20212030388; User ID=eugene.wu; Password=EW20212030388;"))
+                        {
+                            // Procedimiento almacenado para eliminar el registro
+                            using (SqlCommand cmdEliminar = new SqlCommand("spEliminarConsultaQuincenal", con))
+                            {
+                                cmdEliminar.CommandType = CommandType.StoredProcedure;
+
+                                // Pasar el parámetro QuincenaID
+                                cmdEliminar.Parameters.AddWithValue("@QuincenaID", QuincenaID);
+
+                                // Abrir la conexión
+                                con.Open();
+
+                                // Ejecutar la eliminación
+                                cmdEliminar.ExecuteNonQuery();
+
+                                // Mostrar mensaje de éxito
+                                MessageBox.Show("Quincena eliminado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                // Actualizar la tabla 
+                                tabQuincena.Clear(); // Limpiar datos antiguos
+                                adapter.Fill(tabQuincena); // Llenar con los nuevos datos
+
+                                // Limpiar los campos del formulario
+                                tboxQuincenaid.Text = "";
+                                dtpFechaInicio.ResetText();
+                                dtpFechaFinal.ResetText();
+
+                                // Actualizar la lista de socios
+                                CargarDatos();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Seleccione un registro para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al eliminar el registro: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+            MessageBox.Show("Se limpió correctamente.","Éxito",MessageBoxButtons.OK,MessageBoxIcon.Information);
+        }
         //FUNCIONES
 
         //SELECT
@@ -67,7 +140,7 @@ namespace ProyectoADSI2024
                  conexion.Open();
 
                 // Adaptador para el SELECT
-                adapter = new SqlDataAdapter("spMostrarIngresoLecheDiario", conexion);
+                adapter = new SqlDataAdapter("spMostrarQuincena", conexion);
                 adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
                 // Llenar el DataTable
@@ -76,6 +149,14 @@ namespace ProyectoADSI2024
 
                 // Asignar al DataGridView
                 dgConsultaLeche.DataSource = tabQuincena;
+
+                //Dar formato a las columnas
+                if (dgConsultaLeche.Columns["FechaInicio"] != null)
+                    dgConsultaLeche.Columns["FechaInicio"].DefaultCellStyle.Format = "dd/MM/yyyy";
+
+                if (dgConsultaLeche.Columns["FechaFinal"] != null)
+                    dgConsultaLeche.Columns["FechaFinal"].DefaultCellStyle.Format = "dd/MM/yyyy";
+
                 conexion.Close();
 
             }
@@ -85,74 +166,23 @@ namespace ProyectoADSI2024
             }
         }
 
-        //INSERT
-        private void InsertarQuincena(int quincenaID, DateTime fechaInicio, DateTime fechaFinal)
+        private void toolTipsTxts()
         {
-            
-                using (SqlCommand cmd = new SqlCommand("spConsultaQuincenalInsert", conexion))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
+            toolTips = new System.Windows.Forms.ToolTip();
+            toolTips.SetToolTip(tboxQuincenaid, "Ingrese un número de Quincena válido");
+            toolTips.SetToolTip(tboxMes, "Mes");
+            toolTips.SetToolTip(dtpFechaInicio, "Seleccione la fecha en la que iniciará la quincena.");
+            toolTips.SetToolTip(dtpFechaFinal, "Seleccione la fecha en la que terminará la quincena.");
 
-                    // Agregar parámetros
-                    cmd.Parameters.AddWithValue("@QuincenaID", quincenaID);
-                    cmd.Parameters.AddWithValue("@FechaInicio", fechaInicio);
-                    cmd.Parameters.AddWithValue("@FechaFinal", fechaFinal);
-
-                    
-                    conexion.Open();
-                    cmd.ExecuteNonQuery();
-                    conexion.Close();
-
-                    MessageBox.Show("Datos guardados exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);   
-                }
-            
         }
 
-        //UPDATE
-        private void ActualizarQuincena(int quincenaID, DateTime fechaInicio, DateTime fechaFinal)
+        private void Limpiar()
         {
-            try
-            {
-                using (SqlCommand cmd = new SqlCommand("spConsultaLecheUpdate", conexion))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    // Agregar parámetros
-                    cmd.Parameters.AddWithValue("@QuincenaID", quincenaID);
-                    cmd.Parameters.AddWithValue("@FechaInicio", fechaInicio);
-                    cmd.Parameters.AddWithValue("@FechaFinal", fechaFinal);
-
-                    conexion.Open();
-                    cmd.ExecuteNonQuery();
-                    conexion.Close();
-                    MessageBox.Show("Quincena actualizada exitosamente.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al actualizar la quincena: " + ex.Message);
-            }
+            tboxQuincenaid.Clear();
+            dtpFechaInicio.Value = DateTime.Now;
+            dtpFechaFinal.Value = DateTime.Now;
         }
 
-
-        private bool EsNuevoRegistro(int quincenaID)
-        {
-            using (SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM proyecto.Quincena WHERE QuincenaID = @QuincenaID", conexion))
-            {
-                cmd.Parameters.AddWithValue("@QuincenaID", quincenaID);
-
-                try
-                {
-                    conexion.Open();
-                    int count = (int)cmd.ExecuteScalar();
-                    return count == 0; // Si no existe, es un nuevo registro
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al verificar el registro: " + ex.Message);
-                    return false; // Considerar que no es nuevo en caso de error
-                }
-            }
-        }
+        
     }
 }
