@@ -442,6 +442,11 @@ namespace ProyectoADSI2024
         {
             txtTexto.Enabled = true;
         }
+
+        private void btnGenReporte_Click(object sender, EventArgs e)
+        {
+            ReportManager.ShowReport(@"ReporteModuloControlIngresoLeche\rptLecheDiaria.rpt");
+        }
     }
 }
 

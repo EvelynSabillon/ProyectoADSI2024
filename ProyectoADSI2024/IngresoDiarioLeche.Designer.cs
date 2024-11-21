@@ -340,6 +340,7 @@
             this.btnGenReporte.TabIndex = 72;
             this.btnGenReporte.Text = "GENERAR REPORTE";
             this.btnGenReporte.UseVisualStyleBackColor = false;
+            this.btnGenReporte.Click += new System.EventHandler(this.btnGenReporte_Click);
             // 
             // btnLimpiar
             // 
