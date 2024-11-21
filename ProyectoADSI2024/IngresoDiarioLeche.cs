@@ -72,7 +72,31 @@ namespace ProyectoADSI2024
             dgIngresoLeche.DataBindingComplete += DgIngresoLeche_Load;
         }
 
-        
+
+        private void IngresoDiarioLeche_Load(object sender, EventArgs e)
+        {
+            LlenarComboBoxSocios();
+            txtTexto.Enabled = false;
+        }
+
+        private void IngresoDiarioLeche_Load(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+
+            LlenarComboBoxSocios(); // Llenar el ComboBox de socios
+            CargarDatosActualizados();        // Cargar datos al DataGridView
+
+            dgIngresoLeche.ClearSelection();
+        }
+
+        private void DgIngresoLeche_Load(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            // Validar si el DataGridView tiene datos
+            if (dgIngresoLeche.Rows.Count > 0)
+            {
+                dgIngresoLeche.ClearSelection(); // Deseleccionar cualquier fila inicial
+            }
+        }
+
         private void btnAtras_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Desea volver al menu principal?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -83,52 +107,77 @@ namespace ProyectoADSI2024
         {
             try
             {
-                //Convertir a formato DateTime 
-                DateTime diaIDDate = DateTime.Parse(tBoxDiaID.Text);
-
-                // Convertir y validar datos numéricos
-                double litrosAM;
-                if (!double.TryParse(tboxLAM.Text, out litrosAM))
+                // Validación de campos vacíos
+                if (string.IsNullOrWhiteSpace(tBoxDiaID.Text) ||
+                    string.IsNullOrWhiteSpace(tboxLAM.Text) ||
+                    string.IsNullOrWhiteSpace(tboxLPM.Text) ||
+                    cboxSocios.SelectedIndex <= 0 ||
+                    string.IsNullOrWhiteSpace(tboxEncargado.Text))
                 {
-                    MessageBox.Show("El valor de LitrosAM debe ser numérico.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                double litrosPM;
-                if (!double.TryParse(tboxLPM.Text, out litrosPM))
+                // Validar el formato del campo DiaID (fecha)
+                DateTime diaIDDate;
+                if (!DateTime.TryParse(tBoxDiaID.Text, out diaIDDate))
                 {
-                    MessageBox.Show("El valor de LitrosPM debe ser numérico.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El campo DiaID debe tener un formato de fecha válido tal como dd/MM/yyyy.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Modo de insert: Guardar un nuevo registro
+                // Validar el formato numérico de Litros AM y Litros PM
+                double litrosAM, litrosPM;
+                if (!double.TryParse(tboxLAM.Text, out litrosAM) || litrosAM < 0)
+                {
+                    MessageBox.Show("El valor de Litros AM debe ser numérico y mayor o igual a 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!double.TryParse(tboxLPM.Text, out litrosPM) || litrosPM < 0)
+                {
+                    MessageBox.Show("El valor de Litros PM debe ser numérico y mayor o igual a 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Validar selección del ComboBox de socios
+                if (cboxSocios.SelectedIndex <= 0)
+                {
+                    MessageBox.Show("Por favor, seleccione un socio válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Insertar datos en la base de datos
                 SqlCommand cmd = new SqlCommand("spProyectoIngLecheInsert", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@DiaID", DateTime.Parse(tBoxDiaID.Text));
+                cmd.Parameters.AddWithValue("@DiaID", diaIDDate);
                 cmd.Parameters.AddWithValue("@SocioID", Convert.ToInt32(cboxSocios.SelectedValue));
                 cmd.Parameters.AddWithValue("@Fecha", dateTimePickerFecha.Value);
-                cmd.Parameters.AddWithValue("@LitroAM", Convert.ToDouble(tboxLAM.Text));
-                cmd.Parameters.AddWithValue("@LitroPM", Convert.ToDouble(tboxLPM.Text));
+                cmd.Parameters.AddWithValue("@LitroAM", litrosAM);
+                cmd.Parameters.AddWithValue("@LitroPM", litrosPM);
                 cmd.Parameters.AddWithValue("@Observaciones", tboxObs.Text);
                 cmd.Parameters.AddWithValue("@Encargado", tboxEncargado.Text);
                 cmd.Parameters.AddWithValue("@Activo", checkBoxActivo.Checked);
 
+                // Ejecutar el comando
                 conexion.Open();
                 cmd.ExecuteNonQuery();
                 conexion.Close();
 
-
+                // Limpiar los campos
                 LimpiarTxtBox();
 
                 MessageBox.Show("Datos guardados exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                // Actualizar el DataGridView
+                CargarDatosActualizados();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error al guardar los datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
@@ -210,16 +259,7 @@ namespace ProyectoADSI2024
 
         }
 
-
-
         //OTROS METODOS
-        private void IngresoDiarioLeche_Load(object sender, EventArgs e)
-        {
-            LlenarComboBoxSocios();
-            txtTexto.Enabled = false;
-        }
-
-
         //Esta funcion es para llenar el comboBox con la lista de socios
         private void LlenarComboBoxSocios()
         {
@@ -249,39 +289,12 @@ namespace ProyectoADSI2024
             }
         }
 
-
-        //METODO PARA CARGAR DATOS DE LA BD EN EL DATAGRIDVIEW
-        private void CargarDatosDG()
-        {
-            try
-            {
-                // Conexión a la base de datos
-                using (SqlConnection conexion = new SqlConnection(url))
-                {
-                    string query = "SELECT * FROM proyecto.IngresoLeche ORDER BY DiaID desc";
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexion);
-
-                    //Instancia del datatable
-                    tabIngresoLeche = new DataTable();
-                    //LLenamos con la informacion la tablaa
-                    adapter.Fill(tabIngresoLeche);
-
-                    // Asignar el DataTable al DataGridView
-                    dgIngresoLeche.DataSource = tabIngresoLeche;
-                    dgIngresoLeche.ClearSelection();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al cargar datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-
         //Evento para seleccionar la fila que se quiera editar y mandarlo a los textbox
         private void dgIngresoLeche_SelectionChanged(object sender, EventArgs e)
         {
-            if ( dgIngresoLeche.CurrentRow == null) return; // No hacer nada si está cargando
+            if (dgIngresoLeche.SelectedRows.Count == 0 || dgIngresoLeche.CurrentRow == null)
+                return;
+
 
             try
             {
@@ -303,26 +316,6 @@ namespace ProyectoADSI2024
             }
         }
 
-
-        private void IngresoDiarioLeche_Load(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-
-            LlenarComboBoxSocios(); // Llenar el ComboBox de socios
-            CargarDatosActualizados();        // Cargar datos al DataGridView
-
-            dgIngresoLeche.ClearSelection();
-        }
-
-        private void DgIngresoLeche_Load(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            // Validar si el DataGridView tiene datos
-            if (dgIngresoLeche.Rows.Count > 0)
-            {
-                dgIngresoLeche.ClearSelection(); // Deseleccionar cualquier fila inicial
-            }
-           
-        }
-
         //Funcion para limpiar textboxs
         private void LimpiarTxtBox()
         {
@@ -335,7 +328,6 @@ namespace ProyectoADSI2024
             cboxSocios.SelectedIndex = 0;
             dateTimePickerFecha.Value = DateTime.Now;
         }
-
 
         private void CargarDatosActualizados()
         {
@@ -357,6 +349,12 @@ namespace ProyectoADSI2024
 
                     // Asignar el DataTable al DataGridView
                     dgIngresoLeche.DataSource = tabIngresoLeche;
+
+                    if (dgIngresoLeche.Columns.Contains("Activo"))
+                    {
+                        dgIngresoLeche.Columns["Activo"].Visible = false;
+                    }
+
                 }
             }
             catch (Exception ex)
@@ -367,25 +365,27 @@ namespace ProyectoADSI2024
 
         private void txtTexto_TextChanged(object sender, EventArgs e)
         {
+            // Verificar si el campo de búsqueda está vacío
             if (txtTexto.Text.Length == 0)
             {
-                tabIngresoLeche.DefaultView.RowFilter = ""; // Mostrar todo si el texto está vacío
+                tabIngresoLeche.DefaultView.RowFilter = ""; // Mostrar todos los datos si no hay texto
             }
             else
             {
                 try
                 {
+                    // Obtener el tipo de la columna seleccionada
                     var columnType = tabIngresoLeche.Columns[cmbCampo.Text].DataType;
 
                     if (columnType == typeof(string)) // Filtro para cadenas
                     {
-                        tabIngresoLeche.DefaultView.RowFilter = cmbCampo.Text + " LIKE '%" + txtTexto.Text + "%'";
+                        tabIngresoLeche.DefaultView.RowFilter = $"{cmbCampo.Text} LIKE '%{txtTexto.Text}%'";
                     }
                     else if (columnType == typeof(int)) // Filtro para enteros
                     {
                         if (int.TryParse(txtTexto.Text, out int numero))
                         {
-                            tabIngresoLeche.DefaultView.RowFilter = cmbCampo.Text + " = " + numero;
+                            tabIngresoLeche.DefaultView.RowFilter = $"{cmbCampo.Text} = {numero}";
                         }
                         else
                         {
@@ -394,9 +394,9 @@ namespace ProyectoADSI2024
                     }
                     else if (columnType == typeof(decimal) || columnType == typeof(float) || columnType == typeof(double)) // Filtro para números decimales
                     {
-                        if (decimal.TryParse(txtTexto.Text, out decimal numeroDecimal))
+                        if (decimal.TryParse(txtTexto.Text, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out decimal numeroDecimal))
                         {
-                            tabIngresoLeche.DefaultView.RowFilter = cmbCampo.Text + " = " + numeroDecimal.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                            tabIngresoLeche.DefaultView.RowFilter = $"{cmbCampo.Text} = {numeroDecimal.ToString(System.Globalization.CultureInfo.InvariantCulture)}";
                         }
                         else
                         {
@@ -406,19 +406,17 @@ namespace ProyectoADSI2024
                     else if (columnType == typeof(DateTime)) // Filtro para fechas (día/mes/año)
                     {
                         string inputFecha = txtTexto.Text.Trim();
-                        string[] formatosFecha = { "dd/MM/yyyy", "dd/MM" }; // Soportar "día/mes/año" y "día/mes"
-                        DateTime dateValue;
-
-                        if (DateTime.TryParseExact(inputFecha, formatosFecha, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dateValue))
+                        string[] formatosFecha = { "dd/MM/yyyy", "dd/MM" }; // Formatos soportados
+                        if (DateTime.TryParseExact(inputFecha, formatosFecha, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out DateTime dateValue))
                         {
-                            // Si no se proporciona el año, agregar el año actual
-                            if (inputFecha.Length <= 5) // Formato corto: "dd/MM"
+                            // Si el formato es corto (dd/MM), asumir el año actual
+                            if (inputFecha.Length <= 5)
                             {
                                 dateValue = new DateTime(DateTime.Now.Year, dateValue.Month, dateValue.Day);
                             }
 
-                            // Convertir la fecha al formato requerido por RowFilter: "MM/dd/yyyy"
-                            tabIngresoLeche.DefaultView.RowFilter = cmbCampo.Text + " = #" + dateValue.ToString("MM/dd/yyyy") + "#";
+                            // Aplicar filtro con formato MM/dd/yyyy
+                            tabIngresoLeche.DefaultView.RowFilter = $"{cmbCampo.Text} = #{dateValue.ToString("MM/dd/yyyy")}#";
                         }
                         else
                         {
@@ -427,25 +425,17 @@ namespace ProyectoADSI2024
                     }
                     else
                     {
-                        tabIngresoLeche.DefaultView.RowFilter = "1 = 0"; // Tipo no compatible
+                        tabIngresoLeche.DefaultView.RowFilter = "1 = 0"; // Tipo de columna no soportado
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error en el filtrado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Error en el filtrado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
+            // Actualizar el DataGridView con los datos filtrados
             dgIngresoLeche.DataSource = tabIngresoLeche.DefaultView.ToTable();
-        }
-        private void cboxBuscar_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTexto_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void cmbCampo_Click(object sender, EventArgs e)
