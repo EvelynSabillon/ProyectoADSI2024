@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultaQuincenalLeche));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAtras = new System.Windows.Forms.PictureBox();
             this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
@@ -46,8 +46,8 @@
             this.dtpFechaFinal = new System.Windows.Forms.DateTimePicker();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.dgConsultaLeche = new System.Windows.Forms.DataGridView();
-            this.cboxBuscar = new System.Windows.Forms.ComboBox();
-            this.tboxBuscar = new System.Windows.Forms.TextBox();
+            this.cmbCampo = new System.Windows.Forms.ComboBox();
+            this.txtTexto = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnLimpiar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
@@ -211,45 +211,53 @@
             this.dgConsultaLeche.AllowUserToDeleteRows = false;
             this.dgConsultaLeche.AllowUserToResizeColumns = false;
             this.dgConsultaLeche.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgConsultaLeche.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dgConsultaLeche.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgConsultaLeche.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgConsultaLeche.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgConsultaLeche.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgConsultaLeche.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgConsultaLeche.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgConsultaLeche.Location = new System.Drawing.Point(520, 142);
             this.dgConsultaLeche.MultiSelect = false;
             this.dgConsultaLeche.Name = "dgConsultaLeche";
             this.dgConsultaLeche.ReadOnly = true;
             this.dgConsultaLeche.RowHeadersWidth = 51;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgConsultaLeche.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dgConsultaLeche.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgConsultaLeche.Size = new System.Drawing.Size(525, 346);
             this.dgConsultaLeche.TabIndex = 195;
+            this.dgConsultaLeche.SelectionChanged += new System.EventHandler(this.dgConsultaLeche_SelectionChanged);
             // 
-            // cboxBuscar
+            // cmbCampo
             // 
-            this.cboxBuscar.FormattingEnabled = true;
-            this.cboxBuscar.Location = new System.Drawing.Point(520, 109);
-            this.cboxBuscar.Name = "cboxBuscar";
-            this.cboxBuscar.Size = new System.Drawing.Size(208, 21);
-            this.cboxBuscar.TabIndex = 196;
+            this.cmbCampo.FormattingEnabled = true;
+            this.cmbCampo.Items.AddRange(new object[] {
+            "QuincenaID",
+            "FechaInicio",
+            "FechaFinal",
+            "Activo"});
+            this.cmbCampo.Location = new System.Drawing.Point(520, 109);
+            this.cmbCampo.Name = "cmbCampo";
+            this.cmbCampo.Size = new System.Drawing.Size(208, 21);
+            this.cmbCampo.TabIndex = 196;
+            this.cmbCampo.Click += new System.EventHandler(this.cmbCampo_Click);
             // 
-            // tboxBuscar
+            // txtTexto
             // 
-            this.tboxBuscar.Location = new System.Drawing.Point(820, 109);
-            this.tboxBuscar.Name = "tboxBuscar";
-            this.tboxBuscar.Size = new System.Drawing.Size(225, 20);
-            this.tboxBuscar.TabIndex = 197;
+            this.txtTexto.Location = new System.Drawing.Point(790, 109);
+            this.txtTexto.Name = "txtTexto";
+            this.txtTexto.Size = new System.Drawing.Size(255, 20);
+            this.txtTexto.TabIndex = 197;
+            this.txtTexto.TextChanged += new System.EventHandler(this.txtTexto_TextChanged);
             // 
             // label5
             // 
@@ -286,8 +294,8 @@
             this.ClientSize = new System.Drawing.Size(1084, 595);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.tboxBuscar);
-            this.Controls.Add(this.cboxBuscar);
+            this.Controls.Add(this.txtTexto);
+            this.Controls.Add(this.cmbCampo);
             this.Controls.Add(this.dgConsultaLeche);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.label4);
@@ -329,8 +337,8 @@
         private System.Windows.Forms.DateTimePicker dtpFechaFinal;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.DataGridView dgConsultaLeche;
-        private System.Windows.Forms.ComboBox cboxBuscar;
-        private System.Windows.Forms.TextBox tboxBuscar;
+        private System.Windows.Forms.ComboBox cmbCampo;
+        private System.Windows.Forms.TextBox txtTexto;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnLimpiar;
     }

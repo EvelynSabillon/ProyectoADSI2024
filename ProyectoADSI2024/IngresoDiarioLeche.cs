@@ -45,18 +45,7 @@ namespace ProyectoADSI2024
             adp.InsertCommand.CommandType = CommandType.StoredProcedure;
 
             //TootTips para los textBox
-            toolTip1 = new System.Windows.Forms.ToolTip();
-            toolTip1.SetToolTip(tBoxDiaID, "Ingrese la fecha de hoy");
-            toolTip1.SetToolTip(tboxLAM, "Se espera que ingrese un número.");
-            toolTip1.SetToolTip(tboxLPM, "Se espera que ingrese un número.");
-            toolTip1.SetToolTip(tboxObs, "Escriba observaciones detalladas para este registro.");
-            toolTip1.SetToolTip(tboxEncargado, "Ingrese el nombre del encargado.");
-            toolTip1.SetToolTip(btnGuardar, "Al hacer click se guardará la información previa.");
-            toolTip1.SetToolTip(btnEditar, "Seleccione una fila de la tabla para editar. Hacer click en el botón de Editar para guardar los cam");
-            toolTip1.SetToolTip(btnLimpiar, "Al hacer click se vaciarán los cuadros de texto.");
-            toolTip1.SetToolTip(btnEliminar, "Se eliminará un registro al hacer click");
-            toolTip1.SetToolTip(btnGenReporte, "Generará un reporte de ingreso diario.");
-            toolTip1.SetToolTip(checkBoxActivo, "Al desmarcarlo se ocultará el registro actual.");
+            toolTips();
 
             //Cambiar el tamaño de fuente del datagridview
             dgIngresoLeche.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Bold); //Los titulos de columna
@@ -363,6 +352,21 @@ namespace ProyectoADSI2024
             }
         }
 
+        private void toolTips()
+        {
+            toolTip1 = new System.Windows.Forms.ToolTip();
+            toolTip1.SetToolTip(tBoxDiaID, "Ingrese la fecha de hoy");
+            toolTip1.SetToolTip(tboxLAM, "Se espera que ingrese un número.");
+            toolTip1.SetToolTip(tboxLPM, "Se espera que ingrese un número.");
+            toolTip1.SetToolTip(tboxObs, "Escriba observaciones detalladas para este registro.");
+            toolTip1.SetToolTip(tboxEncargado, "Ingrese el nombre del encargado.");
+            toolTip1.SetToolTip(btnGuardar, "Al hacer click se guardará la información previa.");
+            toolTip1.SetToolTip(btnEditar, "Seleccione una fila de la tabla para editar. Hacer click en el botón de Editar para guardar los cam");
+            toolTip1.SetToolTip(btnLimpiar, "Al hacer click se vaciarán los cuadros de texto.");
+            toolTip1.SetToolTip(btnEliminar, "Se eliminará un registro al hacer click");
+            toolTip1.SetToolTip(btnGenReporte, "Generará un reporte de ingreso diario.");
+            toolTip1.SetToolTip(checkBoxActivo, "Al desmarcarlo se ocultará el registro actual.");
+        }
         private void txtTexto_TextChanged(object sender, EventArgs e)
         {
             // Verificar si el campo de búsqueda está vacío

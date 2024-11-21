@@ -33,7 +33,21 @@ namespace ProyectoADSI2024
 
         private void ConsultaQuincenalLeche_Load(object sender, EventArgs e)
         {
-            CargarDatos();
+            try
+            {
+                CargarDatos();
+                //Obtener el mes actual para el textbox Mes
+                string mesActual = DateTime.Now.ToString("MMMM", new System.Globalization.CultureInfo("es-ES"));
+
+                //Asignar el mes al textbox
+                tboxMes.Text = char.ToUpper(mesActual[0]) + mesActual.Substring(1);
+
+                txtTexto.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         //BOTONES
@@ -157,6 +171,16 @@ namespace ProyectoADSI2024
                 if (dgConsultaLeche.Columns["FechaFinal"] != null)
                     dgConsultaLeche.Columns["FechaFinal"].DefaultCellStyle.Format = "dd/MM/yyyy";
 
+
+                //Ajustar el tamanio de las columnas de datagrid
+                dgConsultaLeche.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                //Ocultar activo
+                /*if (dgConsultaLeche.Columns.Contains("Activo"))
+                {
+                    dgConsultaLeche.Columns["Activo"].Visible = false;
+                }
+                */
                 conexion.Close();
 
             }
@@ -173,16 +197,119 @@ namespace ProyectoADSI2024
             toolTips.SetToolTip(tboxMes, "Mes");
             toolTips.SetToolTip(dtpFechaInicio, "Seleccione la fecha en la que iniciará la quincena.");
             toolTips.SetToolTip(dtpFechaFinal, "Seleccione la fecha en la que terminará la quincena.");
+            toolTips.SetToolTip(btnGuardar,"Guarda un nuevo registro al hacer click.");
+            toolTips.SetToolTip(btnAtras,"Regresará al menú.");
+            toolTips.SetToolTip(btnEliminar, "Ocultará el registro");
+            toolTips.SetToolTip(btnLimpiar,"Limpiar los cuadros de texto y fechas.");
+            toolTips.SetToolTip(btnGenReporte,"Generar un reporte de la última quincena");
 
         }
 
         private void Limpiar()
         {
+            txtTexto.Enabled = false;
             tboxQuincenaid.Clear();
             dtpFechaInicio.Value = DateTime.Now;
             dtpFechaFinal.Value = DateTime.Now;
         }
 
-        
+        private void dgConsultaLeche_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgConsultaLeche.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow row = dgConsultaLeche.SelectedRows[0];
+                    tboxQuincenaid.Text = row.Cells["QuincenaID"].Value.ToString();
+                    
+                    dtpFechaInicio.Value = Convert.ToDateTime(row.Cells["FechaInicio"].Value);
+                    dtpFechaFinal.Value = Convert.ToDateTime(row.Cells["FechaFinal"].Value);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error al seleccionar el registro: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtTexto_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTexto.Text.Length == 0)
+            {
+                tabQuincena.DefaultView.RowFilter = ""; // Mostrar todo si el texto está vacío
+            }
+            else
+            {
+                try
+                {
+                    var columnType = tabQuincena.Columns[cmbCampo.Text].DataType;
+
+                    if (columnType == typeof(string)) // Filtro para cadenas
+                    {
+                        tabQuincena.DefaultView.RowFilter = cmbCampo.Text + " LIKE '%" + txtTexto.Text + "%'";
+                    }
+                    else if (columnType == typeof(int)) // Filtro para enteros
+                    {
+                        if (int.TryParse(txtTexto.Text, out int numero))
+                        {
+                            tabQuincena.DefaultView.RowFilter = cmbCampo.Text + " = " + numero;
+                        }
+                        else
+                        {
+                            tabQuincena.DefaultView.RowFilter = "1 = 0"; // Sin coincidencias
+                        }
+                    }
+                    else if (columnType == typeof(decimal) || columnType == typeof(float) || columnType == typeof(double)) // Filtro para números decimales
+                    {
+                        if (decimal.TryParse(txtTexto.Text, out decimal numeroDecimal))
+                        {
+                            tabQuincena.DefaultView.RowFilter = cmbCampo.Text + " = " + numeroDecimal.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                        }
+                        else
+                        {
+                            tabQuincena.DefaultView.RowFilter = "1 = 0"; // Sin coincidencias
+                        }
+                    }
+                    else if (columnType == typeof(DateTime)) // Filtro para fechas (día/mes/año)
+                    {
+                        string inputFecha = txtTexto.Text.Trim();
+                        string[] formatosFecha = { "dd/MM/yyyy", "dd/MM" }; // Soportar "día/mes/año" y "día/mes"
+                        DateTime dateValue;
+
+                        if (DateTime.TryParseExact(inputFecha, formatosFecha, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dateValue))
+                        {
+                            // Si no se proporciona el año, agregar el año actual
+                            if (inputFecha.Length <= 5) // Formato corto: "dd/MM"
+                            {
+                                dateValue = new DateTime(DateTime.Now.Year, dateValue.Month, dateValue.Day);
+                            }
+
+                            // Convertir la fecha al formato requerido por RowFilter: "MM/dd/yyyy"
+                            tabQuincena.DefaultView.RowFilter = cmbCampo.Text + " = #" + dateValue.ToString("MM/dd/yyyy") + "#";
+                        }
+                        else
+                        {
+                            tabQuincena.DefaultView.RowFilter = "1 = 0"; // Sin coincidencias
+                        }
+                    }
+                    else
+                    {
+                        tabQuincena.DefaultView.RowFilter = "1 = 0"; // Tipo no compatible
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error en el filtrado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            dgConsultaLeche.DataSource = tabQuincena.DefaultView.ToTable();
+        }
+
+        private void cmbCampo_Click(object sender, EventArgs e)
+        {
+            txtTexto.Enabled = true;
+        }
     }
 }
