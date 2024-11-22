@@ -59,7 +59,7 @@
     <Compile Include="frmReporteProduccionGeneral.Designer.cs">
       <DependentUpon>frmReporteProduccionGeneral.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reportes\ReporteProduccionGeneral.cs">
+    <Compile Include="Reportes\ReporteProduccion\ReporteProduccionGeneral.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ReporteProduccionGeneral.rpt</DependentUpon>
@@ -304,7 +304,7 @@
     <EmbeddedResource Include="frmReporteProduccionGeneral.resx">
       <DependentUpon>frmReporteProduccionGeneral.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\ReporteProduccionGeneral.rpt">
+    <EmbeddedResource Include="Reportes\ReporteProduccion\ReporteProduccionGeneral.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteProduccionGeneral.cs</LastGenOutput>
     </EmbeddedResource>

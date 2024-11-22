@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProyectoADSI2024.Reportes {
+namespace ProyectoADSI2024.Reportes.ReporteProduccion {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -41,7 +41,7 @@ namespace ProyectoADSI2024.Reportes {
         
         public override string FullResourceName {
             get {
-                return "ProyectoADSI2024.Reportes.ReporteProduccionGeneral.rpt";
+                return "ProyectoADSI2024.Reportes.ReporteProduccion.ReporteProduccionGeneral.rpt";
             }
             set {
                 // Do nothing

@@ -314,7 +314,8 @@ namespace ProyectoADSI2024
 
         private void reporteDeProducciónQuincenalToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Form formReporteProduccionGral = new frmReporteProduccionGeneral();
+            formReporteProduccionGral.Show();
         }
     }
 }
