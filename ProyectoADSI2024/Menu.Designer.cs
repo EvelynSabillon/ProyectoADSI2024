@@ -48,7 +48,6 @@
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.btnSlide = new System.Windows.Forms.PictureBox();
-            this.panelContenedor = new System.Windows.Forms.Panel();
             this.dropdownMenu1 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
             this.btn1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnConsultaQuincenalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,6 +82,7 @@
             this.reporteDeProducciónQuincenalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteConsumoInsumoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteEntregaQuincenalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelContenedor = new System.Windows.Forms.Panel();
             this.MenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.BarraTitulo.SuspendLayout();
@@ -115,9 +115,8 @@
             this.MenuVertical.Controls.Add(this.label1);
             this.MenuVertical.Dock = System.Windows.Forms.DockStyle.Left;
             this.MenuVertical.Location = new System.Drawing.Point(0, 0);
-            this.MenuVertical.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MenuVertical.Name = "MenuVertical";
-            this.MenuVertical.Size = new System.Drawing.Size(307, 800);
+            this.MenuVertical.Size = new System.Drawing.Size(230, 650);
             this.MenuVertical.TabIndex = 0;
             this.MenuVertical.Paint += new System.Windows.Forms.PaintEventHandler(this.MenuVertical_Paint);
             // 
@@ -132,10 +131,9 @@
             this.btnReportes.ForeColor = System.Drawing.Color.White;
             this.btnReportes.Image = ((System.Drawing.Image)(resources.GetObject("btnReportes.Image")));
             this.btnReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReportes.Location = new System.Drawing.Point(0, 560);
-            this.btnReportes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReportes.Location = new System.Drawing.Point(0, 455);
             this.btnReportes.Name = "btnReportes";
-            this.btnReportes.Size = new System.Drawing.Size(307, 80);
+            this.btnReportes.Size = new System.Drawing.Size(230, 65);
             this.btnReportes.TabIndex = 12;
             this.btnReportes.Text = "         REPORTES";
             this.btnReportes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -155,10 +153,9 @@
             this.btnModuloGestionFinanciera.ForeColor = System.Drawing.Color.White;
             this.btnModuloGestionFinanciera.Image = ((System.Drawing.Image)(resources.GetObject("btnModuloGestionFinanciera.Image")));
             this.btnModuloGestionFinanciera.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnModuloGestionFinanciera.Location = new System.Drawing.Point(0, 469);
-            this.btnModuloGestionFinanciera.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnModuloGestionFinanciera.Location = new System.Drawing.Point(0, 381);
             this.btnModuloGestionFinanciera.Name = "btnModuloGestionFinanciera";
-            this.btnModuloGestionFinanciera.Size = new System.Drawing.Size(307, 84);
+            this.btnModuloGestionFinanciera.Size = new System.Drawing.Size(230, 68);
             this.btnModuloGestionFinanciera.TabIndex = 11;
             this.btnModuloGestionFinanciera.Text = "         GESTIÓN DE PRÉSTAMOS Y FINANZAS";
             this.btnModuloGestionFinanciera.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -178,10 +175,9 @@
             this.btnModuloGestionInventario.ForeColor = System.Drawing.Color.White;
             this.btnModuloGestionInventario.Image = ((System.Drawing.Image)(resources.GetObject("btnModuloGestionInventario.Image")));
             this.btnModuloGestionInventario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnModuloGestionInventario.Location = new System.Drawing.Point(0, 378);
-            this.btnModuloGestionInventario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnModuloGestionInventario.Location = new System.Drawing.Point(0, 307);
             this.btnModuloGestionInventario.Name = "btnModuloGestionInventario";
-            this.btnModuloGestionInventario.Size = new System.Drawing.Size(307, 84);
+            this.btnModuloGestionInventario.Size = new System.Drawing.Size(230, 68);
             this.btnModuloGestionInventario.TabIndex = 10;
             this.btnModuloGestionInventario.Text = "         GESTIÓN DE INVENTARIO";
             this.btnModuloGestionInventario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -201,10 +197,9 @@
             this.btnModuloManejoProveedores.ForeColor = System.Drawing.Color.White;
             this.btnModuloManejoProveedores.Image = ((System.Drawing.Image)(resources.GetObject("btnModuloManejoProveedores.Image")));
             this.btnModuloManejoProveedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnModuloManejoProveedores.Location = new System.Drawing.Point(0, 287);
-            this.btnModuloManejoProveedores.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnModuloManejoProveedores.Location = new System.Drawing.Point(0, 233);
             this.btnModuloManejoProveedores.Name = "btnModuloManejoProveedores";
-            this.btnModuloManejoProveedores.Size = new System.Drawing.Size(307, 84);
+            this.btnModuloManejoProveedores.Size = new System.Drawing.Size(230, 68);
             this.btnModuloManejoProveedores.TabIndex = 9;
             this.btnModuloManejoProveedores.Text = "         MANEJO DE PROVEEDORES";
             this.btnModuloManejoProveedores.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -224,10 +219,9 @@
             this.btnModuloGestionSocios.ForeColor = System.Drawing.Color.White;
             this.btnModuloGestionSocios.Image = ((System.Drawing.Image)(resources.GetObject("btnModuloGestionSocios.Image")));
             this.btnModuloGestionSocios.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnModuloGestionSocios.Location = new System.Drawing.Point(0, 196);
-            this.btnModuloGestionSocios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnModuloGestionSocios.Location = new System.Drawing.Point(0, 159);
             this.btnModuloGestionSocios.Name = "btnModuloGestionSocios";
-            this.btnModuloGestionSocios.Size = new System.Drawing.Size(307, 84);
+            this.btnModuloGestionSocios.Size = new System.Drawing.Size(230, 68);
             this.btnModuloGestionSocios.TabIndex = 8;
             this.btnModuloGestionSocios.Text = "              REGISTRO Y GESTIÓN DE SOCIOS";
             this.btnModuloGestionSocios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -246,10 +240,9 @@
             this.btnModuloAdministracionGeneral.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModuloAdministracionGeneral.ForeColor = System.Drawing.Color.White;
             this.btnModuloAdministracionGeneral.Image = ((System.Drawing.Image)(resources.GetObject("btnModuloAdministracionGeneral.Image")));
-            this.btnModuloAdministracionGeneral.Location = new System.Drawing.Point(0, 708);
-            this.btnModuloAdministracionGeneral.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnModuloAdministracionGeneral.Location = new System.Drawing.Point(0, 575);
             this.btnModuloAdministracionGeneral.Name = "btnModuloAdministracionGeneral";
-            this.btnModuloAdministracionGeneral.Size = new System.Drawing.Size(307, 92);
+            this.btnModuloAdministracionGeneral.Size = new System.Drawing.Size(230, 75);
             this.btnModuloAdministracionGeneral.TabIndex = 7;
             this.btnModuloAdministracionGeneral.Text = "ADMINISTRACIÓN GENERAL";
             this.btnModuloAdministracionGeneral.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -266,10 +259,9 @@
             this.btnModuloIngresoLeche.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModuloIngresoLeche.ForeColor = System.Drawing.Color.White;
             this.btnModuloIngresoLeche.Image = ((System.Drawing.Image)(resources.GetObject("btnModuloIngresoLeche.Image")));
-            this.btnModuloIngresoLeche.Location = new System.Drawing.Point(0, 105);
-            this.btnModuloIngresoLeche.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnModuloIngresoLeche.Location = new System.Drawing.Point(0, 85);
             this.btnModuloIngresoLeche.Name = "btnModuloIngresoLeche";
-            this.btnModuloIngresoLeche.Size = new System.Drawing.Size(307, 84);
+            this.btnModuloIngresoLeche.Size = new System.Drawing.Size(230, 68);
             this.btnModuloIngresoLeche.TabIndex = 2;
             this.btnModuloIngresoLeche.Text = "           CONTROL DE INGRESO DE LECHE";
             this.btnModuloIngresoLeche.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -280,10 +272,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(16, 12);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 10);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(72, 68);
+            this.pictureBox1.Size = new System.Drawing.Size(54, 55);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -293,10 +284,9 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Nirmala UI", 32.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(89, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(67, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(186, 72);
+            this.label1.Size = new System.Drawing.Size(149, 59);
             this.label1.TabIndex = 0;
             this.label1.Text = "SCSFA";
             // 
@@ -311,20 +301,18 @@
             this.BarraTitulo.Controls.Add(this.btnClose);
             this.BarraTitulo.Controls.Add(this.btnSlide);
             this.BarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BarraTitulo.Location = new System.Drawing.Point(307, 0);
-            this.BarraTitulo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BarraTitulo.Location = new System.Drawing.Point(230, 0);
             this.BarraTitulo.Name = "BarraTitulo";
-            this.BarraTitulo.Size = new System.Drawing.Size(1426, 68);
+            this.BarraTitulo.Size = new System.Drawing.Size(1070, 55);
             this.BarraTitulo.TabIndex = 1;
             this.BarraTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BarraTitulo_MouseDown);
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(371, 5);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox2.Location = new System.Drawing.Point(278, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(57, 57);
+            this.pictureBox2.Size = new System.Drawing.Size(43, 46);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
@@ -332,10 +320,9 @@
             // btnUsuario
             // 
             this.btnUsuario.Image = ((System.Drawing.Image)(resources.GetObject("btnUsuario.Image")));
-            this.btnUsuario.Location = new System.Drawing.Point(127, 5);
-            this.btnUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUsuario.Location = new System.Drawing.Point(95, 4);
             this.btnUsuario.Name = "btnUsuario";
-            this.btnUsuario.Size = new System.Drawing.Size(57, 57);
+            this.btnUsuario.Size = new System.Drawing.Size(43, 46);
             this.btnUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnUsuario.TabIndex = 5;
             this.btnUsuario.TabStop = false;
@@ -345,10 +332,9 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(192, 18);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(144, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(132, 32);
+            this.label2.Size = new System.Drawing.Size(104, 25);
             this.label2.TabIndex = 4;
             this.label2.Text = "UserName";
             // 
@@ -357,10 +343,9 @@
             this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
-            this.btnMinimizar.Location = new System.Drawing.Point(1219, 12);
-            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMinimizar.Location = new System.Drawing.Point(914, 10);
             this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(40, 37);
+            this.btnMinimizar.Size = new System.Drawing.Size(30, 30);
             this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMinimizar.TabIndex = 3;
             this.btnMinimizar.TabStop = false;
@@ -371,10 +356,9 @@
             this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
-            this.btnMaximizar.Location = new System.Drawing.Point(1291, 12);
-            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMaximizar.Location = new System.Drawing.Point(968, 10);
             this.btnMaximizar.Name = "btnMaximizar";
-            this.btnMaximizar.Size = new System.Drawing.Size(40, 37);
+            this.btnMaximizar.Size = new System.Drawing.Size(30, 30);
             this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMaximizar.TabIndex = 2;
             this.btnMaximizar.TabStop = false;
@@ -385,10 +369,9 @@
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(1363, 12);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Location = new System.Drawing.Point(1022, 10);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(40, 37);
+            this.btnClose.Size = new System.Drawing.Size(30, 30);
             this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnClose.TabIndex = 1;
             this.btnClose.TabStop = false;
@@ -398,24 +381,13 @@
             // 
             this.btnSlide.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSlide.Image = ((System.Drawing.Image)(resources.GetObject("btnSlide.Image")));
-            this.btnSlide.Location = new System.Drawing.Point(23, 15);
-            this.btnSlide.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSlide.Location = new System.Drawing.Point(17, 12);
             this.btnSlide.Name = "btnSlide";
-            this.btnSlide.Size = new System.Drawing.Size(40, 37);
+            this.btnSlide.Size = new System.Drawing.Size(30, 30);
             this.btnSlide.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnSlide.TabIndex = 0;
             this.btnSlide.TabStop = false;
             this.btnSlide.Click += new System.EventHandler(this.btnSlide_Click);
-            // 
-            // panelContenedor
-            // 
-            this.panelContenedor.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContenedor.Location = new System.Drawing.Point(307, 68);
-            this.panelContenedor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(1426, 732);
-            this.panelContenedor.TabIndex = 4;
             // 
             // dropdownMenu1
             // 
@@ -430,19 +402,19 @@
             this.dropdownMenu1.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu1.Name = "dropdownMenu1";
             this.dropdownMenu1.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu1.Size = new System.Drawing.Size(268, 68);
+            this.dropdownMenu1.Size = new System.Drawing.Size(230, 56);
             // 
             // btn1ToolStripMenuItem
             // 
             this.btn1ToolStripMenuItem.Name = "btn1ToolStripMenuItem";
-            this.btn1ToolStripMenuItem.Size = new System.Drawing.Size(267, 32);
+            this.btn1ToolStripMenuItem.Size = new System.Drawing.Size(229, 26);
             this.btn1ToolStripMenuItem.Text = "Ingreso Diario";
             this.btn1ToolStripMenuItem.Click += new System.EventHandler(this.btn1ToolStripMenuItem_Click);
             // 
             // btnConsultaQuincenalToolStripMenuItem
             // 
             this.btnConsultaQuincenalToolStripMenuItem.Name = "btnConsultaQuincenalToolStripMenuItem";
-            this.btnConsultaQuincenalToolStripMenuItem.Size = new System.Drawing.Size(267, 32);
+            this.btnConsultaQuincenalToolStripMenuItem.Size = new System.Drawing.Size(229, 26);
             this.btnConsultaQuincenalToolStripMenuItem.Text = "Consulta Quincenal";
             this.btnConsultaQuincenalToolStripMenuItem.Click += new System.EventHandler(this.btnConsultaQuincenalToolStripMenuItem_Click);
             // 
@@ -458,12 +430,12 @@
             this.dropdownMenu2.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu2.Name = "dropdownMenu1";
             this.dropdownMenu2.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu2.Size = new System.Drawing.Size(398, 36);
+            this.dropdownMenu2.Size = new System.Drawing.Size(333, 30);
             // 
             // btnSociostoolStripMenuItem1
             // 
             this.btnSociostoolStripMenuItem1.Name = "btnSociostoolStripMenuItem1";
-            this.btnSociostoolStripMenuItem1.Size = new System.Drawing.Size(397, 32);
+            this.btnSociostoolStripMenuItem1.Size = new System.Drawing.Size(332, 26);
             this.btnSociostoolStripMenuItem1.Text = "Ingreso y actualización de Socios";
             this.btnSociostoolStripMenuItem1.Click += new System.EventHandler(this.btnSociostoolStripMenuItem1_Click);
             // 
@@ -480,19 +452,19 @@
             this.dropdownMenu3.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu3.Name = "dropdownMenu1";
             this.dropdownMenu3.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu3.Size = new System.Drawing.Size(316, 68);
+            this.dropdownMenu3.Size = new System.Drawing.Size(266, 56);
             // 
             // btnRegistroProvtoolStripMenuItem3
             // 
             this.btnRegistroProvtoolStripMenuItem3.Name = "btnRegistroProvtoolStripMenuItem3";
-            this.btnRegistroProvtoolStripMenuItem3.Size = new System.Drawing.Size(315, 32);
+            this.btnRegistroProvtoolStripMenuItem3.Size = new System.Drawing.Size(265, 26);
             this.btnRegistroProvtoolStripMenuItem3.Text = "Registro de Proveedores";
             this.btnRegistroProvtoolStripMenuItem3.Click += new System.EventHandler(this.btnRegistroProvtoolStripMenuItem3_Click);
             // 
             // btnPagoProvtoolStripMenuItem4
             // 
             this.btnPagoProvtoolStripMenuItem4.Name = "btnPagoProvtoolStripMenuItem4";
-            this.btnPagoProvtoolStripMenuItem4.Size = new System.Drawing.Size(315, 32);
+            this.btnPagoProvtoolStripMenuItem4.Size = new System.Drawing.Size(265, 26);
             this.btnPagoProvtoolStripMenuItem4.Text = "Pago a Proveedores";
             this.btnPagoProvtoolStripMenuItem4.Click += new System.EventHandler(this.btnPagoProvtoolStripMenuItem4_Click);
             // 
@@ -509,7 +481,7 @@
             this.dropdownMenu4.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu4.Name = "dropdownMenu1";
             this.dropdownMenu4.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu4.Size = new System.Drawing.Size(224, 68);
+            this.dropdownMenu4.Size = new System.Drawing.Size(194, 56);
             this.dropdownMenu4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dropdownMenu4_MouseClick);
             // 
             // ConcentradoToolStripMenu
@@ -519,7 +491,7 @@
             this.btnSalidaToolStripMenuItem,
             this.btnKardexConToolStripMenuItem});
             this.ConcentradoToolStripMenu.Name = "ConcentradoToolStripMenu";
-            this.ConcentradoToolStripMenu.Size = new System.Drawing.Size(223, 32);
+            this.ConcentradoToolStripMenu.Size = new System.Drawing.Size(193, 26);
             this.ConcentradoToolStripMenu.Text = "Concentrado";
             // 
             // compraToolStripMenuItem
@@ -530,7 +502,7 @@
             this.nuevoArticuloToolStripMenuItem});
             this.compraToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.compraToolStripMenuItem.Name = "compraToolStripMenuItem";
-            this.compraToolStripMenuItem.Size = new System.Drawing.Size(171, 32);
+            this.compraToolStripMenuItem.Size = new System.Drawing.Size(140, 26);
             this.compraToolStripMenuItem.Text = "Compra";
             this.compraToolStripMenuItem.Click += new System.EventHandler(this.compraToolStripMenuItem_Click);
             // 
@@ -539,7 +511,7 @@
             this.articuloExistenteToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
             this.articuloExistenteToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.articuloExistenteToolStripMenuItem.Name = "articuloExistenteToolStripMenuItem";
-            this.articuloExistenteToolStripMenuItem.Size = new System.Drawing.Size(311, 32);
+            this.articuloExistenteToolStripMenuItem.Size = new System.Drawing.Size(252, 26);
             this.articuloExistenteToolStripMenuItem.Text = "Nuevo concentrado";
             this.articuloExistenteToolStripMenuItem.Click += new System.EventHandler(this.articuloExistenteToolStripMenuItem_Click);
             // 
@@ -548,7 +520,7 @@
             this.nuevoArticuloToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
             this.nuevoArticuloToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.nuevoArticuloToolStripMenuItem.Name = "nuevoArticuloToolStripMenuItem";
-            this.nuevoArticuloToolStripMenuItem.Size = new System.Drawing.Size(311, 32);
+            this.nuevoArticuloToolStripMenuItem.Size = new System.Drawing.Size(252, 26);
             this.nuevoArticuloToolStripMenuItem.Text = "Concentrado existente";
             this.nuevoArticuloToolStripMenuItem.Click += new System.EventHandler(this.nuevoArticuloToolStripMenuItem_Click);
             // 
@@ -557,7 +529,7 @@
             this.btnSalidaToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
             this.btnSalidaToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSalidaToolStripMenuItem.Name = "btnSalidaToolStripMenuItem";
-            this.btnSalidaToolStripMenuItem.Size = new System.Drawing.Size(171, 32);
+            this.btnSalidaToolStripMenuItem.Size = new System.Drawing.Size(140, 26);
             this.btnSalidaToolStripMenuItem.Text = "Salida";
             this.btnSalidaToolStripMenuItem.Click += new System.EventHandler(this.btnSalidaToolStripMenuItem_Click);
             // 
@@ -566,7 +538,7 @@
             this.btnKardexConToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
             this.btnKardexConToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnKardexConToolStripMenuItem.Name = "btnKardexConToolStripMenuItem";
-            this.btnKardexConToolStripMenuItem.Size = new System.Drawing.Size(171, 32);
+            this.btnKardexConToolStripMenuItem.Size = new System.Drawing.Size(140, 26);
             this.btnKardexConToolStripMenuItem.Text = "Kardex";
             this.btnKardexConToolStripMenuItem.Click += new System.EventHandler(this.btnKardexConToolStripMenuItem_Click);
             // 
@@ -577,7 +549,7 @@
             this.btnSalidaMedToolStripMenuItem1,
             this.btnKardexMedToolStripMenuItem1});
             this.GestionMedicamentoToolStripMenu.Name = "GestionMedicamentoToolStripMenu";
-            this.GestionMedicamentoToolStripMenu.Size = new System.Drawing.Size(223, 32);
+            this.GestionMedicamentoToolStripMenu.Size = new System.Drawing.Size(193, 26);
             this.GestionMedicamentoToolStripMenu.Text = "Medicamentos";
             // 
             // compraToolStripMenuItem1
@@ -588,7 +560,7 @@
             this.medicamentoExistenteToolStripMenuItem});
             this.compraToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.compraToolStripMenuItem1.Name = "compraToolStripMenuItem1";
-            this.compraToolStripMenuItem1.Size = new System.Drawing.Size(171, 32);
+            this.compraToolStripMenuItem1.Size = new System.Drawing.Size(140, 26);
             this.compraToolStripMenuItem1.Text = "Compra";
             // 
             // nuevoMedicamentoToolStripMenuItem
@@ -596,7 +568,7 @@
             this.nuevoMedicamentoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
             this.nuevoMedicamentoToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.nuevoMedicamentoToolStripMenuItem.Name = "nuevoMedicamentoToolStripMenuItem";
-            this.nuevoMedicamentoToolStripMenuItem.Size = new System.Drawing.Size(321, 32);
+            this.nuevoMedicamentoToolStripMenuItem.Size = new System.Drawing.Size(260, 26);
             this.nuevoMedicamentoToolStripMenuItem.Text = "Nuevo medicamento";
             this.nuevoMedicamentoToolStripMenuItem.Click += new System.EventHandler(this.nuevoMedicamentoToolStripMenuItem_Click);
             // 
@@ -605,7 +577,7 @@
             this.medicamentoExistenteToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
             this.medicamentoExistenteToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.medicamentoExistenteToolStripMenuItem.Name = "medicamentoExistenteToolStripMenuItem";
-            this.medicamentoExistenteToolStripMenuItem.Size = new System.Drawing.Size(321, 32);
+            this.medicamentoExistenteToolStripMenuItem.Size = new System.Drawing.Size(260, 26);
             this.medicamentoExistenteToolStripMenuItem.Text = "Medicamento existente";
             this.medicamentoExistenteToolStripMenuItem.Click += new System.EventHandler(this.medicamentoExistenteToolStripMenuItem_Click);
             // 
@@ -614,7 +586,7 @@
             this.btnSalidaMedToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
             this.btnSalidaMedToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSalidaMedToolStripMenuItem1.Name = "btnSalidaMedToolStripMenuItem1";
-            this.btnSalidaMedToolStripMenuItem1.Size = new System.Drawing.Size(171, 32);
+            this.btnSalidaMedToolStripMenuItem1.Size = new System.Drawing.Size(140, 26);
             this.btnSalidaMedToolStripMenuItem1.Text = "Salida";
             this.btnSalidaMedToolStripMenuItem1.Click += new System.EventHandler(this.btnSalidaMedToolStripMenuItem1_Click);
             // 
@@ -623,7 +595,7 @@
             this.btnKardexMedToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
             this.btnKardexMedToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnKardexMedToolStripMenuItem1.Name = "btnKardexMedToolStripMenuItem1";
-            this.btnKardexMedToolStripMenuItem1.Size = new System.Drawing.Size(171, 32);
+            this.btnKardexMedToolStripMenuItem1.Size = new System.Drawing.Size(140, 26);
             this.btnKardexMedToolStripMenuItem1.Text = "Kardex";
             this.btnKardexMedToolStripMenuItem1.Click += new System.EventHandler(this.btnKardexMedToolStripMenuItem1_Click);
             // 
@@ -641,26 +613,26 @@
             this.dropdownMenu5.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu5.Name = "dropdownMenu1";
             this.dropdownMenu5.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu5.Size = new System.Drawing.Size(183, 100);
+            this.dropdownMenu5.Size = new System.Drawing.Size(160, 82);
             // 
             // btnPrestamoToolStripMenuItem7
             // 
             this.btnPrestamoToolStripMenuItem7.Name = "btnPrestamoToolStripMenuItem7";
-            this.btnPrestamoToolStripMenuItem7.Size = new System.Drawing.Size(182, 32);
+            this.btnPrestamoToolStripMenuItem7.Size = new System.Drawing.Size(159, 26);
             this.btnPrestamoToolStripMenuItem7.Text = "Préstamos";
             this.btnPrestamoToolStripMenuItem7.Click += new System.EventHandler(this.btnPrestamoToolStripMenuItem7_Click);
             // 
             // btnAnticipoToolStripMenuItem8
             // 
             this.btnAnticipoToolStripMenuItem8.Name = "btnAnticipoToolStripMenuItem8";
-            this.btnAnticipoToolStripMenuItem8.Size = new System.Drawing.Size(182, 32);
+            this.btnAnticipoToolStripMenuItem8.Size = new System.Drawing.Size(159, 26);
             this.btnAnticipoToolStripMenuItem8.Text = "Anticipos";
             this.btnAnticipoToolStripMenuItem8.Click += new System.EventHandler(this.btnAnticipoToolStripMenuItem8_Click);
             // 
             // btnNominaToolStripMenuItem
             // 
             this.btnNominaToolStripMenuItem.Name = "btnNominaToolStripMenuItem";
-            this.btnNominaToolStripMenuItem.Size = new System.Drawing.Size(182, 32);
+            this.btnNominaToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
             this.btnNominaToolStripMenuItem.Text = "Nómina";
             this.btnNominaToolStripMenuItem.Click += new System.EventHandler(this.btnNominaToolStripMenuItem_Click);
             // 
@@ -678,26 +650,26 @@
             this.dropdownMenu6.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu6.Name = "dropdownMenu1";
             this.dropdownMenu6.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu6.Size = new System.Drawing.Size(276, 100);
+            this.dropdownMenu6.Size = new System.Drawing.Size(235, 82);
             // 
             // btnUsuariostoolStripMenuItem9
             // 
             this.btnUsuariostoolStripMenuItem9.Name = "btnUsuariostoolStripMenuItem9";
-            this.btnUsuariostoolStripMenuItem9.Size = new System.Drawing.Size(275, 32);
+            this.btnUsuariostoolStripMenuItem9.Size = new System.Drawing.Size(234, 26);
             this.btnUsuariostoolStripMenuItem9.Text = "Gestión de Usuarios";
             this.btnUsuariostoolStripMenuItem9.Click += new System.EventHandler(this.btnUsuariostoolStripMenuItem9_Click);
             // 
             // btnPermisostoolStripMenuItem10
             // 
             this.btnPermisostoolStripMenuItem10.Name = "btnPermisostoolStripMenuItem10";
-            this.btnPermisostoolStripMenuItem10.Size = new System.Drawing.Size(275, 32);
+            this.btnPermisostoolStripMenuItem10.Size = new System.Drawing.Size(234, 26);
             this.btnPermisostoolStripMenuItem10.Text = "Gestión de Permisos";
             this.btnPermisostoolStripMenuItem10.Click += new System.EventHandler(this.btnPermisostoolStripMenuItem10_Click);
             // 
             // btnAyudatoolStripMenuItem1
             // 
             this.btnAyudatoolStripMenuItem1.Name = "btnAyudatoolStripMenuItem1";
-            this.btnAyudatoolStripMenuItem1.Size = new System.Drawing.Size(275, 32);
+            this.btnAyudatoolStripMenuItem1.Size = new System.Drawing.Size(234, 26);
             this.btnAyudatoolStripMenuItem1.Text = "Manual de Usuario";
             this.btnAyudatoolStripMenuItem1.Click += new System.EventHandler(this.btnAyudatoolStripMenuItem1_Click);
             // 
@@ -716,45 +688,53 @@
             this.dropdownMenu7.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu7.Name = "dropdownMenu7";
             this.dropdownMenu7.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu7.Size = new System.Drawing.Size(387, 160);
+            this.dropdownMenu7.Size = new System.Drawing.Size(322, 108);
             // 
             // reporteDeInventarioExistenteToolStripMenuItem
             // 
             this.reporteDeInventarioExistenteToolStripMenuItem.Name = "reporteDeInventarioExistenteToolStripMenuItem";
-            this.reporteDeInventarioExistenteToolStripMenuItem.Size = new System.Drawing.Size(386, 32);
+            this.reporteDeInventarioExistenteToolStripMenuItem.Size = new System.Drawing.Size(321, 26);
             this.reporteDeInventarioExistenteToolStripMenuItem.Text = "Reporte de Inventario Existente";
             // 
             // reporteDeProducciónQuincenalToolStripMenuItem
             // 
             this.reporteDeProducciónQuincenalToolStripMenuItem.Name = "reporteDeProducciónQuincenalToolStripMenuItem";
-            this.reporteDeProducciónQuincenalToolStripMenuItem.Size = new System.Drawing.Size(386, 32);
+            this.reporteDeProducciónQuincenalToolStripMenuItem.Size = new System.Drawing.Size(321, 26);
             this.reporteDeProducciónQuincenalToolStripMenuItem.Text = "Reporte de Producción General ";
             this.reporteDeProducciónQuincenalToolStripMenuItem.Click += new System.EventHandler(this.reporteDeProducciónQuincenalToolStripMenuItem_Click);
             // 
             // reporteConsumoInsumoToolStripMenuItem
             // 
             this.reporteConsumoInsumoToolStripMenuItem.Name = "reporteConsumoInsumoToolStripMenuItem";
-            this.reporteConsumoInsumoToolStripMenuItem.Size = new System.Drawing.Size(386, 32);
+            this.reporteConsumoInsumoToolStripMenuItem.Size = new System.Drawing.Size(321, 26);
             this.reporteConsumoInsumoToolStripMenuItem.Text = "Reporte Consumo Insumo";
             this.reporteConsumoInsumoToolStripMenuItem.Click += new System.EventHandler(this.reporteConsumoInsumoToolStripMenuItem_Click);
             // 
             // reporteEntregaQuincenalToolStripMenuItem
             // 
             this.reporteEntregaQuincenalToolStripMenuItem.Name = "reporteEntregaQuincenalToolStripMenuItem";
-            this.reporteEntregaQuincenalToolStripMenuItem.Size = new System.Drawing.Size(386, 32);
+            this.reporteEntregaQuincenalToolStripMenuItem.Size = new System.Drawing.Size(321, 26);
             this.reporteEntregaQuincenalToolStripMenuItem.Text = "Reporte Entrega Quincenal";
             this.reporteEntregaQuincenalToolStripMenuItem.Click += new System.EventHandler(this.reporteEntregaQuincenalToolStripMenuItem_Click);
             // 
+            // panelContenedor
+            // 
+            this.panelContenedor.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContenedor.Location = new System.Drawing.Point(230, 55);
+            this.panelContenedor.Name = "panelContenedor";
+            this.panelContenedor.Size = new System.Drawing.Size(1070, 595);
+            this.panelContenedor.TabIndex = 4;
+            // 
             // Menu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1733, 800);
+            this.ClientSize = new System.Drawing.Size(1300, 650);
             this.Controls.Add(this.panelContenedor);
             this.Controls.Add(this.BarraTitulo);
             this.Controls.Add(this.MenuVertical);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -802,7 +782,6 @@
         private Controls.DropdownMenu dropdownMenu1;
         private System.Windows.Forms.ToolStripMenuItem btn1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem btnConsultaQuincenalToolStripMenuItem;
-        private System.Windows.Forms.Panel panelContenedor;
         private Controls.DropdownMenu dropdownMenu2;
         private System.Windows.Forms.ToolStripMenuItem btnSociostoolStripMenuItem1;
         private Controls.DropdownMenu dropdownMenu3;
@@ -836,6 +815,7 @@
         private System.Windows.Forms.ToolStripMenuItem reporteDeProducciónQuincenalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteConsumoInsumoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteEntregaQuincenalToolStripMenuItem;
+        private System.Windows.Forms.Panel panelContenedor;
     }
 }
 
