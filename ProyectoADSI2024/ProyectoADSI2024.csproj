@@ -298,12 +298,6 @@
       <DependentUpon>Formato_Plantilla.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes\ReporteGestionInventario\Reporte_Kardex.cs">
-      <DependentUpon>Reporte_Kardex.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Vista_ArticuloCon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -436,10 +430,6 @@
     <EmbeddedResource Include="Reportes\PlantillaReporte\Formato_Plantilla.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Formato_Plantilla1.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\ReporteGestionInventario\Reporte_Kardex.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Reporte_Kardex.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteModuloControlIngresoLeche\rptLecheDiaria.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
