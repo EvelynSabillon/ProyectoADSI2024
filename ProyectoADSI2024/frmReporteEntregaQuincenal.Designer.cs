@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿using ProyectoADSI2024.Reportes.ReporteEntregasQuincenal;
+=======
+﻿using ProyectoADSI2024.Reportes.ReporteEntregaQuincenal;
+>>>>>>> 7b60d4010cd55dcad4618d45f6b008f441b36f60
 
 namespace ProyectoADSI2024
 {
@@ -31,7 +35,11 @@ namespace ProyectoADSI2024
         private void InitializeComponent()
         {
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+<<<<<<< HEAD
             this.crReporteEntregaQuincenal1 = new ProyectoADSI2024.Reportes.ReporteEntregasQuincenal.crReporteEntregaQuincenal();
+=======
+            this.crReporteEntregaQuincenal1 = new ProyectoADSI2024.Reportes.ReporteEntregaQuincenal.crReporteEntregaQuincenal();
+>>>>>>> 7b60d4010cd55dcad4618d45f6b008f441b36f60
             this.SuspendLayout();
             // 
             // crystalReportViewer1
@@ -49,13 +57,21 @@ namespace ProyectoADSI2024
             // 
             // frmReporteEntregaQuincenal
             // 
+<<<<<<< HEAD
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+=======
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+>>>>>>> 7b60d4010cd55dcad4618d45f6b008f441b36f60
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "frmReporteEntregaQuincenal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+<<<<<<< HEAD
             this.Text = "frmReporteEntregaQuincenal";
+=======
+            this.Text = "Reporte de Entregas Quincenales";
+>>>>>>> 7b60d4010cd55dcad4618d45f6b008f441b36f60
             this.ResumeLayout(false);
 
         }

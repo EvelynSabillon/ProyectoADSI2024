@@ -48,7 +48,6 @@
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.btnSlide = new System.Windows.Forms.PictureBox();
-            this.panelContenedor = new System.Windows.Forms.Panel();
             this.dropdownMenu1 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
             this.btn1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnConsultaQuincenalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,6 +81,8 @@
             this.reporteDeInventarioExistenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteDeProducciónQuincenalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteConsumoInsumoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteEntregaQuincenalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelContenedor = new System.Windows.Forms.Panel();
             this.MenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.BarraTitulo.SuspendLayout();
@@ -342,7 +343,7 @@
             this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
-            this.btnMinimizar.Location = new System.Drawing.Point(915, 10);
+            this.btnMinimizar.Location = new System.Drawing.Point(914, 10);
             this.btnMinimizar.Name = "btnMinimizar";
             this.btnMinimizar.Size = new System.Drawing.Size(30, 30);
             this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -355,7 +356,7 @@
             this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
-            this.btnMaximizar.Location = new System.Drawing.Point(969, 10);
+            this.btnMaximizar.Location = new System.Drawing.Point(968, 10);
             this.btnMaximizar.Name = "btnMaximizar";
             this.btnMaximizar.Size = new System.Drawing.Size(30, 30);
             this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -368,7 +369,7 @@
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(1023, 10);
+            this.btnClose.Location = new System.Drawing.Point(1022, 10);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(30, 30);
             this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -388,19 +389,11 @@
             this.btnSlide.TabStop = false;
             this.btnSlide.Click += new System.EventHandler(this.btnSlide_Click);
             // 
-            // panelContenedor
-            // 
-            this.panelContenedor.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContenedor.Location = new System.Drawing.Point(230, 55);
-            this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(1070, 595);
-            this.panelContenedor.TabIndex = 4;
-            // 
             // dropdownMenu1
             // 
             this.dropdownMenu1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
             this.dropdownMenu1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dropdownMenu1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.dropdownMenu1.IsMainMenu = false;
             this.dropdownMenu1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btn1ToolStripMenuItem,
@@ -429,6 +422,7 @@
             // 
             this.dropdownMenu2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
             this.dropdownMenu2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dropdownMenu2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.dropdownMenu2.IsMainMenu = false;
             this.dropdownMenu2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnSociostoolStripMenuItem1});
@@ -449,6 +443,7 @@
             // 
             this.dropdownMenu3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
             this.dropdownMenu3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dropdownMenu3.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.dropdownMenu3.IsMainMenu = false;
             this.dropdownMenu3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnRegistroProvtoolStripMenuItem3,
@@ -477,6 +472,7 @@
             // 
             this.dropdownMenu4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
             this.dropdownMenu4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dropdownMenu4.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.dropdownMenu4.IsMainMenu = false;
             this.dropdownMenu4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ConcentradoToolStripMenu,
@@ -607,6 +603,7 @@
             // 
             this.dropdownMenu5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
             this.dropdownMenu5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dropdownMenu5.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.dropdownMenu5.IsMainMenu = false;
             this.dropdownMenu5.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnPrestamoToolStripMenuItem7,
@@ -643,6 +640,7 @@
             // 
             this.dropdownMenu6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
             this.dropdownMenu6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dropdownMenu6.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.dropdownMenu6.IsMainMenu = false;
             this.dropdownMenu6.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnUsuariostoolStripMenuItem9,
@@ -679,16 +677,18 @@
             // 
             this.dropdownMenu7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
             this.dropdownMenu7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.dropdownMenu7.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.dropdownMenu7.IsMainMenu = false;
             this.dropdownMenu7.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.reporteDeInventarioExistenteToolStripMenuItem,
             this.reporteDeProducciónQuincenalToolStripMenuItem,
-            this.reporteConsumoInsumoToolStripMenuItem});
+            this.reporteConsumoInsumoToolStripMenuItem,
+            this.reporteEntregaQuincenalToolStripMenuItem});
             this.dropdownMenu7.MenuItemHeight = 25;
             this.dropdownMenu7.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu7.Name = "dropdownMenu7";
             this.dropdownMenu7.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu7.Size = new System.Drawing.Size(322, 104);
+            this.dropdownMenu7.Size = new System.Drawing.Size(322, 108);
             // 
             // reporteDeInventarioExistenteToolStripMenuItem
             // 
@@ -709,6 +709,22 @@
             this.reporteConsumoInsumoToolStripMenuItem.Size = new System.Drawing.Size(321, 26);
             this.reporteConsumoInsumoToolStripMenuItem.Text = "Reporte Consumo Insumo";
             this.reporteConsumoInsumoToolStripMenuItem.Click += new System.EventHandler(this.reporteConsumoInsumoToolStripMenuItem_Click);
+            // 
+            // reporteEntregaQuincenalToolStripMenuItem
+            // 
+            this.reporteEntregaQuincenalToolStripMenuItem.Name = "reporteEntregaQuincenalToolStripMenuItem";
+            this.reporteEntregaQuincenalToolStripMenuItem.Size = new System.Drawing.Size(321, 26);
+            this.reporteEntregaQuincenalToolStripMenuItem.Text = "Reporte Entrega Quincenal";
+            this.reporteEntregaQuincenalToolStripMenuItem.Click += new System.EventHandler(this.reporteEntregaQuincenalToolStripMenuItem_Click);
+            // 
+            // panelContenedor
+            // 
+            this.panelContenedor.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContenedor.Location = new System.Drawing.Point(230, 55);
+            this.panelContenedor.Name = "panelContenedor";
+            this.panelContenedor.Size = new System.Drawing.Size(1070, 595);
+            this.panelContenedor.TabIndex = 4;
             // 
             // Menu
             // 
@@ -766,7 +782,6 @@
         private Controls.DropdownMenu dropdownMenu1;
         private System.Windows.Forms.ToolStripMenuItem btn1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem btnConsultaQuincenalToolStripMenuItem;
-        private System.Windows.Forms.Panel panelContenedor;
         private Controls.DropdownMenu dropdownMenu2;
         private System.Windows.Forms.ToolStripMenuItem btnSociostoolStripMenuItem1;
         private Controls.DropdownMenu dropdownMenu3;
@@ -799,6 +814,8 @@
         private System.Windows.Forms.ToolStripMenuItem reporteDeInventarioExistenteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteDeProducciónQuincenalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteConsumoInsumoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteEntregaQuincenalToolStripMenuItem;
+        private System.Windows.Forms.Panel panelContenedor;
     }
 }
 
