@@ -416,8 +416,6 @@ namespace ProyectoADSI2024
             txtNombreArt.Text = "";
             txtPrecio.Text = "";
             txtCantidad.Text = "";
-            cmbCampoSalida.SelectedIndex = -1;
-            cmbCampoDetalle.SelectedIndex = -1;
 
             try
             {

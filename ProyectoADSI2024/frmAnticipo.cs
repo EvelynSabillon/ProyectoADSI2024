@@ -38,7 +38,6 @@ namespace ProyectoADSI2024
             toolTip1.SetToolTip(btnEditar, "Editar el anticipo seleccionado");
             toolTip1.SetToolTip(btnLimpiar, "Limpiar todos los campos");
             toolTip1.SetToolTip(btnEliminar, "Eliminar el anticipo seleccionado");
-            toolTip1.SetToolTip(btnSalir, "Salir del sistema");
             toolTip1.SetToolTip(dataGridView1, "Seleccionar un anticipo para editar o eliminar");
             toolTip1.SetToolTip(txtAnticipoID, "ID del anticipo, campo de solo lectura, autonumerico, no se debe llenar");
             toolTip1.SetToolTip(txtSocioID, "ID del socio seleccionado, campo de solo lectura, no se debe llenar");
@@ -261,7 +260,6 @@ namespace ProyectoADSI2024
             cmbNombreSocio.SelectedIndex = -1;  // Deseleccionar socio
             dtpFecha.ResetText();
             txtMonto.Text = "";
-            cmbCampo.SelectedIndex = -1;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

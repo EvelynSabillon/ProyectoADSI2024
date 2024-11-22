@@ -50,7 +50,6 @@
             this.txtTexto = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cmbCampo = new System.Windows.Forms.ComboBox();
-            this.btnSalir = new System.Windows.Forms.Button();
             this.txtPrestamoID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -277,24 +276,6 @@
             this.cmbCampo.TabIndex = 13;
             this.cmbCampo.Click += new System.EventHandler(this.cmbCampo_Click);
             // 
-            // btnSalir
-            // 
-            this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.btnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSalir.FlatAppearance.BorderSize = 0;
-            this.btnSalir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
-            this.btnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
-            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalir.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.ForeColor = System.Drawing.Color.White;
-            this.btnSalir.Location = new System.Drawing.Point(906, 536);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(140, 43);
-            this.btnSalir.TabIndex = 12;
-            this.btnSalir.Text = "SALIR";
-            this.btnSalir.UseVisualStyleBackColor = false;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
             // txtPrestamoID
             // 
             this.txtPrestamoID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -421,7 +402,6 @@
             this.Controls.Add(this.txtTexto);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.cmbCampo);
-            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.txtPrestamoID);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dataGridView1);
@@ -458,7 +438,6 @@
         private System.Windows.Forms.TextBox txtTexto;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cmbCampo;
-        private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.TextBox txtPrestamoID;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView1;

@@ -78,7 +78,7 @@ namespace ProyectoADSI2024
         private void btnClose_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Desea salir del sistema?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                Application.ExitThread();
+                Application.Exit();
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)
@@ -310,6 +310,11 @@ namespace ProyectoADSI2024
         {
             Form frmvistasociosreporteconsumoinsumo = new frmVistaDeSocioParaReporteConsumoInsumo();
             frmvistasociosreporteconsumoinsumo.Show();
+        }
+
+        private void reporteDeProducciónQuincenalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

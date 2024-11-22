@@ -81,8 +81,6 @@
             this.dropdownMenu7 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
             this.reporteDeInventarioExistenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteDeProducciónQuincenalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reporteDeProducciónMensualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reporteDePrestamoDeSocioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteConsumoInsumoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -685,43 +683,30 @@
             this.dropdownMenu7.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.reporteDeInventarioExistenteToolStripMenuItem,
             this.reporteDeProducciónQuincenalToolStripMenuItem,
-            this.reporteDeProducciónMensualToolStripMenuItem,
-            this.reporteDePrestamoDeSocioToolStripMenuItem,
             this.reporteConsumoInsumoToolStripMenuItem});
             this.dropdownMenu7.MenuItemHeight = 25;
             this.dropdownMenu7.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu7.Name = "dropdownMenu7";
             this.dropdownMenu7.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu7.Size = new System.Drawing.Size(341, 156);
+            this.dropdownMenu7.Size = new System.Drawing.Size(322, 104);
             // 
             // reporteDeInventarioExistenteToolStripMenuItem
             // 
             this.reporteDeInventarioExistenteToolStripMenuItem.Name = "reporteDeInventarioExistenteToolStripMenuItem";
-            this.reporteDeInventarioExistenteToolStripMenuItem.Size = new System.Drawing.Size(340, 26);
+            this.reporteDeInventarioExistenteToolStripMenuItem.Size = new System.Drawing.Size(321, 26);
             this.reporteDeInventarioExistenteToolStripMenuItem.Text = "Reporte de Inventario Existente";
             // 
             // reporteDeProducciónQuincenalToolStripMenuItem
             // 
             this.reporteDeProducciónQuincenalToolStripMenuItem.Name = "reporteDeProducciónQuincenalToolStripMenuItem";
-            this.reporteDeProducciónQuincenalToolStripMenuItem.Size = new System.Drawing.Size(340, 26);
-            this.reporteDeProducciónQuincenalToolStripMenuItem.Text = "Reporte de Producción Quincenal ";
-            // 
-            // reporteDeProducciónMensualToolStripMenuItem
-            // 
-            this.reporteDeProducciónMensualToolStripMenuItem.Name = "reporteDeProducciónMensualToolStripMenuItem";
-            this.reporteDeProducciónMensualToolStripMenuItem.Size = new System.Drawing.Size(340, 26);
-            this.reporteDeProducciónMensualToolStripMenuItem.Text = "Reporte de Producción Mensual";
-            // 
-            // reporteDePrestamoDeSocioToolStripMenuItem
-            // 
-            this.reporteDePrestamoDeSocioToolStripMenuItem.Name = "reporteDePrestamoDeSocioToolStripMenuItem";
-            this.reporteDePrestamoDeSocioToolStripMenuItem.Size = new System.Drawing.Size(340, 26);
-            this.reporteDePrestamoDeSocioToolStripMenuItem.Text = "Reporte de Prestamo de Socio";
+            this.reporteDeProducciónQuincenalToolStripMenuItem.Size = new System.Drawing.Size(321, 26);
+            this.reporteDeProducciónQuincenalToolStripMenuItem.Text = "Reporte de Producción General ";
+            this.reporteDeProducciónQuincenalToolStripMenuItem.Click += new System.EventHandler(this.reporteDeProducciónQuincenalToolStripMenuItem_Click);
             // 
             // reporteConsumoInsumoToolStripMenuItem
             // 
             this.reporteConsumoInsumoToolStripMenuItem.Name = "reporteConsumoInsumoToolStripMenuItem";
-            this.reporteConsumoInsumoToolStripMenuItem.Size = new System.Drawing.Size(340, 26);
+            this.reporteConsumoInsumoToolStripMenuItem.Size = new System.Drawing.Size(321, 26);
             this.reporteConsumoInsumoToolStripMenuItem.Text = "Reporte Consumo Insumo";
             this.reporteConsumoInsumoToolStripMenuItem.Click += new System.EventHandler(this.reporteConsumoInsumoToolStripMenuItem_Click);
             // 
@@ -813,8 +798,6 @@
         private Controls.DropdownMenu dropdownMenu7;
         private System.Windows.Forms.ToolStripMenuItem reporteDeInventarioExistenteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteDeProducciónQuincenalToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reporteDeProducciónMensualToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reporteDePrestamoDeSocioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteConsumoInsumoToolStripMenuItem;
     }
 }

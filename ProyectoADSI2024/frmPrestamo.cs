@@ -38,7 +38,6 @@ namespace ProyectoADSI2024
             toolTip1.SetToolTip(btnEditar, "Editar el préstamo seleccionado");
             toolTip1.SetToolTip(btnLimpiar, "Limpiar todos los campos");
             toolTip1.SetToolTip(btnEliminar, "Eliminar el préstamo seleccionado");
-            toolTip1.SetToolTip(btnSalir, "Salir del sistema");
             toolTip1.SetToolTip(dataGridView1, "Seleccionar un préstamo para editar o eliminar");
             toolTip1.SetToolTip(txtPrestamoID, "ID del prestamo, campo de solo lectura, autonumerico, no se debe llenar");
             toolTip1.SetToolTip(txtSocioID, "ID del socio seleccionado, campo de solo lectura, no se debe llenar");
@@ -284,7 +283,6 @@ namespace ProyectoADSI2024
             txtCuota.Text = "";
             txtPago.Text = "";
             chkPagado.Checked = false;
-            cmbCampo.SelectedIndex = -1;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
