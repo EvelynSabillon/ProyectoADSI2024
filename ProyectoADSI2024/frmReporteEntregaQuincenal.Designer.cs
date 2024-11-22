@@ -1,3 +1,5 @@
+
+
 ﻿using ProyectoADSI2024.Reportes.ReporteEntregaQuincenal;
 
 namespace ProyectoADSI2024
@@ -31,7 +33,11 @@ namespace ProyectoADSI2024
         private void InitializeComponent()
         {
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+
             this.crReporteEntregaQuincenal1 = new ProyectoADSI2024.Reportes.ReporteEntregaQuincenal.crReporteEntregaQuincenal();
+
+            this.crReporteEntregaQuincenal1 = new ProyectoADSI2024.Reportes.ReporteEntregaQuincenal.crReporteEntregaQuincenal();
+
             this.SuspendLayout();
             // 
             // crystalReportViewer1
@@ -49,13 +55,21 @@ namespace ProyectoADSI2024
             // 
             // frmReporteEntregaQuincenal
             // 
+
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "frmReporteEntregaQuincenal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+
+            this.Text = "frmReporteEntregaQuincenal";
+
             this.Text = "Reporte de Entregas Quincenales";
+
             this.ResumeLayout(false);
 
         }

@@ -485,6 +485,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Reportes\ReporteEntregaQuincenal\reporte.txt" />
     <Content Include="Reportes\ReporteGestionInventario\ReporteGestionInv1.txt" />
     <Content Include="Reportes\ReporteModuloControlIngresoLeche\ReporteModuloControlIngreso.txt" />
     <Content Include="Reportes\ReporteModuloRegistroYGestionSocios\ReporteModuloRegistroYGestionSocios.txt" />
