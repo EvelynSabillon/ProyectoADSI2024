@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ProyectoADSI2024.Reportes.ReportePrestamosFinanzas; //Mandar a llamar el form del reporte de la nomina
+//using ProyectoADSI2024; //Mandar a llamar el form del reporte de la nomina
 
 namespace ProyectoADSI2024
 {
@@ -36,8 +36,7 @@ namespace ProyectoADSI2024
 
         private void btnGenReporte_Click_1(object sender, EventArgs e)
         {
-            FrmNominaQuincenal frmReporteNomina = new FrmNominaQuincenal();
-            frmReporteNomina.ShowDialog();
+
         }
     }
 }

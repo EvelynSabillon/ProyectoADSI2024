@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProyectoADSI2024.Reportes.ReportePrestamosFinanzas
+namespace ProyectoADSI2024
 {
-    public partial class FrmNominaQuincenal : Form
+    public partial class FrmReporteConsQuincenal : Form
     {
-        public FrmNominaQuincenal()
+        public FrmReporteConsQuincenal()
         {
             InitializeComponent();
         }

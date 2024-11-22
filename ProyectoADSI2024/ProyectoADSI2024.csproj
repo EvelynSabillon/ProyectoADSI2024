@@ -53,6 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Reportes\ReportePrestamosFinanzas\crReporteConsQuincenal.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crReporteConsQuincenal.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="crReporteConsumoMedCon.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -84,6 +90,12 @@
     </Compile>
     <Compile Include="Controls\MenuColorTable.cs" />
     <Compile Include="Controls\MenuRenderer.cs" />
+    <Compile Include="FrmReporteConsQuincenal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReporteConsQuincenal.Designer.cs">
+      <DependentUpon>FrmReporteConsQuincenal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\frmReportViewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,18 +108,6 @@
       <DependentUpon>rptLecheDiaria.rpt</DependentUpon>
       <SubType>Component</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Reportes\ReportePrestamosFinanzas\FrmNominaQuincenal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reportes\ReportePrestamosFinanzas\FrmNominaQuincenal.Designer.cs">
-      <DependentUpon>FrmNominaQuincenal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Reportes\ReportePrestamosFinanzas\Reporte_Nomina.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reporte_Nomina.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Utils\ReportManager.cs" />
     <Compile Include="Vista_ArticuloMed.cs">
@@ -268,12 +268,6 @@
     <Compile Include="RegistroProveedores.Designer.cs">
       <DependentUpon>RegistroProveedores.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReporteIngresoLeche.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ReporteIngresoLeche.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Reportes\PlantillaReporte\Formato_Plantilla1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -294,6 +288,10 @@
     </Compile>
     <EmbeddedResource Include="BotonesUtilidades.resx">
       <DependentUpon>BotonesUtilidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReportePrestamosFinanzas\crReporteConsQuincenal.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crReporteConsQuincenal.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="crReporteConsumoMedCon.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -341,6 +339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrestamo.resx">
       <DependentUpon>frmPrestamo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReporteConsQuincenal.resx">
+      <DependentUpon>FrmReporteConsQuincenal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteConsumoMedCon.resx">
       <DependentUpon>frmReporteConsumoMedCon.cs</DependentUpon>
@@ -391,10 +392,6 @@
     <EmbeddedResource Include="RegistroProveedores.resx">
       <DependentUpon>RegistroProveedores.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReporteIngresoLeche.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ReporteIngresoLeche.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\frmReportViewer.resx">
       <DependentUpon>frmReportViewer.cs</DependentUpon>
     </EmbeddedResource>
@@ -410,13 +407,6 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptLecheDiaria.cs</LastGenOutput>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\ReportePrestamosFinanzas\FrmNominaQuincenal.resx">
-      <DependentUpon>FrmNominaQuincenal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\ReportePrestamosFinanzas\Reporte_Nomina.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Reporte_Nomina.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista_ArticuloCon.resx">
       <DependentUpon>Vista_ArticuloCon.cs</DependentUpon>

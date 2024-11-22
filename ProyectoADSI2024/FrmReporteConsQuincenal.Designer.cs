@@ -1,6 +1,8 @@
-﻿namespace ProyectoADSI2024.Reportes.ReportePrestamosFinanzas
+﻿using ProyectoADSI2024.Reportes.ReportePrestamosFinanzas;
+
+namespace ProyectoADSI2024
 {
-    partial class FrmNominaQuincenal
+    partial class FrmReporteConsQuincenal
     {
         /// <summary>
         /// Required designer variable.
@@ -29,30 +31,30 @@
         private void InitializeComponent()
         {
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.Reporte_Nomina1 = new ProyectoADSI2024.Reportes.ReportePrestamosFinanzas.Reporte_Nomina();
+            this.crReporteConsQuincenal1 = new ProyectoADSI2024.Reportes.ReportePrestamosFinanzas.crReporteConsQuincenal();
             this.SuspendLayout();
             // 
             // crystalReportViewer1
             // 
-            this.crystalReportViewer1.ActiveViewIndex = -1;
+            this.crystalReportViewer1.ActiveViewIndex = 0;
             this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.ReportSource = this.Reporte_Nomina1;
+            this.crystalReportViewer1.ReportSource = this.crReporteConsQuincenal1;
             this.crystalReportViewer1.Size = new System.Drawing.Size(800, 450);
             this.crystalReportViewer1.TabIndex = 0;
             this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
-            // FrmNominaQuincenal
+            // FrmReporteConsQuincenal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.crystalReportViewer1);
-            this.Name = "FrmNominaQuincenal";
-            this.Text = "FrmNominaQuincenal";
+            this.Name = "FrmReporteConsQuincenal";
+            this.Text = "FrmReporteConsQuincenalcs";
             this.ResumeLayout(false);
 
         }
@@ -60,6 +62,6 @@
         #endregion
 
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
-        private Reporte_Nomina Reporte_Nomina1;
+        private crReporteConsQuincenal crReporteConsQuincenal1;
     }
 }
