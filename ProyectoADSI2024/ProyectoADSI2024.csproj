@@ -53,6 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmReporteKardexConcentrado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteKardexConcentrado.Designer.cs">
+      <DependentUpon>frmReporteKardexConcentrado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\ReporteEntregaQuincenal\crReporteEntregaQuincenal.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -70,6 +76,13 @@
     </Compile>
     <Compile Include="frmReporteProduccionGeneral.Designer.cs">
       <DependentUpon>frmReporteProduccionGeneral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ReporteGestionInventario\rptKardexConcentrado.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptKardexConcentrado.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Reportes\ReporteProduccion\ReporteProduccionGeneral.cs">
       <AutoGen>True</AutoGen>
@@ -307,6 +320,9 @@
     <EmbeddedResource Include="BotonesUtilidades.resx">
       <DependentUpon>BotonesUtilidades.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteKardexConcentrado.resx">
+      <DependentUpon>frmReporteKardexConcentrado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteEntregaQuincenal\crReporteEntregaQuincenal.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crReporteEntregaQuincenal.cs</LastGenOutput>
@@ -316,6 +332,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteProduccionGeneral.resx">
       <DependentUpon>frmReporteProduccionGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteGestionInventario\rptKardexConcentrado.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptKardexConcentrado.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteProduccion\ReporteProduccionGeneral.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

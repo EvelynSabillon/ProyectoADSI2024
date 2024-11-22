@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+using CrystalDecisions.Windows.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -43,6 +46,15 @@ namespace ProyectoADSI2024
                 MessageBox.Show("Error al cargar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void btnGenerarReporte_Click(object sender, EventArgs e)
+        {
+            frmReporteKardexConcentrado objformReporte = new frmReporteKardexConcentrado();
+            int articuloid = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+
+            objformReporte.articuloid = articuloid;
+            objformReporte.ShowDialog();
         }
     }
 }
