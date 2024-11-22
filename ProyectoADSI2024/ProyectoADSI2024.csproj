@@ -53,6 +53,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Reportes\ReporteEntregaQuincenal\crReporteEntregaQuincenal.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crReporteEntregaQuincenal.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="frmReporteEntregaQuincenal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteEntregaQuincenal.Designer.cs">
+      <DependentUpon>frmReporteEntregaQuincenal.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmReporteProduccionGeneral.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -300,6 +312,13 @@
     </Compile>
     <EmbeddedResource Include="BotonesUtilidades.resx">
       <DependentUpon>BotonesUtilidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteEntregaQuincenal\crReporteEntregaQuincenal.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crReporteEntregaQuincenal.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteEntregaQuincenal.resx">
+      <DependentUpon>frmReporteEntregaQuincenal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteProduccionGeneral.resx">
       <DependentUpon>frmReporteProduccionGeneral.cs</DependentUpon>

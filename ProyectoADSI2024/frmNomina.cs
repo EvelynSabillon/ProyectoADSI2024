@@ -36,7 +36,8 @@ namespace ProyectoADSI2024
 
         private void btnGenReporte_Click_1(object sender, EventArgs e)
         {
-
+            FrmReporteConsQuincenal frmNomina = new FrmReporteConsQuincenal();
+            frmNomina.ShowDialog();
         }
     }
 }
