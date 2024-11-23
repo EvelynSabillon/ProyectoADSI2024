@@ -329,5 +329,10 @@ namespace ProyectoADSI2024
             Form frmplanilla = new frmplanillainforme();
             frmplanilla.Show();
         }
+
+        private void panelContenedor_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

@@ -83,6 +83,24 @@
     <Compile Include="frmReporteKardexMedicamento.Designer.cs">
       <DependentUpon>frmReporteKardexMedicamento.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReporteProduccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReporteProduccion.Designer.cs">
+      <DependentUpon>ReporteProduccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteProduccionGeneral2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteProduccionGeneral2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReporteProduccionGeneralFinalisimo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteProduccionGeneralFinalisimo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\ReporteEntregaQuincenal\crReporteEntregaQuincenal.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -365,6 +383,17 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteKardexMedicamento.resx">
       <DependentUpon>frmReporteKardexMedicamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteProduccion.resx">
+      <DependentUpon>ReporteProduccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteProduccionGeneral2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteProduccionGeneral2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteProduccionGeneralFinalisimo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteProduccionGeneralFinalisimo.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteEntregaQuincenal\crReporteEntregaQuincenal.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

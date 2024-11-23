@@ -82,8 +82,8 @@
             this.reporteDeProducciónQuincenalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteConsumoInsumoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteEntregaQuincenalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panelContenedor = new System.Windows.Forms.Panel();
             this.reportePagoDeSociosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelContenedor = new System.Windows.Forms.Panel();
             this.MenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.BarraTitulo.SuspendLayout();
@@ -690,7 +690,7 @@
             this.dropdownMenu7.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu7.Name = "dropdownMenu7";
             this.dropdownMenu7.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu7.Size = new System.Drawing.Size(322, 156);
+            this.dropdownMenu7.Size = new System.Drawing.Size(322, 134);
             // 
             // reporteDeInventarioExistenteToolStripMenuItem
             // 
@@ -719,6 +719,13 @@
             this.reporteEntregaQuincenalToolStripMenuItem.Text = "Reporte Entrega Quincenal";
             this.reporteEntregaQuincenalToolStripMenuItem.Click += new System.EventHandler(this.reporteEntregaQuincenalToolStripMenuItem_Click);
             // 
+            // reportePagoDeSociosToolStripMenuItem
+            // 
+            this.reportePagoDeSociosToolStripMenuItem.Name = "reportePagoDeSociosToolStripMenuItem";
+            this.reportePagoDeSociosToolStripMenuItem.Size = new System.Drawing.Size(321, 26);
+            this.reportePagoDeSociosToolStripMenuItem.Text = "Reporte Pago de Socios";
+            this.reportePagoDeSociosToolStripMenuItem.Click += new System.EventHandler(this.reportePagoDeSociosToolStripMenuItem_Click);
+            // 
             // panelContenedor
             // 
             this.panelContenedor.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -727,13 +734,7 @@
             this.panelContenedor.Name = "panelContenedor";
             this.panelContenedor.Size = new System.Drawing.Size(1070, 595);
             this.panelContenedor.TabIndex = 4;
-            // 
-            // reportePagoDeSociosToolStripMenuItem
-            // 
-            this.reportePagoDeSociosToolStripMenuItem.Name = "reportePagoDeSociosToolStripMenuItem";
-            this.reportePagoDeSociosToolStripMenuItem.Size = new System.Drawing.Size(321, 26);
-            this.reportePagoDeSociosToolStripMenuItem.Text = "Reporte Pago de Socios";
-            this.reportePagoDeSociosToolStripMenuItem.Click += new System.EventHandler(this.reportePagoDeSociosToolStripMenuItem_Click);
+            this.panelContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContenedor_Paint);
             // 
             // Menu
             // 
