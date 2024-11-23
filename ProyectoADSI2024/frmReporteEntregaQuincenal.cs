@@ -16,5 +16,12 @@ namespace ProyectoADSI2024
         {
             InitializeComponent();
         }
+
+        private void frmReporteEntregaQuincenal_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'dB20212030388DataSet.Quincena' table. You can move, or remove it, as needed.
+            this.quincenaTableAdapter.Fill(this.dB20212030388DataSet.Quincena);
+
+        }
     }
 }

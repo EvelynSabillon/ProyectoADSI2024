@@ -1,8 +1,4 @@
-
-
-﻿using ProyectoADSI2024.Reportes.ReporteEntregaQuincenal;
-
-namespace ProyectoADSI2024
+﻿namespace ProyectoADSI2024
 {
     partial class frmReporteEntregaQuincenal
     {
@@ -32,51 +28,100 @@ namespace ProyectoADSI2024
         /// </summary>
         private void InitializeComponent()
         {
-            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-
-            this.crReporteEntregaQuincenal1 = new ProyectoADSI2024.Reportes.ReporteEntregaQuincenal.crReporteEntregaQuincenal();
-
-            this.crReporteEntregaQuincenal1 = new ProyectoADSI2024.Reportes.ReporteEntregaQuincenal.crReporteEntregaQuincenal();
-
+            this.components = new System.ComponentModel.Container();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dB20212030388DataSet = new ProyectoADSI2024.DB20212030388DataSet();
+            this.quincenaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.quincenaTableAdapter = new ProyectoADSI2024.DB20212030388DataSetTableAdapters.QuincenaTableAdapter();
+            this.quincenaIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaInicioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaFinalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dB20212030388DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quincenaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // crystalReportViewer1
+            // dataGridView1
             // 
-            this.crystalReportViewer1.ActiveViewIndex = 0;
-            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.ReportSource = this.crReporteEntregaQuincenal1;
-            this.crystalReportViewer1.Size = new System.Drawing.Size(800, 450);
-            this.crystalReportViewer1.TabIndex = 0;
-            this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.quincenaIDDataGridViewTextBoxColumn,
+            this.fechaInicioDataGridViewTextBoxColumn,
+            this.fechaFinalDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.quincenaBindingSource;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(1184, 511);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // dB20212030388DataSet
+            // 
+            this.dB20212030388DataSet.DataSetName = "DB20212030388DataSet";
+            this.dB20212030388DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // quincenaBindingSource
+            // 
+            this.quincenaBindingSource.DataMember = "Quincena";
+            this.quincenaBindingSource.DataSource = this.dB20212030388DataSet;
+            // 
+            // quincenaTableAdapter
+            // 
+            this.quincenaTableAdapter.ClearBeforeFill = true;
+            // 
+            // quincenaIDDataGridViewTextBoxColumn
+            // 
+            this.quincenaIDDataGridViewTextBoxColumn.DataPropertyName = "QuincenaID";
+            this.quincenaIDDataGridViewTextBoxColumn.HeaderText = "QuincenaID";
+            this.quincenaIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.quincenaIDDataGridViewTextBoxColumn.Name = "quincenaIDDataGridViewTextBoxColumn";
+            this.quincenaIDDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // fechaInicioDataGridViewTextBoxColumn
+            // 
+            this.fechaInicioDataGridViewTextBoxColumn.DataPropertyName = "FechaInicio";
+            this.fechaInicioDataGridViewTextBoxColumn.HeaderText = "FechaInicio";
+            this.fechaInicioDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.fechaInicioDataGridViewTextBoxColumn.Name = "fechaInicioDataGridViewTextBoxColumn";
+            this.fechaInicioDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // fechaFinalDataGridViewTextBoxColumn
+            // 
+            this.fechaFinalDataGridViewTextBoxColumn.DataPropertyName = "FechaFinal";
+            this.fechaFinalDataGridViewTextBoxColumn.HeaderText = "FechaFinal";
+            this.fechaFinalDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.fechaFinalDataGridViewTextBoxColumn.Name = "fechaFinalDataGridViewTextBoxColumn";
+            this.fechaFinalDataGridViewTextBoxColumn.Width = 125;
             // 
             // frmReporteEntregaQuincenal
             // 
-
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.crystalReportViewer1);
+            this.ClientSize = new System.Drawing.Size(1184, 511);
+            this.Controls.Add(this.dataGridView1);
             this.Name = "frmReporteEntregaQuincenal";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-
-            this.Text = "frmReporteEntregaQuincenal";
-
-            this.Text = "Reporte de Entregas Quincenales";
-
+            this.Text = "Reporte Entrega Quincenal";
+            this.Load += new System.EventHandler(this.frmReporteEntregaQuincenal_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dB20212030388DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quincenaBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
-        private crReporteEntregaQuincenal crReporteEntregaQuincenal1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private DB20212030388DataSet dB20212030388DataSet;
+        private System.Windows.Forms.BindingSource quincenaBindingSource;
+        private DB20212030388DataSetTableAdapters.QuincenaTableAdapter quincenaTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quincenaIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaInicioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaFinalDataGridViewTextBoxColumn;
     }
 }

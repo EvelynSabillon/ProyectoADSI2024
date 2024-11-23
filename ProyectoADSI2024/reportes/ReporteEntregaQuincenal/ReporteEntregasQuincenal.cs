@@ -16,14 +16,14 @@ namespace ProyectoADSI2024.Reportes.ReporteEntregaQuincenal {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class crReporteEntregaQuincenal : ReportClass {
+    public class ReporteEntregasQuincenal : ReportClass {
         
-        public crReporteEntregaQuincenal() {
+        public ReporteEntregasQuincenal() {
         }
         
         public override string ResourceName {
             get {
-                return "crReporteEntregaQuincenal.rpt";
+                return "ReporteEntregasQuincenal.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace ProyectoADSI2024.Reportes.ReporteEntregaQuincenal {
         
         public override string FullResourceName {
             get {
-                return "ProyectoADSI2024.Reportes.ReporteEntregaQuincenal.crReporteEntregaQuincenal.rpt";
+                return "ProyectoADSI2024.Reportes.ReporteEntregaQuincenal.ReporteEntregasQuincenal.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace ProyectoADSI2024.Reportes.ReporteEntregaQuincenal {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedcrReporteEntregaQuincenal : Component, ICachedReport {
+    public class CachedReporteEntregasQuincenal : Component, ICachedReport {
         
-        public CachedcrReporteEntregaQuincenal() {
+        public CachedReporteEntregasQuincenal() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace ProyectoADSI2024.Reportes.ReporteEntregaQuincenal {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            crReporteEntregaQuincenal rpt = new crReporteEntregaQuincenal();
+            ReporteEntregasQuincenal rpt = new ReporteEntregasQuincenal();
             rpt.Site = this.Site;
             return rpt;
         }

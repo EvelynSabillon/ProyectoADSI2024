@@ -59,6 +59,11 @@
       <DependentUpon>crReportePagoSocio.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DB20212030388DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB20212030388DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="frmInformePago.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +75,12 @@
     </Compile>
     <Compile Include="frmplanillainforme.Designer.cs">
       <DependentUpon>frmplanillainforme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporteEntregaQuincenal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteEntregaQuincenal.Designer.cs">
+      <DependentUpon>frmReporteEntregaQuincenal.cs</DependentUpon>
     </Compile>
     <Compile Include="frmReporteKardexConcentrado.cs">
       <SubType>Form</SubType>
@@ -101,23 +112,16 @@
       <DependentUpon>ReporteProduccionGeneralFinalisimo.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes\ReporteEntregaQuincenal\crReporteEntregaQuincenal.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>crReporteEntregaQuincenal.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="frmReporteEntregaQuincenal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmReporteEntregaQuincenal.Designer.cs">
-      <DependentUpon>frmReporteEntregaQuincenal.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmReporteProduccionGeneral.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmReporteProduccionGeneral.Designer.cs">
       <DependentUpon>frmReporteProduccionGeneral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ReporteEntregaQuincenal\ReporteEntregasQuincenal.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteEntregasQuincenal.rpt</DependentUpon>
     </Compile>
     <Compile Include="Reportes\ReporteGestionInventario\rptKardexConcentrado.cs">
       <AutoGen>True</AutoGen>
@@ -378,6 +382,9 @@
     <EmbeddedResource Include="frmplanillainforme.resx">
       <DependentUpon>frmplanillainforme.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteEntregaQuincenal.resx">
+      <DependentUpon>frmReporteEntregaQuincenal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmReporteKardexConcentrado.resx">
       <DependentUpon>frmReporteKardexConcentrado.cs</DependentUpon>
     </EmbeddedResource>
@@ -395,15 +402,12 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteProduccionGeneralFinalisimo.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\ReporteEntregaQuincenal\crReporteEntregaQuincenal.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>crReporteEntregaQuincenal.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmReporteEntregaQuincenal.resx">
-      <DependentUpon>frmReporteEntregaQuincenal.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmReporteProduccionGeneral.resx">
       <DependentUpon>frmReporteProduccionGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteEntregaQuincenal\ReporteEntregasQuincenal.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteEntregasQuincenal.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteGestionInventario\rptKardexConcentrado.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -539,6 +543,17 @@
     <EmbeddedResource Include="Vista_ArticuloMed.resx">
       <DependentUpon>Vista_ArticuloMed.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DB20212030388DataSet.xsc">
+      <DependentUpon>DB20212030388DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DB20212030388DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DB20212030388DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DB20212030388DataSet.xss">
+      <DependentUpon>DB20212030388DataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
