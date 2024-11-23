@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
+using ProyectoADSI2024.Reportes.ReporteProduccion;
 
 namespace ProyectoADSI2024
 {
@@ -29,19 +30,22 @@ namespace ProyectoADSI2024
             try
             {
                 // Crear una instancia del reporte
-                ReportDocument reporte = new ReportDocument();
+                ReporteProduccionGeneralFinalisimo reporte = new ReporteProduccionGeneralFinalisimo();
 
                 // Cargar el archivo .rpt con la plantilla
-                string rutaReporte = @"C:\Users\coseg\Desktop\ProyectoADSI2024\ProyectoADSI2024\Reportes\ReporteProduccion\ReporteProduccionGeneral.rpt"; //ruta correspondiente
-                reporte.Load(rutaReporte);
+                //string rutaReporte = @"Reportes\ReporteProduccion\ReporteProduccionGeneral.rpt"; //ruta correspondiente
+                //reporte.Load(rutaReporte);
 
-                // Conectar a la base de datos (opcional, según sea necesario)
-                // Configura los datos de conexión
-                reporte.SetDatabaseLogon("carlos.osegueda", "CO20212030669", "3.128.144.165", "DB20212030388");
 
                 // Asignar el reporte al visor
                 crystalReportViewer1.ReportSource = reporte;
                 crystalReportViewer1.Refresh();
+
+                // Conectar a la base de datos (opcional, según sea necesario)
+                // Configura los datos de conexión
+
+                reporte.SetDatabaseLogon("carlos.osegueda", "CO20212030669", "3.128.144.165", "DB20212030388");
+
             }
             catch (Exception ex)
             {
