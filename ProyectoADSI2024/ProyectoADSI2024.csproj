@@ -77,6 +77,12 @@
     <Compile Include="frmReporteKardexConcentrado.Designer.cs">
       <DependentUpon>frmReporteKardexConcentrado.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReporteKardexMedicamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteKardexMedicamento.Designer.cs">
+      <DependentUpon>frmReporteKardexMedicamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\ReporteEntregaQuincenal\crReporteEntregaQuincenal.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -356,6 +362,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteKardexConcentrado.resx">
       <DependentUpon>frmReporteKardexConcentrado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteKardexMedicamento.resx">
+      <DependentUpon>frmReporteKardexMedicamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteEntregaQuincenal\crReporteEntregaQuincenal.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

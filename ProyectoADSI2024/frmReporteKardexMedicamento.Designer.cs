@@ -1,6 +1,6 @@
 ﻿namespace ProyectoADSI2024
 {
-    partial class frmReporteKardexConcentrado
+    partial class frmReporteKardexMedicamento
     {
         /// <summary>
         /// Required designer variable.
@@ -43,14 +43,14 @@
             this.crystalReportViewer1.TabIndex = 0;
             this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
-            // frmReporteKardexConcentrado
+            // frmReporteKardexMedicamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.crystalReportViewer1);
-            this.Name = "frmReporteKardexConcentrado";
-            this.Load += new System.EventHandler(this.frmReporteKardexConcentrado_Load);
+            this.Name = "frmReporteKardexMedicamento";
+            this.Load += new System.EventHandler(this.frmReporteKardexMedicamento_Load);
             this.ResumeLayout(false);
 
         }

@@ -394,11 +394,11 @@
             this.btnGenerarReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGenerarReporte.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGenerarReporte.ForeColor = System.Drawing.Color.White;
-            this.btnGenerarReporte.Location = new System.Drawing.Point(893, 532);
+            this.btnGenerarReporte.Location = new System.Drawing.Point(842, 532);
             this.btnGenerarReporte.Name = "btnGenerarReporte";
-            this.btnGenerarReporte.Size = new System.Drawing.Size(153, 43);
+            this.btnGenerarReporte.Size = new System.Drawing.Size(204, 43);
             this.btnGenerarReporte.TabIndex = 186;
-            this.btnGenerarReporte.Text = "REPORTE";
+            this.btnGenerarReporte.Text = "GENERAR REPORTE";
             this.btnGenerarReporte.UseVisualStyleBackColor = false;
             this.btnGenerarReporte.Click += new System.EventHandler(this.btnGenerarReporte_Click);
             // 

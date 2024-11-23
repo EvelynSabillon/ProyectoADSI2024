@@ -90,7 +90,7 @@ namespace ProyectoADSI2024.Reportes.ReporteGestionInventario {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_ArticuloConID {
+        public CrystalDecisions.Shared.IParameterField Parameter_ArticuloMedID {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
