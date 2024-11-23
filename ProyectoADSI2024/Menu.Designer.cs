@@ -83,6 +83,7 @@
             this.reporteConsumoInsumoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteEntregaQuincenalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelContenedor = new System.Windows.Forms.Panel();
+            this.reportePagoDeSociosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.BarraTitulo.SuspendLayout();
@@ -683,12 +684,13 @@
             this.reporteDeInventarioExistenteToolStripMenuItem,
             this.reporteDeProducciónQuincenalToolStripMenuItem,
             this.reporteConsumoInsumoToolStripMenuItem,
-            this.reporteEntregaQuincenalToolStripMenuItem});
+            this.reporteEntregaQuincenalToolStripMenuItem,
+            this.reportePagoDeSociosToolStripMenuItem});
             this.dropdownMenu7.MenuItemHeight = 25;
             this.dropdownMenu7.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu7.Name = "dropdownMenu7";
             this.dropdownMenu7.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu7.Size = new System.Drawing.Size(322, 108);
+            this.dropdownMenu7.Size = new System.Drawing.Size(322, 156);
             // 
             // reporteDeInventarioExistenteToolStripMenuItem
             // 
@@ -725,6 +727,13 @@
             this.panelContenedor.Name = "panelContenedor";
             this.panelContenedor.Size = new System.Drawing.Size(1070, 595);
             this.panelContenedor.TabIndex = 4;
+            // 
+            // reportePagoDeSociosToolStripMenuItem
+            // 
+            this.reportePagoDeSociosToolStripMenuItem.Name = "reportePagoDeSociosToolStripMenuItem";
+            this.reportePagoDeSociosToolStripMenuItem.Size = new System.Drawing.Size(321, 26);
+            this.reportePagoDeSociosToolStripMenuItem.Text = "Reporte Pago de Socios";
+            this.reportePagoDeSociosToolStripMenuItem.Click += new System.EventHandler(this.reportePagoDeSociosToolStripMenuItem_Click);
             // 
             // Menu
             // 
@@ -816,6 +825,7 @@
         private System.Windows.Forms.ToolStripMenuItem reporteConsumoInsumoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteEntregaQuincenalToolStripMenuItem;
         private System.Windows.Forms.Panel panelContenedor;
+        private System.Windows.Forms.ToolStripMenuItem reportePagoDeSociosToolStripMenuItem;
     }
 }
 

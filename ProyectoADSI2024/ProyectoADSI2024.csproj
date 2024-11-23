@@ -53,6 +53,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="crReportePagoSocio.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crReportePagoSocio.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="frmInformePago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInformePago.Designer.cs">
+      <DependentUpon>frmInformePago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmplanillainforme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmplanillainforme.Designer.cs">
+      <DependentUpon>frmplanillainforme.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmReporteKardexConcentrado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -325,6 +343,16 @@
     </Compile>
     <EmbeddedResource Include="BotonesUtilidades.resx">
       <DependentUpon>BotonesUtilidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="crReportePagoSocio.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crReportePagoSocio.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInformePago.resx">
+      <DependentUpon>frmInformePago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmplanillainforme.resx">
+      <DependentUpon>frmplanillainforme.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteKardexConcentrado.resx">
       <DependentUpon>frmReporteKardexConcentrado.cs</DependentUpon>

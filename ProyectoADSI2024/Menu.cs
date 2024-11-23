@@ -323,5 +323,11 @@ namespace ProyectoADSI2024
             frmReporteEntregaQuincenal reporteEntregas = new frmReporteEntregaQuincenal();
             reporteEntregas.Show();
         }
+
+        private void reportePagoDeSociosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frmplanilla = new frmplanillainforme();
+            frmplanilla.Show();
+        }
     }
 }
