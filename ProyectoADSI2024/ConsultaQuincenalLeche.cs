@@ -79,7 +79,7 @@ namespace ProyectoADSI2024
 
             //Limpiar txbos y dtp
             Limpiar();
-
+            MessageBox.Show("Datos guardados exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             //Actualizar tabla
             CargarDatos();
         }

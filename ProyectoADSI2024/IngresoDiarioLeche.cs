@@ -181,7 +181,6 @@ namespace ProyectoADSI2024
 
             try
             {
-
                     // Modo de edición: Actualizar la fila seleccionada
                     SqlCommand cmd = new SqlCommand("spProyectoIngLecheUpdate", conexion);
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -219,31 +218,52 @@ namespace ProyectoADSI2024
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if(dgIngresoLeche.CurrentRow == null)
+            if (dgIngresoLeche.CurrentRow == null)
             {
-                MessageBox.Show("No hay ninguna fila seleccionada","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("No hay ninguna fila seleccionada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             try
             {
-                // Obtener el valor de la celda DiaID como DateTime
+                // Obtener el valor de DiaID como DateTime
                 DateTime diaid = Convert.ToDateTime(dgIngresoLeche.CurrentRow.Cells["DiaID"].Value);
+
+                // Confirmación antes de eliminar
+                if (MessageBox.Show("¿Está seguro que desea eliminar este registro?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                {
+                    return;
+                }
+
+                // Configurar comando para eliminación
                 SqlCommand cmdEliminar = new SqlCommand("spEliminarIngresoLecheDiario", conexion);
                 cmdEliminar.CommandType = CommandType.StoredProcedure;
-                cmdEliminar.Parameters.AddWithValue("DiaID", diaid);
+                cmdEliminar.Parameters.AddWithValue("@DiaID", diaid);
 
+                // Ejecutar comando
                 conexion.Open();
-                cmdEliminar .ExecuteNonQuery();
+                cmdEliminar.ExecuteNonQuery();
                 conexion.Close();
 
                 MessageBox.Show("Registro eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Recargar los datos del DataGridView
+                // Recargar datos
                 CargarDatosActualizados();
             }
-            catch (Exception ex) {
-
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show($"Error SQL: {sqlEx.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show($"Error al eliminar el registro: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conexion.State == ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
             }
 
         }
@@ -322,28 +342,22 @@ namespace ProyectoADSI2024
         {
             try
             {
-                // Conexión a la base de datos
-                using (SqlConnection conexion = new SqlConnection(url))
+                // Configurar el comando para ejecutar el procedimiento almacenado
+                SqlCommand cmd = new SqlCommand("spMostrarIngresoLecheDiario", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                // Crear el adaptador SQL y llenar el DataTable
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                tabIngresoLeche = new DataTable();
+                adapter.Fill(tabIngresoLeche);
+
+                // Asignar el DataTable al DataGridView
+                dgIngresoLeche.DataSource = tabIngresoLeche;
+
+                // Ajustar visibilidad de columnas
+                if (dgIngresoLeche.Columns.Contains("Activo"))
                 {
-                    conexion.Open();
-
-                    // Configurar el comando para ejecutar el procedimiento almacenado
-                    SqlCommand cmd = new SqlCommand("spMostrarIngresoLecheDiario", conexion);
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    // Crear el adaptador SQL y llenar el DataTable
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    tabIngresoLeche = new DataTable();
-                    adapter.Fill(tabIngresoLeche);
-
-                    // Asignar el DataTable al DataGridView
-                    dgIngresoLeche.DataSource = tabIngresoLeche;
-
-                    if (dgIngresoLeche.Columns.Contains("Activo"))
-                    {
-                        dgIngresoLeche.Columns["Activo"].Visible = false;
-                    }
-
+                    dgIngresoLeche.Columns["Activo"].Visible = false;
                 }
             }
             catch (Exception ex)
@@ -351,6 +365,7 @@ namespace ProyectoADSI2024
                 MessageBox.Show($"Error al cargar datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void toolTips()
         {
