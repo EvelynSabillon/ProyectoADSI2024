@@ -32,7 +32,7 @@ namespace ProyectoADSI2024
                 ReportDocument reporte = new ReportDocument();
 
                 // Cargar el archivo .rpt con la plantilla
-                string rutaReporte = @"C:\Users\coseg\Desktop\ADSI24\ProyectoADSI2024\Reportes\ReporteProduccion\ReporteProduccionGeneral.rpt"; // Cambiar a la ruta correspondiente
+                string rutaReporte = @"C:\Users\coseg\Desktop\ProyectoADSI2024\ProyectoADSI2024\Reportes\ReporteProduccion\ReporteProduccionGeneral.rpt"; //ruta correspondiente
                 reporte.Load(rutaReporte);
 
                 // Conectar a la base de datos (opcional, según sea necesario)
