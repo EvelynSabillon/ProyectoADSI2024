@@ -315,6 +315,14 @@ namespace ProyectoADSI2024
         private void btnGenReporte_Click(object sender, EventArgs e)
         {
             FrmReporteConsQuincenal frmConsulta = new FrmReporteConsQuincenal();
+
+            Report_Manager reportManager = new Report_Manager();
+            string tipoReporte = "04"; // Tipo de reporte (puedes adaptarlo según sea necesario)
+            string numeroReporte = reportManager.GenerateReportNumber(tipoReporte);
+
+            // Pasar el número de reporte al formulario
+            frmConsulta.NumeroReporte = numeroReporte;
+           
             frmConsulta.ShowDialog();
         }
     }
