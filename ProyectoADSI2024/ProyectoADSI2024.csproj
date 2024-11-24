@@ -205,6 +205,7 @@
       <SubType>Component</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Report_Manager.cs" />
     <Compile Include="Utils\ReportManager.cs" />
     <Compile Include="Vista_ArticuloMed.cs">
       <SubType>Form</SubType>
