@@ -161,6 +161,7 @@
             this.Controls.Add(this.dtpfechaIL);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmSeleccionFechaIL";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmSeleccionFechaIL";
             this.BarraTitulo.ResumeLayout(false);
             this.BarraTitulo.PerformLayout();
