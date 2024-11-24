@@ -78,13 +78,12 @@
             this.btnPermisostoolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAyudatoolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dropdownMenu7 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
-            this.reporteDeInventarioExistenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteDeProducciónQuincenalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteConsumoInsumoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteEntregaQuincenalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportePagoDeSociosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panelContenedor = new System.Windows.Forms.Panel();
             this.alertasDeInventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelContenedor = new System.Windows.Forms.Panel();
             this.MenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.BarraTitulo.SuspendLayout();
@@ -682,7 +681,6 @@
             this.dropdownMenu7.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.dropdownMenu7.IsMainMenu = false;
             this.dropdownMenu7.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.reporteDeInventarioExistenteToolStripMenuItem,
             this.reporteDeProducciónQuincenalToolStripMenuItem,
             this.reporteConsumoInsumoToolStripMenuItem,
             this.reporteEntregaQuincenalToolStripMenuItem,
@@ -692,13 +690,7 @@
             this.dropdownMenu7.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu7.Name = "dropdownMenu7";
             this.dropdownMenu7.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu7.Size = new System.Drawing.Size(322, 182);
-            // 
-            // reporteDeInventarioExistenteToolStripMenuItem
-            // 
-            this.reporteDeInventarioExistenteToolStripMenuItem.Name = "reporteDeInventarioExistenteToolStripMenuItem";
-            this.reporteDeInventarioExistenteToolStripMenuItem.Size = new System.Drawing.Size(321, 26);
-            this.reporteDeInventarioExistenteToolStripMenuItem.Text = "Reporte de Inventario Existente";
+            this.dropdownMenu7.Size = new System.Drawing.Size(322, 156);
             // 
             // reporteDeProducciónQuincenalToolStripMenuItem
             // 
@@ -728,6 +720,13 @@
             this.reportePagoDeSociosToolStripMenuItem.Text = "Reporte Pago de Socios";
             this.reportePagoDeSociosToolStripMenuItem.Click += new System.EventHandler(this.reportePagoDeSociosToolStripMenuItem_Click);
             // 
+            // alertasDeInventarioToolStripMenuItem
+            // 
+            this.alertasDeInventarioToolStripMenuItem.Name = "alertasDeInventarioToolStripMenuItem";
+            this.alertasDeInventarioToolStripMenuItem.Size = new System.Drawing.Size(321, 26);
+            this.alertasDeInventarioToolStripMenuItem.Text = "Alertas de Inventario";
+            this.alertasDeInventarioToolStripMenuItem.Click += new System.EventHandler(this.alertasDeInventarioToolStripMenuItem_Click);
+            // 
             // panelContenedor
             // 
             this.panelContenedor.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -737,13 +736,6 @@
             this.panelContenedor.Size = new System.Drawing.Size(1070, 595);
             this.panelContenedor.TabIndex = 4;
             this.panelContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContenedor_Paint);
-            // 
-            // alertasDeInventarioToolStripMenuItem
-            // 
-            this.alertasDeInventarioToolStripMenuItem.Name = "alertasDeInventarioToolStripMenuItem";
-            this.alertasDeInventarioToolStripMenuItem.Size = new System.Drawing.Size(321, 26);
-            this.alertasDeInventarioToolStripMenuItem.Text = "Alertas de Inventario";
-            this.alertasDeInventarioToolStripMenuItem.Click += new System.EventHandler(this.alertasDeInventarioToolStripMenuItem_Click);
             // 
             // Menu
             // 
@@ -830,7 +822,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnReportes;
         private Controls.DropdownMenu dropdownMenu7;
-        private System.Windows.Forms.ToolStripMenuItem reporteDeInventarioExistenteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteDeProducciónQuincenalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteConsumoInsumoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteEntregaQuincenalToolStripMenuItem;

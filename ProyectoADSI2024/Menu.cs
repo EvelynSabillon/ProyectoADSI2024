@@ -308,7 +308,7 @@ namespace ProyectoADSI2024
 
         private void reporteConsumoInsumoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form frmvistasociosreporteconsumoinsumo = new frmVistaDeSocioParaReporteConsumoInsumo();
+            frmVistaDeSocioParaReporteConsumoInsumo frmvistasociosreporteconsumoinsumo = new frmVistaDeSocioParaReporteConsumoInsumo();
             frmvistasociosreporteconsumoinsumo.Show();
         }
 
@@ -339,5 +339,6 @@ namespace ProyectoADSI2024
         {
             ReportManager.ShowReport(@"ReporteGestionInventario\rptAlertas.rpt");
         }
+
     }
 }

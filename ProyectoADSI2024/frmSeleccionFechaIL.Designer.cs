@@ -47,7 +47,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(88, 87);
+            this.label1.Location = new System.Drawing.Point(99, 87);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(187, 21);
             this.label1.TabIndex = 59;
@@ -64,6 +64,7 @@
             this.BarraTitulo.Name = "BarraTitulo";
             this.BarraTitulo.Size = new System.Drawing.Size(387, 39);
             this.BarraTitulo.TabIndex = 58;
+            this.BarraTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BarraTitulo_MouseDown);
             // 
             // label2
             // 
@@ -106,11 +107,11 @@
             // 
             this.btnaceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
             this.btnaceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnaceptar.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnaceptar.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnaceptar.ForeColor = System.Drawing.Color.White;
-            this.btnaceptar.Location = new System.Drawing.Point(195, 161);
+            this.btnaceptar.Location = new System.Drawing.Point(121, 186);
             this.btnaceptar.Name = "btnaceptar";
-            this.btnaceptar.Size = new System.Drawing.Size(79, 23);
+            this.btnaceptar.Size = new System.Drawing.Size(124, 33);
             this.btnaceptar.TabIndex = 57;
             this.btnaceptar.Text = "ACEPTAR";
             this.btnaceptar.UseVisualStyleBackColor = false;
@@ -120,11 +121,11 @@
             // 
             this.btncancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
             this.btncancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btncancelar.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncancelar.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold);
             this.btncancelar.ForeColor = System.Drawing.Color.White;
-            this.btncancelar.Location = new System.Drawing.Point(280, 161);
+            this.btncancelar.Location = new System.Drawing.Point(251, 186);
             this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(80, 23);
+            this.btncancelar.Size = new System.Drawing.Size(124, 33);
             this.btncancelar.TabIndex = 56;
             this.btncancelar.Text = "CANCELAR";
             this.btncancelar.UseVisualStyleBackColor = false;
@@ -134,7 +135,7 @@
             // 
             this.lblfecha.AutoSize = true;
             this.lblfecha.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblfecha.Location = new System.Drawing.Point(47, 66);
+            this.lblfecha.Location = new System.Drawing.Point(45, 66);
             this.lblfecha.Name = "lblfecha";
             this.lblfecha.Size = new System.Drawing.Size(294, 21);
             this.lblfecha.TabIndex = 55;
@@ -143,16 +144,17 @@
             // dtpfechaIL
             // 
             this.dtpfechaIL.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpfechaIL.Location = new System.Drawing.Point(84, 117);
+            this.dtpfechaIL.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.dtpfechaIL.Location = new System.Drawing.Point(73, 122);
             this.dtpfechaIL.Name = "dtpfechaIL";
-            this.dtpfechaIL.Size = new System.Drawing.Size(200, 20);
+            this.dtpfechaIL.Size = new System.Drawing.Size(238, 25);
             this.dtpfechaIL.TabIndex = 54;
             // 
             // frmSeleccionFechaIL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(387, 188);
+            this.ClientSize = new System.Drawing.Size(387, 231);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BarraTitulo);
             this.Controls.Add(this.btnaceptar);
@@ -163,6 +165,7 @@
             this.Name = "frmSeleccionFechaIL";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmSeleccionFechaIL";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmSeleccionFechaIL_MouseDown);
             this.BarraTitulo.ResumeLayout(false);
             this.BarraTitulo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();

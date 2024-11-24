@@ -17,8 +17,8 @@ namespace ProyectoADSI2024
 {
     public partial class frmReporteConsumoMedCon : Form
     {
-       
-       
+
+        public string NumeroReporte { get; set; }
         public frmReporteConsumoMedCon()
         {
             InitializeComponent();
@@ -42,9 +42,12 @@ namespace ProyectoADSI2024
         private void frmReporteConsumoMedCon_Load(object sender, EventArgs e)
         {
             crReporteConsumoMedCon objreporte = new crReporteConsumoMedCon();
+
             objreporte.SetParameterValue("@socioid", idsocio);
-            crystalReportViewer1.ReportSource = objreporte;
+            objreporte.SetParameterValue("NumeroReporte", NumeroReporte);
+            
             objreporte.SetDatabaseLogon("eugene.wu","EW20212030388","3.128.144.165","DB20212030388");
+            crystalReportViewer1.ReportSource = objreporte;
         }
     }
 }
