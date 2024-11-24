@@ -90,7 +90,7 @@ namespace ProyectoADSI2024 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_planillaid {
+        public CrystalDecisions.Shared.IParameterField Parameter_NumeroReporte {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -98,7 +98,7 @@ namespace ProyectoADSI2024 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_NumeroReporte {
+        public CrystalDecisions.Shared.IParameterField Parameter_planillaid {
             get {
                 return this.DataDefinition.ParameterFields[1];
             }
