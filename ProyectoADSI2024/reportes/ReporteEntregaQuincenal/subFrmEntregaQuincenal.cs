@@ -11,6 +11,7 @@ namespace ProyectoADSI2024.Reportes.ReporteEntregaQuincenal
 {
     public partial class subFrmEntregaQuincenal : Form
     {
+        public string NumeroReporte { get; set; }
         public subFrmEntregaQuincenal()
         {
             InitializeComponent();
@@ -20,6 +21,8 @@ namespace ProyectoADSI2024.Reportes.ReporteEntregaQuincenal
         {
             ReporteEntregasQuincenal objReporte = new ReporteEntregasQuincenal();
             objReporte.SetParameterValue("@QuincenaID",QuincenaID);
+            objReporte.SetParameterValue("NumeroReporte", NumeroReporte);
+            objReporte.SetDatabaseLogon("eugene.wu", "EW20212030388", "3.128.144.165", "DB20212030388");
             crystalReportViewer1.ReportSource = objReporte;
         }
     }
