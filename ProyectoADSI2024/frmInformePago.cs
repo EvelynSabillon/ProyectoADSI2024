@@ -12,6 +12,7 @@ namespace ProyectoADSI2024
 {
     public partial class frmInformePago : Form
     {
+        public string NumeroReporte { get; set; }
         public frmInformePago()
         {
             InitializeComponent();
@@ -21,6 +22,7 @@ namespace ProyectoADSI2024
         {
             crReportePagoSocio obj = new crReportePagoSocio();
             obj.SetParameterValue("@planillaid", idplanilla);
+            obj.SetParameterValue("NumeroReporte", NumeroReporte);
             crystalReportViewer1.ReportSource = obj;
             obj.SetDatabaseLogon("eugene.wu","EW20212030388","3.128.144.165","DB20212030388");
         }
