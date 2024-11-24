@@ -334,5 +334,10 @@ namespace ProyectoADSI2024
         {
 
         }
+
+        private void alertasDeInventarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReportManager.ShowReport(@"ReporteGestionInventario\rptAlertas.rpt");
+        }
     }
 }

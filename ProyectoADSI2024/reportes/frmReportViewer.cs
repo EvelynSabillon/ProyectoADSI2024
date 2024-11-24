@@ -23,6 +23,8 @@ namespace ProyectoADSI2024.Reportes
         {
             crystalReportViewer1.ReportSource = report;
             crystalReportViewer1.Refresh();
+
+            report.SetDatabaseLogon("eugene.wu", "EW20212030388", "3.128.144.165", "DB20212030388");
         }
 
         private void crystalReportViewer1_Load(object sender, EventArgs e)

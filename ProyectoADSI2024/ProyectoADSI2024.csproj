@@ -130,6 +130,13 @@
     <Compile Include="Reportes\ReporteEntregaQuincenal\subFrmEntregaQuincenal.Designer.cs">
       <DependentUpon>subFrmEntregaQuincenal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\ReporteGestionInventario\rptAlertas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptAlertas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Reportes\ReporteGestionInventario\rptKardexConcentrado.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -419,6 +426,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteEntregaQuincenal\subFrmEntregaQuincenal.resx">
       <DependentUpon>subFrmEntregaQuincenal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteGestionInventario\rptAlertas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptAlertas.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteGestionInventario\rptKardexConcentrado.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
