@@ -37,6 +37,15 @@ namespace ProyectoADSI2024
         private void btnGenReporte_Click_1(object sender, EventArgs e)
         {
             FrmReporteConsQuincenal frmNomina = new FrmReporteConsQuincenal();
+
+            // Obtener el número de reporte generado desde el procedimiento almacenado
+            Report_Manager reportManager = new Report_Manager();
+            string tipoReporte = "02"; // Tipo de reporte (puedes adaptarlo según sea necesario)
+            string numeroReporte = reportManager.GenerateReportNumber(tipoReporte);
+
+            // Pasar el número de reporte al formulario
+            frmNomina.NumeroReporte = numeroReporte;
+
             frmNomina.ShowDialog();
         }
     }
