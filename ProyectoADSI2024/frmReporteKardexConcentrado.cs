@@ -16,7 +16,7 @@ namespace ProyectoADSI2024
     public partial class frmReporteKardexConcentrado : Form
     {
         public ReportDocument Reporte { get; set; }
-
+        public string NumeroReporte { get; set; }
         public int articuloid;
         public frmReporteKardexConcentrado()
         {
@@ -27,10 +27,12 @@ namespace ProyectoADSI2024
         private void frmReporteKardexConcentrado_Load(object sender, EventArgs e)
         {
             rptKardexConcentrado objreporte = new rptKardexConcentrado();
+            
             objreporte.SetParameterValue("@ArticuloConID", articuloid);
-            crystalReportViewer1.ReportSource = objreporte;
-            objreporte.SetDatabaseLogon("eugene.wu", "EW20212030388", "3.128.144.165", "DB20212030388");
+            objreporte.SetParameterValue("NumeroReporte", NumeroReporte); // Nuevo parámetro
 
+            objreporte.SetDatabaseLogon("eugene.wu", "EW20212030388", "3.128.144.165", "DB20212030388");
+            crystalReportViewer1.ReportSource = objreporte;
         }
     }
 }

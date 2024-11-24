@@ -14,6 +14,7 @@ namespace ProyectoADSI2024
 {
     public partial class frmReporteKardexMedicamento : Form
     {
+        public string NumeroReporte { get; set; }
         public frmReporteKardexMedicamento()
         {
             InitializeComponent();
@@ -24,9 +25,12 @@ namespace ProyectoADSI2024
         private void frmReporteKardexMedicamento_Load(object sender, EventArgs e)
         {
             rptKardexMedicamento objreporte = new rptKardexMedicamento();
+
             objreporte.SetParameterValue("@ArticuloMedID", articuloid);
-            crystalReportViewer1.ReportSource = objreporte;
+            objreporte.SetParameterValue("NumeroReporte", NumeroReporte); // Nuevo parámetro
+
             objreporte.SetDatabaseLogon("eugene.wu", "EW20212030388", "3.128.144.165", "DB20212030388");
+            crystalReportViewer1.ReportSource = objreporte;
         }
     }
 }

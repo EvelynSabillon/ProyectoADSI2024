@@ -51,9 +51,20 @@ namespace ProyectoADSI2024
         private void btnGenerarReporte_Click(object sender, EventArgs e)
         {
             frmReporteKardexConcentrado objformReporte = new frmReporteKardexConcentrado();
-            int articuloid = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
 
+            // Pasar el ID del artículo seleccionado al formulario
+            int articuloid = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
             objformReporte.articuloid = articuloid;
+
+            // Obtener el número de reporte generado desde el procedimiento almacenado
+            Report_Manager reportManager = new Report_Manager();
+            string tipoReporte = "04"; // Tipo de reporte (puedes adaptarlo según sea necesario)
+            string numeroReporte = reportManager.GenerateReportNumber(tipoReporte);
+
+            // Pasar el número de reporte al formulario
+            objformReporte.NumeroReporte = numeroReporte;
+
+
             objformReporte.ShowDialog();
         }
     }
