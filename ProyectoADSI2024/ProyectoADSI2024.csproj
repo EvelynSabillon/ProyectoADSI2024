@@ -76,11 +76,11 @@
     <Compile Include="frmplanillainforme.Designer.cs">
       <DependentUpon>frmplanillainforme.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmReporteEntregaQuincenal.cs">
+    <Compile Include="frmPrincipalEntregaQuincenal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmReporteEntregaQuincenal.Designer.cs">
-      <DependentUpon>frmReporteEntregaQuincenal.cs</DependentUpon>
+    <Compile Include="frmPrincipalEntregaQuincenal.Designer.cs">
+      <DependentUpon>frmPrincipalEntregaQuincenal.cs</DependentUpon>
     </Compile>
     <Compile Include="frmReporteKardexConcentrado.cs">
       <SubType>Form</SubType>
@@ -122,6 +122,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ReporteEntregasQuincenal.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReporteEntregaQuincenal\subFrmEntregaQuincenal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReporteEntregaQuincenal\subFrmEntregaQuincenal.Designer.cs">
+      <DependentUpon>subFrmEntregaQuincenal.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportes\ReporteGestionInventario\rptKardexConcentrado.cs">
       <AutoGen>True</AutoGen>
@@ -382,8 +389,8 @@
     <EmbeddedResource Include="frmplanillainforme.resx">
       <DependentUpon>frmplanillainforme.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmReporteEntregaQuincenal.resx">
-      <DependentUpon>frmReporteEntregaQuincenal.cs</DependentUpon>
+    <EmbeddedResource Include="frmPrincipalEntregaQuincenal.resx">
+      <DependentUpon>frmPrincipalEntregaQuincenal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteKardexConcentrado.resx">
       <DependentUpon>frmReporteKardexConcentrado.cs</DependentUpon>
@@ -408,6 +415,9 @@
     <EmbeddedResource Include="Reportes\ReporteEntregaQuincenal\ReporteEntregasQuincenal.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteEntregasQuincenal.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteEntregaQuincenal\subFrmEntregaQuincenal.resx">
+      <DependentUpon>subFrmEntregaQuincenal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteGestionInventario\rptKardexConcentrado.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

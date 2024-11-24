@@ -320,7 +320,7 @@ namespace ProyectoADSI2024
 
         private void reporteEntregaQuincenalToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmReporteEntregaQuincenal reporteEntregas = new frmReporteEntregaQuincenal();
+            frmPrincipalEntregaQuincenal reporteEntregas = new frmPrincipalEntregaQuincenal();
             reporteEntregas.Show();
         }
 

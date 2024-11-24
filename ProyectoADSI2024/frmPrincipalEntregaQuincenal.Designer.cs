@@ -1,6 +1,6 @@
 ﻿namespace ProyectoADSI2024
 {
-    partial class frmReporteEntregaQuincenal
+    partial class frmPrincipalEntregaQuincenal
     {
         /// <summary>
         /// Required designer variable.
@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnAyuda = new System.Windows.Forms.Button();
             this.dB20212030388DataSet = new ProyectoADSI2024.DB20212030388DataSet();
             this.quincenaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.quincenaTableAdapter = new ProyectoADSI2024.DB20212030388DataSetTableAdapters.QuincenaTableAdapter();
@@ -50,13 +51,24 @@
             this.fechaInicioDataGridViewTextBoxColumn,
             this.fechaFinalDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.quincenaBindingSource;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Location = new System.Drawing.Point(29, 67);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1184, 511);
+            this.dataGridView1.Size = new System.Drawing.Size(737, 356);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
+            // 
+            // btnAyuda
+            // 
+            this.btnAyuda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAyuda.Location = new System.Drawing.Point(687, 12);
+            this.btnAyuda.Name = "btnAyuda";
+            this.btnAyuda.Size = new System.Drawing.Size(101, 47);
+            this.btnAyuda.TabIndex = 1;
+            this.btnAyuda.Text = "AYUDA";
+            this.btnAyuda.UseVisualStyleBackColor = true;
+            this.btnAyuda.Click += new System.EventHandler(this.btnAyuda_Click);
             // 
             // dB20212030388DataSet
             // 
@@ -96,17 +108,17 @@
             this.fechaFinalDataGridViewTextBoxColumn.Name = "fechaFinalDataGridViewTextBoxColumn";
             this.fechaFinalDataGridViewTextBoxColumn.Width = 125;
             // 
-            // frmReporteEntregaQuincenal
+            // frmPrincipalEntregaQuincenal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 511);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "frmReporteEntregaQuincenal";
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+            this.Name = "frmPrincipalEntregaQuincenal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Reporte Entrega Quincenal";
-            this.Load += new System.EventHandler(this.frmReporteEntregaQuincenal_Load);
+            this.Text = "frmPrincipalEntregaQuincenal";
+            this.Load += new System.EventHandler(this.frmPrincipalEntregaQuincenal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dB20212030388DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quincenaBindingSource)).EndInit();
@@ -117,6 +129,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnAyuda;
         private DB20212030388DataSet dB20212030388DataSet;
         private System.Windows.Forms.BindingSource quincenaBindingSource;
         private DB20212030388DataSetTableAdapters.QuincenaTableAdapter quincenaTableAdapter;
