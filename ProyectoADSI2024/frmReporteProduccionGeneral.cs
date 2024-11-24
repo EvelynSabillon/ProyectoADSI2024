@@ -15,6 +15,7 @@ namespace ProyectoADSI2024
 {
     public partial class frmReporteProduccionGeneral : Form
     {
+        public string NumeroReporte { get; set; }
         public frmReporteProduccionGeneral()
         {
             InitializeComponent();
@@ -35,7 +36,7 @@ namespace ProyectoADSI2024
                 // Cargar el archivo .rpt con la plantilla
                 //string rutaReporte = @"Reportes\ReporteProduccion\ReporteProduccionGeneral.rpt"; //ruta correspondiente
                 //reporte.Load(rutaReporte);
-
+                reporte.SetParameterValue("NumeroReporte", NumeroReporte);
 
                 // Asignar el reporte al visor
                 crystalReportViewer1.ReportSource = reporte;
