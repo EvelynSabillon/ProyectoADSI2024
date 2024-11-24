@@ -21,7 +21,7 @@ public static class ReportManager
     private static readonly string RutaBaseReporte = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Reportes");
 
 
-    public static void ShowReport(string rutarelativa)
+    public static void ShowReport(string rutarelativa, Dictionary<string, object> parametros = null)
     {
         try
         {
@@ -37,6 +37,20 @@ public static class ReportManager
             // Cargar el reporte
             ReportDocument report = new ReportDocument();
             report.Load(reporteRuta);
+
+
+            // Configurar parámetros si existen
+            if (parametros != null)
+            {
+                foreach (var param in parametros)
+                {
+                    if (report.ParameterFields[param.Key] != null)
+                    {
+                        report.SetParameterValue(param.Key, param.Value);
+                    }
+                }
+            }
+
 
             // Mostrar el reporte en el Form de visualzacion de Reportes
             using (frmReportViewer viewer = new frmReportViewer())

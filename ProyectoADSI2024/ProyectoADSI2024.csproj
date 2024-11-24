@@ -94,6 +94,12 @@
     <Compile Include="frmReporteKardexMedicamento.Designer.cs">
       <DependentUpon>frmReporteKardexMedicamento.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSeleccionFechaIL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSeleccionFechaIL.Designer.cs">
+      <DependentUpon>frmSeleccionFechaIL.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReporteProduccion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +154,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptKardexMedicamento.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReporteModuloControlIngresoLeche\rptLechediaria.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptLechediaria.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\ReporteProduccion\ReporteProduccionGeneral.cs">
@@ -205,14 +218,8 @@
     <Compile Include="Reportes\frmReportViewer.Designer.cs">
       <DependentUpon>frmReportViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reportes\ReporteModuloControlIngresoLeche\rptLecheDiaria.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptLecheDiaria.rpt</DependentUpon>
-      <SubType>Component</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
     <Compile Include="Report_Manager.cs" />
+    <Compile Include="Utils\DatabaseHelper.cs" />
     <Compile Include="Utils\ReportManager.cs" />
     <Compile Include="Vista_ArticuloMed.cs">
       <SubType>Form</SubType>
@@ -406,6 +413,9 @@
     <EmbeddedResource Include="frmReporteKardexMedicamento.resx">
       <DependentUpon>frmReporteKardexMedicamento.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSeleccionFechaIL.resx">
+      <DependentUpon>frmSeleccionFechaIL.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReporteProduccion.resx">
       <DependentUpon>ReporteProduccion.cs</DependentUpon>
     </EmbeddedResource>
@@ -440,6 +450,11 @@
     <EmbeddedResource Include="Reportes\ReporteGestionInventario\rptKardexMedicamento.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptKardexMedicamento.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteModuloControlIngresoLeche\rptLechediaria.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptLechediaria.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteProduccion\ReporteProduccionGeneral.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -554,11 +569,6 @@
     <EmbeddedResource Include="Reportes\PlantillaReporte\Formato_Plantilla.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Formato_Plantilla1.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\ReporteModuloControlIngresoLeche\rptLecheDiaria.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptLecheDiaria.cs</LastGenOutput>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista_ArticuloCon.resx">
       <DependentUpon>Vista_ArticuloCon.cs</DependentUpon>

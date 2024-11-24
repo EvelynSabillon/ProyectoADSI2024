@@ -16,14 +16,14 @@ namespace ProyectoADSI2024.Reportes.ReporteModuloControlIngresoLeche {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class rptLecheDiaria : ReportClass {
+    public class rptLechediaria : ReportClass {
         
-        public rptLecheDiaria() {
+        public rptLechediaria() {
         }
         
         public override string ResourceName {
             get {
-                return "rptLecheDiaria.rpt";
+                return "rptLechediaria.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace ProyectoADSI2024.Reportes.ReporteModuloControlIngresoLeche {
         
         public override string FullResourceName {
             get {
-                return "ProyectoADSI2024.Reportes.ReporteModuloControlIngresoLeche.rptLecheDiaria.rpt";
+                return "ProyectoADSI2024.Reportes.ReporteModuloControlIngresoLeche.rptLechediaria.rpt";
             }
             set {
                 // Do nothing
@@ -66,7 +66,7 @@ namespace ProyectoADSI2024.Reportes.ReporteModuloControlIngresoLeche {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace ProyectoADSI2024.Reportes.ReporteModuloControlIngresoLeche {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,7 +82,7 @@ namespace ProyectoADSI2024.Reportes.ReporteModuloControlIngresoLeche {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
                 return this.ReportDefinition.Sections[4];
             }
@@ -90,25 +90,25 @@ namespace ProyectoADSI2024.Reportes.ReporteModuloControlIngresoLeche {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+        public CrystalDecisions.Shared.IParameterField Parameter_FechaSeleccionada {
             get {
-                return this.ReportDefinition.Sections[5];
+                return this.DataDefinition.ParameterFields[0];
             }
         }
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+        public CrystalDecisions.Shared.IParameterField Parameter_numeroReporte {
             get {
-                return this.ReportDefinition.Sections[6];
+                return this.DataDefinition.ParameterFields[1];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedrptLecheDiaria : Component, ICachedReport {
+    public class CachedrptLechediaria : Component, ICachedReport {
         
-        public CachedrptLecheDiaria() {
+        public CachedrptLechediaria() {
         }
         
         [Browsable(false)]
@@ -145,7 +145,7 @@ namespace ProyectoADSI2024.Reportes.ReporteModuloControlIngresoLeche {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            rptLecheDiaria rpt = new rptLecheDiaria();
+            rptLechediaria rpt = new rptLechediaria();
             rpt.Site = this.Site;
             return rpt;
         }

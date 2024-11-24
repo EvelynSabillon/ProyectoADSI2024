@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoADSI2024.Utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -464,7 +465,49 @@ namespace ProyectoADSI2024
 
         private void btnGenReporte_Click(object sender, EventArgs e)
         {
-            ReportManager.ShowReport(@"ReporteModuloControlIngresoLeche\rptLecheDiaria.rpt");
+            //ReportManager.ShowReport(@"ReporteModuloControlIngresoLeche\rptLecheDiaria.rpt");
+
+            using (frmSeleccionFechaIL FechaSeleccion = new frmSeleccionFechaIL())
+            {
+                if (FechaSeleccion.ShowDialog() == DialogResult.OK && FechaSeleccion.EsConfirmado)
+                {
+                    DateTime FechaSeleccionada = FechaSeleccion.FechaSeleccionada;
+
+                    //verificar si hay datos en la base de datos
+
+                    if (DatabaseHelper.HasDataForDate(FechaSeleccionada))
+                    {
+                        // Si no hay datos, mostrar el reporte
+                        
+                        //Correlativo No. Reporte, el cual sera seteado en el reporte
+                        Report_Manager reportManager = new Report_Manager();
+                        string tipoReporte = "01";
+                        string numeroReporte = reportManager.GenerateReportNumber(tipoReporte);
+
+                        var parametros = new Dictionary<string, object>
+                        {
+                            {"FechaSeleccionada",FechaSeleccionada },
+                            {"numeroReporte", numeroReporte }
+                        };
+
+                        //parametros.Add("FechaSeleccionada", FechaSeleccionada.Date);
+                        //Mostrar el reporte
+                        ReportManager.ShowReport(@"ReporteModuloControlIngresoLeche\rptLechediaria.rpt", parametros);
+                    }
+                    else
+                    {
+                        // Si no hay datos, mostrar mensaje
+                        MessageBox.Show(
+                            "No hay datos disponibles para la fecha seleccionada.",
+                            "Datos no encontrados",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                         );
+                    }
+                }
+
+            }
+
         }
     }
 }
