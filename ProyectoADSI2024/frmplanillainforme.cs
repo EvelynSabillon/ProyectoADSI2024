@@ -26,7 +26,7 @@ namespace ProyectoADSI2024
             cnx = new Conexion();
             dt = new DataTable();
 
-            adp = new SqlDataAdapter("select planillaid, periodoinicio,periodofinal, precioleche from proyecto.planilla", cnx.ObtenerConexion());
+            adp = new SqlDataAdapter("spVerPlanillaPago", cnx.ObtenerConexion());
          
 
 
@@ -53,8 +53,8 @@ namespace ProyectoADSI2024
                 DataGridViewRow filaSeleccionada = dgverplanilla.Rows[e.RowIndex];
 
                 // Asigno los valores de las celdas a los TextBox
-                txtidplanilla.Text = filaSeleccionada.Cells["planillaid"].Value?.ToString();
-                txtplanilla.Text = filaSeleccionada.Cells["periodoinicio"].Value?.ToString();
+                txtidplanilla.Text = filaSeleccionada.Cells["QuincenaID"].Value?.ToString();
+                txtplanilla.Text = filaSeleccionada.Cells["FechaInicio"].Value?.ToString();
                 
 
             }
@@ -105,6 +105,11 @@ namespace ProyectoADSI2024
         {
             if (MessageBox.Show("¿Desea salir de la selección de planilla?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 this.Close();
+        }
+
+        private void BarraTitulo_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
