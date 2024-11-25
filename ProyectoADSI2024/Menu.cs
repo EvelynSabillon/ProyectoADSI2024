@@ -10,12 +10,16 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices; //Libreria para mover la ventana
 using System.Data.SqlClient; //Libreria para conexion a SQL Server
 using System.Security.Cryptography;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+using CrystalDecisions.Windows.Forms;
 
 namespace ProyectoADSI2024
 {
 
     public partial class Menu : Form
     {
+        private Timer alertTimer = new Timer();
         SqlConnection myconexion; //Conexion a SQL Server
         public Menu()
         {
@@ -41,6 +45,10 @@ namespace ProyectoADSI2024
 
             AbrirDashboardEnPanel();
 
+            // Configurar el Timer
+            alertTimer.Interval = 2000; // 2 segundos
+            alertTimer.Tick += AlertTimer_Tick;
+            alertTimer.Start();
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -347,6 +355,115 @@ namespace ProyectoADSI2024
         private void alertasDeInventarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ReportManager.ShowReport(@"ReporteGestionInventario\rptAlertas.rpt");
+        }
+
+
+        private void DetectarExistenciasBajasGlobal()
+        {
+            string queryConcentrado = @"
+            SELECT Nombre, Existencia 
+            FROM proyecto.ArticuloConcentrado 
+            WHERE Existencia BETWEEN 0 AND 5";
+
+            string queryMedicamento = @"
+            SELECT Nombre, Existencia 
+            FROM proyecto.ArticuloMedicamento 
+            WHERE Existencia BETWEEN 0 AND 5";
+
+            // Tablas para almacenar los resultados
+            DataTable concentradoTable = new DataTable();
+            DataTable medicamentoTable = new DataTable();
+
+            string connectionString = "Server = 3.128.144.165; Database = DB20212030388; User ID = eugene.wu; Password = EW20212030388;";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                // Ejecutar consulta para ArticuloConcentrado
+                SqlDataAdapter adapterCon = new SqlDataAdapter(queryConcentrado, connection);
+                adapterCon.Fill(concentradoTable);
+
+                // Ejecutar consulta para ArticuloMedicamento
+                SqlDataAdapter adapterMed = new SqlDataAdapter(queryMedicamento, connection);
+                adapterMed.Fill(medicamentoTable);
+            }
+
+            // Verificar si hay alertas en ambos
+            if (concentradoTable.Rows.Count > 0 || medicamentoTable.Rows.Count > 0)
+            {
+                DialogResult result = MessageBox.Show(
+                    "Se han detectado artículos con existencias críticas. ¿Desea ver el reporte?",
+                    "Alerta de Existencias Bajas",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+                if (result == DialogResult.Yes)
+                {
+                    
+                    //refrescar el reporte 
+                    // Crear una instancia del reporte
+                    ReportDocument reporte = new ReportDocument();
+
+                    // Cargar el reporte desde la ruta especificada
+                    string rutaReporte = @".\Reportes\ReporteGestionInventario\rptAlertas.rpt";
+                    reporte.Load(rutaReporte);
+
+                    // Refrescar el reporte para garantizar datos actualizados
+                    reporte.Refresh();
+
+                    // (Opcional) Configurar conexión a base de datos si es necesario
+                    ConnectionInfo connectionInfo = new ConnectionInfo
+                    {
+                        ServerName = "3.128.144.165",
+                        DatabaseName = "DB20212030388",
+                        UserID = "eugene.wu",
+                        Password = "EW20212030388"
+                    };
+
+                    foreach (Table table in reporte.Database.Tables)
+                    {
+                        TableLogOnInfo logOnInfo = table.LogOnInfo;
+                        logOnInfo.ConnectionInfo = connectionInfo;
+                        table.ApplyLogOnInfo(logOnInfo);
+                    }
+
+                    // Mostrar el reporte en el visor (o usar tu método personalizado para mostrarlo)
+                    // Crear y configurar un visor de Crystal Reports
+
+                    CrystalReportViewer visor = new CrystalReportViewer
+                    {
+                        Dock = DockStyle.Fill,        // Para que ocupe todo el formulario
+                        ReportSource = reporte,
+                        ToolPanelView = ToolPanelViewType.None// Asignar el reporte al visor
+                    };
+                    visor.RefreshReport();            // Habilitar refrescar reporte automáticamente
+                    
+
+                    // Crear un formulario para mostrar el visor
+                    Form formularioVisor = new Form
+                    {
+                        Text = "Reporte de Alertas",
+                        WindowState = FormWindowState.Maximized
+                    };
+                    formularioVisor.Controls.Add(visor);
+
+                    // Mostrar el formulario con el visor
+                    formularioVisor.ShowDialog();
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay artículos en estado crítico.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void AlertTimer_Tick(object sender, EventArgs e)
+        {
+            // Detener el Timer
+            alertTimer.Stop();
+
+            // Llamar a la función para detectar existencias bajas
+            DetectarExistenciasBajasGlobal();
         }
 
     }
