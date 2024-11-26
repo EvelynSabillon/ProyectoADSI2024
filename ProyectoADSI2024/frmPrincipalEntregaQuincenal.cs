@@ -37,13 +37,15 @@ namespace ProyectoADSI2024
         {
             // TODO: This line of code loads data into the 'dB20212030388DataSet.Quincena' table. You can move, or remove it, as needed.
             this.quincenaTableAdapter.Fill(this.dB20212030388DataSet.Quincena);
-
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void dataGridView1_DoubleClick(object sender, EventArgs e)
         {
             subFrmEntregaQuincenal objForm = new subFrmEntregaQuincenal();
             string idQuin = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            //DateTime fechaInicio = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[1].Value); // Índice 1: FechaInicio
+            //DateTime fechaFinal = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[2].Value); // Índice 2: FechaFinal
 
             // Obtener el número de reporte generado desde el procedimiento almacenado
             Report_Manager reportManager = new Report_Manager();
@@ -53,6 +55,8 @@ namespace ProyectoADSI2024
             // Pasar el número de reporte al formulario
             objForm.NumeroReporte = numeroReporte;
             objForm.QuincenaID = idQuin;
+            //objForm.FechaInicio = fechaInicio;
+            //objForm.FechaFinal = fechaFinal;
             objForm.ShowDialog();
         }
 

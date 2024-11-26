@@ -163,6 +163,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\ReportePrestamosFinanzas\subFrmConsultaQuincenal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReportePrestamosFinanzas\subFrmConsultaQuincenal.Designer.cs">
+      <DependentUpon>subFrmConsultaQuincenal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\ReporteProduccion\ReporteProduccionGeneral.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

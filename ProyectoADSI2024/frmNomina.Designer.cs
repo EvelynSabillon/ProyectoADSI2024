@@ -198,9 +198,9 @@
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(20, 133);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 21);
+            this.label6.Size = new System.Drawing.Size(89, 21);
             this.label6.TabIndex = 206;
-            this.label6.Text = "Panilla ID";
+            this.label6.Text = "Planilla ID";
             // 
             // txtPlanillaID
             // 
