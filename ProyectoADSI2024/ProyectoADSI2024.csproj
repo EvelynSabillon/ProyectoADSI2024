@@ -661,6 +661,9 @@
     <Content Include="Reportes\ReportePrestamosFinanzas\ReportePrestamosFinanzas.txt" />
     <Content Include="Reportes\ReporteProveedores\ReporteProveedores.txt" />
     <Content Include="Resources\admin_icon.png" />
+    <Content Include="Resources\advertencia.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\back.png" />
     <Content Include="Resources\back2.png" />
     <Content Include="Resources\back3.png" />
@@ -672,6 +675,9 @@
     <Content Include="Resources\fluent--minimize-16-filled.png" />
     <Content Include="Resources\game-icons--cow %281%29.png" />
     <Content Include="Resources\game-icons--cow.png" />
+    <Content Include="Resources\informativo.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\inventoy_icon.png" />
     <Content Include="Resources\line.png" />
     <Content Include="Resources\line2.png" />
