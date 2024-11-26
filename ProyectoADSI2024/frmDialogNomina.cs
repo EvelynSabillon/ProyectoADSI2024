@@ -89,7 +89,6 @@ namespace ProyectoADSI2024
                 string tipoReporte = "02"; // Tipo de reporte (puedes adaptarlo según sea necesario)
                 nomina.NumeroReporte = reportManager.GenerateReportNumber(tipoReporte);
 
-<<<<<<< HEAD
                 // Mostrar el formulario
                 nomina.ShowDialog();
             }
@@ -97,15 +96,10 @@ namespace ProyectoADSI2024
             {
                 MessageBox.Show($"Error al generar el reporte: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-=======
-            // Obtener el número de reporte generado desde el procedimiento almacenado
-            Report_Manager reportManager = new Report_Manager();
-            string tipoReporte = "02"; // Tipo de reporte (puedes adaptarlo según sea necesario)
-            string numeroReporte = reportManager.GenerateReportNumber(tipoReporte);
+
 
             // Pasar el número de reporte al formulario
            // frmNomina.NumeroReporte = numeroReporte;
->>>>>>> 9b96fbc57a4bacc06017e8754b8756b135fbe2b7
         }
 
 
@@ -160,9 +154,5 @@ namespace ProyectoADSI2024
                 MessageBox.Show($"Error al cargar segundas quincenas: {ex.Message}");
             }
         }
-
-
-
-
     }
 }

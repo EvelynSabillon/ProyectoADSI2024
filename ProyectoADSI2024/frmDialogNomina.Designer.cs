@@ -147,7 +147,7 @@
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(213, 54);
             this.btnGenerar.TabIndex = 6;
-            this.btnGenerar.Text = "Generar Reporte";
+            this.btnGenerar.Text = "GENERAR REPORTE";
             this.btnGenerar.UseVisualStyleBackColor = false;
             this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
             // 
@@ -172,10 +172,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(65, 162);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(140, 20);
+            this.label1.Size = new System.Drawing.Size(153, 21);
             this.label1.TabIndex = 9;
             this.label1.Text = "Primera  quincena ";
             // 
@@ -191,10 +191,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.label4.Location = new System.Drawing.Point(54, 232);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(151, 20);
+            this.label4.Size = new System.Drawing.Size(160, 21);
             this.label4.TabIndex = 11;
             this.label4.Text = "Segunda  quincena ";
             // 
