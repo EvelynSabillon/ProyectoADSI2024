@@ -389,71 +389,84 @@ namespace ProyectoADSI2024
             // Verificar si hay alertas en ambos
             if (concentradoTable.Rows.Count > 0 || medicamentoTable.Rows.Count > 0)
             {
-                DialogResult result = MessageBox.Show(
-                    "Se han detectado artículos con existencias críticas. ¿Desea ver el reporte?",
-                    "Alerta de Existencias Bajas",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Warning
-                );
 
-                if (result == DialogResult.Yes)
-                {
-                    
-                    //refrescar el reporte 
-                    // Crear una instancia del reporte
-                    ReportDocument reporte = new ReportDocument();
+                MostrarNotificacion(); //llamo a la funcion para mostrar la alerta 
 
-                    // Cargar el reporte desde la ruta especificada
-                    string rutaReporte = @".\Reportes\ReporteGestionInventario\rptAlertas.rpt";
-                    reporte.Load(rutaReporte);
 
-                    // Refrescar el reporte para garantizar datos actualizados
-                    reporte.Refresh();
+                //DialogResult result = MessageBox.Show(
+                //    "Se han detectado artículos con existencias críticas. ¿Desea ver el reporte?",
+                //    "Alerta de Existencias Bajas",
+                //    MessageBoxButtons.YesNo,
+                //    MessageBoxIcon.Warning
+                //);
 
-                    // (Opcional) Configurar conexión a base de datos si es necesario
-                    ConnectionInfo connectionInfo = new ConnectionInfo
-                    {
-                        ServerName = "3.128.144.165",
-                        DatabaseName = "DB20212030388",
-                        UserID = "eugene.wu",
-                        Password = "EW20212030388"
-                    };
+                //if (result == DialogResult.Yes)
+                //{
 
-                    foreach (Table table in reporte.Database.Tables)
-                    {
-                        TableLogOnInfo logOnInfo = table.LogOnInfo;
-                        logOnInfo.ConnectionInfo = connectionInfo;
-                        table.ApplyLogOnInfo(logOnInfo);
-                    }
+                //    //refrescar el reporte 
+                //    // Crear una instancia del reporte
+                //    ReportDocument reporte = new ReportDocument();
 
-                    // Mostrar el reporte en el visor (o usar tu método personalizado para mostrarlo)
-                    // Crear y configurar un visor de Crystal Reports
+                //    // Cargar el reporte desde la ruta especificada
+                //    string rutaReporte = @".\Reportes\ReporteGestionInventario\rptAlertas.rpt";
+                //    reporte.Load(rutaReporte);
 
-                    CrystalReportViewer visor = new CrystalReportViewer
-                    {
-                        Dock = DockStyle.Fill,        // Para que ocupe todo el formulario
-                        ReportSource = reporte,
-                        ToolPanelView = ToolPanelViewType.None// Asignar el reporte al visor
-                    };
-                    visor.RefreshReport();            // Habilitar refrescar reporte automáticamente
-                    
+                //    // Refrescar el reporte para garantizar datos actualizados
+                //    reporte.Refresh();
 
-                    // Crear un formulario para mostrar el visor
-                    Form formularioVisor = new Form
-                    {
-                        Text = "Reporte de Alertas",
-                        WindowState = FormWindowState.Maximized
-                    };
-                    formularioVisor.Controls.Add(visor);
+                //    // (Opcional) Configurar conexión a base de datos si es necesario
+                //    ConnectionInfo connectionInfo = new ConnectionInfo
+                //    {
+                //        ServerName = "3.128.144.165",
+                //        DatabaseName = "DB20212030388",
+                //        UserID = "eugene.wu",
+                //        Password = "EW20212030388"
+                //    };
 
-                    // Mostrar el formulario con el visor
-                    formularioVisor.ShowDialog();
+                //    foreach (Table table in reporte.Database.Tables)
+                //    {
+                //        TableLogOnInfo logOnInfo = table.LogOnInfo;
+                //        logOnInfo.ConnectionInfo = connectionInfo;
+                //        table.ApplyLogOnInfo(logOnInfo);
+                //    }
 
-                }
+                //    // Mostrar el reporte en el visor (o usar tu método personalizado para mostrarlo)
+                //    // Crear y configurar un visor de Crystal Reports
+
+                //    CrystalReportViewer visor = new CrystalReportViewer
+                //    {
+                //        Dock = DockStyle.Fill,        // Para que ocupe todo el formulario
+                //        ReportSource = reporte,
+                //        ToolPanelView = ToolPanelViewType.None// Asignar el reporte al visor
+                //    };
+                //    visor.RefreshReport();            // Habilitar refrescar reporte automáticamente
+
+
+                //    // Crear un formulario para mostrar el visor
+                //    Form formularioVisor = new Form
+                //    {
+                //        Text = "Reporte de Alertas",
+                //        WindowState = FormWindowState.Maximized
+                //    };
+                //    formularioVisor.Controls.Add(visor);
+
+                //    // Mostrar el formulario con el visor
+                //    formularioVisor.ShowDialog();
+
+                //}
             }
             else
             {
-                MessageBox.Show("No hay artículos en estado crítico.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("No hay artículos en estado crítico.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                NotifyIcon notifyIcon = new NotifyIcon
+                {
+                    Icon = new Icon(@"Resources\informativo.ico"),
+                    Visible = true,
+                    BalloonTipTitle = "Inventario equilibrado",
+                    BalloonTipText = $"No se han detectado artículos con existencias escasas o proximas .",
+                    BalloonTipIcon = ToolTipIcon.Warning
+                };
             }
         }
 
@@ -495,5 +508,94 @@ namespace ProyectoADSI2024
         {
 
         }
+
+
+        //Creacion de funcion para mostrar la notificacion y que al presionarla muestre un msgbox consultando si requiere ver el reporte de Alertas
+        private void MostrarNotificacion()
+        {
+            NotifyIcon notifyIcon = new NotifyIcon
+            {
+                Icon = new Icon(@"Resources\advertencia.ico"),
+                Visible = true,
+                BalloonTipTitle = "Bajo inventario",
+                BalloonTipText = $"Se han detectado artículos con existencias críticas. ¿Desea ver el reporte?",
+                BalloonTipIcon = ToolTipIcon.Warning
+            };
+
+            // Mostrar la notificación
+            notifyIcon.ShowBalloonTip(5000);
+
+            // Manejar clics en la notificación
+            notifyIcon.BalloonTipClicked += (sender, e) =>
+            {
+                // Preguntar al usuario si desea abrir el formulario
+                DialogResult resultado = MessageBox.Show("¿Desea abrir el reporte de Alertas?",
+                                                         "Confirmación",
+                                                         MessageBoxButtons.YesNo,
+                                                         MessageBoxIcon.Question);
+
+
+                if (resultado == DialogResult.Yes)
+                {
+
+                    //refrescar el reporte 
+                    // Crear una instancia del reporte
+                    ReportDocument reporte = new ReportDocument();
+
+                    // Cargar el reporte desde la ruta especificada
+                    string rutaReporte = @".\Reportes\ReporteGestionInventario\rptAlertas.rpt";
+                    reporte.Load(rutaReporte);
+
+                    // Refrescar el reporte para garantizar datos actualizados
+                    reporte.Refresh();
+
+                    // (Opcional) Configurar conexión a base de datos si es necesario
+                    ConnectionInfo connectionInfo = new ConnectionInfo
+                    {
+                        ServerName = "3.128.144.165",
+                        DatabaseName = "DB20212030388",
+                        UserID = "eugene.wu",
+                        Password = "EW20212030388"
+                    };
+
+                    foreach (Table table in reporte.Database.Tables)
+                    {
+                        TableLogOnInfo logOnInfo = table.LogOnInfo;
+                        logOnInfo.ConnectionInfo = connectionInfo;
+                        table.ApplyLogOnInfo(logOnInfo);
+                    }
+
+                    // Mostrar el reporte en el visor (o usar tu método personalizado para mostrarlo)
+                    // Crear y configurar un visor de Crystal Reports
+
+                    CrystalReportViewer visor = new CrystalReportViewer
+                    {
+                        Dock = DockStyle.Fill,        // Para que ocupe todo el formulario
+                        ReportSource = reporte,
+                        ToolPanelView = ToolPanelViewType.None// Asignar el reporte al visor
+                    };
+                    visor.RefreshReport();            // Habilitar refrescar reporte automáticamente
+
+
+                    // Crear un formulario para mostrar el visor
+                    Form formularioVisor = new Form
+                    {
+                        Text = "Reporte de Alertas",
+                        WindowState = FormWindowState.Maximized
+                    };
+                    formularioVisor.Controls.Add(visor);
+
+                    // Mostrar el formulario con el visor
+                    formularioVisor.ShowDialog();
+
+                }
+                // Ocultar el NotifyIcon después de su uso
+                notifyIcon.Dispose();
+            };
+        }
+
+
+
+
     }
 }
