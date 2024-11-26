@@ -414,6 +414,18 @@
     <Compile Include="Vista_ArticuloCon.Designer.cs">
       <DependentUpon>Vista_ArticuloCon.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vista_SeleccionarFecha_Concentrado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista_SeleccionarFecha_Concentrado.Designer.cs">
+      <DependentUpon>Vista_SeleccionarFecha_Concentrado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista_SeleccionarFecha_Medicamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista_SeleccionarFecha_Medicamento.Designer.cs">
+      <DependentUpon>Vista_SeleccionarFecha_Medicamento.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="BotonesUtilidades.resx">
       <DependentUpon>BotonesUtilidades.cs</DependentUpon>
     </EmbeddedResource>
@@ -608,6 +620,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vista_ArticuloMed.resx">
       <DependentUpon>Vista_ArticuloMed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista_SeleccionarFecha_Concentrado.resx">
+      <DependentUpon>Vista_SeleccionarFecha_Concentrado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista_SeleccionarFecha_Medicamento.resx">
+      <DependentUpon>Vista_SeleccionarFecha_Medicamento.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="DB20212030388DataSet.xsc">
       <DependentUpon>DB20212030388DataSet.xsd</DependentUpon>

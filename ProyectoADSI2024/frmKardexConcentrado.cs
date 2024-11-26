@@ -50,22 +50,19 @@ namespace ProyectoADSI2024
 
         private void btnGenerarReporte_Click(object sender, EventArgs e)
         {
-            frmReporteKardexConcentrado objformReporte = new frmReporteKardexConcentrado();
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                // Obtener el ID del artículo seleccionado
+                int articuloId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["ArticuloConID"].Value);
 
-            // Pasar el ID del artículo seleccionado al formulario
-            int articuloid = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
-            objformReporte.articuloid = articuloid;
-
-            // Obtener el número de reporte generado desde el procedimiento almacenado
-            Report_Manager reportManager = new Report_Manager();
-            string tipoReporte = "04"; // Tipo de reporte (puedes adaptarlo según sea necesario)
-            string numeroReporte = reportManager.GenerateReportNumber(tipoReporte);
-
-            // Pasar el número de reporte al formulario
-            objformReporte.NumeroReporte = numeroReporte;
-
-
-            objformReporte.ShowDialog();
+                // Abrir el formulario para seleccionar las fechas, pasando el ID del artículo
+                Vista_SeleccionarFecha_Concentrado formFechas = new Vista_SeleccionarFecha_Concentrado(articuloId);
+                formFechas.ShowDialog(); // Muestra el formulario de fechas como modal
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione un artículo.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }
