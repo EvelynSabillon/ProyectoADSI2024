@@ -480,5 +480,10 @@ namespace ProyectoADSI2024
         {
 
         }
+
+        private void reporteDePagosSociosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -681,6 +681,7 @@
             this.reporteDePagosSociosToolStripMenuItem.Name = "reporteDePagosSociosToolStripMenuItem";
             this.reporteDePagosSociosToolStripMenuItem.Size = new System.Drawing.Size(289, 26);
             this.reporteDePagosSociosToolStripMenuItem.Text = "Reporte de Pagos de Socios";
+            this.reporteDePagosSociosToolStripMenuItem.Click += new System.EventHandler(this.reporteDePagosSociosToolStripMenuItem_Click);
             // 
             // dropdownMenu6
             // 
