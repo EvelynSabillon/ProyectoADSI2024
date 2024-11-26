@@ -55,6 +55,7 @@ namespace ProyectoADSI2024
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "FrmReporteConsQuincenal";
             this.Text = "FrmReporteConsQuincenalcs";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmReporteConsQuincenal_Load);
             this.ResumeLayout(false);
 
