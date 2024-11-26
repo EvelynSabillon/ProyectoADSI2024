@@ -44,8 +44,6 @@ namespace ProyectoADSI2024
         {
             subFrmEntregaQuincenal objForm = new subFrmEntregaQuincenal();
             string idQuin = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            //DateTime fechaInicio = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[1].Value); // Índice 1: FechaInicio
-            //DateTime fechaFinal = Convert.ToDateTime(dataGridView1.CurrentRow.Cells[2].Value); // Índice 2: FechaFinal
 
             // Obtener el número de reporte generado desde el procedimiento almacenado
             Report_Manager reportManager = new Report_Manager();

@@ -17,8 +17,7 @@ namespace ProyectoADSI2024.Reportes.ReporteEntregaQuincenal
             InitializeComponent();
         }
         public string QuincenaID;
-        //public DateTime FechaInicio;
-        //public DateTime FechaFinal;
+        
 
         private void subFrmEntregaQuincenal_Load(object sender, EventArgs e)
         {

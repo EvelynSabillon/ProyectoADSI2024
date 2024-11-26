@@ -64,6 +64,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DB20212030388DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DB20212030388DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB20212030388DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmDialogNomina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDialogNomina.Designer.cs">
+      <DependentUpon>frmDialogNomina.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmInformePago.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +110,12 @@
     </Compile>
     <Compile Include="frmSeleccionFechaIL.Designer.cs">
       <DependentUpon>frmSeleccionFechaIL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ReportePrestamosFinanzas\ReporteNominaQuin.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteNominaQuin.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ReporteProduccion.cs">
       <SubType>Form</SubType>
@@ -163,11 +180,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes\ReportePrestamosFinanzas\subFrmConsultaQuincenal.cs">
+    <Compile Include="Reportes\ReportePrestamosFinanzas\subFrmNomina.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reportes\ReportePrestamosFinanzas\subFrmConsultaQuincenal.Designer.cs">
-      <DependentUpon>subFrmConsultaQuincenal.cs</DependentUpon>
+    <Compile Include="Reportes\ReportePrestamosFinanzas\subFrmNomina.Designer.cs">
+      <DependentUpon>subFrmNomina.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportes\ReporteProduccion\ReporteProduccionGeneral.cs">
       <AutoGen>True</AutoGen>
@@ -404,6 +421,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crReportePagoSocio.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDialogNomina.resx">
+      <DependentUpon>frmDialogNomina.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmInformePago.resx">
       <DependentUpon>frmInformePago.cs</DependentUpon>
     </EmbeddedResource>
@@ -421,6 +441,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSeleccionFechaIL.resx">
       <DependentUpon>frmSeleccionFechaIL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReportePrestamosFinanzas\ReporteNominaQuin.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteNominaQuin.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteProduccion.resx">
       <DependentUpon>ReporteProduccion.cs</DependentUpon>
@@ -461,6 +485,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptLechediaria.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReportePrestamosFinanzas\subFrmNomina.resx">
+      <DependentUpon>subFrmNomina.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteProduccion\ReporteProduccionGeneral.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -592,6 +619,17 @@
     </None>
     <None Include="DB20212030388DataSet.xss">
       <DependentUpon>DB20212030388DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DB20212030388DataSet1.xsc">
+      <DependentUpon>DB20212030388DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DB20212030388DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DB20212030388DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DB20212030388DataSet1.xss">
+      <DependentUpon>DB20212030388DataSet1.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

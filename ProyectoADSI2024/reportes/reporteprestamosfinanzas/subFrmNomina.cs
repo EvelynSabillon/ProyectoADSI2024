@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace ProyectoADSI2024.Reportes.ReportePrestamosFinanzas
 {
-    public partial class subFrmConsultaQuincenal : Form
+    public partial class subFrmNomina : Form
     {
-        public subFrmConsultaQuincenal()
+        public subFrmNomina()
         {
             InitializeComponent();
         }
+        public string QuincenaID;
     }
 }
