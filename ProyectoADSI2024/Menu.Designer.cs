@@ -48,9 +48,12 @@
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.btnSlide = new System.Windows.Forms.PictureBox();
+            this.panelContenedor = new System.Windows.Forms.Panel();
             this.dropdownMenu1 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
             this.btn1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnConsultaQuincenalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteDeEntregasQuincenalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteDeProducciónGeneralToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dropdownMenu2 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
             this.btnSociostoolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dropdownMenu3 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
@@ -69,10 +72,12 @@
             this.medicamentoExistenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSalidaMedToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnKardexMedToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteDeConsumoInsumoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dropdownMenu5 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
             this.btnPrestamoToolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAnticipoToolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnNominaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteDePagosSociosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dropdownMenu6 = new ProyectoADSI2024.Controls.DropdownMenu(this.components);
             this.btnUsuariostoolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnPermisostoolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,7 +88,6 @@
             this.reporteEntregaQuincenalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportePagoDeSociosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alertasDeInventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panelContenedor = new System.Windows.Forms.Panel();
             this.MenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.BarraTitulo.SuspendLayout();
@@ -390,6 +394,16 @@
             this.btnSlide.TabStop = false;
             this.btnSlide.Click += new System.EventHandler(this.btnSlide_Click);
             // 
+            // panelContenedor
+            // 
+            this.panelContenedor.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContenedor.Location = new System.Drawing.Point(230, 55);
+            this.panelContenedor.Name = "panelContenedor";
+            this.panelContenedor.Size = new System.Drawing.Size(1070, 595);
+            this.panelContenedor.TabIndex = 4;
+            this.panelContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContenedor_Paint);
+            // 
             // dropdownMenu1
             // 
             this.dropdownMenu1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
@@ -398,26 +412,42 @@
             this.dropdownMenu1.IsMainMenu = false;
             this.dropdownMenu1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btn1ToolStripMenuItem,
-            this.btnConsultaQuincenalToolStripMenuItem});
+            this.btnConsultaQuincenalToolStripMenuItem,
+            this.reporteDeEntregasQuincenalesToolStripMenuItem,
+            this.reporteDeProducciónGeneralToolStripMenuItem});
             this.dropdownMenu1.MenuItemHeight = 25;
             this.dropdownMenu1.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu1.Name = "dropdownMenu1";
             this.dropdownMenu1.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu1.Size = new System.Drawing.Size(230, 56);
+            this.dropdownMenu1.Size = new System.Drawing.Size(318, 108);
             // 
             // btn1ToolStripMenuItem
             // 
             this.btn1ToolStripMenuItem.Name = "btn1ToolStripMenuItem";
-            this.btn1ToolStripMenuItem.Size = new System.Drawing.Size(229, 26);
+            this.btn1ToolStripMenuItem.Size = new System.Drawing.Size(317, 26);
             this.btn1ToolStripMenuItem.Text = "Ingreso Diario";
             this.btn1ToolStripMenuItem.Click += new System.EventHandler(this.btn1ToolStripMenuItem_Click);
             // 
             // btnConsultaQuincenalToolStripMenuItem
             // 
             this.btnConsultaQuincenalToolStripMenuItem.Name = "btnConsultaQuincenalToolStripMenuItem";
-            this.btnConsultaQuincenalToolStripMenuItem.Size = new System.Drawing.Size(229, 26);
+            this.btnConsultaQuincenalToolStripMenuItem.Size = new System.Drawing.Size(317, 26);
             this.btnConsultaQuincenalToolStripMenuItem.Text = "Consulta Quincenal";
             this.btnConsultaQuincenalToolStripMenuItem.Click += new System.EventHandler(this.btnConsultaQuincenalToolStripMenuItem_Click);
+            // 
+            // reporteDeEntregasQuincenalesToolStripMenuItem
+            // 
+            this.reporteDeEntregasQuincenalesToolStripMenuItem.Name = "reporteDeEntregasQuincenalesToolStripMenuItem";
+            this.reporteDeEntregasQuincenalesToolStripMenuItem.Size = new System.Drawing.Size(317, 26);
+            this.reporteDeEntregasQuincenalesToolStripMenuItem.Text = "Reporte de Entrega Quincenal";
+            this.reporteDeEntregasQuincenalesToolStripMenuItem.Click += new System.EventHandler(this.reporteDeEntregasQuincenalesToolStripMenuItem_Click);
+            // 
+            // reporteDeProducciónGeneralToolStripMenuItem
+            // 
+            this.reporteDeProducciónGeneralToolStripMenuItem.Name = "reporteDeProducciónGeneralToolStripMenuItem";
+            this.reporteDeProducciónGeneralToolStripMenuItem.Size = new System.Drawing.Size(317, 26);
+            this.reporteDeProducciónGeneralToolStripMenuItem.Text = "Reporte de Producción General";
+            this.reporteDeProducciónGeneralToolStripMenuItem.Click += new System.EventHandler(this.reporteDeProducciónGeneralToolStripMenuItem_Click);
             // 
             // dropdownMenu2
             // 
@@ -477,12 +507,13 @@
             this.dropdownMenu4.IsMainMenu = false;
             this.dropdownMenu4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ConcentradoToolStripMenu,
-            this.GestionMedicamentoToolStripMenu});
+            this.GestionMedicamentoToolStripMenu,
+            this.reporteDeConsumoInsumoToolStripMenuItem});
             this.dropdownMenu4.MenuItemHeight = 25;
             this.dropdownMenu4.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu4.Name = "dropdownMenu1";
             this.dropdownMenu4.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu4.Size = new System.Drawing.Size(194, 56);
+            this.dropdownMenu4.Size = new System.Drawing.Size(301, 82);
             this.dropdownMenu4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dropdownMenu4_MouseClick);
             // 
             // ConcentradoToolStripMenu
@@ -492,7 +523,7 @@
             this.btnSalidaToolStripMenuItem,
             this.btnKardexConToolStripMenuItem});
             this.ConcentradoToolStripMenu.Name = "ConcentradoToolStripMenu";
-            this.ConcentradoToolStripMenu.Size = new System.Drawing.Size(193, 26);
+            this.ConcentradoToolStripMenu.Size = new System.Drawing.Size(300, 26);
             this.ConcentradoToolStripMenu.Text = "Concentrado";
             // 
             // compraToolStripMenuItem
@@ -550,7 +581,7 @@
             this.btnSalidaMedToolStripMenuItem1,
             this.btnKardexMedToolStripMenuItem1});
             this.GestionMedicamentoToolStripMenu.Name = "GestionMedicamentoToolStripMenu";
-            this.GestionMedicamentoToolStripMenu.Size = new System.Drawing.Size(193, 26);
+            this.GestionMedicamentoToolStripMenu.Size = new System.Drawing.Size(300, 26);
             this.GestionMedicamentoToolStripMenu.Text = "Medicamentos";
             // 
             // compraToolStripMenuItem1
@@ -600,6 +631,13 @@
             this.btnKardexMedToolStripMenuItem1.Text = "Kardex";
             this.btnKardexMedToolStripMenuItem1.Click += new System.EventHandler(this.btnKardexMedToolStripMenuItem1_Click);
             // 
+            // reporteDeConsumoInsumoToolStripMenuItem
+            // 
+            this.reporteDeConsumoInsumoToolStripMenuItem.Name = "reporteDeConsumoInsumoToolStripMenuItem";
+            this.reporteDeConsumoInsumoToolStripMenuItem.Size = new System.Drawing.Size(300, 26);
+            this.reporteDeConsumoInsumoToolStripMenuItem.Text = "Reporte de Consumo Insumo";
+            this.reporteDeConsumoInsumoToolStripMenuItem.Click += new System.EventHandler(this.reporteDeConsumoInsumoToolStripMenuItem_Click);
+            // 
             // dropdownMenu5
             // 
             this.dropdownMenu5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
@@ -609,33 +647,40 @@
             this.dropdownMenu5.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnPrestamoToolStripMenuItem7,
             this.btnAnticipoToolStripMenuItem8,
-            this.btnNominaToolStripMenuItem});
+            this.btnNominaToolStripMenuItem,
+            this.reporteDePagosSociosToolStripMenuItem});
             this.dropdownMenu5.MenuItemHeight = 25;
             this.dropdownMenu5.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu5.Name = "dropdownMenu1";
             this.dropdownMenu5.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu5.Size = new System.Drawing.Size(160, 82);
+            this.dropdownMenu5.Size = new System.Drawing.Size(290, 130);
             // 
             // btnPrestamoToolStripMenuItem7
             // 
             this.btnPrestamoToolStripMenuItem7.Name = "btnPrestamoToolStripMenuItem7";
-            this.btnPrestamoToolStripMenuItem7.Size = new System.Drawing.Size(159, 26);
+            this.btnPrestamoToolStripMenuItem7.Size = new System.Drawing.Size(289, 26);
             this.btnPrestamoToolStripMenuItem7.Text = "Préstamos";
             this.btnPrestamoToolStripMenuItem7.Click += new System.EventHandler(this.btnPrestamoToolStripMenuItem7_Click);
             // 
             // btnAnticipoToolStripMenuItem8
             // 
             this.btnAnticipoToolStripMenuItem8.Name = "btnAnticipoToolStripMenuItem8";
-            this.btnAnticipoToolStripMenuItem8.Size = new System.Drawing.Size(159, 26);
+            this.btnAnticipoToolStripMenuItem8.Size = new System.Drawing.Size(289, 26);
             this.btnAnticipoToolStripMenuItem8.Text = "Anticipos";
             this.btnAnticipoToolStripMenuItem8.Click += new System.EventHandler(this.btnAnticipoToolStripMenuItem8_Click);
             // 
             // btnNominaToolStripMenuItem
             // 
             this.btnNominaToolStripMenuItem.Name = "btnNominaToolStripMenuItem";
-            this.btnNominaToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.btnNominaToolStripMenuItem.Size = new System.Drawing.Size(289, 26);
             this.btnNominaToolStripMenuItem.Text = "Nómina";
             this.btnNominaToolStripMenuItem.Click += new System.EventHandler(this.btnNominaToolStripMenuItem_Click);
+            // 
+            // reporteDePagosSociosToolStripMenuItem
+            // 
+            this.reporteDePagosSociosToolStripMenuItem.Name = "reporteDePagosSociosToolStripMenuItem";
+            this.reporteDePagosSociosToolStripMenuItem.Size = new System.Drawing.Size(289, 26);
+            this.reporteDePagosSociosToolStripMenuItem.Text = "Reporte de Pagos de Socios";
             // 
             // dropdownMenu6
             // 
@@ -690,7 +735,7 @@
             this.dropdownMenu7.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu7.Name = "dropdownMenu7";
             this.dropdownMenu7.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu7.Size = new System.Drawing.Size(322, 156);
+            this.dropdownMenu7.Size = new System.Drawing.Size(322, 134);
             // 
             // reporteDeProducciónQuincenalToolStripMenuItem
             // 
@@ -703,21 +748,21 @@
             // 
             this.reporteConsumoInsumoToolStripMenuItem.Name = "reporteConsumoInsumoToolStripMenuItem";
             this.reporteConsumoInsumoToolStripMenuItem.Size = new System.Drawing.Size(321, 26);
-            this.reporteConsumoInsumoToolStripMenuItem.Text = "Reporte Consumo Insumo";
+            this.reporteConsumoInsumoToolStripMenuItem.Text = "Reporte de Consumo Insumo";
             this.reporteConsumoInsumoToolStripMenuItem.Click += new System.EventHandler(this.reporteConsumoInsumoToolStripMenuItem_Click);
             // 
             // reporteEntregaQuincenalToolStripMenuItem
             // 
             this.reporteEntregaQuincenalToolStripMenuItem.Name = "reporteEntregaQuincenalToolStripMenuItem";
             this.reporteEntregaQuincenalToolStripMenuItem.Size = new System.Drawing.Size(321, 26);
-            this.reporteEntregaQuincenalToolStripMenuItem.Text = "Reporte Entrega Quincenal";
+            this.reporteEntregaQuincenalToolStripMenuItem.Text = "Reporte de Entrega Quincenal";
             this.reporteEntregaQuincenalToolStripMenuItem.Click += new System.EventHandler(this.reporteEntregaQuincenalToolStripMenuItem_Click);
             // 
             // reportePagoDeSociosToolStripMenuItem
             // 
             this.reportePagoDeSociosToolStripMenuItem.Name = "reportePagoDeSociosToolStripMenuItem";
             this.reportePagoDeSociosToolStripMenuItem.Size = new System.Drawing.Size(321, 26);
-            this.reportePagoDeSociosToolStripMenuItem.Text = "Reporte Pago de Socios";
+            this.reportePagoDeSociosToolStripMenuItem.Text = "Reporte de Pago de Socios";
             this.reportePagoDeSociosToolStripMenuItem.Click += new System.EventHandler(this.reportePagoDeSociosToolStripMenuItem_Click);
             // 
             // alertasDeInventarioToolStripMenuItem
@@ -726,16 +771,6 @@
             this.alertasDeInventarioToolStripMenuItem.Size = new System.Drawing.Size(321, 26);
             this.alertasDeInventarioToolStripMenuItem.Text = "Alertas de Inventario";
             this.alertasDeInventarioToolStripMenuItem.Click += new System.EventHandler(this.alertasDeInventarioToolStripMenuItem_Click);
-            // 
-            // panelContenedor
-            // 
-            this.panelContenedor.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContenedor.Location = new System.Drawing.Point(230, 55);
-            this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(1070, 595);
-            this.panelContenedor.TabIndex = 4;
-            this.panelContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContenedor_Paint);
             // 
             // Menu
             // 
@@ -828,6 +863,10 @@
         private System.Windows.Forms.Panel panelContenedor;
         private System.Windows.Forms.ToolStripMenuItem reportePagoDeSociosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alertasDeInventarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteDeEntregasQuincenalesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteDeProducciónGeneralToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteDeConsumoInsumoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteDePagosSociosToolStripMenuItem;
     }
 }
 

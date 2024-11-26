@@ -466,5 +466,19 @@ namespace ProyectoADSI2024
             DetectarExistenciasBajasGlobal();
         }
 
+        private void reporteDeEntregasQuincenalesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void reporteDeProducciónGeneralToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void reporteDeConsumoInsumoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
