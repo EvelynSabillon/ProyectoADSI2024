@@ -53,7 +53,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "frmReporteProduccionGeneral";
-            this.Text = "frmReporteProduccionGeneral";
+            this.Text = "Reporte de Producción General";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmReporteProduccionGeneral_Load);
             this.ResumeLayout(false);
