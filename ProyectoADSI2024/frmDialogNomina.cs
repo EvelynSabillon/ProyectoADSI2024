@@ -72,7 +72,7 @@ namespace ProyectoADSI2024
             string numeroReporte = reportManager.GenerateReportNumber(tipoReporte);
 
             // Pasar el número de reporte al formulario
-            frmNomina.NumeroReporte = numeroReporte;
+           // frmNomina.NumeroReporte = numeroReporte;
         }
     }
 }

@@ -174,6 +174,7 @@
             this.Controls.Add(this.dgverplanilla);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmplanillainforme";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmplanillainforme";
             this.Load += new System.EventHandler(this.frmplanillainforme_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmplanillainforme_MouseDown);

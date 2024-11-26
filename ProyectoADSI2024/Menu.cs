@@ -502,12 +502,16 @@ namespace ProyectoADSI2024
 
         private void reporteDeConsumoInsumoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmVistaDeSocioParaReporteConsumoInsumo frmvistasociosreporteconsumoinsumo = new frmVistaDeSocioParaReporteConsumoInsumo();
+            frmvistasociosreporteconsumoinsumo.Show();
         }
 
         private void reporteDePagosSociosToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+            //LLAMA AL REPORTE PAGO DE SOCIOS 
+            Form frmplanilla = new frmplanillainforme();
+            frmplanilla.Show();
         }
 
 
