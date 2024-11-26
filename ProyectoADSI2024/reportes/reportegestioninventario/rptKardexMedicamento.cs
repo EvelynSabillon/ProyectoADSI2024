@@ -90,7 +90,7 @@ namespace ProyectoADSI2024.Reportes.ReporteGestionInventario {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_ArticuloMedID {
+        public CrystalDecisions.Shared.IParameterField Parameter_NumeroReporte {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -98,9 +98,25 @@ namespace ProyectoADSI2024.Reportes.ReporteGestionInventario {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_NumeroReporte {
+        public CrystalDecisions.Shared.IParameterField Parameter_ArticuloMedID {
             get {
                 return this.DataDefinition.ParameterFields[1];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_FechaInicio {
+            get {
+                return this.DataDefinition.ParameterFields[2];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_FechaFin {
+            get {
+                return this.DataDefinition.ParameterFields[3];
             }
         }
     }
