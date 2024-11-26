@@ -12,17 +12,25 @@ using System.Windows.Forms;
 
 namespace ProyectoADSI2024.Reportes.ReportePrestamosFinanzas
 {
+
     public partial class subFrmNomina : Form
     {
+        public int quincenaid1;
+        public int quincenaid2;
+
         public subFrmNomina()
         {
             InitializeComponent();
         }
 
-        public string NumeroReporte { get; set; }
+        public subFrmNomina(int quincenaid1,  int quincenaid2)
+        {
+            InitializeComponent();
+            this.quincenaid1 = quincenaid1; // Recibir el ID de quincena
+            this.quincenaid2 = quincenaid2; // Recibir el ID de quincena
+        }
 
-        public int quincenaid1;
-        public int quincenaid2;
+        public string NumeroReporte { get; set; }
 
         private void subFrmNomina_Load(object sender, EventArgs e)
         {
@@ -30,12 +38,10 @@ namespace ProyectoADSI2024.Reportes.ReportePrestamosFinanzas
             objReporte.SetParameterValue("@QuincenaID1", quincenaid1);
             objReporte.SetParameterValue("@QuincenaID2", quincenaid2);
 
+            objReporte.SetParameterValue("NumeroReporte", NumeroReporte); // Nuevo parámetro
 
-            crReporteConsQuincenal objreporte = new crReporteConsQuincenal();
-            objreporte.SetParameterValue("NumeroReporte", NumeroReporte); // Nuevo parámetro
-
-            objreporte.SetDatabaseLogon("eugene.wu", "EW20212030388", "3.128.144.165", "DB20212030388");
-            crystalReportViewer1.ReportSource = objreporte;
+            objReporte.SetDatabaseLogon("eugene.wu", "EW20212030388", "3.128.144.165", "DB20212030388");
+            crystalReportViewer1.ReportSource = objReporte;
             crystalReportViewer1.Refresh();
         }
     }
