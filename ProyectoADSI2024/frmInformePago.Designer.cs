@@ -53,6 +53,7 @@
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "frmInformePago";
             this.Text = "frmInformePago";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmInformePago_Load);
             this.ResumeLayout(false);
 

@@ -513,7 +513,7 @@
             this.dropdownMenu4.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu4.Name = "dropdownMenu1";
             this.dropdownMenu4.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu4.Size = new System.Drawing.Size(301, 82);
+            this.dropdownMenu4.Size = new System.Drawing.Size(301, 104);
             this.dropdownMenu4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dropdownMenu4_MouseClick);
             // 
             // ConcentradoToolStripMenu
@@ -653,7 +653,7 @@
             this.dropdownMenu5.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu5.Name = "dropdownMenu1";
             this.dropdownMenu5.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu5.Size = new System.Drawing.Size(290, 130);
+            this.dropdownMenu5.Size = new System.Drawing.Size(290, 108);
             // 
             // btnPrestamoToolStripMenuItem7
             // 

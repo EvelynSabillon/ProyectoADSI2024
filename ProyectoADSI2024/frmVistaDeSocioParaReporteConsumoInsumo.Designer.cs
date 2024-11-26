@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVistaDeSocioParaReporteConsumoInsumo));
             this.dgvistasociosreporte = new System.Windows.Forms.DataGridView();
             this.tlAyida = new System.Windows.Forms.Button();
@@ -54,9 +54,9 @@
             this.dgvistasociosreporte.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvistasociosreporte.Location = new System.Drawing.Point(100, 110);
             this.dgvistasociosreporte.Name = "dgvistasociosreporte";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgvistasociosreporte.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dgvistasociosreporte.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvistasociosreporte.Size = new System.Drawing.Size(709, 250);
             this.dgvistasociosreporte.TabIndex = 0;
             this.dgvistasociosreporte.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvistasociosreporte_CellDoubleClick);
@@ -145,6 +145,7 @@
             this.Controls.Add(this.dgvistasociosreporte);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmVistaDeSocioParaReporteConsumoInsumo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmVistaDeSocioParaReporteConsumoInsumo";
             this.Load += new System.EventHandler(this.frmVistaDeSocioParaReporteConsumoInsumo_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmVistaDeSocioParaReporteConsumoInsumo_MouseDown);
