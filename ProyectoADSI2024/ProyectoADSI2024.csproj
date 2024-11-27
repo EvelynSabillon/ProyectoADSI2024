@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="crReporteConsumoInsumoReparado.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crReporteConsumoInsumoReparado.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="crReportePagoSocio.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -71,6 +77,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DB20212030388DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmContenedorConsumoInsumoReparado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmContenedorConsumoInsumoReparado.Designer.cs">
+      <DependentUpon>frmContenedorConsumoInsumoReparado.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDialogNomina.cs">
       <SubType>Form</SubType>
@@ -248,6 +260,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptProduccion.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\ReporteProduccion\rptProduccionGeneralFiltrada.cs">
       <AutoGen>True</AutoGen>
@@ -449,9 +462,16 @@
     <EmbeddedResource Include="BotonesUtilidades.resx">
       <DependentUpon>BotonesUtilidades.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="crReporteConsumoInsumoReparado.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crReporteConsumoInsumoReparado.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="crReportePagoSocio.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crReportePagoSocio.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmContenedorConsumoInsumoReparado.resx">
+      <DependentUpon>frmContenedorConsumoInsumoReparado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDialogNomina.resx">
       <DependentUpon>frmDialogNomina.cs</DependentUpon>
