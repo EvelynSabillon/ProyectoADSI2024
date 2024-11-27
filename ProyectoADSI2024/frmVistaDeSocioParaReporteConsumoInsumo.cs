@@ -44,9 +44,9 @@ namespace ProyectoADSI2024
 
         private void dgvistasociosreporte_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            frmReporteConsumoMedCon objformReporte = new frmReporteConsumoMedCon();
+            frmContenedorConsumoInsumoReparado objformReportereparado = new frmContenedorConsumoInsumoReparado();
             int idsocio = Convert.ToInt32(dgvistasociosreporte.CurrentRow.Cells[0].Value);
-            objformReporte.idsocio = idsocio;
+            objformReportereparado.idsocio = idsocio;
 
             // Obtener el número de reporte generado desde el procedimiento almacenado
             Report_Manager reportManager = new Report_Manager();
@@ -54,9 +54,9 @@ namespace ProyectoADSI2024
             string numeroReporte = reportManager.GenerateReportNumber(tipoReporte);
 
             // Pasar el número de reporte al formulario
-            objformReporte.NumeroReporte = numeroReporte;
+            objformReportereparado.NumeroReporte = numeroReporte;
 
-            objformReporte.ShowDialog();
+            objformReportereparado.ShowDialog();
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)
