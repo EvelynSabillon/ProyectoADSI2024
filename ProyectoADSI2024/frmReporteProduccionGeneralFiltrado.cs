@@ -35,11 +35,11 @@ namespace ProyectoADSI2024
 
 
             // Obtener el número de reporte generado desde el procedimiento almacenado
-           /* Report_Manager reportManager = new Report_Manager();
+            Report_Manager reportManager = new Report_Manager();
             string tipoReporte = "06"; // Tipo de reporte (puedes adaptarlo según sea necesario)
-            string numeroReporte = reportManager.GenerateReportNumber(tipoReporte);*/
+            string numeroReporte = reportManager.GenerateReportNumber(tipoReporte);
 
-            /*objReporte.SetParameterValue("NumeroReporte", numeroReporte);*/ // Nuevo parámetro
+            objReporte.SetParameterValue("NumeroReporte", numeroReporte);// Nuevo parámetro
 
             objReporte.SetDatabaseLogon("eugene.wu", "EW20212030388", "3.128.144.165", "DB20212030388");
             crystalReportViewer1.ReportSource = objReporte;

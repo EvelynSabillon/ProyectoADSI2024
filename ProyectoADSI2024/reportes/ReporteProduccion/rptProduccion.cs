@@ -98,7 +98,7 @@ namespace ProyectoADSI2024.Reportes.ReporteProduccion {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Totales_QuincenaID {
+        public CrystalDecisions.Shared.IParameterField Parameter_NumeroReporte {
             get {
                 return this.DataDefinition.ParameterFields[1];
             }
