@@ -53,6 +53,7 @@
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "frmContenedorConsumoInsumoReparado";
             this.Text = "frmContenedorConsumoInsumoReparado";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmContenedorConsumoInsumoReparado_Load);
             this.ResumeLayout(false);
 
