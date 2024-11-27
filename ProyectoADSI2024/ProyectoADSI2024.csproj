@@ -108,6 +108,12 @@
     <Compile Include="frmReporteKardexMedicamento.Designer.cs">
       <DependentUpon>frmReporteKardexMedicamento.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReporteProduccionGeneralFiltrado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteProduccionGeneralFiltrado.Designer.cs">
+      <DependentUpon>frmReporteProduccionGeneralFiltrado.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSeleccionFechaIL.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,6 +243,17 @@
     </Compile>
     <Compile Include="Reportes\frmReportViewer.Designer.cs">
       <DependentUpon>frmReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ReporteProduccion\rptProduccion.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptProduccion.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ReporteProduccion\rptProduccionGeneralFiltrada.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptProduccionGeneralFiltrada.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Report_Manager.cs" />
     <Compile Include="Utils\DatabaseHelper.cs" />
@@ -411,6 +428,12 @@
     <Compile Include="Vista_ArticuloCon.Designer.cs">
       <DependentUpon>Vista_ArticuloCon.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vista_QuincenaProduccionGeneral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista_QuincenaProduccionGeneral.Designer.cs">
+      <DependentUpon>Vista_QuincenaProduccionGeneral.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vista_SeleccionarFecha_Concentrado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -447,6 +470,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteKardexMedicamento.resx">
       <DependentUpon>frmReporteKardexMedicamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteProduccionGeneralFiltrado.resx">
+      <DependentUpon>frmReporteProduccionGeneralFiltrado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSeleccionFechaIL.resx">
       <DependentUpon>frmSeleccionFechaIL.cs</DependentUpon>
@@ -608,11 +634,22 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Formato_Plantilla1.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteProduccion\rptProduccion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptProduccion.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteProduccion\rptProduccionGeneralFiltrada.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptProduccionGeneralFiltrada.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vista_ArticuloCon.resx">
       <DependentUpon>Vista_ArticuloCon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista_ArticuloMed.resx">
       <DependentUpon>Vista_ArticuloMed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista_QuincenaProduccionGeneral.resx">
+      <DependentUpon>Vista_QuincenaProduccionGeneral.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista_SeleccionarFecha_Concentrado.resx">
       <DependentUpon>Vista_SeleccionarFecha_Concentrado.cs</DependentUpon>

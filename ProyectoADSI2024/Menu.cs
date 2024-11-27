@@ -321,18 +321,9 @@ namespace ProyectoADSI2024
         }
 
         private void reporteDeProducciónQuincenalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmReporteProduccionGeneral frmReporteProduccionGral = new frmReporteProduccionGeneral();
-
-            // Obtener el número de reporte generado desde el procedimiento almacenado
-            Report_Manager reportManager = new Report_Manager();
-            string tipoReporte = "06"; // Tipo de reporte (puedes adaptarlo según sea necesario)
-            string numeroReporte = reportManager.GenerateReportNumber(tipoReporte);
-
-            // Pasar el número de reporte al formulario
-            frmReporteProduccionGral.NumeroReporte = numeroReporte;
-
-            frmReporteProduccionGral.ShowDialog();
+        { 
+            Vista_QuincenaProduccionGeneral reporte = new Vista_QuincenaProduccionGeneral();
+            reporte.ShowDialog();  
         }
 
         private void reporteEntregaQuincenalToolStripMenuItem_Click(object sender, EventArgs e)
