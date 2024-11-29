@@ -66,73 +66,76 @@ namespace ProyectoADSI2024
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            try
+            if (MessageBox.Show("¿Desea guardar la Salida?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                // Validación de campos
-                if (string.IsNullOrWhiteSpace(tBoxDiaID.Text) ||
-                    string.IsNullOrWhiteSpace(tboxLAM.Text) ||
-                    string.IsNullOrWhiteSpace(tboxLPM.Text) ||
-                    cboxSocios.SelectedIndex <= 0 ||
-                    string.IsNullOrWhiteSpace(tboxEncargado.Text))
+                try
                 {
-                    MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                    // Validación de campos
+                    if (string.IsNullOrWhiteSpace(tBoxDiaID.Text) ||
+                        string.IsNullOrWhiteSpace(tboxLAM.Text) ||
+                        string.IsNullOrWhiteSpace(tboxLPM.Text) ||
+                        cboxSocios.SelectedIndex <= 0 ||
+                        string.IsNullOrWhiteSpace(tboxEncargado.Text))
+                    {
+                        MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
-                // Validar el formato del campo DiaID (fecha)
-                DateTime diaIDDate;
-                if (!DateTime.TryParse(tBoxDiaID.Text, out diaIDDate))
+                    // Validar el formato del campo DiaID (fecha)
+                    DateTime diaIDDate;
+                    if (!DateTime.TryParse(tBoxDiaID.Text, out diaIDDate))
+                    {
+                        MessageBox.Show("El campo DiaID debe tener un formato de fecha válido tal como dd/MM/yyyy.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Validar el formato numérico de Litros AM y Litros PM
+                    double litrosAM, litrosPM;
+                    if (!double.TryParse(tboxLAM.Text, out litrosAM) || litrosAM < 0)
+                    {
+                        MessageBox.Show("El valor de Litros AM debe ser numérico y mayor o igual a 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (!double.TryParse(tboxLPM.Text, out litrosPM) || litrosPM < 0)
+                    {
+                        MessageBox.Show("El valor de Litros PM debe ser numérico y mayor o igual a 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Validar selección del ComboBox de socios
+                    if (cboxSocios.SelectedIndex <= 0)
+                    {
+                        MessageBox.Show("Por favor, seleccione un socio válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    SqlConnection con = conexion.ObtenerConexion();
+                    // Insertar datos en la base de datos
+                    SqlCommand cmd = new SqlCommand("spProyectoIngLecheInsert", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@DiaID", diaIDDate);
+                    cmd.Parameters.AddWithValue("@SocioID", Convert.ToInt32(cboxSocios.SelectedValue));
+                    cmd.Parameters.AddWithValue("@Fecha", dateTimePickerFecha.Value);
+                    cmd.Parameters.AddWithValue("@LitroAM", litrosAM);
+                    cmd.Parameters.AddWithValue("@LitroPM", litrosPM);
+                    cmd.Parameters.AddWithValue("@Observaciones", tboxObs.Text);
+                    cmd.Parameters.AddWithValue("@Encargado", tboxEncargado.Text);
+                    cmd.Parameters.AddWithValue("@Activo", checkBoxActivo.Checked);
+
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Registro guardado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Restaurar estado
+                    LimpiarTxtBox();
+                    // Actualizar el DataGridView
+                    CargarDatosActualizados();
+                }
+                catch (Exception ex)
                 {
-                    MessageBox.Show("El campo DiaID debe tener un formato de fecha válido tal como dd/MM/yyyy.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    MessageBox.Show("Error de formato: " + ex.Message + "\nAsegurese de que los datos están en el formato correcto.");
                 }
-
-                // Validar el formato numérico de Litros AM y Litros PM
-                double litrosAM, litrosPM;
-                if (!double.TryParse(tboxLAM.Text, out litrosAM) || litrosAM < 0)
-                {
-                    MessageBox.Show("El valor de Litros AM debe ser numérico y mayor o igual a 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                if (!double.TryParse(tboxLPM.Text, out litrosPM) || litrosPM < 0)
-                {
-                    MessageBox.Show("El valor de Litros PM debe ser numérico y mayor o igual a 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                // Validar selección del ComboBox de socios
-                if (cboxSocios.SelectedIndex <= 0)
-                {
-                    MessageBox.Show("Por favor, seleccione un socio válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                SqlConnection con = conexion.ObtenerConexion();
-                // Insertar datos en la base de datos
-                SqlCommand cmd = new SqlCommand("spProyectoIngLecheInsert", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.AddWithValue("@DiaID", diaIDDate);
-                cmd.Parameters.AddWithValue("@SocioID", Convert.ToInt32(cboxSocios.SelectedValue));
-                cmd.Parameters.AddWithValue("@Fecha", dateTimePickerFecha.Value);
-                cmd.Parameters.AddWithValue("@LitroAM", litrosAM);
-                cmd.Parameters.AddWithValue("@LitroPM", litrosPM);
-                cmd.Parameters.AddWithValue("@Observaciones", tboxObs.Text);
-                cmd.Parameters.AddWithValue("@Encargado", tboxEncargado.Text);
-                cmd.Parameters.AddWithValue("@Activo", checkBoxActivo.Checked);
-
-                cmd.ExecuteNonQuery();
-
-                MessageBox.Show("Registro actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
-                // Restaurar estado
-                LimpiarTxtBox();
-                // Actualizar el DataGridView
-                CargarDatosActualizados();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al guardar los datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -147,36 +150,101 @@ namespace ProyectoADSI2024
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-
-            try
+            if (MessageBox.Show("¿Desea editar el registro actual?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                 SqlConnection con = conexion.ObtenerConexion();
-                 // Modo de edición: Actualizar la fila seleccionada
-                 SqlCommand cmd = new SqlCommand("spProyectoIngLecheUpdate", con);
-                 cmd.CommandType = CommandType.StoredProcedure;
+                try
+                {
+                    // Validar si se seleccionó una fila
+                    if (dgIngresoLeche.CurrentRow == null)
+                    {
+                        MessageBox.Show("Seleccione un registro para editar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
-                // Parámetros del procedimiento almacenado para actualizar
-                cmd.Parameters.AddWithValue("@DiaID", DateTime.Parse(tBoxDiaID.Text));
-                cmd.Parameters.AddWithValue("@SocioID", Convert.ToInt32(cboxSocios.SelectedValue));
-                cmd.Parameters.AddWithValue("@Fecha", dateTimePickerFecha.Value);
-                cmd.Parameters.AddWithValue("@LitroAM", Convert.ToDouble(tboxLAM.Text));
-                cmd.Parameters.AddWithValue("@LitroPM", Convert.ToDouble(tboxLPM.Text));
-                cmd.Parameters.AddWithValue("@Observaciones", tboxObs.Text);
-                cmd.Parameters.AddWithValue("@Encargado", tboxEncargado.Text);
-                cmd.Parameters.AddWithValue("@Activo", checkBoxActivo.Checked);
-                    
-                cmd.ExecuteNonQuery();
+                    // Validar campos vacíos
+                    if (string.IsNullOrWhiteSpace(tBoxDiaID.Text))
+                    {
+                        MessageBox.Show("El campo Día ID no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
 
-                MessageBox.Show("Registro actualizado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (cboxSocios.SelectedIndex <= 0)
+                    {
+                        MessageBox.Show("Debe seleccionar un socio válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
 
-                // Recargar datos en el DataGridView
-                CargarDatosActualizados();
+                    if (string.IsNullOrWhiteSpace(tboxLAM.Text))
+                    {
+                        MessageBox.Show("El campo Litro AM no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
 
-                LimpiarTxtBox();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (string.IsNullOrWhiteSpace(tboxLPM.Text))
+                    {
+                        MessageBox.Show("El campo Litro PM no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(tboxObs.Text))
+                    {
+                        MessageBox.Show("El campo Observaciones no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(tboxEncargado.Text))
+                    {
+                        MessageBox.Show("El campo Encargado no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    // Validar formato y valores numéricos
+                    if (dateTimePickerFecha.Value.Date > DateTime.Now.Date)
+                    {
+                        MessageBox.Show("La fecha no puede ser una fecha futura.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    if (!double.TryParse(tboxLAM.Text, out double litroAM) || litroAM < 0)
+                    {
+                        MessageBox.Show("El campo Litro AM debe contener un valor numérico mayor o igual a cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    if (!double.TryParse(tboxLPM.Text, out double litroPM) || litroPM < 0)
+                    {
+                        MessageBox.Show("El campo Litro PM debe contener un valor numérico mayor o igual a cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    // Si todas las validaciones son exitosas, proceder a la actualización
+                    SqlConnection con = conexion.ObtenerConexion();
+                    SqlCommand cmd = new SqlCommand("spProyectoIngLecheUpdate", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Parámetros del procedimiento almacenado para actualizar
+                    cmd.Parameters.AddWithValue("@DiaID", DateTime.Parse(tBoxDiaID.Text));
+                    cmd.Parameters.AddWithValue("@SocioID", Convert.ToInt32(cboxSocios.SelectedValue));
+                    cmd.Parameters.AddWithValue("@Fecha", dateTimePickerFecha.Value);
+                    cmd.Parameters.AddWithValue("@LitroAM", litroAM);
+                    cmd.Parameters.AddWithValue("@LitroPM", litroPM);
+                    cmd.Parameters.AddWithValue("@Observaciones", tboxObs.Text);
+                    cmd.Parameters.AddWithValue("@Encargado", tboxEncargado.Text);
+                    cmd.Parameters.AddWithValue("@Activo", checkBoxActivo.Checked);
+
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Registro actualizado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Recargar datos en el DataGridView
+                    CargarDatosActualizados();
+
+                    LimpiarTxtBox();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error de formato: " + ex.Message + "\nAsegúrese de que los datos están en el formato correcto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -184,45 +252,42 @@ namespace ProyectoADSI2024
         {
             if (dgIngresoLeche.CurrentRow == null)
             {
-                MessageBox.Show("No hay ninguna fila seleccionada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Seleccione un registro para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            try
+            if (MessageBox.Show("¿Desea eliminar este registro?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                // Obtener el valor de DiaID como DateTime
-                if (!DateTime.TryParse(dgIngresoLeche.CurrentRow.Cells["DiaID"].Value?.ToString(), out DateTime diaid))
+                try
                 {
-                    MessageBox.Show("El valor de DiaID no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                    // Obtener el valor de DiaID como DateTime
+                    if (!DateTime.TryParse(dgIngresoLeche.CurrentRow.Cells["DiaID"].Value?.ToString(), out DateTime diaid))
+                    {
+                        MessageBox.Show("El valor de DiaID no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
-                // Confirmación antes de eliminar
-                if (MessageBox.Show("¿Está seguro que desea eliminar este registro?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                    SqlConnection con = conexion.ObtenerConexion();
+                    // Eliminar registro usando un bloque `using` para liberar recursos
+                    using (SqlCommand cmdEliminar = new SqlCommand("spEliminarIngresoLecheDiario", con))
+                    {
+                        cmdEliminar.CommandType = CommandType.StoredProcedure;
+                        cmdEliminar.Parameters.AddWithValue("@DiaID", diaid);
+
+
+                        cmdEliminar.ExecuteNonQuery();
+
+                    }
+
+                    MessageBox.Show("Registro eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Recargar datos actualizados
+                    CargarDatosActualizados();
+                }
+                catch (Exception ex)
                 {
-                    return;
+                    MessageBox.Show("Error al eliminar el registro: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-                SqlConnection con = conexion.ObtenerConexion();
-                // Eliminar registro usando un bloque `using` para liberar recursos
-                using (SqlCommand cmdEliminar = new SqlCommand("spEliminarIngresoLecheDiario", con))
-                {
-                    cmdEliminar.CommandType = CommandType.StoredProcedure;
-                    cmdEliminar.Parameters.AddWithValue("@DiaID", diaid);
-
-                    
-                    cmdEliminar.ExecuteNonQuery();
-                    
-                }
-
-                MessageBox.Show("Registro eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Recargar datos actualizados
-                CargarDatosActualizados();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al eliminar el registro: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -269,7 +334,9 @@ namespace ProyectoADSI2024
         private void dgIngresoLeche_SelectionChanged(object sender, EventArgs e)
         {
             if (dgIngresoLeche.SelectedRows.Count == 0 || dgIngresoLeche.CurrentRow == null)
+            { 
                 return;
+            }
 
             try
             {
@@ -284,6 +351,9 @@ namespace ProyectoADSI2024
                 tboxEncargado.Text = filaSeleccionada.Cells["Encargado"].Value.ToString();
                 checkBoxActivo.Checked = Convert.ToBoolean(filaSeleccionada.Cells["Activo"].Value);
                 cboxSocios.SelectedValue = Convert.ToInt32(filaSeleccionada.Cells["SocioID"].Value);
+
+                tBoxDiaID.ReadOnly = true;  // Bloquear edición del TextBox
+                cboxSocios.Enabled = false; // Bloquear selección en el ComboBox
             }
             catch (Exception ex)
             {
@@ -340,6 +410,10 @@ namespace ProyectoADSI2024
         private void toolTips()
         {
             toolTip1 = new System.Windows.Forms.ToolTip();
+            toolTip1.IsBalloon = true;
+            toolTip1.ToolTipIcon = ToolTipIcon.Info;
+            toolTip1.ToolTipTitle = "Ayuda";
+            toolTip1.UseAnimation = true;
             toolTip1.SetToolTip(tBoxDiaID, "Ingrese la fecha de hoy");
             toolTip1.SetToolTip(tboxLAM, "Se espera que ingrese un número.");
             toolTip1.SetToolTip(tboxLPM, "Se espera que ingrese un número.");
@@ -351,6 +425,7 @@ namespace ProyectoADSI2024
             toolTip1.SetToolTip(btnEliminar, "Se eliminará un registro al hacer click");
             toolTip1.SetToolTip(btnGenReporte, "Generará un reporte de ingreso diario.");
             toolTip1.SetToolTip(checkBoxActivo, "Al desmarcarlo se ocultará el registro actual.");
+
         }
         private void txtTexto_TextChanged(object sender, EventArgs e)
         {
@@ -435,46 +510,48 @@ namespace ProyectoADSI2024
         private void btnGenReporte_Click(object sender, EventArgs e)
         {
             //ReportManager.ShowReport(@"ReporteModuloControlIngresoLeche\rptLecheDiaria.rpt");
-
-            using (frmSeleccionFechaIL FechaSeleccion = new frmSeleccionFechaIL())
+            if (MessageBox.Show("¿Desea generar un reporte de Ingreso de Leche Diario ?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                if (FechaSeleccion.ShowDialog() == DialogResult.OK && FechaSeleccion.EsConfirmado)
+                using (frmSeleccionFechaIL FechaSeleccion = new frmSeleccionFechaIL())
                 {
-                    DateTime FechaSeleccionada = FechaSeleccion.FechaSeleccionada;
-
-                    //verificar si hay datos en la base de datos
-
-                    if (DatabaseHelper.HasDataForDate(FechaSeleccionada))
+                    if (FechaSeleccion.ShowDialog() == DialogResult.OK && FechaSeleccion.EsConfirmado)
                     {
-                        // Si no hay datos, mostrar el reporte
-                        
-                        //Correlativo No. Reporte, el cual sera seteado en el reporte
-                        Report_Manager reportManager = new Report_Manager();
-                        string tipoReporte = "01";
-                        string numeroReporte = reportManager.GenerateReportNumber(tipoReporte);
+                        DateTime FechaSeleccionada = FechaSeleccion.FechaSeleccionada;
 
-                        var parametros = new Dictionary<string, object>
+                        //verificar si hay datos en la base de datos
+
+                        if (DatabaseHelper.HasDataForDate(FechaSeleccionada))
                         {
-                            {"FechaSeleccionada",FechaSeleccionada },
-                            {"numeroReporte", numeroReporte }
-                        };
+                            // Si no hay datos, mostrar el reporte
 
-                        //parametros.Add("FechaSeleccionada", FechaSeleccionada.Date);
-                        //Mostrar el reporte
-                        ReportManager.ShowReport(@"ReporteModuloControlIngresoLeche\rptLechediaria.rpt", parametros);
+                            //Correlativo No. Reporte, el cual sera seteado en el reporte
+                            Report_Manager reportManager = new Report_Manager();
+                            string tipoReporte = "01";
+                            string numeroReporte = reportManager.GenerateReportNumber(tipoReporte);
+
+                            var parametros = new Dictionary<string, object>
+                            {
+                                {"FechaSeleccionada",FechaSeleccionada },
+                                {"numeroReporte", numeroReporte }
+                            };
+
+                            //parametros.Add("FechaSeleccionada", FechaSeleccionada.Date);
+                            //Mostrar el reporte
+                            ReportManager.ShowReport(@"ReporteModuloControlIngresoLeche\rptLechediaria.rpt", parametros);
+                        }
+                        else
+                        {
+                            // Si no hay datos, mostrar mensaje
+                            MessageBox.Show(
+                                "No hay datos disponibles para la fecha seleccionada.",
+                                "Datos no encontrados",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information
+                             );
+                        }
                     }
-                    else
-                    {
-                        // Si no hay datos, mostrar mensaje
-                        MessageBox.Show(
-                            "No hay datos disponibles para la fecha seleccionada.",
-                            "Datos no encontrados",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information
-                         );
-                    }
+
                 }
-
             }
 
         }
