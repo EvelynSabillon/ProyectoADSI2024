@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultaQuincenalLeche));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -50,8 +51,10 @@
             this.txtTexto = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgConsultaLeche)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -59,10 +62,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.label1.Location = new System.Drawing.Point(108, 42);
-            this.label1.Margin = new System.Windows.Forms.Padding(13, 0, 13, 0);
+            this.label1.Location = new System.Drawing.Point(81, 34);
+            this.label1.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(900, 48);
+            this.label1.Size = new System.Drawing.Size(724, 38);
             this.label1.TabIndex = 1;
             this.label1.Text = "CONSULTA QUINCENAL DE LECHE INGRESADA";
             // 
@@ -71,8 +74,7 @@
             this.btnAtras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAtras.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAtras.Image = ((System.Drawing.Image)(resources.GetObject("btnAtras.Image")));
-            this.btnAtras.Location = new System.Drawing.Point(1340, 21);
-            this.btnAtras.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAtras.Location = new System.Drawing.Point(1005, 17);
             this.btnAtras.Name = "btnAtras";
             this.btnAtras.Size = new System.Drawing.Size(55, 55);
             this.btnAtras.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -83,29 +85,26 @@
             // dtpFechaInicio
             // 
             this.dtpFechaInicio.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaInicio.Location = new System.Drawing.Point(272, 319);
-            this.dtpFechaInicio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpFechaInicio.Location = new System.Drawing.Point(204, 259);
             this.dtpFechaInicio.Name = "dtpFechaInicio";
-            this.dtpFechaInicio.Size = new System.Drawing.Size(327, 29);
+            this.dtpFechaInicio.Size = new System.Drawing.Size(246, 25);
             this.dtpFechaInicio.TabIndex = 48;
             // 
             // tboxQuincenaid
             // 
             this.tboxQuincenaid.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxQuincenaid.Location = new System.Drawing.Point(272, 235);
-            this.tboxQuincenaid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tboxQuincenaid.Location = new System.Drawing.Point(204, 191);
             this.tboxQuincenaid.Name = "tboxQuincenaid";
-            this.tboxQuincenaid.Size = new System.Drawing.Size(197, 29);
+            this.tboxQuincenaid.Size = new System.Drawing.Size(149, 25);
             this.tboxQuincenaid.TabIndex = 45;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(100, 240);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(75, 195);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(128, 28);
+            this.label7.Size = new System.Drawing.Size(104, 21);
             this.label7.TabIndex = 44;
             this.label7.Text = "Quincena ID";
             // 
@@ -119,10 +118,9 @@
             this.btnGenReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGenReporte.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGenReporte.ForeColor = System.Drawing.Color.White;
-            this.btnGenReporte.Location = new System.Drawing.Point(1132, 633);
-            this.btnGenReporte.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGenReporte.Location = new System.Drawing.Point(849, 514);
             this.btnGenReporte.Name = "btnGenReporte";
-            this.btnGenReporte.Size = new System.Drawing.Size(261, 44);
+            this.btnGenReporte.Size = new System.Drawing.Size(196, 36);
             this.btnGenReporte.TabIndex = 40;
             this.btnGenReporte.Text = "GENERAR REPORTE";
             this.btnGenReporte.UseVisualStyleBackColor = false;
@@ -138,10 +136,9 @@
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(413, 633);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGuardar.Location = new System.Drawing.Point(310, 514);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(187, 44);
+            this.btnGuardar.Size = new System.Drawing.Size(140, 36);
             this.btnGuardar.TabIndex = 39;
             this.btnGuardar.Text = "GUARDAR";
             this.btnGuardar.UseVisualStyleBackColor = false;
@@ -151,31 +148,28 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(104, 319);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(78, 259);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 28);
+            this.label2.Size = new System.Drawing.Size(101, 21);
             this.label2.TabIndex = 50;
             this.label2.Text = "Fecha Inicio";
             // 
             // tboxMes
             // 
             this.tboxMes.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxMes.Location = new System.Drawing.Point(229, 633);
-            this.tboxMes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tboxMes.Location = new System.Drawing.Point(172, 514);
             this.tboxMes.Name = "tboxMes";
             this.tboxMes.ReadOnly = true;
-            this.tboxMes.Size = new System.Drawing.Size(160, 29);
+            this.tboxMes.Size = new System.Drawing.Size(121, 25);
             this.tboxMes.TabIndex = 52;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(152, 633);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(114, 514);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 28);
+            this.label3.Size = new System.Drawing.Size(41, 21);
             this.label3.TabIndex = 51;
             this.label3.Text = "Mes";
             // 
@@ -183,20 +177,18 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(112, 404);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(84, 328);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(117, 28);
+            this.label4.Size = new System.Drawing.Size(95, 21);
             this.label4.TabIndex = 54;
             this.label4.Text = "Fecha Final";
             // 
             // dtpFechaFinal
             // 
             this.dtpFechaFinal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaFinal.Location = new System.Drawing.Point(272, 399);
-            this.dtpFechaFinal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpFechaFinal.Location = new System.Drawing.Point(204, 324);
             this.dtpFechaFinal.Name = "dtpFechaFinal";
-            this.dtpFechaFinal.Size = new System.Drawing.Size(327, 29);
+            this.dtpFechaFinal.Size = new System.Drawing.Size(246, 25);
             this.dtpFechaFinal.TabIndex = 53;
             // 
             // btnEliminar
@@ -209,10 +201,9 @@
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
-            this.btnEliminar.Location = new System.Drawing.Point(916, 633);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEliminar.Location = new System.Drawing.Point(687, 514);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(187, 44);
+            this.btnEliminar.Size = new System.Drawing.Size(140, 36);
             this.btnEliminar.TabIndex = 55;
             this.btnEliminar.Text = "ELIMINAR";
             this.btnEliminar.UseVisualStyleBackColor = false;
@@ -238,8 +229,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgConsultaLeche.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgConsultaLeche.Location = new System.Drawing.Point(693, 175);
-            this.dgConsultaLeche.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgConsultaLeche.Location = new System.Drawing.Point(520, 142);
             this.dgConsultaLeche.MultiSelect = false;
             this.dgConsultaLeche.Name = "dgConsultaLeche";
             this.dgConsultaLeche.ReadOnly = true;
@@ -247,7 +237,7 @@
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
             this.dgConsultaLeche.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgConsultaLeche.Size = new System.Drawing.Size(700, 426);
+            this.dgConsultaLeche.Size = new System.Drawing.Size(525, 346);
             this.dgConsultaLeche.TabIndex = 195;
             this.dgConsultaLeche.SelectionChanged += new System.EventHandler(this.dgConsultaLeche_SelectionChanged);
             // 
@@ -259,19 +249,17 @@
             "FechaInicio",
             "FechaFinal",
             "Activo"});
-            this.cmbCampo.Location = new System.Drawing.Point(693, 134);
-            this.cmbCampo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbCampo.Location = new System.Drawing.Point(520, 109);
             this.cmbCampo.Name = "cmbCampo";
-            this.cmbCampo.Size = new System.Drawing.Size(276, 24);
+            this.cmbCampo.Size = new System.Drawing.Size(208, 21);
             this.cmbCampo.TabIndex = 196;
             this.cmbCampo.Click += new System.EventHandler(this.cmbCampo_Click);
             // 
             // txtTexto
             // 
-            this.txtTexto.Location = new System.Drawing.Point(1053, 134);
-            this.txtTexto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTexto.Location = new System.Drawing.Point(790, 109);
             this.txtTexto.Name = "txtTexto";
-            this.txtTexto.Size = new System.Drawing.Size(339, 22);
+            this.txtTexto.Size = new System.Drawing.Size(255, 20);
             this.txtTexto.TabIndex = 197;
             this.txtTexto.TextChanged += new System.EventHandler(this.txtTexto_TextChanged);
             // 
@@ -279,10 +267,9 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(979, 134);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(734, 109);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 25);
+            this.label5.Size = new System.Drawing.Size(59, 20);
             this.label5.TabIndex = 198;
             this.label5.Text = "Buscar";
             // 
@@ -296,20 +283,24 @@
             this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpiar.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpiar.ForeColor = System.Drawing.Color.White;
-            this.btnLimpiar.Location = new System.Drawing.Point(693, 633);
-            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLimpiar.Location = new System.Drawing.Point(520, 514);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(191, 44);
+            this.btnLimpiar.Size = new System.Drawing.Size(143, 36);
             this.btnLimpiar.TabIndex = 199;
             this.btnLimpiar.Text = "LIMPIAR";
             this.btnLimpiar.UseVisualStyleBackColor = false;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
+            // errorProvider
+            // 
+            this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider.ContainerControl = this;
+            // 
             // ConsultaQuincenalLeche
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1445, 732);
+            this.ClientSize = new System.Drawing.Size(1084, 595);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtTexto);
@@ -329,12 +320,12 @@
             this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ConsultaQuincenalLeche";
             this.Text = "ConsultaQuincenalLeche";
             this.Load += new System.EventHandler(this.ConsultaQuincenalLeche_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgConsultaLeche)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -360,5 +351,6 @@
         private System.Windows.Forms.TextBox txtTexto;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

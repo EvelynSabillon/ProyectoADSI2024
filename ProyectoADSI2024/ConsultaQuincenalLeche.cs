@@ -59,34 +59,77 @@ namespace ProyectoADSI2024
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(tboxQuincenaid.Text))
+            // Limpiar errores anteriores
+            errorProvider.Clear();
+            bool esValido = true;
+
+            // Validar si el campo QuincenaID está vacío o no es un número válido
+            if (string.IsNullOrWhiteSpace(tboxQuincenaid.Text))
             {
-                MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                errorProvider.SetError(tboxQuincenaid, "El campo Quincena ID no puede estar vacío.");
+                esValido = false;
+            }
+            else if (!int.TryParse(tboxQuincenaid.Text, out int quincenaID))
+            {
+                errorProvider.SetError(tboxQuincenaid, "El campo Quincena ID debe contener un número válido.");
+                esValido = false;
             }
 
-            SqlCommand cmd = new SqlCommand("spConsultaQuincenalInsert", conexion);
-            cmd.CommandType = CommandType.StoredProcedure;
-            int quincenaID = int.Parse(tboxQuincenaid.Text);
+            // Validar si las fechas de los DateTimePickers están configuradas
+            if (dtpFechaInicio.Value == DateTime.MinValue)
+            {
+                errorProvider.SetError(dtpFechaInicio, "Seleccione una fecha de inicio válida.");
+                esValido = false;
+            }
 
-            cmd.Parameters.AddWithValue("@QuincenaID", quincenaID);
-            cmd.Parameters.AddWithValue("@FechaInicio", dtpFechaInicio.Value); //datetimepicker
-            cmd.Parameters.AddWithValue("@FechaFinal", dtpFechaFinal.Value); //datetimepicker
+            if (dtpFechaFinal.Value == DateTime.MinValue)
+            {
+                errorProvider.SetError(dtpFechaFinal, "Seleccione una fecha final válida.");
+                esValido = false;
+            }
+            else if (dtpFechaFinal.Value < dtpFechaInicio.Value)
+            {
+                errorProvider.SetError(dtpFechaFinal, "La fecha final no puede ser anterior a la fecha de inicio.");
+                esValido = false;
+            }
 
-            conexion.Open();
-            cmd.ExecuteNonQuery();
-            conexion.Close();
+            // Si hay errores, mostrar mensaje y detener el proceso
+            if (!esValido)
+            {
+                MessageBox.Show("Corrija los errores marcados antes de continuar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (MessageBox.Show("¿Desea guardar el registro?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("spConsultaQuincenalInsert", conexion);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    int quincenaID = int.Parse(tboxQuincenaid.Text);
 
-            //Limpiar txbos y dtp
-            Limpiar();
-            MessageBox.Show("Datos guardados exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //Actualizar tabla
-            CargarDatos();
+                    cmd.Parameters.AddWithValue("@QuincenaID", quincenaID);
+                    cmd.Parameters.AddWithValue("@FechaInicio", dtpFechaInicio.Value); //datetimepicker
+                    cmd.Parameters.AddWithValue("@FechaFinal", dtpFechaFinal.Value); //datetimepicker
+
+                    conexion.Open();
+                    cmd.ExecuteNonQuery();
+                    conexion.Close();
+
+                    //Limpiar txbos y dtp
+                    Limpiar();
+                    MessageBox.Show("Registro guardado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //Actualizar tabla
+                    CargarDatos();
+                }catch(Exception ex)
+                {
+                    MessageBox.Show("Error de formato: " + ex.Message + "\nAsegurese de que los datos están en el formato correcto.");
+                }
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Desea eliminar el préstamo?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("¿Desea eliminar el registro seleccionado?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 //ELIMINAR UN REGISTRO seleccionado en el DataGridView
                 try
@@ -94,37 +137,44 @@ namespace ProyectoADSI2024
                     if (dgConsultaLeche.SelectedRows.Count > 0)
                     {
                         int QuincenaID = Convert.ToInt32(dgConsultaLeche.SelectedRows[0].Cells["QuincenaID"].Value);
-                        using (SqlConnection con = new SqlConnection("Server=3.128.144.165; Database=DB20212030388; User ID=eugene.wu; Password=EW20212030388;"))
+                        try
                         {
-                            // Procedimiento almacenado para eliminar el registro
-                            using (SqlCommand cmdEliminar = new SqlCommand("spEliminarConsultaQuincenal", con))
+                            using (SqlConnection con = new SqlConnection("Server=3.128.144.165; Database=DB20212030388; User ID=eugene.wu; Password=EW20212030388;"))
                             {
-                                cmdEliminar.CommandType = CommandType.StoredProcedure;
+                                // Procedimiento almacenado para eliminar el registro
+                                using (SqlCommand cmdEliminar = new SqlCommand("spEliminarConsultaQuincenal", con))
+                                {
+                                    cmdEliminar.CommandType = CommandType.StoredProcedure;
 
-                                // Pasar el parámetro QuincenaID
-                                cmdEliminar.Parameters.AddWithValue("@QuincenaID", QuincenaID);
+                                    // Pasar el parámetro QuincenaID
+                                    cmdEliminar.Parameters.AddWithValue("@QuincenaID", QuincenaID);
 
-                                // Abrir la conexión
-                                con.Open();
+                                    // Abrir la conexión
+                                    con.Open();
 
-                                // Ejecutar la eliminación
-                                cmdEliminar.ExecuteNonQuery();
+                                    // Ejecutar la eliminación
+                                    cmdEliminar.ExecuteNonQuery();
 
-                                // Mostrar mensaje de éxito
-                                MessageBox.Show("Quincena eliminado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    // Mostrar mensaje de éxito
+                                    MessageBox.Show("Quincena eliminado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                // Actualizar la tabla 
-                                tabQuincena.Clear(); // Limpiar datos antiguos
-                                adapter.Fill(tabQuincena); // Llenar con los nuevos datos
+                                    // Actualizar la tabla 
+                                    tabQuincena.Clear(); // Limpiar datos antiguos
+                                    adapter.Fill(tabQuincena); // Llenar con los nuevos datos
 
-                                // Limpiar los campos del formulario
-                                tboxQuincenaid.Text = "";
-                                dtpFechaInicio.ResetText();
-                                dtpFechaFinal.ResetText();
+                                    // Limpiar los campos del formulario
+                                    tboxQuincenaid.Text = "";
+                                    dtpFechaInicio.ResetText();
+                                    dtpFechaFinal.ResetText();
 
-                                // Actualizar la lista de socios
-                                CargarDatos();
+                                    // Actualizar la lista de socios
+                                    CargarDatos();
+                                }
                             }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error al eliminar el registro: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
@@ -193,6 +243,10 @@ namespace ProyectoADSI2024
         private void toolTipsTxts()
         {
             toolTips = new System.Windows.Forms.ToolTip();
+            toolTips.IsBalloon = true;
+            toolTips.ToolTipIcon = ToolTipIcon.Info;
+            toolTips.ToolTipTitle = "Ayuda";
+            toolTips.UseAnimation = true;
             toolTips.SetToolTip(tboxQuincenaid, "Ingrese un número de Quincena válido");
             toolTips.SetToolTip(tboxMes, "Mes");
             toolTips.SetToolTip(dtpFechaInicio, "Seleccione la fecha en la que iniciará la quincena.");
@@ -207,6 +261,7 @@ namespace ProyectoADSI2024
 
         private void Limpiar()
         {
+            errorProvider.Clear();
             txtTexto.Enabled = false;
             tboxQuincenaid.Clear();
             dtpFechaInicio.Value = DateTime.Now;
@@ -314,16 +369,19 @@ namespace ProyectoADSI2024
 
         private void btnGenReporte_Click(object sender, EventArgs e)
         {
-            FrmReporteConsQuincenal frmConsulta = new FrmReporteConsQuincenal();
+            if (MessageBox.Show("¿Desea generar un reporte de /*Nombre del Reporte*/ ?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                FrmReporteConsQuincenal frmConsulta = new FrmReporteConsQuincenal();
 
-            Report_Manager reportManager = new Report_Manager();
-            string tipoReporte = "04"; // Tipo de reporte (puedes adaptarlo según sea necesario)
-            string numeroReporte = reportManager.GenerateReportNumber(tipoReporte);
+                Report_Manager reportManager = new Report_Manager();
+                string tipoReporte = "04"; // Tipo de reporte (puedes adaptarlo según sea necesario)
+                string numeroReporte = reportManager.GenerateReportNumber(tipoReporte);
 
-            // Pasar el número de reporte al formulario
-            frmConsulta.NumeroReporte = numeroReporte;
-           
-            frmConsulta.ShowDialog();
+                // Pasar el número de reporte al formulario
+                frmConsulta.NumeroReporte = numeroReporte;
+
+                frmConsulta.ShowDialog();
+            }
         }
     }
 }

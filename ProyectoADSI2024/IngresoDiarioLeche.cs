@@ -26,6 +26,8 @@ namespace ProyectoADSI2024
         //ToolTips
         System.Windows.Forms.ToolTip toolTip1;
         //private DataGridViewRow filaSeleccionada = null;
+        DateTime diaIDDate;
+        
         public IngresoDiarioLeche()
         {
             InitializeComponent();
@@ -66,49 +68,61 @@ namespace ProyectoADSI2024
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Desea guardar la Salida?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            
+            // Validación de campos
+            
+            double litrosAM = 0;
+            double litrosPM = 0;
+            bool esValido = true;
+            errorProvider.Clear(); 
+            if (string.IsNullOrWhiteSpace(tBoxDiaID.Text))
             {
-                try
+                errorProvider.SetError(tBoxDiaID, "El campo DiaID no puede estar vacío.");
+                esValido = false;
+            }
+            else if (!DateTime.TryParse(tBoxDiaID.Text, out diaIDDate))
+            {
+                errorProvider.SetError(tBoxDiaID, "El campo DiaID debe tener un formato de fecha válido (dd/MM/yyyy).");
+                esValido = false;
+            }
+
+            // Validar el formato numérico de Litros AM y Litros PM
+            if (string.IsNullOrWhiteSpace(tboxLAM.Text) || !double.TryParse(tboxLAM.Text, out litrosAM) || litrosAM < 0)
+            {
+                errorProvider.SetError(tboxLAM, "El valor de Litros AM debe ser numérico y mayor o igual a 0.");
+                esValido = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(tboxLPM.Text) || !double.TryParse(tboxLPM.Text, out litrosPM) || litrosPM < 0)
+            {
+                errorProvider.SetError(tboxLPM, "El valor de Litros PM debe ser numérico y mayor o igual a 0.");
+                esValido = false;
+            }
+
+            // Validar selección del ComboBox de socios
+            if (cboxSocios.SelectedIndex <= 0)
+            {
+                errorProvider.SetError(cboxSocios, "Debe seleccionar un socio válido.");
+                esValido = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(tboxEncargado.Text))
+            {
+                errorProvider.SetError(tboxEncargado, "El campo Encargado no puede estar vacío.");
+                esValido = false;
+            }
+
+            if (!esValido)
+            {
+                MessageBox.Show("Corrija los errores marcados antes de guardar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                return;
+            }
+            
+            try
+            {
+                if (MessageBox.Show("¿Desea guardar la Salida?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    // Validación de campos
-                    if (string.IsNullOrWhiteSpace(tBoxDiaID.Text) ||
-                        string.IsNullOrWhiteSpace(tboxLAM.Text) ||
-                        string.IsNullOrWhiteSpace(tboxLPM.Text) ||
-                        cboxSocios.SelectedIndex <= 0 ||
-                        string.IsNullOrWhiteSpace(tboxEncargado.Text))
-                    {
-                        MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    // Validar el formato del campo DiaID (fecha)
-                    DateTime diaIDDate;
-                    if (!DateTime.TryParse(tBoxDiaID.Text, out diaIDDate))
-                    {
-                        MessageBox.Show("El campo DiaID debe tener un formato de fecha válido tal como dd/MM/yyyy.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    // Validar el formato numérico de Litros AM y Litros PM
-                    double litrosAM, litrosPM;
-                    if (!double.TryParse(tboxLAM.Text, out litrosAM) || litrosAM < 0)
-                    {
-                        MessageBox.Show("El valor de Litros AM debe ser numérico y mayor o igual a 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    if (!double.TryParse(tboxLPM.Text, out litrosPM) || litrosPM < 0)
-                    {
-                        MessageBox.Show("El valor de Litros PM debe ser numérico y mayor o igual a 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    // Validar selección del ComboBox de socios
-                    if (cboxSocios.SelectedIndex <= 0)
-                    {
-                        MessageBox.Show("Por favor, seleccione un socio válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
                     SqlConnection con = conexion.ObtenerConexion();
                     // Insertar datos en la base de datos
                     SqlCommand cmd = new SqlCommand("spProyectoIngLecheInsert", con);
@@ -132,12 +146,14 @@ namespace ProyectoADSI2024
                     // Actualizar el DataGridView
                     CargarDatosActualizados();
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error de formato: " + ex.Message + "\nAsegurese de que los datos están en el formato correcto.");
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error de formato: " + ex.Message + "\nAsegurese de que los datos están en el formato correcto.");
             }
         }
+    
+    
 
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -150,74 +166,80 @@ namespace ProyectoADSI2024
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Desea editar el registro actual?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            // Limpiar errores previos del ErrorProvider
+            errorProvider.Clear();
+            double litroAM = 0;
+            double litroPM = 0;
+            // Variable para controlar si hay errores
+            bool esValido = true;
+
+            // Validar si se seleccionó una fila
+            if (dgIngresoLeche.CurrentRow == null)
             {
-                try
+                errorProvider.SetError(dgIngresoLeche, "Seleccione un registro para editar.");
+                esValido = false;
+            }
+
+            // Validar campos vacíos y valores incorrectos
+            if (string.IsNullOrWhiteSpace(tBoxDiaID.Text))
+            {
+                errorProvider.SetError(tBoxDiaID, "El campo Día ID no puede estar vacío.");
+                esValido = false;
+            }
+            else if (!DateTime.TryParse(tBoxDiaID.Text, out DateTime diaIDDate))
+            {
+                errorProvider.SetError(tBoxDiaID, "El campo Día ID debe tener un formato de fecha válido (dd/MM/yyyy).");
+                esValido = false;
+            }
+
+            if (cboxSocios.SelectedIndex <= 0)
+            {
+                errorProvider.SetError(cboxSocios, "Debe seleccionar un socio válido.");
+                esValido = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(tboxLAM.Text) || !double.TryParse(tboxLAM.Text, out double litrosAM) || litrosAM < 0)
+            {
+                errorProvider.SetError(tboxLAM, "El campo Litro AM debe contener un valor numérico mayor o igual a cero.");
+                esValido = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(tboxLPM.Text) || !double.TryParse(tboxLPM.Text, out double litrosPM) || litrosPM < 0)
+            {
+                errorProvider.SetError(tboxLPM, "El campo Litro PM debe contener un valor numérico mayor o igual a cero.");
+                esValido = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(tboxObs.Text))
+            {
+                errorProvider.SetError(tboxObs, "El campo Observaciones no puede estar vacío.");
+                esValido = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(tboxEncargado.Text))
+            {
+                errorProvider.SetError(tboxEncargado, "El campo Encargado no puede estar vacío.");
+                esValido = false;
+            }
+
+            if (dateTimePickerFecha.Value.Date > DateTime.Now.Date)
+            {
+                errorProvider.SetError(dateTimePickerFecha, "La fecha no puede ser una fecha futura.");
+                esValido = false;
+            }
+
+            // Si hay errores, mostrar mensaje y detener el proceso
+            if (!esValido)
+            {
+                MessageBox.Show("Corrija los errores marcados antes de continuar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Si todas las validaciones son exitosas, proceder a la actualización
+            try
+            {
+                if (MessageBox.Show("¿Desea editar el registro actual?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    // Validar si se seleccionó una fila
-                    if (dgIngresoLeche.CurrentRow == null)
-                    {
-                        MessageBox.Show("Seleccione un registro para editar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    // Validar campos vacíos
-                    if (string.IsNullOrWhiteSpace(tBoxDiaID.Text))
-                    {
-                        MessageBox.Show("El campo Día ID no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    if (cboxSocios.SelectedIndex <= 0)
-                    {
-                        MessageBox.Show("Debe seleccionar un socio válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    if (string.IsNullOrWhiteSpace(tboxLAM.Text))
-                    {
-                        MessageBox.Show("El campo Litro AM no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    if (string.IsNullOrWhiteSpace(tboxLPM.Text))
-                    {
-                        MessageBox.Show("El campo Litro PM no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    if (string.IsNullOrWhiteSpace(tboxObs.Text))
-                    {
-                        MessageBox.Show("El campo Observaciones no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    if (string.IsNullOrWhiteSpace(tboxEncargado.Text))
-                    {
-                        MessageBox.Show("El campo Encargado no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    // Validar formato y valores numéricos
-                    if (dateTimePickerFecha.Value.Date > DateTime.Now.Date)
-                    {
-                        MessageBox.Show("La fecha no puede ser una fecha futura.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    if (!double.TryParse(tboxLAM.Text, out double litroAM) || litroAM < 0)
-                    {
-                        MessageBox.Show("El campo Litro AM debe contener un valor numérico mayor o igual a cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    if (!double.TryParse(tboxLPM.Text, out double litroPM) || litroPM < 0)
-                    {
-                        MessageBox.Show("El campo Litro PM debe contener un valor numérico mayor o igual a cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    // Si todas las validaciones son exitosas, proceder a la actualización
                     SqlConnection con = conexion.ObtenerConexion();
                     SqlCommand cmd = new SqlCommand("spProyectoIngLecheUpdate", con);
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -241,10 +263,10 @@ namespace ProyectoADSI2024
 
                     LimpiarTxtBox();
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error de formato: " + ex.Message + "\nAsegúrese de que los datos están en el formato correcto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error de formato: " + ex.Message + "\nAsegúrese de que los datos están en el formato correcto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -364,6 +386,7 @@ namespace ProyectoADSI2024
         //Funcion para limpiar textboxs
         private void LimpiarTxtBox()
         {
+            errorProvider.Clear();
             tBoxDiaID.Clear();
             tboxLAM.Clear();
             tboxLPM.Clear();
