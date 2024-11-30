@@ -42,7 +42,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tboxSocioID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.dgIngresoLeche = new System.Windows.Forms.DataGridView();
+            this.dgGestionSocios = new System.Windows.Forms.DataGridView();
             this.chboxActivo = new System.Windows.Forms.CheckBox();
             this.mktboxDNI = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -56,7 +56,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnEditar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgIngresoLeche)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgGestionSocios)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -159,18 +159,18 @@
             this.label2.TabIndex = 79;
             this.label2.Text = "SocioID";
             // 
-            // dgIngresoLeche
+            // dgGestionSocios
             // 
-            this.dgIngresoLeche.AllowUserToAddRows = false;
-            this.dgIngresoLeche.AllowUserToDeleteRows = false;
-            this.dgIngresoLeche.AllowUserToResizeColumns = false;
-            this.dgIngresoLeche.AllowUserToResizeRows = false;
+            this.dgGestionSocios.AllowUserToAddRows = false;
+            this.dgGestionSocios.AllowUserToDeleteRows = false;
+            this.dgGestionSocios.AllowUserToResizeColumns = false;
+            this.dgGestionSocios.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgIngresoLeche.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgIngresoLeche.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgIngresoLeche.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgIngresoLeche.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgGestionSocios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgGestionSocios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgGestionSocios.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgGestionSocios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -178,16 +178,16 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgIngresoLeche.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgIngresoLeche.Location = new System.Drawing.Point(499, 131);
-            this.dgIngresoLeche.MultiSelect = false;
-            this.dgIngresoLeche.Name = "dgIngresoLeche";
-            this.dgIngresoLeche.ReadOnly = true;
+            this.dgGestionSocios.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgGestionSocios.Location = new System.Drawing.Point(499, 131);
+            this.dgGestionSocios.MultiSelect = false;
+            this.dgGestionSocios.Name = "dgGestionSocios";
+            this.dgGestionSocios.ReadOnly = true;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgIngresoLeche.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgIngresoLeche.Size = new System.Drawing.Size(547, 375);
-            this.dgIngresoLeche.TabIndex = 78;
+            this.dgGestionSocios.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgGestionSocios.Size = new System.Drawing.Size(547, 375);
+            this.dgGestionSocios.TabIndex = 78;
             // 
             // chboxActivo
             // 
@@ -356,7 +356,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tboxSocioID);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dgIngresoLeche);
+            this.Controls.Add(this.dgGestionSocios);
             this.Controls.Add(this.chboxActivo);
             this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.label1);
@@ -365,7 +365,7 @@
             this.Text = "GestionSocios";
             this.Load += new System.EventHandler(this.GestionSocios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgIngresoLeche)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgGestionSocios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -383,7 +383,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tboxSocioID;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dgIngresoLeche;
+        private System.Windows.Forms.DataGridView dgGestionSocios;
         private System.Windows.Forms.CheckBox chboxActivo;
         private System.Windows.Forms.MaskedTextBox mktboxDNI;
         private System.Windows.Forms.Label label4;
