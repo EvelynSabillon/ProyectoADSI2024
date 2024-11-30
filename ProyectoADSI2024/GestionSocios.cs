@@ -134,6 +134,85 @@ namespace ProyectoADSI2024
 
 
 
+        //UTILIZADO PARA EL BOTON GUARDAR
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            //Pendiente de cambiar esta validacion por el error provider
+            // Validar que todos los campos estén llenos
+            if (string.IsNullOrWhiteSpace(tboxSocioID.Text) ||
+                string.IsNullOrWhiteSpace(tboxNombre.Text) ||
+                string.IsNullOrWhiteSpace(mktboxDNI.Text) ||
+                string.IsNullOrWhiteSpace(tboxDireccion.Text) ||
+                string.IsNullOrWhiteSpace(mktboxTelefono.Text) ||
+                string.IsNullOrWhiteSpace(tboxEmail.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+
+            int socioID = int.Parse(tboxSocioID.Text);
+            string nombre = tboxNombre.Text;
+            string dni = mktboxDNI.Text;
+            string direccion = tboxDireccion.Text;
+            string telefono = mktboxTelefono.Text;
+            string email = tboxEmail.Text;
+            bool activo = chboxActivo.Checked;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(conexion))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_AgregarSocio", connection))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@SocioID", socioID);
+                        cmd.Parameters.AddWithValue("@Nombre", nombre);
+                        cmd.Parameters.AddWithValue("@DNI", dni);
+                        cmd.Parameters.AddWithValue("@Direccion", direccion);
+                        cmd.Parameters.AddWithValue("@Telefono", telefono);
+                        cmd.Parameters.AddWithValue("@Email", email);
+                        cmd.Parameters.AddWithValue("@Activo", activo);
+
+                        // Parámetros de salida
+                        SqlParameter existeParam = new SqlParameter("@Existe", SqlDbType.Bit) { Direction = ParameterDirection.Output };
+                        SqlParameter proximoIDParam = new SqlParameter("@ProximoID", SqlDbType.Int) { Direction = ParameterDirection.Output };
+                        cmd.Parameters.Add(existeParam);
+                        cmd.Parameters.Add(proximoIDParam);
+
+                        connection.Open();
+                        cmd.ExecuteNonQuery();
+
+                        bool existe = Convert.ToBoolean(existeParam.Value);
+                        int proximoID = proximoIDParam.Value != DBNull.Value ? Convert.ToInt32(proximoIDParam.Value) : 1;
+
+                        if (existe)
+                        {
+                            MessageBox.Show($"El SocioID {socioID} ya existe. El siguiente SocioID disponible es {proximoID}.", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            tboxSocioID.Text = proximoID.ToString();
+                            //CargarDatos();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Registro guardado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            CargarDatos();  // Recargar datos en el DataGridView
+                            LimpiarCampos();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        //FIN BOTON AGREGAR
+        
+
+
+
 
 
     }
