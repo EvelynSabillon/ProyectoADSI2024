@@ -272,7 +272,7 @@ namespace ProyectoADSI2024
         //FIN BOTON EDITAR
 
 
-        //SELECCION DE SOCIOS EN EL DATAGRIDVIEW
+        //SELECCION DE SOCIOS EN EL DATAGRIDVIEW (UTILIZADO POR EDITAR Y ELIMINAR)
         private void dgGestionSocios_SelectionChanged(object sender, EventArgs e)
         {
             if (dgGestionSocios.SelectedRows.Count > 0)
@@ -293,12 +293,90 @@ namespace ProyectoADSI2024
 
             }
         }
+
+
+        //PARA LA FUNCIONALIDAD DE BUSQUEDA
         
+        //Llenar 
+        private void LlenarComboBoxColumnas()
+        {
+            // Agregando las columnas
+            cboxBuscar.Items.Add("SocioID");
+            cboxBuscar.Items.Add("Nombre");
+            cboxBuscar.Items.Add("DNI");
+            cboxBuscar.Items.Add("Direccion");
+            cboxBuscar.Items.Add("Telefono");
+            cboxBuscar.Items.Add("Email");
+            cboxBuscar.Items.Add("No activo");
+
+            cboxBuscar.SelectedIndex = 0; // Seleccionar la primera opción por defecto
+        }
+
+        //Filtro aplicado
+        private void FiltrarDatos()
+        {
+            string columnaSeleccionada = cboxBuscar.SelectedItem.ToString();
+            string filtro = tboxBuscar.Text.Trim();
+
+            using (SqlConnection connection = new SqlConnection(conexion))
+            {
+                string query;
+
+                if (columnaSeleccionada == "No activo")
+                {
+                    // Mostrar socios no activos y buscar solo por SocioID
+                    query = @"SELECT SocioID, Nombre, DNI, Direccion, Telefono, Email AS Correo, Activo
+                      FROM proyecto.Socio
+                      WHERE Activo = 0 AND SocioID LIKE @Filtro";
+                }
+                else
+                {
+                    // Filtrar dentro de los socios activos por la columna seleccionada
+                    query = $@"SELECT SocioID, Nombre, DNI, Direccion, Telefono, Email AS Correo, Activo
+                       FROM proyecto.Socio 
+                       WHERE Activo = 1 AND {columnaSeleccionada} LIKE @Filtro";
+                }
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@Filtro", "%" + filtro + "%");
+
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                    dgGestionSocios.DataSource = dt;
+
+                    // Ocultar la columna Activo
+                    if (dgGestionSocios.Columns["Activo"] != null)
+                    {
+                        dgGestionSocios.Columns["Activo"].Visible = false;
+                    }
+                }
+            }
+        }
+
+        private void cboxBuscar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FiltrarDatos();
+        }
+
+        private void tboxBuscar_TextChanged(object sender, EventArgs e)
+        {
+            FiltrarDatos();
+        }
+        //FIN FUNCIONALIDAD DE BUSCAR
 
 
-
-
-
+        //OBLIGANDO EL USO DE SOLO NUMERO CAMPO SOCIOID
+        private void tboxSocioID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permitir solo números, tecla de retroceso y tecla de borrado
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Evita que se ingrese cualquier otro carácter
+            }
+        }
+        
 
 
 
