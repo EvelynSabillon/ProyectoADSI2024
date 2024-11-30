@@ -66,6 +66,10 @@ namespace ProyectoADSI2024
         {
             //Cargando datos al DGv
             CargarDatos();
+
+            //EVENTRO SELECCION DE FILAS
+            dgGestionSocios.SelectionChanged += dgGestionSocios_SelectionChanged;
+
         }
 
 
@@ -115,7 +119,7 @@ namespace ProyectoADSI2024
                                 cmd.ExecuteNonQuery();
 
                                 MessageBox.Show("Registro eliminado con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                CargarDatos();  // Recargar los datos para reflejar los cambios
+                                CargarDatos();  
                             }
                         }
                     }
@@ -192,12 +196,12 @@ namespace ProyectoADSI2024
                         {
                             MessageBox.Show($"El SocioID {socioID} ya existe. El siguiente SocioID disponible es {proximoID}.", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             tboxSocioID.Text = proximoID.ToString();
-                            //CargarDatos();
+                            
                         }
                         else
                         {
                             MessageBox.Show("Registro guardado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            CargarDatos();  // Recargar datos en el DataGridView
+                            CargarDatos();  
                             LimpiarCampos();
                         }
                     }
@@ -208,8 +212,93 @@ namespace ProyectoADSI2024
                 MessageBox.Show("Error al cargar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        //FIN BOTON AGREGAR
+        //FIN BOTON GUARDAR
+
+
+        //UTILIZADO PARA EL BOTON EDITAR
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (dgGestionSocios.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un registro para editar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            DialogResult result = MessageBox.Show("¿Desea editar el registro actual?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                
+                int socioID = int.Parse(dgGestionSocios.SelectedRows[0].Cells["SocioID"].Value.ToString());
+                string nuevoNombre = tboxNombre.Text;
+                string nuevoDNI = mktboxDNI.Text;
+                string nuevaDireccion = tboxDireccion.Text;
+                string nuevoTelefono = mktboxTelefono.Text;
+                string nuevoEmail = tboxEmail.Text;
+                bool activo = chboxActivo.Checked;
+
+                try
+                {
+                    using (SqlConnection connection = new SqlConnection(conexion))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("sp_EditarSocio", connection))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            cmd.Parameters.AddWithValue("@SocioID", socioID);
+                            cmd.Parameters.AddWithValue("@Nombre", nuevoNombre);
+                            cmd.Parameters.AddWithValue("@DNI", nuevoDNI);
+                            cmd.Parameters.AddWithValue("@Direccion", nuevaDireccion);
+                            cmd.Parameters.AddWithValue("@Telefono", nuevoTelefono);
+                            cmd.Parameters.AddWithValue("@Email", nuevoEmail);
+                            cmd.Parameters.AddWithValue("@Activo", activo);
+
+                            connection.Open();
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    MessageBox.Show("Registro actualizado con éxito.");
+                    CargarDatos();  
+                    LimpiarCampos();
+                    btnGuardar.Enabled = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al cargar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+        }
+        //FIN BOTON EDITAR
+
+
+        //SELECCION DE SOCIOS EN EL DATAGRIDVIEW
+        private void dgGestionSocios_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgGestionSocios.SelectedRows.Count > 0)
+            {
+                // Obtener la fila seleccionada
+                DataGridViewRow filaSeleccionada = dgGestionSocios.SelectedRows[0];
+
+                // Asignar los valores de la fila seleccionada a los TextBox
+                tboxSocioID.Text = filaSeleccionada.Cells["SocioID"].Value.ToString();
+                tboxNombre.Text = filaSeleccionada.Cells["Nombre"].Value.ToString();
+                mktboxDNI.Text = filaSeleccionada.Cells["DNI"].Value.ToString();
+                tboxDireccion.Text = filaSeleccionada.Cells["Direccion"].Value.ToString();
+                mktboxTelefono.Text = filaSeleccionada.Cells["Telefono"].Value.ToString();
+                tboxEmail.Text = filaSeleccionada.Cells["Correo"].Value.ToString();
+                chboxActivo.Checked = Convert.ToBoolean(filaSeleccionada.Cells["activo"].Value);
+
+                tboxSocioID.Enabled = false;
+
+            }
+        }
         
+
+
+
+
+
 
 
 
