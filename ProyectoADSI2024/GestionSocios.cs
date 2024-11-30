@@ -70,6 +70,9 @@ namespace ProyectoADSI2024
             //EVENTRO SELECCION DE FILAS
             dgGestionSocios.SelectionChanged += dgGestionSocios_SelectionChanged;
 
+            //Cargar datos en el combobox de busqueda
+            LlenarComboBoxColumnas();
+
         }
 
 
