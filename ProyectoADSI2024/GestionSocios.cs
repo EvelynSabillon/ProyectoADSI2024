@@ -20,7 +20,7 @@ namespace ProyectoADSI2024
             InitializeComponent();
         }
 
-        // Método para cargar los datos en el DataGridView
+        // METODO PARA CARGAR LOS DATOS EN EL DATAGRIDVIEW
         private void CargarDatos()
         {
             // Crear el DataTable donde se almacenarán los datos
@@ -54,17 +54,87 @@ namespace ProyectoADSI2024
             }
         }
 
-
+        //Boton Atras
         private void btnAtras_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Desea volver al menu principal?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 this.Dispose();
         }
 
+       
         private void GestionSocios_Load(object sender, EventArgs e)
         {
             //Cargando datos al DGv
             CargarDatos();
         }
+
+
+        //UTILIZADO PARA LIMPIAR
+        private void LimpiarCampos()
+        {
+            tboxSocioID.Clear();
+            tboxNombre.Clear();
+            mktboxDNI.Clear();
+            tboxDireccion.Clear();
+            mktboxTelefono.Clear();
+            tboxEmail.Clear();
+
+            //Utilizado para editar
+            tboxSocioID.Enabled = true;
+            dgGestionSocios.ClearSelection();
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+        }
+        //FIN LIMPIAR
+
+
+
+        //UTILIZADO PARA EL BOTON ELIMINAR
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dgGestionSocios.SelectedRows.Count > 0)
+            {
+                int socioID = Convert.ToInt32(dgGestionSocios.SelectedRows[0].Cells["SocioID"].Value);
+
+                DialogResult result = MessageBox.Show("¿Desea eliminar el registro seleccionado?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        using (SqlConnection connection = new SqlConnection(conexion))
+                        {
+                            using (SqlCommand cmd = new SqlCommand("sp_EliminarSocio", connection))
+                            {
+                                cmd.CommandType = CommandType.StoredProcedure;
+                                cmd.Parameters.AddWithValue("@SocioID", socioID);
+
+                                connection.Open();
+                                cmd.ExecuteNonQuery();
+
+                                MessageBox.Show("Registro eliminado con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                CargarDatos();  // Recargar los datos para reflejar los cambios
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al cargar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un registro para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        //FIN BOTON ELIMINAR
+
+
+
+
+
     }
 }
