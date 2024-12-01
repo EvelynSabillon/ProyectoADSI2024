@@ -18,12 +18,11 @@ namespace ProyectoADSI2024
         SqlConnection conexion;
         SqlDataAdapter adp;
         //Tooltip
-        System.Windows.Forms.ToolTip toolTip1;
+        System.Windows.Forms.ToolTip toolTips;
         public PagoProveedores()
         {
             InitializeComponent();
-            toolTip1 = new System.Windows.Forms.ToolTip();
-            toolTip1.SetToolTip(compraId, "El ID de Compra debe ser un ID existente.");
+            toolTipsTxts();
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -154,55 +153,108 @@ namespace ProyectoADSI2024
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionString2))
+                // Validar campos vacíos
+                if (string.IsNullOrWhiteSpace(pagoId.Text) ||
+                    string.IsNullOrWhiteSpace(provId.Text) ||
+                    string.IsNullOrWhiteSpace(compraId.Text) ||
+                    string.IsNullOrWhiteSpace(datePago.Text) ||
+                    string.IsNullOrWhiteSpace(pagoMonto.Text) ||
+                    comboMetodo.SelectedItem == null ||
+                    comboEstado.SelectedItem == null)
                 {
-                    conn.Open();
+                    MessageBox.Show("Todos los campos deben estar llenos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                    using (SqlCommand cmd = new SqlCommand("spPagoProvInsert", conn))
+                // Validar que uno de los dos RadioButton esté seleccionado
+                if (!rdCon.Checked && !rdMed.Checked)
+                {
+                    MessageBox.Show("Debe seleccionar una opción entre CompraConID y CompraMedID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Validar valores numéricos y positivos
+                if (!int.TryParse(pagoId.Text, out int pagoIdValue) || pagoIdValue <= 0)
+                {
+                    MessageBox.Show("PagoID debe ser un número mayor a cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!int.TryParse(provId.Text, out int provIdValue) || provIdValue <= 0)
+                {
+                    MessageBox.Show("ProveedorID debe ser un número mayor a cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!int.TryParse(compraId.Text, out int compraIdValue) || compraIdValue <= 0)
+                {
+                    MessageBox.Show("CompraID debe ser un número mayor a cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!decimal.TryParse(pagoMonto.Text, out decimal pagoMontoValue) || pagoMontoValue <= 0)
+                {
+                    MessageBox.Show("MontoPago debe ser un número mayor a cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!DateTime.TryParse(datePago.Text, out DateTime fechaPagoValue))
+                {
+                    MessageBox.Show("FechaPago debe tener un formato válido de fecha.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Confirmación de guardado
+                if (MessageBox.Show("¿Desea guardar el registro?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    using (SqlConnection conn = new SqlConnection(connectionString2))
                     {
-                        cmd.CommandType = CommandType.StoredProcedure;
+                        conn.Open();
 
-                        // Agrega los parámetros
-                        cmd.Parameters.AddWithValue("@PagoID", int.Parse(pagoId.Text));
-                        cmd.Parameters.AddWithValue("@ProveedorID", int.Parse(provId.Text));
-
-                        // Lógica para CompraConID o CompraMedID
-                        if (rdCon.Checked)
+                        using (SqlCommand cmd = new SqlCommand("spPagoProvInsert", conn))
                         {
-                            cmd.Parameters.AddWithValue("@CompraConID", int.Parse(compraId.Text));
-                            cmd.Parameters.AddWithValue("@CompraMedID", DBNull.Value); // NULL para el otro campo
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            // Agregar parámetros
+                            cmd.Parameters.AddWithValue("@PagoID", pagoIdValue);
+                            cmd.Parameters.AddWithValue("@ProveedorID", provIdValue);
+
+                            if (rdCon.Checked)
+                            {
+                                cmd.Parameters.AddWithValue("@CompraConID", compraIdValue);
+                                cmd.Parameters.AddWithValue("@CompraMedID", DBNull.Value);
+                            }
+                            else if (rdMed.Checked)
+                            {
+                                cmd.Parameters.AddWithValue("@CompraConID", DBNull.Value);
+                                cmd.Parameters.AddWithValue("@CompraMedID", compraIdValue);
+                            }
+
+                            cmd.Parameters.AddWithValue("@FechaPago", fechaPagoValue);
+                            cmd.Parameters.AddWithValue("@MontoPago", pagoMontoValue);
+                            cmd.Parameters.AddWithValue("@MetodoPago", comboMetodo.SelectedItem.ToString());
+                            cmd.Parameters.AddWithValue("@EstadoPago", comboEstado.SelectedItem.ToString());
+                            cmd.Parameters.AddWithValue("@Activo", true);
+
+                            // Ejecutar comando
+                            cmd.ExecuteNonQuery();
+
+                            MessageBox.Show("Registro guardado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            CargarDatos();
                         }
-                        else if (rdMed.Checked)
-                        {
-                            cmd.Parameters.AddWithValue("@CompraConID", DBNull.Value); // NULL para el otro campo
-                            cmd.Parameters.AddWithValue("@CompraMedID", int.Parse(compraId.Text));
-                        }
-
-                        cmd.Parameters.AddWithValue("@FechaPago", DateTime.Parse(datePago.Text));
-                        cmd.Parameters.AddWithValue("@MontoPago", decimal.Parse(pagoMonto.Text));
-                        cmd.Parameters.AddWithValue("@MetodoPago", comboMetodo.SelectedItem.ToString());
-
-                        cmd.Parameters.AddWithValue("@EstadoPago", comboEstado.SelectedItem.ToString());
-
-                        cmd.Parameters.AddWithValue("@Activo", true);
-
-                        // Ejecutar el comando
-                        cmd.ExecuteNonQuery();
-
-                        MessageBox.Show("Pago guardado exitosamente.");
-
-                        CargarDatos();
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al guardar el pago: " + ex.Message);
+                MessageBox.Show("Error al guardar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
         private void LimpiarTxtBox()
         {
@@ -450,6 +502,32 @@ namespace ProyectoADSI2024
         private void comboBusca_SelectedIndexChanged(object sender, EventArgs e)
         {
             FiltrarDatos();
+        }
+
+
+        private void toolTipsTxts()
+        {
+            toolTips = new System.Windows.Forms.ToolTip();
+            toolTips.IsBalloon = true;
+            toolTips.ToolTipIcon = ToolTipIcon.Info;
+            toolTips.ToolTipTitle = "Ayuda";
+            toolTips.UseAnimation = true;
+            toolTips.SetToolTip(pagoId, "Ingrese un número de Referencia de Pago Válido");
+            toolTips.SetToolTip(provId, "Ingrese un número de Proveedor Válido");
+            toolTips.SetToolTip(comboName, "Seleccione el Nombre del Proveedor.");
+            toolTips.SetToolTip(compraId, "Ingrese un Id de una Compra Existente.");
+            toolTips.SetToolTip(datePago, "Seleccione la fecha del Pago.");
+            toolTips.SetToolTip(pagoMonto, "Ingrese el Monto del Pago.");
+            toolTips.SetToolTip(comboMetodo, "Seleccione el Método de Pago.");
+            toolTips.SetToolTip(comboEstado, "Seleccione el Estado del Pago.");
+            toolTips.SetToolTip(btnAtras, "Regresar al menú.");
+            toolTips.SetToolTip(btnEliminar, "Eliminar el registro");
+            toolTips.SetToolTip(button2, "Limpiar los cuadros de texto y fechas.");
+            toolTips.SetToolTip(button4, "Editar el registro.");
+            toolTips.SetToolTip(btnGuardar, "Guardar el registro.");
+            toolTips.SetToolTip(comboBusca, "Seleccione el campo en el que desea buscar.");
+            toolTips.SetToolTip(txBusca, "Ingrese registro a buscar");
+
         }
     }
 }
