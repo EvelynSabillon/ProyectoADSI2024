@@ -28,42 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmKardexConcentrado));
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.dtpFechaVenKar = new System.Windows.Forms.DateTimePicker();
+            this.txtKarSalida = new System.Windows.Forms.TextBox();
+            this.txtKarEntrada = new System.Windows.Forms.TextBox();
+            this.txtKarPrecio = new System.Windows.Forms.TextBox();
+            this.txtCodKarCon = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtNomKarCon = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.tboxBuscar = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cboxBuscar = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.tboxSocioID = new System.Windows.Forms.TextBox();
+            this.txtKardexConId = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.chboxActivo = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.cbxTipo = new System.Windows.Forms.ComboBox();
+            this.cbxTipoKarCon = new System.Windows.Forms.ComboBox();
             this.btnGenerarReporte = new System.Windows.Forms.Button();
             this.btnAtras = new System.Windows.Forms.PictureBox();
+            this.epValidaGuardar = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epValidarEditar = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epValidarEliminar = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epValidaGuardar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epValidarEditar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epValidarEliminar)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -94,60 +98,53 @@
             this.button1.TabIndex = 183;
             this.button1.Text = "EDITAR";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // dateTimePicker1
+            // dtpFechaVenKar
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(234, 418);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(234, 25);
-            this.dateTimePicker1.TabIndex = 182;
+            this.dtpFechaVenKar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaVenKar.Location = new System.Drawing.Point(234, 378);
+            this.dtpFechaVenKar.Name = "dtpFechaVenKar";
+            this.dtpFechaVenKar.Size = new System.Drawing.Size(234, 25);
+            this.dtpFechaVenKar.TabIndex = 182;
             // 
-            // textBox7
+            // txtKarSalida
             // 
-            this.textBox7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(165, 371);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(93, 25);
-            this.textBox7.TabIndex = 181;
+            this.txtKarSalida.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKarSalida.Location = new System.Drawing.Point(339, 325);
+            this.txtKarSalida.Name = "txtKarSalida";
+            this.txtKarSalida.Size = new System.Drawing.Size(93, 25);
+            this.txtKarSalida.TabIndex = 180;
             // 
-            // textBox6
+            // txtKarEntrada
             // 
-            this.textBox6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(339, 325);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(93, 25);
-            this.textBox6.TabIndex = 180;
+            this.txtKarEntrada.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKarEntrada.Location = new System.Drawing.Point(165, 325);
+            this.txtKarEntrada.Name = "txtKarEntrada";
+            this.txtKarEntrada.Size = new System.Drawing.Size(93, 25);
+            this.txtKarEntrada.TabIndex = 179;
             // 
-            // textBox5
+            // txtKarPrecio
             // 
-            this.textBox5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(165, 325);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(93, 25);
-            this.textBox5.TabIndex = 179;
+            this.txtKarPrecio.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKarPrecio.Location = new System.Drawing.Point(165, 279);
+            this.txtKarPrecio.Name = "txtKarPrecio";
+            this.txtKarPrecio.Size = new System.Drawing.Size(93, 25);
+            this.txtKarPrecio.TabIndex = 178;
             // 
-            // textBox4
+            // txtCodKarCon
             // 
-            this.textBox4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(165, 279);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(93, 25);
-            this.textBox4.TabIndex = 178;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(165, 233);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(93, 25);
-            this.textBox3.TabIndex = 177;
+            this.txtCodKarCon.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodKarCon.Location = new System.Drawing.Point(165, 233);
+            this.txtCodKarCon.Name = "txtCodKarCon";
+            this.txtCodKarCon.Size = new System.Drawing.Size(93, 25);
+            this.txtCodKarCon.TabIndex = 177;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(34, 421);
+            this.label11.Location = new System.Drawing.Point(34, 381);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(178, 21);
             this.label11.TabIndex = 176;
@@ -173,13 +170,13 @@
             this.label8.TabIndex = 174;
             this.label8.Text = "Precio";
             // 
-            // textBox2
+            // txtNomKarCon
             // 
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(165, 187);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(303, 25);
-            this.textBox2.TabIndex = 173;
+            this.txtNomKarCon.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomKarCon.Location = new System.Drawing.Point(165, 187);
+            this.txtNomKarCon.Name = "txtNomKarCon";
+            this.txtNomKarCon.Size = new System.Drawing.Size(303, 25);
+            this.txtNomKarCon.TabIndex = 173;
             // 
             // label7
             // 
@@ -207,6 +204,7 @@
             this.button2.TabIndex = 171;
             this.button2.Text = "LIMPIAR";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnEliminar
             // 
@@ -224,6 +222,7 @@
             this.btnEliminar.TabIndex = 170;
             this.btnEliminar.Text = "ELIMINAR";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnGuardar
             // 
@@ -241,16 +240,7 @@
             this.btnGuardar.TabIndex = 169;
             this.btnGuardar.Text = "GUARDAR";
             this.btnGuardar.UseVisualStyleBackColor = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(34, 371);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(87, 21);
-            this.label6.TabIndex = 168;
-            this.label6.Text = "Existencia";
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // tboxBuscar
             // 
@@ -300,13 +290,14 @@
             this.label3.TabIndex = 162;
             this.label3.Text = "Código ";
             // 
-            // tboxSocioID
+            // txtKardexConId
             // 
-            this.tboxSocioID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxSocioID.Location = new System.Drawing.Point(165, 141);
-            this.tboxSocioID.Name = "tboxSocioID";
-            this.tboxSocioID.Size = new System.Drawing.Size(93, 25);
-            this.tboxSocioID.TabIndex = 161;
+            this.txtKardexConId.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKardexConId.Location = new System.Drawing.Point(165, 141);
+            this.txtKardexConId.Name = "txtKardexConId";
+            this.txtKardexConId.ReadOnly = true;
+            this.txtKardexConId.Size = new System.Drawing.Size(93, 25);
+            this.txtKardexConId.TabIndex = 161;
             // 
             // label2
             // 
@@ -324,40 +315,30 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(499, 139);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Size = new System.Drawing.Size(547, 375);
             this.dataGridView1.TabIndex = 159;
-            // 
-            // chboxActivo
-            // 
-            this.chboxActivo.AutoSize = true;
-            this.chboxActivo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chboxActivo.Location = new System.Drawing.Point(205, 464);
-            this.chboxActivo.Name = "chboxActivo";
-            this.chboxActivo.Size = new System.Drawing.Size(78, 25);
-            this.chboxActivo.TabIndex = 158;
-            this.chboxActivo.Text = "Activo";
-            this.chboxActivo.UseVisualStyleBackColor = true;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // label4
             // 
@@ -369,20 +350,20 @@
             this.label4.TabIndex = 184;
             this.label4.Text = "Tipo";
             // 
-            // cbxTipo
+            // cbxTipoKarCon
             // 
-            this.cbxTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxTipo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxTipo.FormattingEnabled = true;
-            this.cbxTipo.Items.AddRange(new object[] {
+            this.cbxTipoKarCon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxTipoKarCon.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxTipoKarCon.FormattingEnabled = true;
+            this.cbxTipoKarCon.Items.AddRange(new object[] {
             "Mantenimiento",
             "Lechera",
-            "18% Lechera",
+            "Lechera 18%",
             "Churro"});
-            this.cbxTipo.Location = new System.Drawing.Point(340, 233);
-            this.cbxTipo.Name = "cbxTipo";
-            this.cbxTipo.Size = new System.Drawing.Size(128, 25);
-            this.cbxTipo.TabIndex = 185;
+            this.cbxTipoKarCon.Location = new System.Drawing.Point(340, 233);
+            this.cbxTipoKarCon.Name = "cbxTipoKarCon";
+            this.cbxTipoKarCon.Size = new System.Drawing.Size(128, 25);
+            this.cbxTipoKarCon.TabIndex = 185;
             // 
             // btnGenerarReporte
             // 
@@ -415,39 +396,48 @@
             this.btnAtras.TabStop = false;
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
+            // epValidaGuardar
+            // 
+            this.epValidaGuardar.ContainerControl = this;
+            // 
+            // epValidarEditar
+            // 
+            this.epValidarEditar.ContainerControl = this;
+            // 
+            // epValidarEliminar
+            // 
+            this.epValidarEliminar.ContainerControl = this;
+            // 
             // frmKardexConcentrado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1070, 595);
             this.Controls.Add(this.btnGenerarReporte);
-            this.Controls.Add(this.cbxTipo);
+            this.Controls.Add(this.cbxTipoKarCon);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.dtpFechaVenKar);
+            this.Controls.Add(this.txtKarSalida);
+            this.Controls.Add(this.txtKarEntrada);
+            this.Controls.Add(this.txtKarPrecio);
+            this.Controls.Add(this.txtCodKarCon);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtNomKarCon);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.tboxBuscar);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.cboxBuscar);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.tboxSocioID);
+            this.Controls.Add(this.txtKardexConId);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.chboxActivo);
             this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -456,6 +446,9 @@
             this.Load += new System.EventHandler(this.frmKardexConcentrado_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epValidaGuardar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epValidarEditar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epValidarEliminar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -466,32 +459,32 @@
         private System.Windows.Forms.PictureBox btnAtras;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.DateTimePicker dtpFechaVenKar;
+        private System.Windows.Forms.TextBox txtKarSalida;
+        private System.Windows.Forms.TextBox txtKarEntrada;
+        private System.Windows.Forms.TextBox txtKarPrecio;
+        private System.Windows.Forms.TextBox txtCodKarCon;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtNomKarCon;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tboxBuscar;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cboxBuscar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tboxSocioID;
+        private System.Windows.Forms.TextBox txtKardexConId;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.CheckBox chboxActivo;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cbxTipo;
+        private System.Windows.Forms.ComboBox cbxTipoKarCon;
         private System.Windows.Forms.Button btnGenerarReporte;
+        private System.Windows.Forms.ErrorProvider epValidaGuardar;
+        private System.Windows.Forms.ErrorProvider epValidarEditar;
+        private System.Windows.Forms.ErrorProvider epValidarEliminar;
     }
 }
