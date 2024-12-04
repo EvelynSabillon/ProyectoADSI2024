@@ -40,50 +40,82 @@ namespace ProyectoADSI2024
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            // Limpiar errores previos
+            errorProvider1.Clear();
+
+            bool tieneErrores = false;
+
             // Validar que todos los campos requeridos estén llenos
-            if (string.IsNullOrWhiteSpace(provId.Text) ||
-                string.IsNullOrWhiteSpace(provName.Text) ||
-                string.IsNullOrWhiteSpace(provRTN.Text) ||
-                string.IsNullOrWhiteSpace(provDirec.Text) ||
-                string.IsNullOrWhiteSpace(provTelef.Text) ||
-                string.IsNullOrWhiteSpace(provEmail.Text))
+            if (string.IsNullOrWhiteSpace(provId.Text))
             {
-                MessageBox.Show("Por favor, complete todos los campos.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                errorProvider1.SetError(provId, "El ID no puede estar vacío.");
+                tieneErrores = true;
+            }
+            if (string.IsNullOrWhiteSpace(provName.Text))
+            {
+                errorProvider1.SetError(provName, "El nombre no puede estar vacío.");
+                tieneErrores = true;
+            }
+            if (string.IsNullOrWhiteSpace(provRTN.Text))
+            {
+                errorProvider1.SetError(provRTN, "El RTN no puede estar vacío.");
+                tieneErrores = true;
+            }
+            if (string.IsNullOrWhiteSpace(provDirec.Text))
+            {
+                errorProvider1.SetError(provDirec, "La dirección no puede estar vacía.");
+                tieneErrores = true;
+            }
+            if (string.IsNullOrWhiteSpace(provTelef.Text))
+            {
+                errorProvider1.SetError(provTelef, "El teléfono no puede estar vacío.");
+                tieneErrores = true;
+            }
+            if (string.IsNullOrWhiteSpace(provEmail.Text))
+            {
+                errorProvider1.SetError(provEmail, "El correo no puede estar vacío.");
+                tieneErrores = true;
             }
 
             // Validar el formato del RTN
             if (!Regex.IsMatch(provRTN.Text, @"^\d{4}-\d{4}-\d{5}$"))
             {
-                MessageBox.Show("El RTN debe tener el formato ****-****-***** (solo números y guiones).", "RTN inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                errorProvider1.SetError(provRTN, "El RTN debe tener el formato ****-****-*****.");
+                tieneErrores = true;
             }
 
             // Validar que el nombre contenga solo letras
             if (!Regex.IsMatch(provName.Text, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"))
             {
-                MessageBox.Show("El nombre debe contener solo letras y espacios.", "Nombre inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                errorProvider1.SetError(provName, "El nombre debe contener solo letras y espacios.");
+                tieneErrores = true;
             }
 
             // Validar el formato del teléfono
             if (!Regex.IsMatch(provTelef.Text, @"^\(\d{3}\)\d{4}-\d{4}$"))
             {
-                MessageBox.Show("El formato del número de teléfono es inválido. Use el formato (***)****-****.", "Teléfono inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                errorProvider1.SetError(provTelef, "El formato del teléfono es inválido. Use el formato (***)****-****.");
+                tieneErrores = true;
             }
 
             // Validar el formato del correo electrónico
             if (!IsValidEmail(provEmail.Text))
             {
-                MessageBox.Show("El correo electrónico no tiene un formato válido.", "Correo inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                errorProvider1.SetError(provEmail, "El correo electrónico no tiene un formato válido.");
+                tieneErrores = true;
             }
 
             // Validar que el ID sea un número entero positivo
             if (!int.TryParse(provId.Text, out int provID) || provID <= 0)
             {
-                MessageBox.Show("El ID debe ser un número entero positivo.", "ID inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                errorProvider1.SetError(provId, "El ID debe ser un número entero positivo.");
+                tieneErrores = true;
+            }
+
+            // Si hay errores, no continuar
+            if (tieneErrores)
+            {
+                MessageBox.Show("Corrija los errores marcados antes de continuar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -194,55 +226,99 @@ namespace ProyectoADSI2024
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // Limpiar errores previos
+            errorProvider2.Clear();
 
-            // Validar que todos los campos requeridos estén llenos
+            bool tieneErrores = false;
+
+            // Validar que el ID no esté vacío
             if (string.IsNullOrWhiteSpace(provId.Text))
             {
-                MessageBox.Show("Por favor, ingrese el ID del proveedor para editar.");
-                return;
+                errorProvider2.SetError(provId, "Por favor, ingrese el ID del proveedor para editar.");
+                tieneErrores = true;
             }
 
-            // Convertir el ID y el estado del checkbox
-            if (!int.TryParse(provId.Text, out int provID))
+            // Validar que el ID sea un número entero positivo
+            if (!int.TryParse(provId.Text, out int provID) || provID <= 0)
             {
-                MessageBox.Show("El ID debe ser un número válido.");
+                errorProvider2.SetError(provId, "El ID debe ser un número entero positivo.");
+                tieneErrores = true;
+            }
+
+            // Validar que el nombre contenga solo letras
+            if (!Regex.IsMatch(provName.Text, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"))
+            {
+                errorProvider2.SetError(provName, "El nombre debe contener solo letras y espacios.");
+                tieneErrores = true;
+            }
+
+            // Validar el formato del RTN
+            if (!Regex.IsMatch(provRTN.Text, @"^\d{4}-\d{4}-\d{5}$"))
+            {
+                errorProvider2.SetError(provRTN, "El RTN debe tener el formato ****-****-*****.");
+                tieneErrores = true;
+            }
+
+            // Validar que la dirección no esté vacía
+            if (string.IsNullOrWhiteSpace(provDirec.Text))
+            {
+                errorProvider2.SetError(provDirec, "La dirección no puede estar vacía.");
+                tieneErrores = true;
+            }
+
+            // Validar el formato del teléfono
+            if (!Regex.IsMatch(provTelef.Text, @"^\(\d{3}\)\d{4}-\d{4}$"))
+            {
+                errorProvider2.SetError(provTelef, "El formato del teléfono es inválido. Use el formato (***)****-****.");
+                tieneErrores = true;
+            }
+
+            // Validar el formato del correo electrónico
+            if (!IsValidEmail(provEmail.Text))
+            {
+                errorProvider2.SetError(provEmail, "El correo electrónico no tiene un formato válido.");
+                tieneErrores = true;
+            }
+
+            // Si hay errores, no continuar
+            if (tieneErrores)
+            {
+                MessageBox.Show("Corrija los errores marcados antes de continuar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            bool activo = chboxActivo.Checked;
+            // Procesar el formulario (actualizar en la base de datos)
+            GuardarCambios(provID, provName.Text, provRTN.Text, provDirec.Text, provTelef.Text, provEmail.Text, chboxActivo.Checked);
+        }
 
-            // Ejecutar el procedimiento almacenado
+        private void GuardarCambios(int id, string nombre, string rtn, string direccion, string telefono, string email, bool activo)
+        {
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-
                     using (SqlCommand cmd = new SqlCommand("spRegProvUpdate", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-
-                        // Agregar parámetros
-                        cmd.Parameters.AddWithValue("@provID", provID);
-                        cmd.Parameters.AddWithValue("@provName", provName.Text);
-                        cmd.Parameters.AddWithValue("@provRTN", provRTN.Text);
-                        cmd.Parameters.AddWithValue("@provDirec", provDirec.Text);
-                        cmd.Parameters.AddWithValue("@provTelef", provTelef.Text);
-                        cmd.Parameters.AddWithValue("@provEmail", provEmail.Text);
+                        cmd.Parameters.AddWithValue("@provID", id);
+                        cmd.Parameters.AddWithValue("@provName", nombre);
+                        cmd.Parameters.AddWithValue("@provRTN", rtn);
+                        cmd.Parameters.AddWithValue("@provDirec", direccion);
+                        cmd.Parameters.AddWithValue("@provTelef", telefono);
+                        cmd.Parameters.AddWithValue("@provEmail", email);
                         cmd.Parameters.AddWithValue("@chboxActivo", activo);
-
                         cmd.ExecuteNonQuery();
                     }
                 }
-
-                MessageBox.Show("Proveedor editado correctamente.");
+                MessageBox.Show("Proveedor editado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LimpiarTxtBox();
                 CargarDatos();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ocurrió un error: {ex.Message}");
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
