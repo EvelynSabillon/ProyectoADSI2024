@@ -153,61 +153,103 @@ namespace ProyectoADSI2024
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            try
+            // Limpiar errores previos
+            errorProvider1.Clear();
+
+            bool tieneErrores = false;
+
+            // Validar campos vacíos
+            if (string.IsNullOrWhiteSpace(pagoId.Text))
             {
-                // Validar campos vacíos
-                if (string.IsNullOrWhiteSpace(pagoId.Text) ||
-                    string.IsNullOrWhiteSpace(provId.Text) ||
-                    string.IsNullOrWhiteSpace(compraId.Text) ||
-                    string.IsNullOrWhiteSpace(datePago.Text) ||
-                    string.IsNullOrWhiteSpace(pagoMonto.Text) ||
-                    comboMetodo.SelectedItem == null ||
-                    comboEstado.SelectedItem == null)
-                {
-                    MessageBox.Show("Todos los campos deben estar llenos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                errorProvider1.SetError(pagoId, "El campo PagoID no puede estar vacío.");
+                tieneErrores = true;
+            }
 
-                // Validar que uno de los dos RadioButton esté seleccionado
-                if (!rdCon.Checked && !rdMed.Checked)
-                {
-                    MessageBox.Show("Debe seleccionar una opción entre CompraConID y CompraMedID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+            if (string.IsNullOrWhiteSpace(provId.Text))
+            {
+                errorProvider1.SetError(provId, "El campo ProveedorID no puede estar vacío.");
+                tieneErrores = true;
+            }
 
-                // Validar valores numéricos y positivos
-                if (!int.TryParse(pagoId.Text, out int pagoIdValue) || pagoIdValue <= 0)
-                {
-                    MessageBox.Show("PagoID debe ser un número mayor a cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+            if (string.IsNullOrWhiteSpace(compraId.Text))
+            {
+                errorProvider1.SetError(compraId, "El campo CompraID no puede estar vacío.");
+                tieneErrores = true;
+            }
 
-                if (!int.TryParse(provId.Text, out int provIdValue) || provIdValue <= 0)
-                {
-                    MessageBox.Show("ProveedorID debe ser un número mayor a cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+            if (string.IsNullOrWhiteSpace(datePago.Text))
+            {
+                errorProvider1.SetError(datePago, "El campo FechaPago no puede estar vacío.");
+                tieneErrores = true;
+            }
 
-                if (!int.TryParse(compraId.Text, out int compraIdValue) || compraIdValue <= 0)
-                {
-                    MessageBox.Show("CompraID debe ser un número mayor a cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+            if (string.IsNullOrWhiteSpace(pagoMonto.Text))
+            {
+                errorProvider1.SetError(pagoMonto, "El campo MontoPago no puede estar vacío.");
+                tieneErrores = true;
+            }
 
-                if (!decimal.TryParse(pagoMonto.Text, out decimal pagoMontoValue) || pagoMontoValue <= 0)
-                {
-                    MessageBox.Show("MontoPago debe ser un número mayor a cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+            if (comboMetodo.SelectedItem == null)
+            {
+                errorProvider1.SetError(comboMetodo, "Debe seleccionar un método de pago.");
+                tieneErrores = true;
+            }
 
-                if (!DateTime.TryParse(datePago.Text, out DateTime fechaPagoValue))
-                {
-                    MessageBox.Show("FechaPago debe tener un formato válido de fecha.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+            if (comboEstado.SelectedItem == null)
+            {
+                errorProvider1.SetError(comboEstado, "Debe seleccionar un estado de pago.");
+                tieneErrores = true;
+            }
 
-                // Confirmación de guardado
-                if (MessageBox.Show("¿Desea guardar el registro?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            // Validar que uno de los dos RadioButton esté seleccionado
+            if (!rdCon.Checked && !rdMed.Checked)
+            {
+                MessageBox.Show("Debe seleccionar una opción entre CompraConID y CompraMedID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                tieneErrores = true;
+            }
+
+            // Validar valores numéricos y positivos
+            if (!int.TryParse(pagoId.Text, out int pagoIdValue) || pagoIdValue <= 0)
+            {
+                errorProvider1.SetError(pagoId, "PagoID debe ser un número mayor a cero.");
+                tieneErrores = true;
+            }
+
+            if (!int.TryParse(provId.Text, out int provIdValue) || provIdValue <= 0)
+            {
+                errorProvider1.SetError(provId, "ProveedorID debe ser un número mayor a cero.");
+                tieneErrores = true;
+            }
+
+            if (!int.TryParse(compraId.Text, out int compraIdValue) || compraIdValue <= 0)
+            {
+                errorProvider1.SetError(compraId, "CompraID debe ser un número mayor a cero.");
+                tieneErrores = true;
+            }
+
+            if (!decimal.TryParse(pagoMonto.Text, out decimal pagoMontoValue) || pagoMontoValue <= 0)
+            {
+                errorProvider1.SetError(pagoMonto, "MontoPago debe ser un número mayor a cero.");
+                tieneErrores = true;
+            }
+
+            if (!DateTime.TryParse(datePago.Text, out DateTime fechaPagoValue))
+            {
+                errorProvider1.SetError(datePago, "FechaPago debe tener un formato válido de fecha.");
+                tieneErrores = true;
+            }
+
+            // Si hay errores, mostrar mensaje y no continuar
+            if (tieneErrores)
+            {
+                MessageBox.Show("Corrija los errores marcados antes de continuar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Confirmación de guardado
+            if (MessageBox.Show("¿Desea guardar el registro?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                try
                 {
                     using (SqlConnection conn = new SqlConnection(connectionString2))
                     {
@@ -242,15 +284,15 @@ namespace ProyectoADSI2024
                             cmd.ExecuteNonQuery();
 
                             MessageBox.Show("Registro guardado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                            LimpiarTxtBox();
                             CargarDatos();
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al guardar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al guardar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -305,56 +347,150 @@ namespace ProyectoADSI2024
         private void button4_Click(object sender, EventArgs e)
         {
 
-            try
+            // Limpiar errores previos
+            errorProvider2.Clear();
+
+            bool tieneErrores = false;
+
+            // Validar campos vacíos
+            if (string.IsNullOrWhiteSpace(pagoId.Text))
             {
-                using (SqlConnection conn = new SqlConnection(connectionString2))
+                errorProvider2.SetError(pagoId, "El campo PagoID no puede estar vacío.");
+                tieneErrores = true;
+            }
+
+            if (string.IsNullOrWhiteSpace(provId.Text))
+            {
+                errorProvider2.SetError(provId, "El campo ProveedorID no puede estar vacío.");
+                tieneErrores = true;
+            }
+
+            if (string.IsNullOrWhiteSpace(compraId.Text))
+            {
+                errorProvider2.SetError(compraId, "El campo CompraID no puede estar vacío.");
+                tieneErrores = true;
+            }
+
+            if (string.IsNullOrWhiteSpace(datePago.Text))
+            {
+                errorProvider2.SetError(datePago, "El campo FechaPago no puede estar vacío.");
+                tieneErrores = true;
+            }
+
+            if (string.IsNullOrWhiteSpace(pagoMonto.Text))
+            {
+                errorProvider2.SetError(pagoMonto, "El campo MontoPago no puede estar vacío.");
+                tieneErrores = true;
+            }
+
+            if (comboMetodo.SelectedItem == null)
+            {
+                errorProvider2.SetError(comboMetodo, "Debe seleccionar un método de pago.");
+                tieneErrores = true;
+            }
+
+            if (comboEstado.SelectedItem == null)
+            {
+                errorProvider2.SetError(comboEstado, "Debe seleccionar un estado de pago.");
+                tieneErrores = true;
+            }
+
+            // Validar que uno de los dos RadioButton esté seleccionado
+            if (!rdCon.Checked && !rdMed.Checked)
+            {
+                MessageBox.Show("Debe seleccionar una opción entre CompraConID y CompraMedID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                tieneErrores = true;
+            }
+
+            // Validar valores numéricos y positivos
+            if (!int.TryParse(pagoId.Text, out int pagoIdValue) || pagoIdValue <= 0)
+            {
+                errorProvider2.SetError(pagoId, "PagoID debe ser un número mayor a cero.");
+                tieneErrores = true;
+            }
+
+            if (!int.TryParse(provId.Text, out int provIdValue) || provIdValue <= 0)
+            {
+                errorProvider2.SetError(provId, "ProveedorID debe ser un número mayor a cero.");
+                tieneErrores = true;
+            }
+
+            if (!int.TryParse(compraId.Text, out int compraIdValue) || compraIdValue <= 0)
+            {
+                errorProvider2.SetError(compraId, "CompraID debe ser un número mayor a cero.");
+                tieneErrores = true;
+            }
+
+            if (!decimal.TryParse(pagoMonto.Text, out decimal pagoMontoValue) || pagoMontoValue <= 0)
+            {
+                errorProvider2.SetError(pagoMonto, "MontoPago debe ser un número mayor a cero.");
+                tieneErrores = true;
+            }
+
+            if (!DateTime.TryParse(datePago.Text, out DateTime fechaPagoValue))
+            {
+                errorProvider2.SetError(datePago, "FechaPago debe tener un formato válido de fecha.");
+                tieneErrores = true;
+            }
+
+            // Si hay errores, mostrar mensaje y no continuar
+            if (tieneErrores)
+            {
+                MessageBox.Show("Corrija los errores marcados antes de continuar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Proceder con el guardado
+            if (MessageBox.Show("¿Desea editar el registro?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                try
                 {
-                    conn.Open();
-
-                    using (SqlCommand cmd = new SqlCommand("spPagoProvUpdate", conn))
+                    using (SqlConnection conn = new SqlConnection(connectionString2))
                     {
-                        cmd.CommandType = CommandType.StoredProcedure;
+                        conn.Open();
 
-                        // Agrega los parámetros
-                        cmd.Parameters.AddWithValue("@PagoID", int.Parse(pagoId.Text));
-                        cmd.Parameters.AddWithValue("@ProveedorID", int.Parse(provId.Text));
-
-                        // Lógica para CompraConID o CompraMedID
-                        if (rdCon.Checked)
+                        using (SqlCommand cmd = new SqlCommand("spPagoProvUpdate", conn))
                         {
-                            cmd.Parameters.AddWithValue("@CompraConID", int.Parse(compraId.Text));
-                            cmd.Parameters.AddWithValue("@CompraMedID", DBNull.Value); // NULL para el otro campo
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            // Agregar los parámetros
+                            cmd.Parameters.AddWithValue("@PagoID", pagoIdValue);
+                            cmd.Parameters.AddWithValue("@ProveedorID", provIdValue);
+
+                            // Lógica para CompraConID o CompraMedID
+                            if (rdCon.Checked)
+                            {
+                                cmd.Parameters.AddWithValue("@CompraConID", compraIdValue);
+                                cmd.Parameters.AddWithValue("@CompraMedID", DBNull.Value); // NULL para el otro campo
+                            }
+                            else if (rdMed.Checked)
+                            {
+                                cmd.Parameters.AddWithValue("@CompraConID", DBNull.Value); // NULL para el otro campo
+                                cmd.Parameters.AddWithValue("@CompraMedID", compraIdValue);
+                            }
+
+                            cmd.Parameters.AddWithValue("@FechaPago", fechaPagoValue);
+                            cmd.Parameters.AddWithValue("@MontoPago", pagoMontoValue);
+                            cmd.Parameters.AddWithValue("@MetodoPago", comboMetodo.SelectedItem.ToString());
+                            cmd.Parameters.AddWithValue("@EstadoPago", comboEstado.SelectedItem.ToString());
+                            cmd.Parameters.AddWithValue("@Activo", true);
+
+                            // Ejecutar el comando
+                            cmd.ExecuteNonQuery();
+
+                            MessageBox.Show("Registro editado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LimpiarTxtBox();
+                            CargarDatos();
                         }
-                        else if (rdMed.Checked)
-                        {
-                            cmd.Parameters.AddWithValue("@CompraConID", DBNull.Value); // NULL para el otro campo
-                            cmd.Parameters.AddWithValue("@CompraMedID", int.Parse(compraId.Text));
-                        }
-
-                        cmd.Parameters.AddWithValue("@FechaPago", DateTime.Parse(datePago.Text));
-                        cmd.Parameters.AddWithValue("@MontoPago", decimal.Parse(pagoMonto.Text));
-                        cmd.Parameters.AddWithValue("@MetodoPago", comboMetodo.SelectedItem.ToString());
-
-
-                        cmd.Parameters.AddWithValue("@EstadoPago", comboEstado.SelectedItem.ToString());
-
-                        cmd.Parameters.AddWithValue("@Activo", true);
-
-                        // Ejecutar el comando
-                        cmd.ExecuteNonQuery();
-
-                        MessageBox.Show("Pago guardado exitosamente.");
-
-                        CargarDatos();
                     }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al guardar el pago: " + ex.Message);
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al guardar el pago: " + ex.Message);
-            }
 
-           
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -366,38 +502,35 @@ namespace ProyectoADSI2024
             }
             int pagoID = Convert.ToInt32(dgPagoProv.CurrentRow.Cells["PagoID"].Value);
 
-            // Confirmar eliminación
-            DialogResult resultado = MessageBox.Show("¿Está seguro de que desea eliminar este proveedor?",
-                                                     "Confirmar Eliminación",
-                                                     MessageBoxButtons.YesNo,
-                                                     MessageBoxIcon.Warning);
-            if (resultado != DialogResult.Yes) return;
 
             // Ejecutar el procedimiento almacenado para eliminar el proveedor
-            try
+            if (MessageBox.Show("¿Desea eliminar el registro?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                using (SqlConnection conn = new SqlConnection(connectionString2))
+                try
                 {
-                    conn.Open();
-
-                    using (SqlCommand cmd = new SqlCommand("spPagoProvDelete", conn))
+                    using (SqlConnection conn = new SqlConnection(connectionString2))
                     {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@pagoID", pagoID);
+                        conn.Open();
 
-                        cmd.ExecuteNonQuery();
+                        using (SqlCommand cmd = new SqlCommand("spPagoProvDelete", conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@pagoID", pagoID);
+
+                            cmd.ExecuteNonQuery();
+                        }
                     }
+
+                    MessageBox.Show("Proveedor eliminado correctamente.");
+                    LimpiarTxtBox();
+                    // Recargar los datos del DataGridView
+                    CargarDatos();
                 }
+                catch (Exception ex)
+                {
 
-                MessageBox.Show("Proveedor eliminado correctamente.");
-
-                // Recargar los datos del DataGridView
-                CargarDatos();
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show($"Error al eliminar el registro: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Error al eliminar el registro: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

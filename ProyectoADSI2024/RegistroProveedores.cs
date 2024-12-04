@@ -125,31 +125,34 @@ namespace ProyectoADSI2024
 
         private void GuardarProveedor(int id, string nombre, string rtn, string direccion, string telefono, string email, bool activo)
         {
-            try
+            if (MessageBox.Show("¿Desea guardar el registro?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                try
                 {
-                    conn.Open();
-                    using (SqlCommand cmd = new SqlCommand("spRegProvInsert", conn))
+                    using (SqlConnection conn = new SqlConnection(connectionString))
                     {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@provID", id);
-                        cmd.Parameters.AddWithValue("@provName", nombre);
-                        cmd.Parameters.AddWithValue("@provRTN", rtn);
-                        cmd.Parameters.AddWithValue("@provDirec", direccion);
-                        cmd.Parameters.AddWithValue("@provTelef", telefono);
-                        cmd.Parameters.AddWithValue("@provEmail", email);
-                        cmd.Parameters.AddWithValue("@chboxActivo", activo);
-                        cmd.ExecuteNonQuery();
+                        conn.Open();
+                        using (SqlCommand cmd = new SqlCommand("spRegProvInsert", conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@provID", id);
+                            cmd.Parameters.AddWithValue("@provName", nombre);
+                            cmd.Parameters.AddWithValue("@provRTN", rtn);
+                            cmd.Parameters.AddWithValue("@provDirec", direccion);
+                            cmd.Parameters.AddWithValue("@provTelef", telefono);
+                            cmd.Parameters.AddWithValue("@provEmail", email);
+                            cmd.Parameters.AddWithValue("@chboxActivo", activo);
+                            cmd.ExecuteNonQuery();
+                        }
                     }
+                    MessageBox.Show("Registro guardado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimpiarTxtBox();
+                    CargarDatos();
                 }
-                MessageBox.Show("Proveedor guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimpiarTxtBox();
-                CargarDatos();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -293,31 +296,34 @@ namespace ProyectoADSI2024
 
         private void GuardarCambios(int id, string nombre, string rtn, string direccion, string telefono, string email, bool activo)
         {
-            try
+            if (MessageBox.Show("¿Desea editar el registro?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                try
                 {
-                    conn.Open();
-                    using (SqlCommand cmd = new SqlCommand("spRegProvUpdate", conn))
+                    using (SqlConnection conn = new SqlConnection(connectionString))
                     {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@provID", id);
-                        cmd.Parameters.AddWithValue("@provName", nombre);
-                        cmd.Parameters.AddWithValue("@provRTN", rtn);
-                        cmd.Parameters.AddWithValue("@provDirec", direccion);
-                        cmd.Parameters.AddWithValue("@provTelef", telefono);
-                        cmd.Parameters.AddWithValue("@provEmail", email);
-                        cmd.Parameters.AddWithValue("@chboxActivo", activo);
-                        cmd.ExecuteNonQuery();
+                        conn.Open();
+                        using (SqlCommand cmd = new SqlCommand("spRegProvUpdate", conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@provID", id);
+                            cmd.Parameters.AddWithValue("@provName", nombre);
+                            cmd.Parameters.AddWithValue("@provRTN", rtn);
+                            cmd.Parameters.AddWithValue("@provDirec", direccion);
+                            cmd.Parameters.AddWithValue("@provTelef", telefono);
+                            cmd.Parameters.AddWithValue("@provEmail", email);
+                            cmd.Parameters.AddWithValue("@chboxActivo", activo);
+                            cmd.ExecuteNonQuery();
+                        }
                     }
+                    MessageBox.Show("Registro editado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimpiarTxtBox();
+                    CargarDatos();
                 }
-                MessageBox.Show("Proveedor editado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimpiarTxtBox();
-                CargarDatos();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -330,38 +336,36 @@ namespace ProyectoADSI2024
             }
             int proveId = Convert.ToInt32(dgRegProv.CurrentRow.Cells["ProveedorID"].Value);
 
-            // Confirmar eliminación
-            DialogResult resultado = MessageBox.Show("¿Está seguro de que desea eliminar este proveedor?",
-                                                     "Confirmar Eliminación",
-                                                     MessageBoxButtons.YesNo,
-                                                     MessageBoxIcon.Warning);
-            if (resultado != DialogResult.Yes) return;
+           
 
             // Ejecutar el procedimiento almacenado para eliminar el proveedor
-            try
+            if (MessageBox.Show("¿Desea eliminar el registro?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                try
                 {
-                    conn.Open();
-
-                    using (SqlCommand cmd = new SqlCommand("spRegProvDelete", conn))
+                    using (SqlConnection conn = new SqlConnection(connectionString))
                     {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@provID", proveId);
+                        conn.Open();
 
-                        cmd.ExecuteNonQuery();
+                        using (SqlCommand cmd = new SqlCommand("spRegProvDelete", conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("@provID", proveId);
+
+                            cmd.ExecuteNonQuery();
+                        }
                     }
+
+                    MessageBox.Show("Registro eliminado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimpiarTxtBox();
+                    // Recargar los datos del DataGridView
+                    CargarDatos();
                 }
+                catch (Exception ex)
+                {
 
-                MessageBox.Show("Proveedor eliminado correctamente.");
-
-                // Recargar los datos del DataGridView
-                CargarDatos();
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show($"Error al eliminar el registro: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Error al eliminar el registro: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
