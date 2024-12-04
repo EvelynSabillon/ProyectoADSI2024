@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data.Common;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Security.AccessControl;
+using System.Text.RegularExpressions;
 
 namespace ProyectoADSI2024
 {
@@ -19,13 +22,14 @@ namespace ProyectoADSI2024
         SqlConnection conexion;
         SqlDataAdapter adp;
 
- 
+        System.Windows.Forms.ToolTip toolTips;
+
 
         public RegistroProveedores()
         {
             InitializeComponent();
-          
-
+            toolTipsTxts();
+            txBusca.Enabled = false;
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -44,53 +48,90 @@ namespace ProyectoADSI2024
                 string.IsNullOrWhiteSpace(provTelef.Text) ||
                 string.IsNullOrWhiteSpace(provEmail.Text))
             {
-                MessageBox.Show("Por favor, complete todos los campos.");
+                MessageBox.Show("Por favor, complete todos los campos.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Convertir el ID y el estado del checkbox
-            if (!int.TryParse(provId.Text, out int provID))
+            // Validar el formato del RTN
+            if (!Regex.IsMatch(provRTN.Text, @"^\d{4}-\d{4}-\d{5}$"))
             {
-                MessageBox.Show("El ID debe ser un número válido.");
+                MessageBox.Show("El RTN debe tener el formato ****-****-***** (solo números y guiones).", "RTN inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            bool activo = chboxActivo.Checked;
 
-            // Ejecutar el procedimiento almacenado
+            // Validar que el nombre contenga solo letras
+            if (!Regex.IsMatch(provName.Text, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"))
+            {
+                MessageBox.Show("El nombre debe contener solo letras y espacios.", "Nombre inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validar el formato del teléfono
+            if (!Regex.IsMatch(provTelef.Text, @"^\(\d{3}\)\d{4}-\d{4}$"))
+            {
+                MessageBox.Show("El formato del número de teléfono es inválido. Use el formato (***)****-****.", "Teléfono inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validar el formato del correo electrónico
+            if (!IsValidEmail(provEmail.Text))
+            {
+                MessageBox.Show("El correo electrónico no tiene un formato válido.", "Correo inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validar que el ID sea un número entero positivo
+            if (!int.TryParse(provId.Text, out int provID) || provID <= 0)
+            {
+                MessageBox.Show("El ID debe ser un número entero positivo.", "ID inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Procesar el formulario (guardar en la base de datos)
+            GuardarProveedor(provID, provName.Text, provRTN.Text, provDirec.Text, provTelef.Text, provEmail.Text, chboxActivo.Checked);
+        }
+
+        private void GuardarProveedor(int id, string nombre, string rtn, string direccion, string telefono, string email, bool activo)
+        {
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-
                     using (SqlCommand cmd = new SqlCommand("spRegProvInsert", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
-
-                        // Agregar parámetros
-                        cmd.Parameters.AddWithValue("@provID", provID);
-                        cmd.Parameters.AddWithValue("@provName", provName.Text);
-                        cmd.Parameters.AddWithValue("@provRTN", provRTN.Text);
-                        cmd.Parameters.AddWithValue("@provDirec", provDirec.Text);
-                        cmd.Parameters.AddWithValue("@provTelef", provTelef.Text);
-                        cmd.Parameters.AddWithValue("@provEmail", provEmail.Text);
+                        cmd.Parameters.AddWithValue("@provID", id);
+                        cmd.Parameters.AddWithValue("@provName", nombre);
+                        cmd.Parameters.AddWithValue("@provRTN", rtn);
+                        cmd.Parameters.AddWithValue("@provDirec", direccion);
+                        cmd.Parameters.AddWithValue("@provTelef", telefono);
+                        cmd.Parameters.AddWithValue("@provEmail", email);
                         cmd.Parameters.AddWithValue("@chboxActivo", activo);
-
                         cmd.ExecuteNonQuery();
                     }
                 }
-
-                MessageBox.Show("Proveedor guardado correctamente.");
-
-                // Limpiar los controles
+                MessageBox.Show("Proveedor guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LimpiarTxtBox();
-
-                // Actualizar el DataGridView
                 CargarDatos();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ocurrió un error: {ex.Message}");
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Validar formato de correo electrónico
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
             }
 
         }
@@ -280,7 +321,7 @@ namespace ProyectoADSI2024
         {
             // Suponiendo que tienes una conexión a la base de datos y ejecutas una consulta
             DataTable dt = new DataTable();
-            string query = "SELECT * FROM proyecto.Proveedor"; // Modificar según tus columnas
+            string query = "SELECT * FROM proyecto.Proveedor WHERE Activo = 1"; // Modificar según tus columnas
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -295,7 +336,37 @@ namespace ProyectoADSI2024
 
         private void comboBusca_SelectedIndexChanged(object sender, EventArgs e)
         {
+            txBusca.Enabled = true;
+            txBusca.Text = " ";
             FiltrarDatos();
+        }
+
+        private void toolTipsTxts()
+        {
+            toolTips = new System.Windows.Forms.ToolTip();
+            toolTips.IsBalloon = true;
+            toolTips.ToolTipIcon = ToolTipIcon.Info;
+            toolTips.ToolTipTitle = "Ayuda";
+            toolTips.UseAnimation = true;
+            toolTips.SetToolTip(provId, "Ingrese un número de Proveedor Válido");
+            toolTips.SetToolTip(provName, "Ingrese el Nombre del Proveedor.");
+            toolTips.SetToolTip(provRTN, "Ingrese un RTN válido del Proveedor.");
+            toolTips.SetToolTip(provDirec, "Ingrese la Dirección del Proveedor.");
+            toolTips.SetToolTip(provTelef, "Ingrese el Número del Proveedor.");
+            toolTips.SetToolTip(provEmail, "Ingrese el Email del Proveedor. ");
+            toolTips.SetToolTip(btnAtras, "Regresar al menú.");
+            toolTips.SetToolTip(btnEliminar, "Eliminar el registro");
+            toolTips.SetToolTip(button2, "Limpiar los cuadros de texto y fechas.");
+            toolTips.SetToolTip(button1, "Editar el registro.");
+            toolTips.SetToolTip(btnGuardar, "Guardar el registro.");
+            toolTips.SetToolTip(comboBusca, "Seleccione el campo en el que desea buscar.");
+            toolTips.SetToolTip(txBusca, "Ingrese registro a buscar");
+
+        }
+
+        private void dgRegProv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
