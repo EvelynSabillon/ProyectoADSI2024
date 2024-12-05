@@ -58,6 +58,7 @@ namespace ProyectoADSI2024
             CargarDatosActualizados();// Cargar datos al DataGridView
             adp.Fill(tabIngresoLeche);
             dgIngresoLeche.DataSource = tabIngresoLeche;
+            dgIngresoLeche.Columns["Fecha"].Visible = false;
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -74,18 +75,23 @@ namespace ProyectoADSI2024
             double litrosAM = 0;
             double litrosPM = 0;
             bool esValido = true;
-            errorProvider.Clear(); 
-            if (string.IsNullOrWhiteSpace(tBoxDiaID.Text))
-            {
-                errorProvider.SetError(tBoxDiaID, "El campo DiaID no puede estar vacío.");
-                esValido = false;
-            }
-            else if (!DateTime.TryParse(tBoxDiaID.Text, out diaIDDate))
-            {
-                errorProvider.SetError(tBoxDiaID, "El campo DiaID debe tener un formato de fecha válido (dd/MM/yyyy).");
-                esValido = false;
-            }
+            errorProvider.Clear();
+            /* if (string.IsNullOrWhiteSpace(tBoxDiaID.Text))
+             {
+                 errorProvider.SetError(tBoxDiaID, "El campo DiaID no puede estar vacío.");
+                 esValido = false;
+             }
+             else if (!DateTime.TryParse(tBoxDiaID.Text, out diaIDDate))
+             {
+                 errorProvider.SetError(tBoxDiaID, "El campo DiaID debe tener un formato de fecha válido (dd/MM/yyyy).");
+                 esValido = false;
+             }*/
 
+            if (dateTimePickerDiaID.Value.Date != DateTime.Now.Date)
+            {
+                errorProvider.SetError(dateTimePickerDiaID, "Debe seleccionar la fecha actual.");
+                esValido = false;
+            }
             // Validar el formato numérico de Litros AM y Litros PM
             if (string.IsNullOrWhiteSpace(tboxLAM.Text) || !double.TryParse(tboxLAM.Text, out litrosAM) || litrosAM < 0)
             {
@@ -114,7 +120,7 @@ namespace ProyectoADSI2024
 
             if (!esValido)
             {
-                MessageBox.Show("Corrija los errores marcados antes de guardar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Revise los errores marcados antes de guardar.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 return;
             }
@@ -128,7 +134,7 @@ namespace ProyectoADSI2024
                     SqlCommand cmd = new SqlCommand("spProyectoIngLecheInsert", con);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@DiaID", diaIDDate);
+                    cmd.Parameters.AddWithValue("@DiaID", dateTimePickerDiaID.Value);
                     cmd.Parameters.AddWithValue("@SocioID", Convert.ToInt32(cboxSocios.SelectedValue));
                     cmd.Parameters.AddWithValue("@Fecha", dateTimePickerFecha.Value);
                     cmd.Parameters.AddWithValue("@LitroAM", litrosAM);
@@ -180,17 +186,23 @@ namespace ProyectoADSI2024
                 esValido = false;
             }
 
+            if (dateTimePickerDiaID.Value.Date != DateTime.Now.Date)
+            {
+                errorProvider.SetError(dateTimePickerDiaID, "Debe seleccionar la fecha actual.");
+                esValido = false;
+            }
+
             // Validar campos vacíos y valores incorrectos
-            if (string.IsNullOrWhiteSpace(tBoxDiaID.Text))
-            {
-                errorProvider.SetError(tBoxDiaID, "El campo Día ID no puede estar vacío.");
-                esValido = false;
-            }
-            else if (!DateTime.TryParse(tBoxDiaID.Text, out DateTime diaIDDate))
-            {
-                errorProvider.SetError(tBoxDiaID, "El campo Día ID debe tener un formato de fecha válido (dd/MM/yyyy).");
-                esValido = false;
-            }
+            /* if (string.IsNullOrWhiteSpace(tBoxDiaID.Text))
+             {
+                 errorProvider.SetError(tBoxDiaID, "El campo Día ID no puede estar vacío.");
+                 esValido = false;
+             }
+             else if (!DateTime.TryParse(tBoxDiaID.Text, out DateTime diaIDDate))
+             {
+                 errorProvider.SetError(tBoxDiaID, "El campo Día ID debe tener un formato de fecha válido (dd/MM/yyyy).");
+                 esValido = false;
+             }*/
 
             if (cboxSocios.SelectedIndex <= 0)
             {
@@ -245,7 +257,7 @@ namespace ProyectoADSI2024
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     // Parámetros del procedimiento almacenado para actualizar
-                    cmd.Parameters.AddWithValue("@DiaID", DateTime.Parse(tBoxDiaID.Text));
+                    cmd.Parameters.AddWithValue("@DiaID", dateTimePickerDiaID.Value);
                     cmd.Parameters.AddWithValue("@SocioID", Convert.ToInt32(cboxSocios.SelectedValue));
                     cmd.Parameters.AddWithValue("@Fecha", dateTimePickerFecha.Value);
                     cmd.Parameters.AddWithValue("@LitroAM", litroAM);
@@ -365,7 +377,7 @@ namespace ProyectoADSI2024
                 // Pasar datos al formulario desde la fila seleccionada
                 DataGridViewRow filaSeleccionada = dgIngresoLeche.CurrentRow;
 
-                tBoxDiaID.Text = filaSeleccionada.Cells["DiaID"].Value.ToString();
+                dateTimePickerDiaID .Value   = Convert.ToDateTime(filaSeleccionada.Cells["DiaID"].Value);
                 dateTimePickerFecha.Value = Convert.ToDateTime(filaSeleccionada.Cells["Fecha"].Value);
                 tboxLAM.Text = filaSeleccionada.Cells["LitroAM"].Value.ToString();
                 tboxLPM.Text = filaSeleccionada.Cells["LitroPM"].Value.ToString();
@@ -374,7 +386,7 @@ namespace ProyectoADSI2024
                 checkBoxActivo.Checked = Convert.ToBoolean(filaSeleccionada.Cells["Activo"].Value);
                 cboxSocios.SelectedValue = Convert.ToInt32(filaSeleccionada.Cells["SocioID"].Value);
 
-                tBoxDiaID.ReadOnly = true;  // Bloquear edición del TextBox
+                //tBoxDiaID.ReadOnly = true;  // Bloquear edición del TextBox
                 cboxSocios.Enabled = false; // Bloquear selección en el ComboBox
             }
             catch (Exception ex)
@@ -387,7 +399,8 @@ namespace ProyectoADSI2024
         private void LimpiarTxtBox()
         {
             errorProvider.Clear();
-            tBoxDiaID.Clear();
+            dateTimePickerDiaID.Value = DateTime.Now;
+            //tBoxDiaID.Clear();
             tboxLAM.Clear();
             tboxLPM.Clear();
             tboxObs.Clear();
@@ -437,7 +450,7 @@ namespace ProyectoADSI2024
             toolTip1.ToolTipIcon = ToolTipIcon.Info;
             toolTip1.ToolTipTitle = "Ayuda";
             toolTip1.UseAnimation = true;
-            toolTip1.SetToolTip(tBoxDiaID, "Ingrese la fecha de hoy");
+            toolTip1.SetToolTip(dateTimePickerDiaID, "Ingrese la fecha de hoy");
             toolTip1.SetToolTip(tboxLAM, "Se espera que ingrese un número.");
             toolTip1.SetToolTip(tboxLPM, "Se espera que ingrese un número.");
             toolTip1.SetToolTip(tboxObs, "Escriba observaciones detalladas para este registro.");

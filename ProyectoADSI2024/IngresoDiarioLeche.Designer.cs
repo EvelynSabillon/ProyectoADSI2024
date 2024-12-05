@@ -37,7 +37,6 @@
             this.btnAtras = new System.Windows.Forms.PictureBox();
             this.dateTimePickerFecha = new System.Windows.Forms.DateTimePicker();
             this.cboxSocios = new System.Windows.Forms.ComboBox();
-            this.tBoxDiaID = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dgIngresoLeche = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
@@ -60,6 +59,7 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.checkBoxActivo = new System.Windows.Forms.CheckBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dateTimePickerDiaID = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgIngresoLeche)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -108,14 +108,6 @@
             this.cboxSocios.Name = "cboxSocios";
             this.cboxSocios.Size = new System.Drawing.Size(262, 25);
             this.cboxSocios.TabIndex = 44;
-            // 
-            // tBoxDiaID
-            // 
-            this.tBoxDiaID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBoxDiaID.Location = new System.Drawing.Point(179, 144);
-            this.tBoxDiaID.Name = "tBoxDiaID";
-            this.tBoxDiaID.Size = new System.Drawing.Size(121, 25);
-            this.tBoxDiaID.TabIndex = 43;
             // 
             // label7
             // 
@@ -394,11 +386,20 @@
             this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider.ContainerControl = this;
             // 
+            // dateTimePickerDiaID
+            // 
+            this.dateTimePickerDiaID.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerDiaID.Location = new System.Drawing.Point(181, 144);
+            this.dateTimePickerDiaID.Name = "dateTimePickerDiaID";
+            this.dateTimePickerDiaID.Size = new System.Drawing.Size(260, 25);
+            this.dateTimePickerDiaID.TabIndex = 104;
+            // 
             // IngresoDiarioLeche
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 38F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1070, 595);
+            this.Controls.Add(this.dateTimePickerDiaID);
             this.Controls.Add(this.checkBoxActivo);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnLimpiar);
@@ -421,7 +422,6 @@
             this.Controls.Add(this.dgIngresoLeche);
             this.Controls.Add(this.dateTimePickerFecha);
             this.Controls.Add(this.cboxSocios);
-            this.Controls.Add(this.tBoxDiaID);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.label1);
@@ -446,7 +446,6 @@
         private System.Windows.Forms.PictureBox btnAtras;
         private System.Windows.Forms.DateTimePicker dateTimePickerFecha;
         private System.Windows.Forms.ComboBox cboxSocios;
-        private System.Windows.Forms.TextBox tBoxDiaID;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dgIngresoLeche;
         private System.Windows.Forms.Label label2;
@@ -469,5 +468,6 @@
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.CheckBox checkBoxActivo;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDiaID;
     }
 }
