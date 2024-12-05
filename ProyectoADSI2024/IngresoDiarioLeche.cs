@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -115,6 +116,24 @@ namespace ProyectoADSI2024
             if (string.IsNullOrWhiteSpace(tboxEncargado.Text))
             {
                 errorProvider.SetError(tboxEncargado, "El campo Encargado no puede estar vacío.");
+                esValido = false;
+            }
+
+            int longitudMaxima = 50;
+            // Obtener el valor ingresado en el campo "Encargado"
+            string encargado = tboxEncargado.Text;
+            if (encargado.Length > longitudMaxima)
+            {
+               
+                errorProvider.SetError(tboxEncargado, $"El nombre del encargado no puede exceder los {longitudMaxima} caracteres.");
+                esValido = false;
+            }
+
+            string patron = @"^[A-Za-z]+$"; // solo pueda agregar letras mayusculas y minusculas.
+            if (!Regex.IsMatch(encargado, patron))
+            {
+                // Si no es válido, mostrar un mensaje de error
+                errorProvider.SetError(tboxEncargado, "El nombre del encargado solo debe contener letras.");
                 esValido = false;
             }
 
@@ -239,6 +258,7 @@ namespace ProyectoADSI2024
                 errorProvider.SetError(dateTimePickerFecha, "La fecha no puede ser una fecha futura.");
                 esValido = false;
             }
+
 
             // Si hay errores, mostrar mensaje y detener el proceso
             if (!esValido)
