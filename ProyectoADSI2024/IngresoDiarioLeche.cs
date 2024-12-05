@@ -93,17 +93,66 @@ namespace ProyectoADSI2024
                 errorProvider.SetError(dateTimePickerDiaID, "Debe seleccionar la fecha actual.");
                 esValido = false;
             }
+
+            // Validar que la fecha no sea futura o anterior a la actual
+            if (dateTimePickerFecha.Value.Date != DateTime.Now.Date)
+            {
+                errorProvider.SetError(dateTimePickerFecha, "Debe seleccionar la fecha actual");
+                esValido = false;
+            }
+
+            //Validar que el valor de dateTimePickerDiaID sea igual a dateTimePickerFecha
+            if (dateTimePickerDiaID.Value.Date != dateTimePickerFecha.Value.Date)
+            {
+                errorProvider.SetError(dateTimePickerFecha, "El valor de Fecha debe ser igual a la fecha seleccionada en DiaID.");
+                esValido = false;
+            }
+
+
             // Validar el formato numérico de Litros AM y Litros PM
-            if (string.IsNullOrWhiteSpace(tboxLAM.Text) || !double.TryParse(tboxLAM.Text, out litrosAM) || litrosAM < 0)
+            if (string.IsNullOrWhiteSpace(tboxLAM.Text))
+            {
+                errorProvider.SetError(tboxLAM, "El campo Litros AM  no puede ir vacío.");
+                esValido = false;
+            }
+            else if (!double.TryParse(tboxLAM.Text, out litrosAM) || litrosAM < 0)
             {
                 errorProvider.SetError(tboxLAM, "El valor de Litros AM debe ser numérico y mayor o igual a 0.");
                 esValido = false;
             }
 
-            if (string.IsNullOrWhiteSpace(tboxLPM.Text) || !double.TryParse(tboxLPM.Text, out litrosPM) || litrosPM < 0)
+            //Validar que el usuario quiera ingresar un valor atipico de litros mayor a 500 litros
+            //Con un messagebox que permita aceptar el valor en caso de ser correcto
+            if (litrosAM > 500)
+            {
+                if (MessageBox.Show("¿Está seguro de ingresar un valor atípico de litros AM?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                {
+                    errorProvider.SetError(tboxLAM, "El valor de Litros AM contiene un valor atipico mayor a 500.");
+                    esValido = false;
+                }
+            }
+
+
+            if (string.IsNullOrWhiteSpace(tboxLPM.Text))
+            {
+                errorProvider.SetError(tboxLPM, "El campo Litros PM  no puede ir vacío.");
+                esValido = false;
+            }
+            else if (!double.TryParse(tboxLPM.Text, out litrosPM) || litrosPM < 0)
             {
                 errorProvider.SetError(tboxLPM, "El valor de Litros PM debe ser numérico y mayor o igual a 0.");
                 esValido = false;
+            }
+
+            //Validar que el usuario quiera ingresar un valor atipico de litros mayor a 500 litros
+            //Con un messagebox que permita aceptar el valor en caso de ser correcto
+            if (litrosPM > 500)
+            {
+                if (MessageBox.Show("¿Está seguro de ingresar un valor atípico de litros PM?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                {
+                    errorProvider.SetError(tboxLPM, "El valor de Litros PM contiene un valor atipico mayor a 500.");
+                    esValido = false;
+                }
             }
 
             // Validar selección del ComboBox de socios
@@ -126,6 +175,15 @@ namespace ProyectoADSI2024
             {
                
                 errorProvider.SetError(tboxEncargado, $"El nombre del encargado no puede exceder los {longitudMaxima} caracteres.");
+                esValido = false;
+            }
+
+            // Validar que el campo observaciones no exceda los 100 caracteres
+            int longitudMaximaObs = 100;
+            string observaciones = tboxObs.Text;
+            if (observaciones.Length > longitudMaximaObs)
+            {
+                errorProvider.SetError(tboxObs, $"Las observaciones no pueden exceder los {longitudMaximaObs} caracteres.");
                 esValido = false;
             }
 
@@ -284,7 +342,7 @@ namespace ProyectoADSI2024
                     cmd.Parameters.AddWithValue("@LitroPM", litroPM);
                     cmd.Parameters.AddWithValue("@Observaciones", tboxObs.Text);
                     cmd.Parameters.AddWithValue("@Encargado", tboxEncargado.Text);
-                    cmd.Parameters.AddWithValue("@Activo", checkBoxActivo.Checked);
+                    cmd.Parameters.AddWithValue("@Activo", true);
 
                     cmd.ExecuteNonQuery();
 
