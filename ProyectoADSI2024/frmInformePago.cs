@@ -21,7 +21,7 @@ namespace ProyectoADSI2024
         private void frmInformePago_Load(object sender, EventArgs e)
         {
             crReportePagoSocio obj = new crReportePagoSocio();
-            obj.SetParameterValue("@planillaid", idplanilla);
+            obj.SetParameterValue("@QuincenaID", idplanilla);
             obj.SetParameterValue("NumeroReporte", NumeroReporte);
             crystalReportViewer1.ReportSource = obj;
             obj.SetDatabaseLogon("eugene.wu","EW20212030388","3.128.144.165","DB20212030388");

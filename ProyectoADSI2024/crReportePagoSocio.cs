@@ -98,7 +98,7 @@ namespace ProyectoADSI2024 {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_planillaid {
+        public CrystalDecisions.Shared.IParameterField Parameter_QuincenaID {
             get {
                 return this.DataDefinition.ParameterFields[1];
             }
