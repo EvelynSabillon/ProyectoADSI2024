@@ -13,6 +13,7 @@ using System.Security.Cryptography;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 using CrystalDecisions.Windows.Forms;
+using static AuthManager;
 
 namespace ProyectoADSI2024
 {
@@ -21,10 +22,34 @@ namespace ProyectoADSI2024
     {
         private Timer alertTimer = new Timer();
         SqlConnection myconexion; //Conexion a SQL Server
-        public Menu()
+        public Menu(UserSession session)
         {
             InitializeComponent();
+            currentSession = session;
+
+            lblUser.Text = $"{currentSession.Nombre}";
         }
+
+
+        //NUEVO
+        private UserSession currentSession;
+        public bool CerrarSesion { get; private set; } = false;
+        
+        //MSJ DE VALIDACION A MODULOS
+        private bool ValidarAcceso(string modulo)
+        {
+            // Validar si el perfil actual tiene acceso al módulo
+            if (!currentSession.TieneAcceso(modulo)) // Método en `UserSession` para verificar permisos
+            {
+                MessageBox.Show($"No tiene acceso al módulo: {modulo}", "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false; // Acceso denegado
+            }
+            return true; // Acceso permitido
+        }
+        //FIN NUEVO
+
+
+
 
         private void Menu_Load(object sender, EventArgs e)
         {
@@ -117,37 +142,58 @@ namespace ProyectoADSI2024
 
         private void btnModuloIngresoLeche_Click(object sender, EventArgs e)
         {
-            dropdownMenu1.Show(btnModuloIngresoLeche, btnModuloIngresoLeche.Width, 0);
+            if (ValidarAcceso("Control de Ingreso de Leche"))
+            {
+                dropdownMenu1.Show(btnModuloIngresoLeche, btnModuloIngresoLeche.Width, 0);
+            }
         }
 
         private void btnModuloGestionSocios_Click(object sender, EventArgs e)
         {
-            dropdownMenu2.Show(btnModuloGestionSocios, btnModuloGestionSocios.Width, 0);
+            if (ValidarAcceso("Gestión de Socios"))
+            {
+                dropdownMenu2.Show(btnModuloGestionSocios, btnModuloGestionSocios.Width, 0);
+            }
         }
 
         private void btnModuloManejoProveedores_Click(object sender, EventArgs e)
         {
-            dropdownMenu3.Show(btnModuloManejoProveedores, btnModuloManejoProveedores.Width, 0);
+            if (ValidarAcceso("Gestión de Proveedores"))
+            {
+                dropdownMenu3.Show(btnModuloManejoProveedores, btnModuloManejoProveedores.Width, 0);
+            }
         }
 
         private void btnModuloGestionInventario_Click(object sender, EventArgs e)
         {
-            dropdownMenu4.Show(btnModuloGestionInventario, btnModuloGestionInventario.Width, 0);
+            if (ValidarAcceso("Gestión de Inventario"))
+            {
+                dropdownMenu4.Show(btnModuloGestionInventario, btnModuloGestionInventario.Width, 0);
+            }
         }
 
         private void btnModuloGestionFinanciera_Click(object sender, EventArgs e)
         {
-            dropdownMenu5.Show(btnModuloGestionFinanciera, btnModuloGestionFinanciera.Width, 0);
+            if (ValidarAcceso("Gestión de Préstamos y Finanzas"))
+            {
+                dropdownMenu5.Show(btnModuloGestionFinanciera, btnModuloGestionFinanciera.Width, 0);
+            }
         }
 
         private void btnModuloAdministracionGeneral_Click(object sender, EventArgs e)
         {
-            dropdownMenu6.Show(btnModuloAdministracionGeneral, btnModuloAdministracionGeneral.Width, 0);
+            if (ValidarAcceso("Administración General"))
+            {
+                dropdownMenu6.Show(btnModuloAdministracionGeneral, btnModuloAdministracionGeneral.Width, 0);
+            }
         }
 
         private void btnReportes_Click(object sender, EventArgs e)
         {
-            dropdownMenu7.Show(btnReportes, btnReportes.Width, 0);
+            if (ValidarAcceso("Reportes"))
+            {
+                dropdownMenu7.Show(btnReportes, btnReportes.Width, 0);
+            }
         }
 
         private void AbrirFormInPanel(object Formhijo)
@@ -248,17 +294,23 @@ namespace ProyectoADSI2024
 
         private void btnUsuariostoolStripMenuItem9_Click(object sender, EventArgs e)
         {
-            AbrirFormInPanel(new GestionUsuarios());
+            if (ValidarAcceso("Gestion de Usuarios"))
+            {
+                AbrirFormInPanel(new GestionUsuarios());
+            }
         }
 
         private void btnPermisostoolStripMenuItem10_Click(object sender, EventArgs e)
         {
-            AbrirFormInPanel(new GestionPermisos());
+                AbrirFormInPanel(new GestionPermisos());   
         }
 
         private void btnAyudatoolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            AbrirFormInPanel(new ManualAyuda());
+            if (ValidarAcceso("Manual de Usuario"))
+            {
+                AbrirFormInPanel(new ManualAyuda());
+            }
         }
 
         private void btnKardexConToolStripMenuItem_Click(object sender, EventArgs e)
@@ -316,26 +368,38 @@ namespace ProyectoADSI2024
 
         private void reporteConsumoInsumoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmVistaDeSocioParaReporteConsumoInsumo frmvistasociosreporteconsumoinsumo = new frmVistaDeSocioParaReporteConsumoInsumo();
-            frmvistasociosreporteconsumoinsumo.Show();
+            if (ValidarAcceso("Reporte de Consumo de Insumos"))
+            {
+                frmVistaDeSocioParaReporteConsumoInsumo frmvistasociosreporteconsumoinsumo = new frmVistaDeSocioParaReporteConsumoInsumo();
+                frmvistasociosreporteconsumoinsumo.Show();
+            }
         }
 
         private void reporteDeProducciónQuincenalToolStripMenuItem_Click(object sender, EventArgs e)
-        { 
-            Vista_QuincenaProduccionGeneral reporte = new Vista_QuincenaProduccionGeneral();
-            reporte.ShowDialog();  
+        {
+            if (ValidarAcceso("Reporte de Produccion General"))
+            {
+                Vista_QuincenaProduccionGeneral reporte = new Vista_QuincenaProduccionGeneral();
+                reporte.ShowDialog();
+            }
         }
 
         private void reporteEntregaQuincenalToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmPrincipalEntregaQuincenal reporteEntregas = new frmPrincipalEntregaQuincenal();
-            reporteEntregas.Show();
+            if (ValidarAcceso("Reporte Entrega Quincenal"))
+            {
+                frmPrincipalEntregaQuincenal reporteEntregas = new frmPrincipalEntregaQuincenal();
+                reporteEntregas.Show();
+            }
         }
 
         private void reportePagoDeSociosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form frmplanilla = new frmplanillainforme();
-            frmplanilla.Show();
+            if (ValidarAcceso("Reporte General de Pagos"))
+            {
+                Form frmplanilla = new frmplanillainforme();
+                frmplanilla.Show();
+            }
         }
 
         private void panelContenedor_Paint(object sender, PaintEventArgs e)
@@ -345,7 +409,11 @@ namespace ProyectoADSI2024
 
         private void alertasDeInventarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ReportManager.ShowReport(@"ReporteGestionInventario\rptAlertas.rpt");
+
+            if (ValidarAcceso("Alertas de Bajo Inventario"))
+            {
+                ReportManager.ShowReport(@"ReporteGestionInventario\rptAlertas.rpt");
+            }
         }
 
 
@@ -366,16 +434,41 @@ namespace ProyectoADSI2024
             DataTable medicamentoTable = new DataTable();
 
             string connectionString = "Server = 3.128.144.165; Database = DB20212030388; User ID = eugene.wu; Password = EW20212030388;";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                // Ejecutar consulta para ArticuloConcentrado
-                SqlDataAdapter adapterCon = new SqlDataAdapter(queryConcentrado, connection);
-                adapterCon.Fill(concentradoTable);
+            //using (SqlConnection connection = new SqlConnection(connectionString))
+            //{
+            //    // Ejecutar consulta para ArticuloConcentrado
+            //    SqlDataAdapter adapterCon = new SqlDataAdapter(queryConcentrado, connection);
+            //    adapterCon.Fill(concentradoTable);
 
-                // Ejecutar consulta para ArticuloMedicamento
-                SqlDataAdapter adapterMed = new SqlDataAdapter(queryMedicamento, connection);
-                adapterMed.Fill(medicamentoTable);
+            //    // Ejecutar consulta para ArticuloMedicamento
+            //    SqlDataAdapter adapterMed = new SqlDataAdapter(queryMedicamento, connection);
+            //    adapterMed.Fill(medicamentoTable);
+            //}
+            try
+            {
+                // Crear la conexión
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    // Ejecutar consulta para ArticuloConcentrado
+                    SqlDataAdapter adapterCon = new SqlDataAdapter(queryConcentrado, connection);
+                    adapterCon.Fill(concentradoTable);
+
+                    // Ejecutar consulta para ArticuloMedicamento
+                    SqlDataAdapter adapterMed = new SqlDataAdapter(queryMedicamento, connection);
+                    adapterMed.Fill(medicamentoTable);
+                }
             }
+            catch (SqlException sqlEx)
+            {
+                // Manejar excepciones relacionadas con SQL
+                MessageBox.Show($"Error al ejecutar la consulta SQL: {sqlEx.Message}", "Error de Base de Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                // Manejar otras excepciones generales
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error General", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
 
             // Verificar si hay alertas en ambos
             if (concentradoTable.Rows.Count > 0 || medicamentoTable.Rows.Count > 0)
@@ -534,64 +627,153 @@ namespace ProyectoADSI2024
                 if (resultado == DialogResult.Yes)
                 {
 
-                    //refrescar el reporte 
-                    // Crear una instancia del reporte
-                    ReportDocument reporte = new ReportDocument();
+                    //    //refrescar el reporte 
+                    //    // Crear una instancia del reporte
+                    //    ReportDocument reporte = new ReportDocument();
 
-                    // Cargar el reporte desde la ruta especificada
-                    string rutaReporte = @".\Reportes\ReporteGestionInventario\rptAlertas.rpt";
-                    reporte.Load(rutaReporte);
+                    //    // Cargar el reporte desde la ruta especificada
+                    //    string rutaReporte = @".\Reportes\ReporteGestionInventario\rptAlertas.rpt";
+                    //    reporte.Load(rutaReporte);
 
-                    // Refrescar el reporte para garantizar datos actualizados
-                    reporte.Refresh();
+                    //    // Refrescar el reporte para garantizar datos actualizados
+                    //    reporte.Refresh();
 
-                    // (Opcional) Configurar conexión a base de datos si es necesario
-                    ConnectionInfo connectionInfo = new ConnectionInfo
+                    //    // (Opcional) Configurar conexión a base de datos si es necesario
+                    //    ConnectionInfo connectionInfo = new ConnectionInfo
+                    //    {
+                    //        ServerName = "3.128.144.165",
+                    //        DatabaseName = "DB20212030388",
+                    //        UserID = "eugene.wu",
+                    //        Password = "EW20212030388"
+                    //    };
+
+                    //    foreach (Table table in reporte.Database.Tables)
+                    //    {
+                    //        TableLogOnInfo logOnInfo = table.LogOnInfo;
+                    //        logOnInfo.ConnectionInfo = connectionInfo;
+                    //        table.ApplyLogOnInfo(logOnInfo);
+                    //    }
+
+                    //    // Mostrar el reporte en el visor (o usar tu método personalizado para mostrarlo)
+                    //    // Crear y configurar un visor de Crystal Reports
+
+                    //    CrystalReportViewer visor = new CrystalReportViewer
+                    //    {
+                    //        Dock = DockStyle.Fill,        // Para que ocupe todo el formulario
+                    //        ReportSource = reporte,
+                    //        ToolPanelView = ToolPanelViewType.None// Asignar el reporte al visor
+                    //    };
+                    //    visor.RefreshReport();            // Habilitar refrescar reporte automáticamente
+
+
+                    //    // Crear un formulario para mostrar el visor
+                    //    Form formularioVisor = new Form
+                    //    {
+                    //        Text = "Reporte de Alertas",
+                    //        WindowState = FormWindowState.Maximized
+                    //    };
+                    //    formularioVisor.Controls.Add(visor);
+
+                    //    // Mostrar el formulario con el visor
+                    //    formularioVisor.ShowDialog();
+
+                    //Validacion nueva
+                    if (ValidarAcceso("Alertas de Bajo Inventario"))
                     {
-                        ServerName = "3.128.144.165",
-                        DatabaseName = "DB20212030388",
-                        UserID = "eugene.wu",
-                        Password = "EW20212030388"
-                    };
 
-                    foreach (Table table in reporte.Database.Tables)
-                    {
-                        TableLogOnInfo logOnInfo = table.LogOnInfo;
-                        logOnInfo.ConnectionInfo = connectionInfo;
-                        table.ApplyLogOnInfo(logOnInfo);
+                        //refrescar el reporte 
+                        // Crear una instancia del reporte
+                        ReportDocument reporte = new ReportDocument();
+
+                        // Cargar el reporte desde la ruta especificada
+                        string rutaReporte = @".\Reportes\ReporteGestionInventario\rptAlertas.rpt";
+                        reporte.Load(rutaReporte);
+
+                        // Refrescar el reporte para garantizar datos actualizados
+                        reporte.Refresh();
+
+                        // (Opcional) Configurar conexión a base de datos si es necesario
+                        ConnectionInfo connectionInfo = new ConnectionInfo
+                        {
+                            ServerName = "3.128.144.165",
+                            DatabaseName = "DB20212030388",
+                            UserID = "eugene.wu",
+                            Password = "EW20212030388"
+                        };
+
+                        //Table, Dio un error cuidado
+                        foreach (Table table in reporte.Database.Tables)
+                        {
+                            TableLogOnInfo logOnInfo = table.LogOnInfo;
+                            logOnInfo.ConnectionInfo = connectionInfo;
+                            table.ApplyLogOnInfo(logOnInfo);
+                        }
+
+                        // Mostrar el reporte en el visor (o usar tu método personalizado para mostrarlo)
+                        // Crear y configurar un visor de Crystal Reports
+
+                        CrystalReportViewer visor = new CrystalReportViewer
+                        {
+                            Dock = DockStyle.Fill,        // Para que ocupe todo el formulario
+                            ReportSource = reporte,
+                            ToolPanelView = ToolPanelViewType.None// Asignar el reporte al visor
+                        };
+                        visor.RefreshReport();            // Habilitar refrescar reporte automáticamente
+
+
+                        // Crear un formulario para mostrar el visor
+                        Form formularioVisor = new Form
+                        {
+                            Text = "Reporte de Alertas",
+                            WindowState = FormWindowState.Maximized
+                        };
+                        formularioVisor.Controls.Add(visor);
+
+                        // Mostrar el formulario con el visor
+                        formularioVisor.ShowDialog();
+
                     }
-
-                    // Mostrar el reporte en el visor (o usar tu método personalizado para mostrarlo)
-                    // Crear y configurar un visor de Crystal Reports
-
-                    CrystalReportViewer visor = new CrystalReportViewer
-                    {
-                        Dock = DockStyle.Fill,        // Para que ocupe todo el formulario
-                        ReportSource = reporte,
-                        ToolPanelView = ToolPanelViewType.None// Asignar el reporte al visor
-                    };
-                    visor.RefreshReport();            // Habilitar refrescar reporte automáticamente
-
-
-                    // Crear un formulario para mostrar el visor
-                    Form formularioVisor = new Form
-                    {
-                        Text = "Reporte de Alertas",
-                        WindowState = FormWindowState.Maximized
-                    };
-                    formularioVisor.Controls.Add(visor);
-
-                    // Mostrar el formulario con el visor
-                    formularioVisor.ShowDialog();
-
+                    // Ocultar el NotifyIcon después de su uso
+                    notifyIcon.Dispose();
                 }
-                // Ocultar el NotifyIcon después de su uso
-                notifyIcon.Dispose();
+                return;
             };
         }
 
+        //PICTURE CERRAR SESION
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            // Confirmar si el usuario desea cerrar sesión
+            var result = MessageBox.Show("¿Está seguro de que desea cerrar sesión?", "Cerrar sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+            if (result == DialogResult.Yes)
+            {
+                // Ocultar el formulario principal actual
+                this.Hide();
 
+                // Mostrar el formulario de login nuevamente
+                using (frmLogin loginForm = new frmLogin())
+                {
+                    loginForm.ShowDialog();
 
+                    // Si el login fue exitoso con otro usuario, reabre el menú principal
+                    if (loginForm.Conectado)
+                    {
+                        UserSession nuevaSesion = loginForm.CurrentSession;
+
+                        // Reabrir el menú principal con la nueva sesión
+                        using (Menu nuevoMenu = new Menu(nuevaSesion))
+                        {
+                            nuevoMenu.ShowDialog();
+                        }
+                    }
+                }
+
+                // Cerrar el formulario principal actual después de manejar el flujo
+                this.Close();
+            }
+        }
+        //FIN PICTURE CERRAR SESION
     }
 }
+

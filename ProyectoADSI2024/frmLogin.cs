@@ -9,13 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Runtime.InteropServices;
+using static AuthManager;
 
 namespace ProyectoADSI2024
 {
     public partial class frmLogin : Form
     {
         SqlConnection conexion;
-        public bool conectado;
+        public bool conectado { get; private set; } = false;
+
+        public UserSession CurrentSession { get; private set; }
 
         public SqlConnection Conexion
         {
@@ -146,40 +149,64 @@ namespace ProyectoADSI2024
 
         private void btnAcceder_Click(object sender, EventArgs e)
         {
-            string servidor = "3.128.144.165";
-            string bd = "DB20212030388";
-            string usuario = txtUsuario.Text.Trim();
-            string pw = txtContrasena.Text.Trim();
+            //INICIO DE SESION MEDIANTE USUARIO DE BASE DE DATOS
+            //string servidor = "3.128.144.165";
+            //string bd = "DB20212030388";
+            //string usuario = txtUsuario.Text.Trim();
+            //string pw = txtContrasena.Text.Trim();
 
 
-            string connectionString = $"Server={servidor};Database={bd};User Id={usuario};Password={pw};";
+            //string connectionString = $"Server={servidor};Database={bd};User Id={usuario};Password={pw};";
 
-            try
+            //try
+            //{
+            //    conectado = false;
+            //    conexion = new SqlConnection(connectionString);
+            //    conexion.Open();
+            //    conectado = true;
+            //    MessageBox.Show("Se conecto correctamente a la base de datos", "Conexion Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    this.Dispose();
+
+            //}
+            //catch (SqlException ex)
+            //{
+            //    for (int i = 0; i < ex.Errors.Count; i++)
+            //    {
+            //        if (ex.Errors[i].Number == 18456)
+            //        {
+            //            MessageBox.Show("El usuario o contraseña es incorrecto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //            return;
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("No se logro conectar a la base de datos " + ex.ToString());
+            //        }
+            //    }
+            //}
+            //FIN INICIO DE SESION MEDIANTE USUARIO DE BASE DE DATOS
+
+
+            //INCIO DE SESION MEDIANTE USUARIO REGISTRADO EN LA TABLA DE proyecto.Usuarios
+            //Version #1
+            string username = txtUsuario.Text;
+            string password = txtContrasena.Text;
+
+            AuthManager authManager = new AuthManager();
+            UserSession session = authManager.Login(username, password);
+
+            if (session != null)
             {
-                conectado = false;
-                conexion = new SqlConnection(connectionString);
-                conexion.Open();
                 conectado = true;
-                MessageBox.Show("Se conecto correctamente a la base de datos", "Conexion Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Dispose();
+                CurrentSession = session;
+                MessageBox.Show("Se conecto correctamente al sistema", "Conexion Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                this.Hide();
             }
-            catch (SqlException ex)
+            else
             {
-                for (int i = 0; i < ex.Errors.Count; i++)
-                {
-                    if (ex.Errors[i].Number == 18456)
-                    {
-                        MessageBox.Show("El usuario o contraseña es incorrecto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se logro conectar a la base de datos " + ex.ToString());
-                    }
-                }
-
+                MessageBox.Show("El usuario o contraseña es incorrecto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            //FIN INCIO DE SESION MEDIANTE USUARIO REGISTRADO EN LA TABLA DE proyecto.Usuarios
         }
 
         private void pictureBox3_MouseDown(object sender, MouseEventArgs e)

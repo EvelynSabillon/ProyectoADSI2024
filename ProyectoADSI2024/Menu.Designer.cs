@@ -43,7 +43,7 @@
             this.BarraTitulo = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnUsuario = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblUser = new System.Windows.Forms.Label();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.PictureBox();
@@ -300,7 +300,7 @@
             this.BarraTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
             this.BarraTitulo.Controls.Add(this.pictureBox2);
             this.BarraTitulo.Controls.Add(this.btnUsuario);
-            this.BarraTitulo.Controls.Add(this.label2);
+            this.BarraTitulo.Controls.Add(this.lblUser);
             this.BarraTitulo.Controls.Add(this.btnMinimizar);
             this.BarraTitulo.Controls.Add(this.btnMaximizar);
             this.BarraTitulo.Controls.Add(this.btnClose);
@@ -321,6 +321,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // btnUsuario
             // 
@@ -332,16 +333,16 @@
             this.btnUsuario.TabIndex = 5;
             this.btnUsuario.TabStop = false;
             // 
-            // label2
+            // lblUser
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(144, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 25);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "UserName";
+            this.lblUser.AutoSize = true;
+            this.lblUser.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUser.ForeColor = System.Drawing.Color.White;
+            this.lblUser.Location = new System.Drawing.Point(144, 15);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(104, 25);
+            this.lblUser.TabIndex = 4;
+            this.lblUser.Text = "UserName";
             // 
             // btnMinimizar
             // 
@@ -697,7 +698,7 @@
             this.dropdownMenu6.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu6.Name = "dropdownMenu1";
             this.dropdownMenu6.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu6.Size = new System.Drawing.Size(235, 82);
+            this.dropdownMenu6.Size = new System.Drawing.Size(235, 104);
             // 
             // btnUsuariostoolStripMenuItem9
             // 
@@ -825,7 +826,7 @@
         private System.Windows.Forms.Button btnModuloGestionSocios;
         private System.Windows.Forms.Button btnModuloGestionFinanciera;
         private System.Windows.Forms.Button btnModuloGestionInventario;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.PictureBox btnUsuario;
         private Controls.DropdownMenu dropdownMenu1;
         private System.Windows.Forms.ToolStripMenuItem btn1ToolStripMenuItem;
