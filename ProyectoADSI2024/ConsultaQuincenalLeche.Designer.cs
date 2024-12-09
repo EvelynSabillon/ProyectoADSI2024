@@ -62,12 +62,12 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.label1.Location = new System.Drawing.Point(81, 34);
+            this.label1.Location = new System.Drawing.Point(303, 34);
             this.label1.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(724, 38);
+            this.label1.Size = new System.Drawing.Size(414, 38);
             this.label1.TabIndex = 1;
-            this.label1.Text = "CONSULTA QUINCENAL DE LECHE INGRESADA";
+            this.label1.Text = "REGISTRO DE QUINCENAS";
             // 
             // btnAtras
             // 
@@ -257,9 +257,9 @@
             // 
             // txtTexto
             // 
-            this.txtTexto.Location = new System.Drawing.Point(790, 109);
+            this.txtTexto.Location = new System.Drawing.Point(799, 109);
             this.txtTexto.Name = "txtTexto";
-            this.txtTexto.Size = new System.Drawing.Size(255, 20);
+            this.txtTexto.Size = new System.Drawing.Size(246, 20);
             this.txtTexto.TabIndex = 197;
             this.txtTexto.TextChanged += new System.EventHandler(this.txtTexto_TextChanged);
             // 

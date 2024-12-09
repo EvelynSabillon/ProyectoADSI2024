@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 //using ProyectoADSI2024; //Mandar a llamar el form del reporte de la nomina
@@ -41,11 +42,13 @@ namespace ProyectoADSI2024
             toolTip1.SetToolTip(btnGuardar, "Agregar nuevo registro");
             toolTip1.SetToolTip(dataGridView1, "Seleccionar registro para editar o eliminar");
             toolTip1.SetToolTip(lblMes, "Mes actual");
-            toolTip1.SetToolTip(txtPlanillaID, "ID de la planilla");
-            toolTip1.SetToolTip(txtQuincenaID, "ID de la quincena");
+            toolTip1.SetToolTip(txtPlanillaID, "ID de la planilla. Campo solo de lectura");
+            toolTip1.SetToolTip(txtQuincenaID, "Ingrese el ID de la quincena");
             toolTip1.SetToolTip(dtpFechaInicio, "Seleccione una fecha de inicio de la quincena");
             toolTip1.SetToolTip(dtpFechaFinal, "Selecione una fecha de fin de la quincena");
-            toolTip1.SetToolTip(txtPrecioLeche, "Precio de la leche actual");
+            toolTip1.SetToolTip(txtPrecioLeche, "Ingrese el precio de la leche actual");
+            toolTip1.SetToolTip(btnSeleccionar, "Haga click aquí para seleccionar el Id de quincena y fechas correspondientes.");
+            toolTip1.SetToolTip(btnAyuda, "Haga click aquí para ver el modo de uso del formulario.");
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -57,7 +60,9 @@ namespace ProyectoADSI2024
         private void frmNomina_Load(object sender, EventArgs e)
         {
             try
-            {
+            {   
+                txtTexto.Enabled = false;
+
                 adaptador.Fill(tabla); //Llenar la tabla
                 dataGridView1.DataSource = tabla; //Asignar la tabla al datagridview
 
@@ -82,6 +87,201 @@ namespace ProyectoADSI2024
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSeleccionar_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+                Vista_Quincena_Planilla frm = new Vista_Quincena_Planilla(this);
+                frm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            if (ValidarCampos())
+            {
+                if (MessageBox.Show("¿Desea guardar los registros de generados?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        SqlConnection con = conexion.ObtenerConexion();
+                        // Crear el comando y asociarlo con la conexión
+                        using (SqlCommand cmdPlanilla = new SqlCommand("spInsertarPlanillaPorSocio", con))
+                        {
+                            cmdPlanilla.CommandType = CommandType.StoredProcedure;
+
+                            // Agregar los parámetros necesarios
+                            cmdPlanilla.Parameters.AddWithValue("@quincenaID", Convert.ToInt32(txtQuincenaID.Text));
+                            cmdPlanilla.Parameters.AddWithValue("@periodoinicio", dtpFechaInicio.Value);
+                            cmdPlanilla.Parameters.AddWithValue("@periodofinal", dtpFechaFinal.Value);
+                            cmdPlanilla.Parameters.AddWithValue("@precioleche", Convert.ToDouble(txtPrecioLeche.Text));
+                            cmdPlanilla.Parameters.AddWithValue("@activo", true);
+
+
+                            // Ejecuta el procedimiento almacenado
+                            cmdPlanilla.ExecuteNonQuery();
+                            MessageBox.Show("Registros guardados exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                            //LIMPIO TODOS LOS CAMPOS LUEGO DEL REGISTRO.
+                            Limpiar();
+
+                            //Actualizar la tabla
+                            tabla.Clear();
+                            adaptador.Fill(tabla);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error de formato: " + ex.Message + "\nAsegurese de que los datos están en el formato correcto.");
+                    }
+
+                }
+            }
+        }
+
+        private bool ValidarCampos()
+        {
+            bool esValido = true;
+            errorProvider1.Clear();
+
+            // Validar que la QuincenaId no sea null
+            if (string.IsNullOrWhiteSpace(txtQuincenaID.Text) || !int.TryParse(txtQuincenaID.Text, out int quincenaID))
+            {
+                errorProvider1.SetError(txtQuincenaID, "Seleccione un ID de quincena. Este campo no puede ir vacio.");
+                errorProvider1.SetError(dtpFechaInicio, "Seleccione un ID de quincena.La fecha de inicio debe estar asociada al ID de Quincena");
+                errorProvider1.SetError(dtpFechaFinal, "Seleccione un ID de quincena. La fecha de fin debe estar asociada al ID de Quincena");
+                esValido = false;
+            }
+
+            // Validar que el precio no sea negativo y sea un número válido
+            if (string.IsNullOrWhiteSpace(txtPrecioLeche.Text) || !double.TryParse(txtPrecioLeche.Text, out double precioLeche))
+            {
+                errorProvider1.SetError(txtPrecioLeche, "Ingrese un precio válido.");
+                esValido = false;
+            }
+            else if (precioLeche <= 0)
+            {
+                errorProvider1.SetError(txtPrecioLeche, "Ingrese un precio válido. Valores numéricos positivos.");
+                esValido = false;
+            }
+
+            return esValido;
+        }
+
+
+        private void Limpiar()
+        {
+            //LIMPIAR TODOS LOS CAMPOS
+            txtPlanillaID.Enabled = false;
+            txtQuincenaID.Text = "";
+            txtPrecioLeche.Text = "";  // Deseleccionar socio
+            dtpFechaInicio.ResetText();
+            dtpFechaFinal.ResetText();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtTexto.Enabled = true;
+        }
+
+        private void txtTexto_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTexto.Text.Length == 0)
+            {
+                tabla.DefaultView.RowFilter = ""; // Mostrar todo si el texto está vacío
+            }
+            else
+            {
+                try
+                {
+                    var columnType = tabla.Columns[cmbCampo.Text].DataType;
+
+                    if (columnType == typeof(string)) // Filtro para cadenas
+                    {
+                        tabla.DefaultView.RowFilter = cmbCampo.Text + " LIKE '%" + txtTexto.Text + "%'";
+                    }
+                    else if (columnType == typeof(int)) // Filtro para enteros
+                    {
+                        if (int.TryParse(txtTexto.Text, out int numero))
+                        {
+                            tabla.DefaultView.RowFilter = cmbCampo.Text + " = " + numero;
+                        }
+                        else
+                        {
+                            tabla.DefaultView.RowFilter = "1 = 0"; // Sin coincidencias
+                        }
+                    }
+                    else if (columnType == typeof(decimal) || columnType == typeof(float) || columnType == typeof(double)) // Filtro para números decimales
+                    {
+                        if (decimal.TryParse(txtTexto.Text, out decimal numeroDecimal))
+                        {
+                            tabla.DefaultView.RowFilter = cmbCampo.Text + " = " + numeroDecimal.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                        }
+                        else
+                        {
+                            tabla.DefaultView.RowFilter = "1 = 0"; // Sin coincidencias
+                        }
+                    }
+                    else if (columnType == typeof(DateTime)) // Filtro para fechas (día/mes/año)
+                    {
+                        string inputFecha = txtTexto.Text.Trim();
+                        string[] formatosFecha = { "dd/MM/yyyy", "dd/MM" }; // Soportar "día/mes/año" y "día/mes"
+                        DateTime dateValue;
+
+                        if (DateTime.TryParseExact(inputFecha, formatosFecha, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dateValue))
+                        {
+                            // Si no se proporciona el año, agregar el año actual
+                            if (inputFecha.Length <= 5) // Formato corto: "dd/MM"
+                            {
+                                dateValue = new DateTime(DateTime.Now.Year, dateValue.Month, dateValue.Day);
+                            }
+
+                            // Convertir la fecha al formato requerido por RowFilter: "MM/dd/yyyy"
+                            tabla.DefaultView.RowFilter = cmbCampo.Text + " = #" + dateValue.ToString("MM/dd/yyyy") + "#";
+                        }
+                        else
+                        {
+                            tabla.DefaultView.RowFilter = "1 = 0"; // Sin coincidencias
+                        }
+                    }
+                    else
+                    {
+                        tabla.DefaultView.RowFilter = "1 = 0"; // Tipo no compatible
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error en el filtrado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            dataGridView1.DataSource = tabla.DefaultView.ToTable();
+        }
+
+        private void btnAyuda_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+            "Ingrese los valores adecuados para todos los campos solicitados en el formulario y al dar click al botón guardar se " +
+            "generara los registros de planilla de todos los socios activos.", "Ayuda",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Information);
         }
     }
 }

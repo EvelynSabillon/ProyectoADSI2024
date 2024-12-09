@@ -434,7 +434,7 @@
             // 
             this.btnConsultaQuincenalToolStripMenuItem.Name = "btnConsultaQuincenalToolStripMenuItem";
             this.btnConsultaQuincenalToolStripMenuItem.Size = new System.Drawing.Size(317, 26);
-            this.btnConsultaQuincenalToolStripMenuItem.Text = "Consulta Quincenal";
+            this.btnConsultaQuincenalToolStripMenuItem.Text = "Registro de Quincenas";
             this.btnConsultaQuincenalToolStripMenuItem.Click += new System.EventHandler(this.btnConsultaQuincenalToolStripMenuItem_Click);
             // 
             // reporteDeEntregasQuincenalesToolStripMenuItem

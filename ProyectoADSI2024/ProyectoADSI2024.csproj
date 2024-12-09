@@ -455,6 +455,12 @@
     <Compile Include="Vista_QuincenaProduccionGeneral.Designer.cs">
       <DependentUpon>Vista_QuincenaProduccionGeneral.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vista_Quincena_Planilla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista_Quincena_Planilla.Designer.cs">
+      <DependentUpon>Vista_Quincena_Planilla.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vista_SeleccionarFecha_Concentrado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -681,6 +687,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vista_QuincenaProduccionGeneral.resx">
       <DependentUpon>Vista_QuincenaProduccionGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista_Quincena_Planilla.resx">
+      <DependentUpon>Vista_Quincena_Planilla.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista_SeleccionarFecha_Concentrado.resx">
       <DependentUpon>Vista_SeleccionarFecha_Concentrado.cs</DependentUpon>
