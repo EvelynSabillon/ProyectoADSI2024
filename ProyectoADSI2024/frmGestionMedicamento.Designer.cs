@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionMedicamento));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -62,8 +63,18 @@
             this.btnEditarCompraCon = new System.Windows.Forms.Button();
             this.btnAgregarCompraMed = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtconIDMed = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtCompraIDMed = new System.Windows.Forms.TextBox();
+            this.epAgregar = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epEditar = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epEliminar = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgGestionMedCompra)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epAgregar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epEditar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epEliminar)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -130,6 +141,7 @@
             this.dgGestionMedCompra.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgGestionMedCompra.Size = new System.Drawing.Size(1023, 223);
             this.dgGestionMedCompra.TabIndex = 105;
+            this.dgGestionMedCompra.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgGestionMedCompra_CellDoubleClick);
             // 
             // dtpFechaVenMed
             // 
@@ -377,6 +389,7 @@
             this.btnEditarCompraCon.TabIndex = 101;
             this.btnEditarCompraCon.Text = "EDITAR";
             this.btnEditarCompraCon.UseVisualStyleBackColor = false;
+            this.btnEditarCompraCon.Click += new System.EventHandler(this.btnEditarCompraCon_Click);
             // 
             // btnAgregarCompraMed
             // 
@@ -414,11 +427,63 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(245, 104);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(82, 21);
+            this.label15.TabIndex = 110;
+            this.label15.Text = "Medic. ID";
+            // 
+            // txtconIDMed
+            // 
+            this.txtconIDMed.Location = new System.Drawing.Point(338, 105);
+            this.txtconIDMed.Name = "txtconIDMed";
+            this.txtconIDMed.ReadOnly = true;
+            this.txtconIDMed.Size = new System.Drawing.Size(100, 20);
+            this.txtconIDMed.TabIndex = 109;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(46, 103);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(87, 21);
+            this.label14.TabIndex = 108;
+            this.label14.Text = "CompraID";
+            // 
+            // txtCompraIDMed
+            // 
+            this.txtCompraIDMed.Location = new System.Drawing.Point(139, 104);
+            this.txtCompraIDMed.Name = "txtCompraIDMed";
+            this.txtCompraIDMed.ReadOnly = true;
+            this.txtCompraIDMed.Size = new System.Drawing.Size(100, 20);
+            this.txtCompraIDMed.TabIndex = 107;
+            // 
+            // epAgregar
+            // 
+            this.epAgregar.ContainerControl = this;
+            // 
+            // epEditar
+            // 
+            this.epEditar.ContainerControl = this;
+            // 
+            // epEliminar
+            // 
+            this.epEliminar.ContainerControl = this;
+            // 
             // frmGestionMedicamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1070, 595);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.txtconIDMed);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.txtCompraIDMed);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dgGestionMedCompra);
             this.Controls.Add(this.dtpFechaVenMed);
@@ -456,6 +521,9 @@
             this.Load += new System.EventHandler(this.frmGestionMedicamento_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgGestionMedCompra)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epAgregar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epEditar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epEliminar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -493,5 +561,12 @@
         private System.Windows.Forms.Button btnEditarCompraCon;
         private System.Windows.Forms.Button btnAgregarCompraMed;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtconIDMed;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtCompraIDMed;
+        private System.Windows.Forms.ErrorProvider epAgregar;
+        private System.Windows.Forms.ErrorProvider epEditar;
+        private System.Windows.Forms.ErrorProvider epEliminar;
     }
 }

@@ -357,11 +357,62 @@ namespace ProyectoADSI2024
                 {
                     return; // Si hay errores, salimos del método y no ejecutamos el procedimiento
                 }
+
+                using (SqlConnection conexion = cnxconcentrado.ObtenerConexion())
+                {
+                    // Asegurarse de que la conexión esté abierta
+                    if (conexion.State == ConnectionState.Closed)
+                    {
+                        conexion.Open();
+                    }
+
+                    // Crear el comando y asociarlo con la conexión
+                    using (SqlCommand cmdModificarCompra = new SqlCommand("spModificarConcentrado", conexion))
+                    {
+                        cmdModificarCompra.CommandType = CommandType.StoredProcedure;
+                        int proveedorID = Convert.ToInt32(cbxProveedor.SelectedValue);
+
+                        
+                        // Agregar los parámetros necesarios
+                        cmdModificarCompra.Parameters.AddWithValue("@nombre", txtNombeArticulo.Text.Trim());
+                        cmdModificarCompra.Parameters.AddWithValue("@codigo", txtCodigo.Text.Trim());
+                        cmdModificarCompra.Parameters.AddWithValue("@precio", Convert.ToDouble(txtPrecio.Text));
+                        cmdModificarCompra.Parameters.AddWithValue("@fechaVencimiento", dtpFechaVencimiento.Value);
+                        cmdModificarCompra.Parameters.AddWithValue("@cantidad", Convert.ToInt32(txtCantidad.Text));
+                        cmdModificarCompra.Parameters.AddWithValue("@fechaCompra", dtpFehcaCompra.Value);
+                        cmdModificarCompra.Parameters.AddWithValue("@documento", txtDocumento.Text.Trim());
+                        cmdModificarCompra.Parameters.AddWithValue("@tipo", cbxTipo.SelectedItem?.ToString() ?? string.Empty);
+                        cmdModificarCompra.Parameters.AddWithValue("@estadocompra", cbxEstadoCompra.SelectedItem?.ToString() ?? string.Empty);
+                        cmdModificarCompra.Parameters.AddWithValue("@proveedorID", proveedorID);
+                        cmdModificarCompra.Parameters.AddWithValue("@costo", Convert.ToDouble(txtCosto.Text));
+                        cmdModificarCompra.Parameters.AddWithValue("@compraid", Convert.ToInt32(txtCompraID.Text));
+                        cmdModificarCompra.Parameters.AddWithValue("@concentradoid", txtconID.Text.Trim());
+
+                        // Ejecutar el procedimiento almacenado
+                        cmdModificarCompra.ExecuteNonQuery();
+                        MessageBox.Show("Compra registrada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // Limpiar los datos después de la operación
+                        LimpiarDatos();
+                        dtCompraConcen.Clear(); // Limpia los datos actuales del DataTable
+                        adapterCompraConcen.Fill(dtCompraConcen); // Vuelve a cargar los datos desde la base de datos
+                        dgGestionConcentrado.Refresh(); // Refresca la interfaz
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show($"Error en la base de datos: {ex.Message}", "Error SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show($"Error de formato: {ex.Message}", "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al editar la compra: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
 
         }
 
@@ -376,6 +427,8 @@ namespace ProyectoADSI2024
             txtCantidad.Clear();
             txtDocumento.Clear();
             txtCosto.Clear();
+            txtconID.Clear();
+            txtCompraID.Clear();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -454,13 +507,19 @@ namespace ProyectoADSI2024
                 cbxEstadoCompra.SelectedItem = filaSeleccionada.Cells["Estado"].Value.ToString();
                 txtCosto.Text = filaSeleccionada.Cells["Costo"].Value.ToString();
                 txtCompraID.Text = filaSeleccionada.Cells["CompraID"].Value.ToString();
-
+                txtconID.Text = filaSeleccionada.Cells["ArticuloConID"].Value.ToString();
 
             }
         }
 
         private void btnAgregarVarios_Click(object sender, EventArgs e)
         {
+
+            if (!ValidaionAgregar())
+            {
+                return; // Si hay errores, salimos del método y no ejecutamos el procedimiento
+            }
+
             string Nombre = txtNombeArticulo.Text;
             string Codigo = txtCodigo.Text;
             decimal Precio = decimal.Parse(txtPrecio.Text);
@@ -491,6 +550,11 @@ namespace ProyectoADSI2024
 
         private void btnComprar_Click(object sender, EventArgs e)
         {
+            if (!ValidaionAgregar())
+            {
+                return; // Si hay errores, salimos del método y no ejecutamos el procedimiento
+            }
+
             if (dgarticuloscompra.Rows.Count == 0)
             {
                 MessageBox.Show("No hay artículos para comprar.");

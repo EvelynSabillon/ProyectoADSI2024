@@ -81,6 +81,8 @@
             this.FechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAgregarVarios = new System.Windows.Forms.Button();
             this.btnComprar = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtconID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgGestionConcentrado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epAgregar)).BeginInit();
@@ -447,7 +449,7 @@
             // 
             // txtCompraID
             // 
-            this.txtCompraID.Location = new System.Drawing.Point(336, 106);
+            this.txtCompraID.Location = new System.Drawing.Point(139, 107);
             this.txtCompraID.Name = "txtCompraID";
             this.txtCompraID.ReadOnly = true;
             this.txtCompraID.Size = new System.Drawing.Size(100, 20);
@@ -574,11 +576,31 @@
             this.btnComprar.UseVisualStyleBackColor = false;
             this.btnComprar.Click += new System.EventHandler(this.btnComprar_Click);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(245, 107);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(92, 21);
+            this.label15.TabIndex = 87;
+            this.label15.Text = "Concen. ID";
+            // 
+            // txtconID
+            // 
+            this.txtconID.Location = new System.Drawing.Point(338, 108);
+            this.txtconID.Name = "txtconID";
+            this.txtconID.ReadOnly = true;
+            this.txtconID.Size = new System.Drawing.Size(100, 20);
+            this.txtconID.TabIndex = 86;
+            // 
             // frmGestionConcentrado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1070, 595);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.txtconID);
             this.Controls.Add(this.btnComprar);
             this.Controls.Add(this.btnAgregarVarios);
             this.Controls.Add(this.dgarticuloscompra);
@@ -678,5 +700,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Costo;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaCompra;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaVencimiento;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtconID;
     }
 }
