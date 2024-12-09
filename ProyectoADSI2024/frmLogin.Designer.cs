@@ -204,6 +204,7 @@
             this.linkPass.TabIndex = 0;
             this.linkPass.TabStop = true;
             this.linkPass.Text = "¿Ha olvidado su contraseña?";
+            this.linkPass.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkPass_LinkClicked);
             // 
             // frmLogin
             // 

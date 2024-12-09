@@ -206,13 +206,26 @@ namespace ProyectoADSI2024
             {
                 MessageBox.Show("El usuario o contraseña es incorrecto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            //FIN INCIO DE SESION MEDIANTE USUARIO REGISTRADO EN LA TABLA DE proyecto.Usuarios
+            
         }
+        //FIN INCIO DE SESION MEDIANTE USUARIO REGISTRADO EN LA TABLA DE proyecto.Usuarios
+
 
         private void pictureBox3_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
+        //ENLACE PARA CAMBIAR CONTRASEÑA
+        private void linkPass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            // Crear una instancia del formulario de cambio de contraseña
+            frmCambiarContrasena cambiarContrasenaForm = new frmCambiarContrasena();
+
+            // Mostrar el formulario como un cuadro de diálogo modal
+            cambiarContrasenaForm.ShowDialog();
+        }
+        //FIN //ENLACE PARA CAMBIAR CONTRASEÑA
     }
 }

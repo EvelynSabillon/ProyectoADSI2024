@@ -78,6 +78,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DB20212030388DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="frmCambiarContrasena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCambiarContrasena.Designer.cs">
+      <DependentUpon>frmCambiarContrasena.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmContenedorConsumoInsumoReparado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -471,6 +477,9 @@
     <EmbeddedResource Include="crReportePagoSocio.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crReportePagoSocio.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCambiarContrasena.resx">
+      <DependentUpon>frmCambiarContrasena.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmContenedorConsumoInsumoReparado.resx">
       <DependentUpon>frmContenedorConsumoInsumoReparado.cs</DependentUpon>
