@@ -11,6 +11,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace ProyectoADSI2024
 {
@@ -20,6 +22,8 @@ namespace ProyectoADSI2024
         Conexion cnxKardex;
         SqlDataAdapter adaptador; //Adaptador para SQL Server
         DataTable tabla; //Tabla para SQL Server
+
+        System.Windows.Forms.ToolTip toolTipKardex1;
         public frmKardexConcentrado()
         {
             InitializeComponent();
@@ -28,6 +32,9 @@ namespace ProyectoADSI2024
             adaptador.SelectCommand.CommandType = CommandType.StoredProcedure; //Tipo de comando
             tabla = new DataTable(); //Inicializar la tabla
             cnxKardex = new Conexion();
+            toolTipKardex();
+
+
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -99,8 +106,12 @@ namespace ProyectoADSI2024
                     MessageBox.Show("Concentrado registrado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //LIMPIO TODOS LOS CAMPOS LUEGO DE LA COMPRA.
-           
 
+                    LimpiarDatos();
+
+                    tabla.Clear(); // Limpia los datos actuales del DataTable
+                    adaptador.Fill(tabla); // Vuelve a cargar los datos desde la base de datos
+                    dataGridView1.Refresh(); // Refresca la interfaz
 
 
                 }
@@ -227,7 +238,10 @@ namespace ProyectoADSI2024
                     MessageBox.Show("Concentrado actualizado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //LIMPIO TODOS LOS CAMPOS LUEGO DE LA COMPRA.
-
+                    LimpiarDatos();
+                    tabla.Clear(); // Limpia los datos actuales del DataTable
+                    adaptador.Fill(tabla); // Vuelve a cargar los datos desde la base de datos
+                    dataGridView1.Refresh(); // Refresca la interfaz
 
 
 
@@ -312,5 +326,29 @@ namespace ProyectoADSI2024
 
             return true; // Si todas las validaciones son correctas, devuelve true
         }
+
+
+        private void toolTipKardex()
+        {
+            toolTipKardex1 = new System.Windows.Forms.ToolTip();
+            toolTipKardex1.IsBalloon = true;
+            toolTipKardex1.ToolTipIcon = ToolTipIcon.Info;
+            toolTipKardex1.ToolTipTitle = "Ayuda";
+            toolTipKardex1.UseAnimation = true;
+            toolTipKardex1.SetToolTip(txtCodKarCon, "Ingrese el codigo del concentrado");
+            toolTipKardex1.SetToolTip(txtNomKarCon, "Ingrese el nombre del concentrado");
+            toolTipKardex1.SetToolTip(cbxTipoKarCon, "Seleccione el tipo de concentrado");
+            toolTipKardex1.SetToolTip(txtKarPrecio, "Ingrese el precio del concentrado");
+            toolTipKardex1.SetToolTip(txtKarEntrada, "Ingrese la cantidad de entrada del concentrado");
+            toolTipKardex1.SetToolTip(txtKarSalida, "Ingrese la cantidad de salida del concentrado");
+            toolTipKardex1.SetToolTip(dtpFechaVenKar, "Seleccione la fecha de vencimiento del concentrado");
+            toolTipKardex1.SetToolTip(btnGuardar, "Guarda el movimiento de Kardex");
+            toolTipKardex1.SetToolTip(btnEliminar, "Elimina el movimiento de Kardex");
+            toolTipKardex1.SetToolTip(button1, "Editar el concentrado seleccioando.");
+            toolTipKardex1.SetToolTip(button2, "Limpia los campos del formulario.");
+            toolTipKardex1.SetToolTip(btnGenerarReporte, "Genera reporte de kardex de concentrado.");
+
+
+        }
     }
-   }
+}

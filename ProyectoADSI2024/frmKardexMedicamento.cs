@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace ProyectoADSI2024
 {
@@ -17,6 +19,7 @@ namespace ProyectoADSI2024
         SqlDataAdapter adaptador; //Adaptador para SQL Server
         DataTable tabla; //Tabla para SQL Server
         private Conexion cnxkardexMed;
+        System.Windows.Forms.ToolTip toolTipKardexMed;
         public frmKardexMedicamento()
         {
             InitializeComponent();
@@ -25,6 +28,7 @@ namespace ProyectoADSI2024
             adaptador.SelectCommand.CommandType = CommandType.StoredProcedure; //Tipo de comando
             tabla = new DataTable(); //Inicializar la tabla
             cnxkardexMed = new Conexion();
+            toolTipKardexMedicamento();
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -93,7 +97,10 @@ namespace ProyectoADSI2024
                     MessageBox.Show("Medicamento/Insumo registrado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //LIMPIO TODOS LOS CAMPOS LUEGO DE LA COMPRA.
-
+                    LimpiarDatos();
+                    tabla.Clear(); // Limpia los datos actuales del DataTable
+                    adaptador.Fill(tabla); // Vuelve a cargar los datos desde la base de datos
+                    dataGridView1.Refresh(); // Refresca la interfaz
 
 
 
@@ -180,7 +187,10 @@ namespace ProyectoADSI2024
 
                     //LIMPIO TODOS LOS CAMPOS LUEGO DE LA COMPRA.
 
-
+                    LimpiarDatos();
+                    tabla.Clear(); // Limpia los datos actuales del DataTable
+                    adaptador.Fill(tabla); // Vuelve a cargar los datos desde la base de datos
+                    dataGridView1.Refresh(); // Refresca la interfaz
 
 
                 }
@@ -298,6 +308,29 @@ namespace ProyectoADSI2024
 
 
             return true; // Si todas las validaciones son correctas, devuelve true
+        }
+
+        private void toolTipKardexMedicamento()
+        {
+            toolTipKardexMed = new System.Windows.Forms.ToolTip();
+            toolTipKardexMed.IsBalloon = true;
+            toolTipKardexMed.ToolTipIcon = ToolTipIcon.Info;
+            toolTipKardexMed.ToolTipTitle = "Ayuda";
+            toolTipKardexMed.UseAnimation = true;
+            toolTipKardexMed.SetToolTip(txtCodigoKardexMed, "Ingrese el codigo del concentrado");
+            toolTipKardexMed.SetToolTip(txtNombreMedKardex, "Ingrese el nombre del concentrado");
+            
+            toolTipKardexMed.SetToolTip(txtPrecioKardexMed, "Ingrese el precio del concentrado");
+            toolTipKardexMed.SetToolTip(txtEntradaMedKardex, "Ingrese la cantidad de entrada del concentrado");
+            toolTipKardexMed.SetToolTip(txtSalidaMedKardex, "Ingrese la cantidad de salida del concentrado");
+            toolTipKardexMed.SetToolTip(dtpvencmed, "Seleccione la fecha de vencimiento del concentrado");
+            toolTipKardexMed.SetToolTip(btnGuardar, "Guarda el movimiento de Kardex");
+            toolTipKardexMed.SetToolTip(btnEliminar, "Elimina el movimiento de Kardex");
+            toolTipKardexMed.SetToolTip(button1, "Editar el concentrado seleccioando.");
+            toolTipKardexMed.SetToolTip(button2, "Limpia los campos del formulario.");
+            toolTipKardexMed.SetToolTip(btnGenerarReporte, "Genera reporte de kardex de concentrado.");
+
+
         }
     }
 }
