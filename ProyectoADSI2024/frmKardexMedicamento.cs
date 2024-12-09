@@ -20,6 +20,7 @@ namespace ProyectoADSI2024
         DataTable tabla; //Tabla para SQL Server
         private Conexion cnxkardexMed;
         System.Windows.Forms.ToolTip toolTipKardexMed;
+        BindingSource bindingSource;
         public frmKardexMedicamento()
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace ProyectoADSI2024
             tabla = new DataTable(); //Inicializar la tabla
             cnxkardexMed = new Conexion();
             toolTipKardexMedicamento();
+        
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -39,10 +41,14 @@ namespace ProyectoADSI2024
 
         private void frmKardexMedicamento_Load(object sender, EventArgs e)
         {
+            tboxBuscar.Enabled = false;
             try
             {
                 adaptador.Fill(tabla); //Llenar la tabla
                 dataGridView1.DataSource = tabla; //Mostrar la tabla en el DataGridView
+
+
+           
             }
             catch (Exception ex)
             {
@@ -211,6 +217,37 @@ namespace ProyectoADSI2024
                 epEditarKardexMed.SetError(txtArticuloKardexid, "Debe Seleccionar un medicamento/insumo para actualizar su informacion.");
                 return false;
             }
+            else if (txtNombreMedKardex.Text == string.Empty)
+            {
+                epEditarKardexMed.SetError(txtNombreMedKardex, "El nombre del artículo es obligatorio.");
+                return false;
+            }
+            else if (txtCodigoKardexMed.Text == string.Empty)
+            {
+                epEditarKardexMed.SetError(txtCodigoKardexMed, "El código del artículo es obligatorio.");
+                return false;
+            }
+           
+            else if (txtPrecioKardexMed.Text == string.Empty)
+            {
+                epEditarKardexMed.SetError(txtPrecioKardexMed, "El precio del artículo es obligatorio.");
+                return false;
+            }
+            else if (txtEntradaMedKardex.Text == string.Empty)
+            {
+                epEditarKardexMed.SetError(txtEntradaMedKardex, "La cantidad de entrada es obligatoria.");
+                return false;
+            }
+            else if (txtSalidaMedKardex.Text == string.Empty)
+            {
+                epEditarKardexMed.SetError(txtSalidaMedKardex, "La cantidad de salida es obligatoria.");
+                return false;
+            }
+            else if (dtpvencmed.Value == null)
+            {
+                epEditarKardexMed.SetError(dtpvencmed, "La fecha de vencimiento es obligatoria.");
+                return false;
+            }
 
 
             return true; // Si todas las validaciones son correctas, devuelve true
@@ -331,6 +368,52 @@ namespace ProyectoADSI2024
             toolTipKardexMed.SetToolTip(btnGenerarReporte, "Genera reporte de kardex de concentrado.");
 
 
+        }
+
+        private void tboxBuscar_KeyDown(object sender, KeyEventArgs e)
+        {
+
+
+
+        }
+
+        private void FiltrarDatos()
+        {
+            // Suponiendo que ya tienes un DataTable como origen de datos para el DataGridView
+            DataTable dt = tabla; // Método que recupera los datos de proveedores
+            string columnaSeleccionada = cboxBuscar.SelectedItem.ToString();
+            string filtro = tboxBuscar.Text.ToLower();
+
+            // Filtrar la DataTable según la columna seleccionada y el valor de búsqueda
+            DataView dv = dt.DefaultView;
+            if (string.IsNullOrEmpty(filtro))
+            {
+                dv.RowFilter = string.Empty; // Si no hay texto, mostrar todos
+            }
+            else
+            {
+                dv.RowFilter = $"{columnaSeleccionada} LIKE '%{filtro}%'";
+            }
+
+            // Asignar el DataView filtrado al DataGridView
+            dataGridView1.DataSource = dv;
+        }
+
+        private void tboxBuscar_TextChanged(object sender, EventArgs e)
+        {
+            FiltrarDatos();
+        }
+
+        private void cboxBuscar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Si hay una selección en el ComboBox, habilita el TextBox
+            tboxBuscar.Enabled = cboxBuscar.SelectedIndex >= 0;
+
+            // Si el TextBox estaba habilitado y ya hay un filtro escrito, aplicamos el filtro
+            if (tboxBuscar.Enabled)
+            {
+                FiltrarDatos();
+            }
         }
     }
 }
