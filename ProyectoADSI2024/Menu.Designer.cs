@@ -315,7 +315,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(278, 4);
+            this.pictureBox2.Location = new System.Drawing.Point(297, 4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(43, 46);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -513,7 +513,7 @@
             this.dropdownMenu4.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu4.Name = "dropdownMenu1";
             this.dropdownMenu4.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu4.Size = new System.Drawing.Size(301, 104);
+            this.dropdownMenu4.Size = new System.Drawing.Size(301, 82);
             this.dropdownMenu4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dropdownMenu4_MouseClick);
             // 
             // ConcentradoToolStripMenu
@@ -711,6 +711,7 @@
             this.btnPermisostoolStripMenuItem10.Name = "btnPermisostoolStripMenuItem10";
             this.btnPermisostoolStripMenuItem10.Size = new System.Drawing.Size(234, 26);
             this.btnPermisostoolStripMenuItem10.Text = "Gestión de Permisos";
+            this.btnPermisostoolStripMenuItem10.Visible = false;
             this.btnPermisostoolStripMenuItem10.Click += new System.EventHandler(this.btnPermisostoolStripMenuItem10_Click);
             // 
             // btnAyudatoolStripMenuItem1

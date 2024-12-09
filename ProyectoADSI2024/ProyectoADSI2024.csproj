@@ -269,6 +269,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Report_Manager.cs" />
+    <Compile Include="Utils\ButtonEnableDsisableStyle.cs" />
     <Compile Include="Utils\DatabaseHelper.cs" />
     <Compile Include="Utils\ReportManager.cs" />
     <Compile Include="Vista_ArticuloMed.cs">
