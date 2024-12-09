@@ -314,6 +314,7 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(297, 4);
             this.pictureBox2.Name = "pictureBox2";
@@ -698,7 +699,7 @@
             this.dropdownMenu6.MenuItemTextColor = System.Drawing.Color.Empty;
             this.dropdownMenu6.Name = "dropdownMenu1";
             this.dropdownMenu6.PrimaryColor = System.Drawing.Color.Empty;
-            this.dropdownMenu6.Size = new System.Drawing.Size(235, 104);
+            this.dropdownMenu6.Size = new System.Drawing.Size(235, 82);
             // 
             // btnUsuariostoolStripMenuItem9
             // 
