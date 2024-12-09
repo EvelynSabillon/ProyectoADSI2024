@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionConcentrado));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -54,7 +55,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.cbxProveedor = new System.Windows.Forms.ComboBox();
-            this.btnAgregarCompraCon = new System.Windows.Forms.Button();
             this.btnEditarCompraCon = new System.Windows.Forms.Button();
             this.btnEliminarCompraCon = new System.Windows.Forms.Button();
             this.dtpFehcaCompra = new System.Windows.Forms.DateTimePicker();
@@ -62,8 +62,31 @@
             this.dgGestionConcentrado = new System.Windows.Forms.DataGridView();
             this.btnLimpiarConcentradoCompara = new System.Windows.Forms.Button();
             this.btnAtras = new System.Windows.Forms.PictureBox();
+            this.epAgregar = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epEditar = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epEliminar = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtCompraID = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.dgarticuloscompra = new System.Windows.Forms.DataGridView();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EstadoCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAgregarVarios = new System.Windows.Forms.Button();
+            this.btnComprar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgGestionConcentrado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epAgregar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epEditar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epEliminar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgarticuloscompra)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -138,10 +161,8 @@
             this.cbxTipo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxTipo.FormattingEnabled = true;
             this.cbxTipo.Items.AddRange(new object[] {
-            "Mantenimiento",
-            "Lechera",
-            "18% Lechera",
-            "Churro"});
+            "Credito",
+            "Contado"});
             this.cbxTipo.Location = new System.Drawing.Point(648, 222);
             this.cbxTipo.Name = "cbxTipo";
             this.cbxTipo.Size = new System.Drawing.Size(121, 25);
@@ -166,7 +187,7 @@
             this.cbxEstadoCompra.FormattingEnabled = true;
             this.cbxEstadoCompra.Items.AddRange(new object[] {
             "Pagada",
-            "Por pagar"});
+            "Pendiente"});
             this.cbxEstadoCompra.Location = new System.Drawing.Point(648, 266);
             this.cbxEstadoCompra.Name = "cbxEstadoCompra";
             this.cbxEstadoCompra.Size = new System.Drawing.Size(121, 25);
@@ -298,24 +319,6 @@
             this.cbxProveedor.Size = new System.Drawing.Size(234, 25);
             this.cbxProveedor.TabIndex = 31;
             // 
-            // btnAgregarCompraCon
-            // 
-            this.btnAgregarCompraCon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.btnAgregarCompraCon.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAgregarCompraCon.FlatAppearance.BorderSize = 0;
-            this.btnAgregarCompraCon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
-            this.btnAgregarCompraCon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
-            this.btnAgregarCompraCon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarCompraCon.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarCompraCon.ForeColor = System.Drawing.Color.White;
-            this.btnAgregarCompraCon.Location = new System.Drawing.Point(851, 130);
-            this.btnAgregarCompraCon.Name = "btnAgregarCompraCon";
-            this.btnAgregarCompraCon.Size = new System.Drawing.Size(160, 38);
-            this.btnAgregarCompraCon.TabIndex = 32;
-            this.btnAgregarCompraCon.Text = "AGREGAR";
-            this.btnAgregarCompraCon.UseVisualStyleBackColor = false;
-            this.btnAgregarCompraCon.Click += new System.EventHandler(this.btnAgregarCompraCon_Click);
-            // 
             // btnEditarCompraCon
             // 
             this.btnEditarCompraCon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
@@ -326,7 +329,7 @@
             this.btnEditarCompraCon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditarCompraCon.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditarCompraCon.ForeColor = System.Drawing.Color.White;
-            this.btnEditarCompraCon.Location = new System.Drawing.Point(851, 184);
+            this.btnEditarCompraCon.Location = new System.Drawing.Point(851, 199);
             this.btnEditarCompraCon.Name = "btnEditarCompraCon";
             this.btnEditarCompraCon.Size = new System.Drawing.Size(160, 38);
             this.btnEditarCompraCon.TabIndex = 33;
@@ -344,7 +347,7 @@
             this.btnEliminarCompraCon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarCompraCon.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminarCompraCon.ForeColor = System.Drawing.Color.White;
-            this.btnEliminarCompraCon.Location = new System.Drawing.Point(851, 292);
+            this.btnEliminarCompraCon.Location = new System.Drawing.Point(851, 307);
             this.btnEliminarCompraCon.Name = "btnEliminarCompraCon";
             this.btnEliminarCompraCon.Size = new System.Drawing.Size(160, 38);
             this.btnEliminarCompraCon.TabIndex = 34;
@@ -374,29 +377,30 @@
             this.dgGestionConcentrado.AllowUserToDeleteRows = false;
             this.dgGestionConcentrado.AllowUserToResizeColumns = false;
             this.dgGestionConcentrado.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgGestionConcentrado.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dgGestionConcentrado.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgGestionConcentrado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgGestionConcentrado.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgGestionConcentrado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgGestionConcentrado.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgGestionConcentrado.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgGestionConcentrado.Location = new System.Drawing.Point(23, 356);
             this.dgGestionConcentrado.MultiSelect = false;
             this.dgGestionConcentrado.Name = "dgGestionConcentrado";
             this.dgGestionConcentrado.ReadOnly = true;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgGestionConcentrado.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgGestionConcentrado.Size = new System.Drawing.Size(1023, 223);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dgGestionConcentrado.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgGestionConcentrado.Size = new System.Drawing.Size(487, 223);
             this.dgGestionConcentrado.TabIndex = 79;
+            this.dgGestionConcentrado.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgGestionConcentrado_CellDoubleClick);
             // 
             // btnLimpiarConcentradoCompara
             // 
@@ -408,7 +412,7 @@
             this.btnLimpiarConcentradoCompara.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpiarConcentradoCompara.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpiarConcentradoCompara.ForeColor = System.Drawing.Color.White;
-            this.btnLimpiarConcentradoCompara.Location = new System.Drawing.Point(851, 238);
+            this.btnLimpiarConcentradoCompara.Location = new System.Drawing.Point(851, 253);
             this.btnLimpiarConcentradoCompara.Name = "btnLimpiarConcentradoCompara";
             this.btnLimpiarConcentradoCompara.Size = new System.Drawing.Size(160, 38);
             this.btnLimpiarConcentradoCompara.TabIndex = 80;
@@ -429,11 +433,157 @@
             this.btnAtras.TabStop = false;
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
+            // epAgregar
+            // 
+            this.epAgregar.ContainerControl = this;
+            // 
+            // epEditar
+            // 
+            this.epEditar.ContainerControl = this;
+            // 
+            // epEliminar
+            // 
+            this.epEliminar.ContainerControl = this;
+            // 
+            // txtCompraID
+            // 
+            this.txtCompraID.Location = new System.Drawing.Point(336, 106);
+            this.txtCompraID.Name = "txtCompraID";
+            this.txtCompraID.ReadOnly = true;
+            this.txtCompraID.Size = new System.Drawing.Size(100, 20);
+            this.txtCompraID.TabIndex = 81;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(46, 106);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(87, 21);
+            this.label14.TabIndex = 82;
+            this.label14.Text = "CompraID";
+            // 
+            // dgarticuloscompra
+            // 
+            this.dgarticuloscompra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgarticuloscompra.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Nombre,
+            this.Codigo,
+            this.Precio,
+            this.Cantidad,
+            this.Proveedor,
+            this.Documento,
+            this.Tipo,
+            this.EstadoCompra,
+            this.Costo,
+            this.FechaCompra,
+            this.FechaVencimiento});
+            this.dgarticuloscompra.Location = new System.Drawing.Point(529, 356);
+            this.dgarticuloscompra.Name = "dgarticuloscompra";
+            this.dgarticuloscompra.Size = new System.Drawing.Size(482, 223);
+            this.dgarticuloscompra.TabIndex = 83;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            // 
+            // Codigo
+            // 
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            // 
+            // Proveedor
+            // 
+            this.Proveedor.HeaderText = "Proveedor";
+            this.Proveedor.Name = "Proveedor";
+            // 
+            // Documento
+            // 
+            this.Documento.HeaderText = "Documento";
+            this.Documento.Name = "Documento";
+            // 
+            // Tipo
+            // 
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            // 
+            // EstadoCompra
+            // 
+            this.EstadoCompra.HeaderText = "EstadoCompra";
+            this.EstadoCompra.Name = "EstadoCompra";
+            // 
+            // Costo
+            // 
+            this.Costo.HeaderText = "Costo";
+            this.Costo.Name = "Costo";
+            // 
+            // FechaCompra
+            // 
+            this.FechaCompra.HeaderText = "FechaCompra";
+            this.FechaCompra.Name = "FechaCompra";
+            // 
+            // FechaVencimiento
+            // 
+            this.FechaVencimiento.HeaderText = "FechaVencimiento";
+            this.FechaVencimiento.Name = "FechaVencimiento";
+            // 
+            // btnAgregarVarios
+            // 
+            this.btnAgregarVarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.btnAgregarVarios.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgregarVarios.FlatAppearance.BorderSize = 0;
+            this.btnAgregarVarios.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.btnAgregarVarios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.btnAgregarVarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarVarios.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarVarios.ForeColor = System.Drawing.Color.White;
+            this.btnAgregarVarios.Location = new System.Drawing.Point(851, 145);
+            this.btnAgregarVarios.Name = "btnAgregarVarios";
+            this.btnAgregarVarios.Size = new System.Drawing.Size(160, 38);
+            this.btnAgregarVarios.TabIndex = 84;
+            this.btnAgregarVarios.Text = "AGREGAR";
+            this.btnAgregarVarios.UseVisualStyleBackColor = false;
+            this.btnAgregarVarios.Click += new System.EventHandler(this.btnAgregarVarios_Click);
+            // 
+            // btnComprar
+            // 
+            this.btnComprar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.btnComprar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnComprar.FlatAppearance.BorderSize = 0;
+            this.btnComprar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.btnComprar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.btnComprar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnComprar.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnComprar.ForeColor = System.Drawing.Color.White;
+            this.btnComprar.Location = new System.Drawing.Point(851, 93);
+            this.btnComprar.Name = "btnComprar";
+            this.btnComprar.Size = new System.Drawing.Size(160, 38);
+            this.btnComprar.TabIndex = 85;
+            this.btnComprar.Text = "COMPRAR";
+            this.btnComprar.UseVisualStyleBackColor = false;
+            this.btnComprar.Click += new System.EventHandler(this.btnComprar_Click);
+            // 
             // frmGestionConcentrado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1070, 595);
+            this.Controls.Add(this.btnComprar);
+            this.Controls.Add(this.btnAgregarVarios);
+            this.Controls.Add(this.dgarticuloscompra);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.txtCompraID);
             this.Controls.Add(this.btnLimpiarConcentradoCompara);
             this.Controls.Add(this.dgGestionConcentrado);
             this.Controls.Add(this.dtpFechaVencimiento);
@@ -441,7 +591,6 @@
             this.Controls.Add(this.dtpFehcaCompra);
             this.Controls.Add(this.btnEliminarCompraCon);
             this.Controls.Add(this.btnEditarCompraCon);
-            this.Controls.Add(this.btnAgregarCompraCon);
             this.Controls.Add(this.cbxProveedor);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
@@ -470,6 +619,10 @@
             this.Load += new System.EventHandler(this.frmGestionConcentrado_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgGestionConcentrado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epAgregar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epEditar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epEliminar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgarticuloscompra)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -499,7 +652,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox cbxProveedor;
-        private System.Windows.Forms.Button btnAgregarCompraCon;
         private System.Windows.Forms.Button btnEditarCompraCon;
         private System.Windows.Forms.Button btnEliminarCompraCon;
         private System.Windows.Forms.DateTimePicker dtpFehcaCompra;
@@ -507,5 +659,24 @@
         private System.Windows.Forms.DateTimePicker dtpFechaVencimiento;
         private System.Windows.Forms.DataGridView dgGestionConcentrado;
         private System.Windows.Forms.Button btnLimpiarConcentradoCompara;
+        private System.Windows.Forms.ErrorProvider epAgregar;
+        private System.Windows.Forms.ErrorProvider epEditar;
+        private System.Windows.Forms.ErrorProvider epEliminar;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtCompraID;
+        private System.Windows.Forms.DataGridView dgarticuloscompra;
+        private System.Windows.Forms.Button btnAgregarVarios;
+        private System.Windows.Forms.Button btnComprar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Proveedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Documento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EstadoCompra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Costo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaCompra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaVencimiento;
     }
 }
