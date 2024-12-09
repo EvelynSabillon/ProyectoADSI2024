@@ -45,6 +45,7 @@ namespace ProyectoADSI2024
 
         private void frmKardexConcentrado_Load(object sender, EventArgs e)
         {
+            tboxBuscar.Enabled = false;
             try
             {
                 adaptador.Fill(tabla); //Llenar la tabla
@@ -264,7 +265,42 @@ namespace ProyectoADSI2024
                 epValidarEditar.SetError(txtKardexConId, "Debe Seleccionar un articulo para actualizar su informacion.");
                 return false;
             }
-           
+            else if (txtNomKarCon.Text == string.Empty)
+            {
+                epValidaGuardar.SetError(txtNomKarCon, "El nombre del artículo es obligatorio.");
+                return false;
+            }
+            else if (txtCodKarCon.Text == string.Empty)
+            {
+                epValidaGuardar.SetError(txtCodKarCon, "El código del artículo es obligatorio.");
+                return false;
+            }
+            else if (cbxTipoKarCon.SelectedIndex == -1)
+            {
+                epValidaGuardar.SetError(cbxTipoKarCon, "El tipo de artículo es obligatorio.");
+                return false;
+            }
+            else if (txtKarPrecio.Text == string.Empty)
+            {
+                epValidaGuardar.SetError(txtKarPrecio, "El precio del artículo es obligatorio.");
+                return false;
+            }
+            else if (txtKarEntrada.Text == string.Empty)
+            {
+                epValidaGuardar.SetError(txtKarEntrada, "La cantidad de entrada es obligatoria.");
+                return false;
+            }
+            else if (txtKarSalida.Text == string.Empty)
+            {
+                epValidaGuardar.SetError(txtKarSalida, "La cantidad de salida es obligatoria.");
+                return false;
+            }
+            else if (dtpFechaVenKar.Value == null)
+            {
+                epValidaGuardar.SetError(dtpFechaVenKar, "La fecha de vencimiento es obligatoria.");
+                return false;
+            }
+
 
             return true; // Si todas las validaciones son correctas, devuelve true
 
@@ -349,6 +385,45 @@ namespace ProyectoADSI2024
             toolTipKardex1.SetToolTip(btnGenerarReporte, "Genera reporte de kardex de concentrado.");
 
 
+        }
+
+        private void FiltrarDatos()
+        {
+            // Suponiendo que ya tienes un DataTable como origen de datos para el DataGridView
+            DataTable dt = tabla; // Método que recupera los datos de proveedores
+            string columnaSeleccionada = cboxBuscar.SelectedItem.ToString();
+            string filtro = tboxBuscar.Text.ToLower();
+
+            // Filtrar la DataTable según la columna seleccionada y el valor de búsqueda
+            DataView dv = dt.DefaultView;
+            if (string.IsNullOrEmpty(filtro))
+            {
+                dv.RowFilter = string.Empty; // Si no hay texto, mostrar todos
+            }
+            else
+            {
+                dv.RowFilter = $"{columnaSeleccionada} LIKE '%{filtro}%'";
+            }
+
+            // Asignar el DataView filtrado al DataGridView
+            dataGridView1.DataSource = dv;
+        }
+
+        private void tboxBuscar_TextChanged(object sender, EventArgs e)
+        {
+            FiltrarDatos();
+        }
+
+        private void cboxBuscar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Si hay una selección en el ComboBox, habilita el TextBox
+            tboxBuscar.Enabled = cboxBuscar.SelectedIndex >= 0;
+
+            // Si el TextBox estaba habilitado y ya hay un filtro escrito, aplicamos el filtro
+            if (tboxBuscar.Enabled)
+            {
+                FiltrarDatos();
+            }
         }
     }
 }
