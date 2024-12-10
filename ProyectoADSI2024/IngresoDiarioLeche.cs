@@ -36,8 +36,10 @@ namespace ProyectoADSI2024
             tabIngresoLeche = new DataTable();
             dgIngresoLeche.SelectionChanged += dgIngresoLeche_SelectionChanged;
 
-            adp = new SqlDataAdapter("spMostrarIngresoLecheDiario", conexion.ObtenerConexion());
-            adp.SelectCommand.CommandType = CommandType.StoredProcedure;
+            //adp = new SqlDataAdapter("spMostrarIngresoLecheDiario", conexion.ObtenerConexion());
+            //adp.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+            CargarDatosActualizados();
             //TootTips para los textBox
             toolTips();
 
@@ -57,8 +59,8 @@ namespace ProyectoADSI2024
             LlenarComboBoxSocios();
             txtTexto.Enabled = false;
             CargarDatosActualizados();// Cargar datos al DataGridView
-            adp.Fill(tabIngresoLeche);
-            dgIngresoLeche.DataSource = tabIngresoLeche;
+            //adp.Fill(tabIngresoLeche);
+            //dgIngresoLeche.DataSource = tabIngresoLeche;
             dgIngresoLeche.Columns["Fecha"].Visible = false;
         }
 
@@ -250,24 +252,25 @@ namespace ProyectoADSI2024
         private void btnEditar_Click(object sender, EventArgs e)
         {
             // Limpiar errores previos del ErrorProvider
-            errorProvider.Clear();
-            double litroAM = 0;
-            double litroPM = 0;
+            cboxSocios.Enabled = true;
+            errorProvider1.Clear();
+            //double litroAM = 0;
+            //double litroPM = 0;
             // Variable para controlar si hay errores
             bool esValido = true;
 
             // Validar si se seleccionó una fila
             if (dgIngresoLeche.CurrentRow == null)
             {
-                errorProvider.SetError(dgIngresoLeche, "Seleccione un registro para editar.");
+                errorProvider1.SetError(dgIngresoLeche, "Seleccione un registro para editar.");
                 esValido = false;
             }
 
-            if (dateTimePickerDiaID.Value.Date != DateTime.Now.Date)
+           /* if (dateTimePickerDiaID.Value.Date != DateTime.Now.Date)
             {
-                errorProvider.SetError(dateTimePickerDiaID, "Debe seleccionar la fecha actual.");
+                errorProvider1.SetError(dateTimePickerDiaID, "Debe seleccionar la fecha actual.");
                 esValido = false;
-            }
+            }*/
 
             // Validar campos vacíos y valores incorrectos
             /* if (string.IsNullOrWhiteSpace(tBoxDiaID.Text))
@@ -283,39 +286,39 @@ namespace ProyectoADSI2024
 
             if (cboxSocios.SelectedIndex <= 0)
             {
-                errorProvider.SetError(cboxSocios, "Debe seleccionar un socio válido.");
+                errorProvider1.SetError(cboxSocios, "Debe seleccionar un socio válido.");
                 esValido = false;
             }
 
             if (string.IsNullOrWhiteSpace(tboxLAM.Text) || !double.TryParse(tboxLAM.Text, out double litrosAM) || litrosAM < 0)
             {
-                errorProvider.SetError(tboxLAM, "El campo Litro AM debe contener un valor numérico mayor o igual a cero.");
+                errorProvider1.SetError(tboxLAM, "El campo Litro AM debe contener un valor numérico mayor o igual a cero.");
                 esValido = false;
             }
 
             if (string.IsNullOrWhiteSpace(tboxLPM.Text) || !double.TryParse(tboxLPM.Text, out double litrosPM) || litrosPM < 0)
             {
-                errorProvider.SetError(tboxLPM, "El campo Litro PM debe contener un valor numérico mayor o igual a cero.");
+                errorProvider1.SetError(tboxLPM, "El campo Litro PM debe contener un valor numérico mayor o igual a cero.");
                 esValido = false;
             }
 
             if (string.IsNullOrWhiteSpace(tboxObs.Text))
             {
-                errorProvider.SetError(tboxObs, "El campo Observaciones no puede estar vacío.");
+                errorProvider1.SetError(tboxObs, "El campo Observaciones no puede estar vacío.");
                 esValido = false;
             }
 
             if (string.IsNullOrWhiteSpace(tboxEncargado.Text))
             {
-                errorProvider.SetError(tboxEncargado, "El campo Encargado no puede estar vacío.");
+                errorProvider1.SetError(tboxEncargado, "El campo Encargado no puede estar vacío.");
                 esValido = false;
             }
 
-            if (dateTimePickerFecha.Value.Date > DateTime.Now.Date)
+            /*if (dateTimePickerFecha.Value.Date > DateTime.Now.Date)
             {
-                errorProvider.SetError(dateTimePickerFecha, "La fecha no puede ser una fecha futura.");
+                errorProvider1.SetError(dateTimePickerFecha, "La fecha no puede ser una fecha futura.");
                 esValido = false;
-            }
+            }*/
 
 
             // Si hay errores, mostrar mensaje y detener el proceso
@@ -338,8 +341,8 @@ namespace ProyectoADSI2024
                     cmd.Parameters.AddWithValue("@DiaID", dateTimePickerDiaID.Value);
                     cmd.Parameters.AddWithValue("@SocioID", Convert.ToInt32(cboxSocios.SelectedValue));
                     cmd.Parameters.AddWithValue("@Fecha", dateTimePickerFecha.Value);
-                    cmd.Parameters.AddWithValue("@LitroAM", litroAM);
-                    cmd.Parameters.AddWithValue("@LitroPM", litroPM);
+                    cmd.Parameters.AddWithValue("@LitroAM", Convert.ToDouble(tboxLAM.Text));
+                    cmd.Parameters.AddWithValue("@LitroPM", Convert.ToDouble(tboxLPM.Text));
                     cmd.Parameters.AddWithValue("@Observaciones", tboxObs.Text);
                     cmd.Parameters.AddWithValue("@Encargado", tboxEncargado.Text);
                     cmd.Parameters.AddWithValue("@Activo", true);
@@ -488,27 +491,39 @@ namespace ProyectoADSI2024
             dateTimePickerFecha.Value = DateTime.Now;
         }
 
+        private int currentPage = 0; // Página actual
+        private int pageSize = 50;  // Tamaño de página
+        private object litroPM;
+
         private void CargarDatosActualizados()
         {
             try
             {
-                SqlConnection con = conexion.ObtenerConexion();
-                con = conexion.ObtenerConexion(); // Obtener la conexión
-                                                  // Configurar el comando para ejecutar el procedimiento almacenado
-                SqlCommand cmd = new SqlCommand("spMostrarIngresoLecheDiario", con)
+                // Definir directamente la cadena de conexión
+                string connectionString = "Server = 3.128.144.165; Database = DB20212030388; User ID = eugene.wu; Password = EW20212030388";
+
+                using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    CommandType = CommandType.StoredProcedure
-                };
+                    con.Open(); // Asegurarse de abrir la conexión
 
-                // Crear el adaptador SQL y llenar el DataTable
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                tabIngresoLeche = new DataTable();
-                adapter.Fill(tabIngresoLeche);
+                    using (SqlCommand cmd = new SqlCommand("spMostrarIngresoLecheDiario", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@Offset", currentPage * pageSize);
+                        cmd.Parameters.AddWithValue("@Fetch", pageSize);
 
-                // Asignar el DataTable al DataGridView
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                        {
+                            tabIngresoLeche = new DataTable();
+                            adapter.Fill(tabIngresoLeche);
+                        }
+                    }
+                }
+
+                // Asignar los datos al DataGridView
                 dgIngresoLeche.DataSource = tabIngresoLeche;
 
-                // Ajustar visibilidad de columnas si es necesario
+                // Ocultar columna "Activo" si existe
                 if (dgIngresoLeche.Columns.Contains("Activo"))
                 {
                     dgIngresoLeche.Columns["Activo"].Visible = false;
@@ -670,6 +685,20 @@ namespace ProyectoADSI2024
 
         }
 
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            currentPage++;
+            CargarDatosActualizados();
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 0)
+            {
+                currentPage--;
+                CargarDatosActualizados();
+            }
+        }
     }
 }
 
