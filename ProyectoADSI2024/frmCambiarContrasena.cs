@@ -55,7 +55,7 @@ namespace ProyectoADSI2024
             // Validar Nueva Contraseña
             if (!ValidarContrasena(tboxConNueva.Text))
             {
-                errorProvider1.SetError(tboxConNueva, "La nueva contraseña debe tener al menos 8 caracteres, iniciar con una letra mayúscula y contener números.");
+                errorProvider1.SetError(tboxConNueva, "La nueva contraseña debe tener minimo 8 caracteres, iniciar con una letra mayúscula, contener números y al menos un carácter especial.");
                 valido = false;
             }
 
@@ -72,14 +72,38 @@ namespace ProyectoADSI2024
 
 
         //VALIDAR CONTRASEÑA
+        //private bool ValidarContrasena(string contrasena)
+        //{
+        //    if (contrasena.Length < 8) return false;
+        //    if (!char.IsUpper(contrasena[0])) return false;
+        //    if (!contrasena.Any(char.IsDigit)) return false;
+
+        //    return true;
+        //}
+
+        //NUEVO
         private bool ValidarContrasena(string contrasena)
         {
-            if (contrasena.Length < 8) return false;
-            if (!char.IsUpper(contrasena[0])) return false;
-            if (!contrasena.Any(char.IsDigit)) return false;
+            // Verificar longitud mínima
+            if (contrasena.Length < 8)
+                return false;
 
+            // Verificar que comience con una letra mayúscula
+            if (!char.IsUpper(contrasena[0]))
+                return false;
+
+            // Verificar que contenga al menos un número
+            if (!contrasena.Any(char.IsDigit))
+                return false;
+
+            // Verificar que contenga al menos un carácter especial
+            if (!contrasena.Any(ch => "!@#$%^&*()_+-=[]{}|;:',.<>?/".Contains(ch)))
+                return false;
+
+            // Si cumple todos los requisitos
             return true;
         }
+
         //FIN VALIDAR CONTRASEÑA
 
         private void btnMinimizar_Click(object sender, EventArgs e)
