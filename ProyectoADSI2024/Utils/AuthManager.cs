@@ -14,27 +14,82 @@ public class AuthManager
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = @"
+                //NUEVO
+                //Verificar si el usuario existe pero esta inactivo
+                string queryInactive = @"
+                SELECT u.UsuarioID, u.Nombre, u.Usuario, u.PerfilID, p.NombrePerfil, u.Activo 
+                FROM proyecto.Usuarios u
+                INNER JOIN proyecto.Perfiles p ON u.PerfilID = p.PerfilID
+                WHERE u.Usuario = @Usuario AND u.Contrasena = @Contrasena";
+
+                SqlCommand commandInactive = new SqlCommand(queryInactive, connection);
+                commandInactive.Parameters.AddWithValue("@Usuario", username);
+                commandInactive.Parameters.AddWithValue("@Contrasena", password);
+
+                connection.Open();
+                SqlDataReader readerInactive = commandInactive.ExecuteReader();
+
+                if (readerInactive.Read())
+                {
+                    // Si el usuario existe pero está inactivo
+                    if (readerInactive["Activo"] != DBNull.Value && !(bool)readerInactive["Activo"])
+                    {
+                        MessageBox.Show("El usuario existe, pero está inactivo. Contacte al administrador.",
+                            "Usuario Inactivo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return null;
+                    }
+                }
+                readerInactive.Close();
+
+
+
+                //INICIAR SESION CORRECTAMENTE
+                //ANTES
+                //string query = @"
+                //SELECT u.UsuarioID, u.Nombre, u.Usuario, u.PerfilID, p.NombrePerfil, u.Activo 
+                //FROM proyecto.Usuarios u
+                //INNER JOIN proyecto.Perfiles p ON u.PerfilID = p.PerfilID
+                //WHERE u.Usuario = @Usuario AND u.Contrasena = @Contrasena AND u.Activo = 1";
+
+                //SqlCommand command = new SqlCommand(query, connection);
+                //command.Parameters.AddWithValue("@Usuario", username);
+                //command.Parameters.AddWithValue("@Contrasena", password);
+
+                //connection.Open();
+                //SqlDataReader reader = command.ExecuteReader();
+
+                //if (reader.Read())
+                //{
+                //    return new UserSession
+                //    {
+                //        UsuarioID = reader["UsuarioID"] != DBNull.Value ? Convert.ToInt32(reader["UsuarioID"]) : 0,
+                //        Nombre = reader["Nombre"] != DBNull.Value ? reader["Nombre"].ToString() : string.Empty,
+                //        PerfilID = reader["PerfilID"] != DBNull.Value ? Convert.ToInt32(reader["PerfilID"]) : 0,
+                //        Perfil = reader["NombrePerfil"] != DBNull.Value ? reader["NombrePerfil"].ToString() : string.Empty
+                //    };
+                //}
+
+                //NUEVO
+                string queryActive = @"
                 SELECT u.UsuarioID, u.Nombre, u.Usuario, u.PerfilID, p.NombrePerfil, u.Activo 
                 FROM proyecto.Usuarios u
                 INNER JOIN proyecto.Perfiles p ON u.PerfilID = p.PerfilID
                 WHERE u.Usuario = @Usuario AND u.Contrasena = @Contrasena AND u.Activo = 1";
 
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@Usuario", username);
-                command.Parameters.AddWithValue("@Contrasena", password);
+                SqlCommand commandActive = new SqlCommand(queryActive, connection);
+                commandActive.Parameters.AddWithValue("@Usuario", username);
+                commandActive.Parameters.AddWithValue("@Contrasena", password);
 
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
+                SqlDataReader readerActive = commandActive.ExecuteReader();
 
-                if (reader.Read())
+                if (readerActive.Read())
                 {
                     return new UserSession
                     {
-                        UsuarioID = reader["UsuarioID"] != DBNull.Value ? Convert.ToInt32(reader["UsuarioID"]) : 0,
-                        Nombre = reader["Nombre"] != DBNull.Value ? reader["Nombre"].ToString() : string.Empty,
-                        PerfilID = reader["PerfilID"] != DBNull.Value ? Convert.ToInt32(reader["PerfilID"]) : 0,
-                        Perfil = reader["NombrePerfil"] != DBNull.Value ? reader["NombrePerfil"].ToString() : string.Empty
+                        UsuarioID = readerActive["UsuarioID"] != DBNull.Value ? Convert.ToInt32(readerActive["UsuarioID"]) : 0,
+                        Nombre = readerActive["Nombre"] != DBNull.Value ? readerActive["Nombre"].ToString() : string.Empty,
+                        PerfilID = readerActive["PerfilID"] != DBNull.Value ? Convert.ToInt32(readerActive["PerfilID"]) : 0,
+                        Perfil = readerActive["NombrePerfil"] != DBNull.Value ? readerActive["NombrePerfil"].ToString() : string.Empty
                     };
                 }
             }
