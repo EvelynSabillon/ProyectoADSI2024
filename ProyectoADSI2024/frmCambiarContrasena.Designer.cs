@@ -55,7 +55,7 @@
             // chboxVerPass
             // 
             this.chboxVerPass.AutoSize = true;
-            this.chboxVerPass.Location = new System.Drawing.Point(490, 117);
+            this.chboxVerPass.Location = new System.Drawing.Point(480, 118);
             this.chboxVerPass.Name = "chboxVerPass";
             this.chboxVerPass.Size = new System.Drawing.Size(15, 14);
             this.chboxVerPass.TabIndex = 82;
@@ -64,33 +64,37 @@
             // 
             // tboxConNuevaConfirmacion
             // 
-            this.tboxConNuevaConfirmacion.Location = new System.Drawing.Point(240, 197);
+            this.tboxConNuevaConfirmacion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tboxConNuevaConfirmacion.Location = new System.Drawing.Point(240, 190);
             this.tboxConNuevaConfirmacion.Name = "tboxConNuevaConfirmacion";
-            this.tboxConNuevaConfirmacion.Size = new System.Drawing.Size(230, 20);
+            this.tboxConNuevaConfirmacion.Size = new System.Drawing.Size(230, 25);
             this.tboxConNuevaConfirmacion.TabIndex = 81;
             this.tboxConNuevaConfirmacion.UseSystemPasswordChar = true;
             // 
             // tboxConNueva
             // 
-            this.tboxConNueva.Location = new System.Drawing.Point(240, 160);
+            this.tboxConNueva.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tboxConNueva.Location = new System.Drawing.Point(240, 153);
             this.tboxConNueva.Name = "tboxConNueva";
-            this.tboxConNueva.Size = new System.Drawing.Size(230, 20);
+            this.tboxConNueva.Size = new System.Drawing.Size(230, 25);
             this.tboxConNueva.TabIndex = 80;
             this.tboxConNueva.UseSystemPasswordChar = true;
             // 
             // tboxConActual
             // 
-            this.tboxConActual.Location = new System.Drawing.Point(240, 115);
+            this.tboxConActual.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tboxConActual.Location = new System.Drawing.Point(240, 112);
             this.tboxConActual.Name = "tboxConActual";
-            this.tboxConActual.Size = new System.Drawing.Size(230, 20);
+            this.tboxConActual.Size = new System.Drawing.Size(230, 25);
             this.tboxConActual.TabIndex = 79;
             this.tboxConActual.UseSystemPasswordChar = true;
             // 
             // tboxUsuario
             // 
-            this.tboxUsuario.Location = new System.Drawing.Point(240, 79);
+            this.tboxUsuario.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tboxUsuario.Location = new System.Drawing.Point(240, 76);
             this.tboxUsuario.Name = "tboxUsuario";
-            this.tboxUsuario.Size = new System.Drawing.Size(230, 20);
+            this.tboxUsuario.Size = new System.Drawing.Size(230, 25);
             this.tboxUsuario.TabIndex = 78;
             // 
             // btnaceptar
@@ -125,7 +129,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(37, 194);
+            this.label5.Location = new System.Drawing.Point(37, 190);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(177, 21);
             this.label5.TabIndex = 75;
@@ -135,7 +139,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(64, 157);
+            this.label4.Location = new System.Drawing.Point(64, 153);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(150, 21);
             this.label4.TabIndex = 74;
@@ -172,6 +176,7 @@
             this.BarraTitulo.Name = "BarraTitulo";
             this.BarraTitulo.Size = new System.Drawing.Size(560, 39);
             this.BarraTitulo.TabIndex = 71;
+            this.BarraTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BarraTitulo_MouseDown);
             // 
             // label2
             // 
@@ -235,6 +240,7 @@
             this.Name = "frmCambiarContrasena";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCambiarContrasena";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmCambiarContrasena_MouseDown);
             this.BarraTitulo.ResumeLayout(false);
             this.BarraTitulo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();

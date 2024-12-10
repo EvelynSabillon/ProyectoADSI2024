@@ -86,7 +86,24 @@ namespace ProyectoADSI2024
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
+            try
+            {
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow row = dataGridView1.SelectedRows[0];
+                    txtPlanillaID.Text = row.Cells["PlanillaID"].Value.ToString();
+                    txtQuincenaID.Text = row.Cells["QuincenaID"].Value.ToString();
+                    //Cuando aparezca el ID de Socio se debe autoseleccionar el valor en el cmbNombre Socio
+                    dtpFechaInicio.Value = Convert.ToDateTime(row.Cells["PeriodoInicio"].Value);
+                    dtpFechaFinal.Value = Convert.ToDateTime(row.Cells["PeriodoFinal"].Value);
+                    txtPrecioLeche.Text = row.Cells["PrecioLeche"].Value.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
 
+                MessageBox.Show("Error al seleccionar el registro: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
@@ -188,11 +205,90 @@ namespace ProyectoADSI2024
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            if (ValidarCampos())
+            {
+                if (MessageBox.Show("¿Desea editar el registro seleccionado?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    //EDITAR UN REGISTRO, SELECCIONANDOLO EN EL DataGridView Y MODIFICANDO LOS CAMPOS EN LOS TEXTBOX
+                    try
+                    {
+                        if (dataGridView1.SelectedRows.Count > 0)
+                        {
+                            int PlanillaID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["PlanillaID"].Value);
+                            int QuincenaID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["QuincenaID"].Value);
+                            int SocioID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["SocioID"].Value);
+                            SqlConnection con = conexion.ObtenerConexion();
+                            using (SqlCommand cmdPlanilla = new SqlCommand("spPlanillaUpdate", con))
+                            {
+                                cmdPlanilla.CommandType = CommandType.StoredProcedure;
+                                cmdPlanilla.Parameters.AddWithValue("@planillaid", PlanillaID);
+                                cmdPlanilla.Parameters.AddWithValue("@precioleche", Convert.ToDouble(txtPrecioLeche.Text));
+                                cmdPlanilla.Parameters.AddWithValue("@socioid", SocioID);
+                                cmdPlanilla.Parameters.AddWithValue("@quincenaid", QuincenaID);
+                                cmdPlanilla.ExecuteNonQuery();
+                                MessageBox.Show("Registro actualizado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                                //Actualizar la tabla
+                                tabla.Clear();
+                                adaptador.Fill(tabla);
+
+                                //LIMPIO TODOS LOS CAMPOS LUEGO DEL REGISTRO.
+                                Limpiar();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Seleccione un registro para editar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error de formato: " + ex.Message + "\nAsegurese de que los datos están en el formato correcto.");
+                    }
+                }
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("¿Desea eliminar el registro seleccionado?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                //ELIMINAR UN REGISTRO seleccionado en el DataGridView
+                try
+                {
+                    if (dataGridView1.SelectedRows.Count > 0)
+                    {
+                        int PlanillaID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["PlanillaID"].Value);
+                        int QuincenaID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["QuincenaID"].Value);
+                        int SocioID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["SocioID"].Value);
+                        SqlConnection con = conexion.ObtenerConexion();
+                        using (SqlCommand cmdPlanilla = new SqlCommand("spPlanillaDesactivar", con))
+                        {
+                            cmdPlanilla.CommandType = CommandType.StoredProcedure;
+                            cmdPlanilla.Parameters.AddWithValue("@planillaid", PlanillaID);
+                            cmdPlanilla.Parameters.AddWithValue("@socioid", SocioID);
+                            cmdPlanilla.Parameters.AddWithValue("@quincenaid", QuincenaID);
+                            cmdPlanilla.ExecuteNonQuery();
+                            MessageBox.Show("Registro eliminado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            //Actualizar la tabla
+                            tabla.Clear();
+                            adaptador.Fill(tabla);
+
+                            //LIMPIO TODOS LOS CAMPOS LUEGO DEL REGISTRO.
+                            Limpiar();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Seleccione un registro para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al eliminar el registro: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
         }
 
