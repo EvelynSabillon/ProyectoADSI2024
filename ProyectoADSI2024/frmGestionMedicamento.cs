@@ -466,6 +466,8 @@ namespace ProyectoADSI2024
             //---------------------------
             decimal costo = Convert.ToDecimal(txtCostoMed.Text);
             decimal precio = Convert.ToDecimal(txtPrecioMed.Text);
+            string nombre = txtNombeArticuloMed.Text;
+            int cantidad = Convert.ToInt32(txtCantidadMed.Text);
 
             // Validar que el costo no sea mayor que el precio
             if (costo > precio)
@@ -490,6 +492,33 @@ namespace ProyectoADSI2024
                 // Restablecer colores
                 txtCostoMed.BackColor = Color.White;
                 txtPrecioMed.BackColor = Color.White;
+            }
+
+            if (nombre.Length > 50)
+            {
+                // Mostrar el mensaje de error en el campo de nombre
+                epAgregar.SetError(txtNombeArticuloMed, "El nombre debe tener un tamaño menor a 50 letras.");
+
+                // Cambiar el color de fondo del TextBox
+                txtNombeArticuloMed.BackColor = Color.FromArgb(204, 185, 65); // Color personalizado
+
+                // Evitar que el formulario se guarde si hay error
+                return;
+            }
+            else
+            {
+                // Limpiar el mensaje de error si la validación es correcta
+                epAgregar.SetError(txtNombeArticuloMed, string.Empty);
+
+                // Restablecer el color de fondo
+                txtNombeArticuloMed.BackColor = Color.White;
+            }
+            if (cantidad > 100)
+            {
+                MessageBox.Show("Cantidad inusual, revisar campo 'Cantidad'.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                // Opcional: limpiar el campo de cantidad o establecer un límite
+
             }
             //-------------------------
             string Nombre = txtNombeArticuloMed.Text;

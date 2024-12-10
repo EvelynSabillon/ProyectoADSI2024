@@ -526,7 +526,8 @@ namespace ProyectoADSI2024
             //------------------------------------------------
             decimal costo = Convert.ToDecimal(txtCosto.Text);
             decimal precio = Convert.ToDecimal(txtPrecio.Text);
-
+            string nombre = txtNombeArticulo.Text;
+            int cantidad = Convert.ToInt32(txtCantidad.Text);
             // Validar que el costo no sea mayor que el precio
             if (costo > precio)
             {
@@ -551,6 +552,34 @@ namespace ProyectoADSI2024
                 txtCosto.BackColor = Color.White;
                 txtPrecio.BackColor = Color.White;
             }
+
+            if (nombre.Length > 50)
+            {
+                // Mostrar el mensaje de error en el campo de nombre
+                epAgregar.SetError(txtNombeArticulo, "El nombre debe tener un tamaño menor a 50 letras..");
+
+                // Cambiar el color de fondo del TextBox
+                txtNombeArticulo.BackColor = Color.FromArgb(204, 185, 65); // Color personalizado
+
+                // Evitar que el formulario se guarde si hay error
+                return;
+            }
+            else
+            {
+                // Limpiar el mensaje de error si la validación es correcta
+                epAgregar.SetError(txtNombeArticulo, string.Empty);
+
+                // Restablecer el color de fondo
+                txtNombeArticulo.BackColor = Color.White;
+            }
+            if (cantidad > 100)
+            {
+                MessageBox.Show("Cantidad inusual, revisar campo 'Cantidad'.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                // Opcional: limpiar el campo de cantidad o establecer un límite
+               
+            }
+
 
 
             //--------------------------------------------------
@@ -585,10 +614,7 @@ namespace ProyectoADSI2024
 
         private void btnComprar_Click(object sender, EventArgs e)
         {
-            if (!ValidaionAgregar())
-            {
-                return; // Si hay errores, salimos del método y no ejecutamos el procedimiento
-            }
+            
 
             if (dgarticuloscompra.Rows.Count == 0)
             {
