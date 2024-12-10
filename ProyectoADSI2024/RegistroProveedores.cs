@@ -502,7 +502,6 @@ namespace ProyectoADSI2024
                 provTelef.Text = row.Cells["Telefono"].Value.ToString();
                 provEmail.Text = row.Cells["Email"].Value.ToString();
                 chboxActivo.Checked = true;
-                
             }
         }
     }

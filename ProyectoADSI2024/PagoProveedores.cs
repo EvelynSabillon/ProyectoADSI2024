@@ -23,6 +23,7 @@ namespace ProyectoADSI2024
         {
             InitializeComponent();
             toolTipsTxts();
+            txBusca.Enabled = false;
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -44,6 +45,7 @@ namespace ProyectoADSI2024
             comboBusca.Items.Add("MontoPago");
             comboBusca.Items.Add("MetodoPago");
             comboBusca.SelectedIndex = -1;
+            comboName.SelectedIndex = -1;
 
             comboMetodo.Items.Add("Crédito");
             comboMetodo.Items.Add("Efectivo");
@@ -63,7 +65,7 @@ namespace ProyectoADSI2024
                 {
                     conn.Open();
 
-                    using (SqlCommand cmd = new SqlCommand("SELECT * FROM proyecto.PagoCompraCredito ORDER BY PagoID desc", conn))
+                    using (SqlCommand cmd = new SqlCommand("SELECT * FROM proyecto.PagoCompraCredito ORDER BY PagoID ASC", conn))
                     {
                         SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
@@ -165,11 +167,19 @@ namespace ProyectoADSI2024
                 tieneErrores = true;
             }
 
+            string pagoLength = pagoId.Text;
+            if (pagoLength.Length > 3)
+            {
+                errorProvider1.SetError(pagoId, "El pago no puede exceder los 3 caracteres.");
+                tieneErrores = true;
+            }
+
             if (string.IsNullOrWhiteSpace(provId.Text))
             {
                 errorProvider1.SetError(provId, "El campo ProveedorID no puede estar vacío.");
                 tieneErrores = true;
             }
+
 
             if (string.IsNullOrWhiteSpace(compraId.Text))
             {
@@ -224,6 +234,13 @@ namespace ProyectoADSI2024
             if (!int.TryParse(compraId.Text, out int compraIdValue) || compraIdValue <= 0)
             {
                 errorProvider1.SetError(compraId, "CompraID debe ser un número mayor a cero.");
+                tieneErrores = true;
+            }
+
+            string compraLength = compraId.Text;
+            if (compraLength.Length > 3)
+            {
+                errorProvider1.SetError(compraId, "La compra Id no puede exceder los 3 caracteres.");
                 tieneErrores = true;
             }
 
@@ -289,9 +306,19 @@ namespace ProyectoADSI2024
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (SqlException ex)
                 {
-                    MessageBox.Show("Error al guardar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (ex.Number == 547) // Código de error para clave duplicada en SQL Server
+                    {
+                        MessageBox.Show("La CompraID no existe, Ingrese una CompraID existente (Consulte la tabla de Medicamentos y Concentrado)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        errorProvider1.SetError(compraId, "La CompraID ingresado no existe.");
+                    }
+
+                    if (ex.Number == 2627)
+                    {
+                        MessageBox.Show("La Referencia de Pago ya existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        errorProvider1.SetError(pagoId, "La Referencia de Pago ya existe.");
+                    }
                 }
             }
         }
@@ -485,9 +512,16 @@ namespace ProyectoADSI2024
                     }
 
                 }
-                catch (Exception ex)
+                catch (SqlException ex)
                 {
-                    MessageBox.Show("Error al guardar el pago: " + ex.Message);
+                    if (ex.Number == 547) // Código de error para clave duplicada en SQL Server
+                    {
+                        MessageBox.Show("La CompraID no existe, Ingrese una CompraID existente (Consulte la tabla de Medicamentos y Concentrado)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al Ingresar el Pago.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
 
@@ -634,7 +668,10 @@ namespace ProyectoADSI2024
 
         private void comboBusca_SelectedIndexChanged(object sender, EventArgs e)
         {
+            txBusca.Enabled = true;
+            txBusca.Text = " ";
             FiltrarDatos();
+         
         }
 
 
@@ -661,6 +698,41 @@ namespace ProyectoADSI2024
             toolTips.SetToolTip(comboBusca, "Seleccione el campo en el que desea buscar.");
             toolTips.SetToolTip(txBusca, "Ingrese registro a buscar");
 
+        }
+
+        private void dgPagoProv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgPagoProv.Rows[e.RowIndex];
+                pagoId.Text = row.Cells["PagoID"].Value.ToString();
+                provId.Text = row.Cells["ProveedorID"].Value.ToString();
+                compraId.Text = row.Cells["CompraConID"].Value.ToString();
+                compraId.Text = row.Cells["CompraMedID"].Value.ToString();
+                pagoMonto.Text = row.Cells["MontoPago"].Value.ToString();
+
+                string metodo = row.Cells["MetodoPago"].Value.ToString();
+                if (metodo == "Efectivo")
+                {
+                    comboMetodo.SelectedIndex = 1;
+                }
+                if (metodo == "Crédito")
+                {
+                    comboMetodo.SelectedIndex = 0;
+                }
+
+                string estado = row.Cells["EstadoPago"].Value.ToString();
+                if (estado == "Pagado")
+                {
+                    comboEstado.SelectedIndex = 0;
+                }
+                if (estado == "Pendiente")
+                {
+                    comboEstado.SelectedIndex = 1;
+                }
+
+
+            }
         }
     }
 }

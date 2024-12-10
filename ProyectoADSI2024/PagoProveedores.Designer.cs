@@ -275,6 +275,7 @@
             this.dgPagoProv.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgPagoProv.Size = new System.Drawing.Size(547, 387);
             this.dgPagoProv.TabIndex = 128;
+            this.dgPagoProv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPagoProv_CellClick);
             // 
             // label8
             // 
