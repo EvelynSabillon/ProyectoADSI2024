@@ -420,7 +420,7 @@ namespace ProyectoADSI2024
             toolTipCompraMedicamento.SetToolTip(cbxTipoMed, "Elija el tipo de compra.");
             toolTipCompraMedicamento.SetToolTip(cbxEstadoCompraMed, "Elija el termino en el que se realizo la compra");
             toolTipCompraMedicamento.SetToolTip(txtCostoMed, "Ingrese el costo.");
-            toolTipCompraMedicamento.SetToolTip(btnAgregarCompraMed, "Agrega un item a la lista de la compra.");
+            toolTipCompraMedicamento.SetToolTip(button2, "Agrega un item a la lista de la compra.");
             toolTipCompraMedicamento.SetToolTip(btnEditarCompraCon, "Se registra la compra de todos los items registrados.");
             toolTipCompraMedicamento.SetToolTip(btnEliminarCompraMed, "Edita un item en la tabla compra.");
             toolTipCompraMedicamento.SetToolTip(button1, "Limpia los campos del formulario.");
