@@ -267,6 +267,7 @@
             this.cmbCampoDetalle.Name = "cmbCampoDetalle";
             this.cmbCampoDetalle.Size = new System.Drawing.Size(155, 25);
             this.cmbCampoDetalle.TabIndex = 185;
+            this.cmbCampoDetalle.SelectedIndexChanged += new System.EventHandler(this.cmbCampoDetalle_SelectedIndexChanged);
             this.cmbCampoDetalle.Click += new System.EventHandler(this.cmbCampoDetalle_Click);
             // 
             // btnLimpiar
@@ -500,6 +501,7 @@
             this.cmbCampoSalida.Name = "cmbCampoSalida";
             this.cmbCampoSalida.Size = new System.Drawing.Size(135, 25);
             this.cmbCampoSalida.TabIndex = 183;
+            this.cmbCampoSalida.SelectedIndexChanged += new System.EventHandler(this.cmbCampoSalida_SelectedIndexChanged);
             this.cmbCampoSalida.Click += new System.EventHandler(this.cmbCampoSalida_Click);
             // 
             // dgvSalida

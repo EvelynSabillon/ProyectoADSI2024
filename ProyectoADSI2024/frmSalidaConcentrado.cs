@@ -77,7 +77,7 @@ namespace ProyectoADSI2024
         private void frmSalidaConcentrado_Load(object sender, EventArgs e)
         {
             try
-            {
+            { 
                 LlenarComboSocios(); //Llenar el ComboBox de Socios
                 
                 adapterSalida.Fill(tablaSalida); //Llenar la tabla
@@ -651,7 +651,7 @@ namespace ProyectoADSI2024
 
         private void cmbCampoSalida_Click(object sender, EventArgs e)
         {
-            txtTextoSalida.Enabled = true;
+            //txtTextoSalida.Enabled = true;
         }
 
         private void txtTextoDetalle_TextChanged(object sender, EventArgs e)
@@ -719,7 +719,7 @@ namespace ProyectoADSI2024
 
         private void cmbCampoDetalle_Click(object sender, EventArgs e)
         {
-            txtTextoDetalle.Enabled = true;
+            //txtTextoDetalle.Enabled = true;
         }
 
         private void dgvSalida_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -785,6 +785,30 @@ namespace ProyectoADSI2024
             if (e.RowIndex >= 0)
             {
                 CargarDetalles();
+            }
+        }
+
+        private void cmbCampoSalida_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cmbCampoSalida.SelectedIndex != -1)
+            {
+                txtTextoSalida.Enabled = true;
+            }
+            else
+            {
+                txtTextoSalida.Enabled = false;
+            }
+        }
+
+        private void cmbCampoDetalle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cmbCampoDetalle.SelectedIndex != -1)
+            {
+                txtTextoDetalle.Enabled = true;
+            }
+            else
+            {
+                txtTextoDetalle.Enabled = false;
             }
         }
     }

@@ -167,12 +167,12 @@ namespace ProyectoADSI2024
 
         private void cmbCampoSalida_Click(object sender, EventArgs e)
         {
-            txtTextoSalida.Enabled = true;
+            //txtTextoSalida.Enabled = true;
         }
 
         private void cmbCampoDetalle_Click(object sender, EventArgs e)
         {
-            txtTextoDetalle.Enabled = true;
+            //txtTextoDetalle.Enabled = true;
         }
 
         private void txtTextoSalida_TextChanged(object sender, EventArgs e)
@@ -311,6 +311,30 @@ namespace ProyectoADSI2024
 
             dgvQuincena2.DataSource = dtQuincenas2.DefaultView.ToTable();
 
+        }
+
+        private void cmbCampoSalida_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbCampoSalida.SelectedIndex != -1)
+            {
+                txtTextoSalida.Enabled = true;
+            }
+            else
+            {
+                txtTextoSalida.Enabled = false;
+            }
+        }
+
+        private void cmbCampoDetalle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbCampoDetalle.SelectedIndex != -1)
+            {
+                txtTextoDetalle.Enabled = true;
+            }
+            else
+            {
+                txtTextoDetalle.Enabled = false;
+            }
         }
     }
 }

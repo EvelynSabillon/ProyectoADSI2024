@@ -157,7 +157,7 @@ namespace ProyectoADSI2024
 
         private void cmbCampoSalida_Click(object sender, EventArgs e)
         {
-            txtTextoSalida.Enabled = true;
+            //txtTextoSalida.Enabled = true;
         }
 
         private void dataGridView1_DoubleClick(object sender, EventArgs e)
@@ -179,6 +179,18 @@ namespace ProyectoADSI2024
                     frmSalida.txtPrecio.Text = precio.ToString();
                     this.Close(); // Cerramos el formulario VistaProveedores
                 }
+            }
+        }
+
+        private void cmbCampoSalida_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbCampoSalida.SelectedIndex != -1)
+            {
+                txtTextoSalida.Enabled = true;
+            }
+            else
+            {
+                txtTextoSalida.Enabled = false;
             }
         }
     }

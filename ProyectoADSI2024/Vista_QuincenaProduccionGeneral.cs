@@ -103,7 +103,7 @@ namespace ProyectoADSI2024
 
         private void cmbCampo_Click(object sender, EventArgs e)
         {
-            txtTexto.Enabled = true;
+            //txtTexto.Enabled = true;
         }
 
         private void txtTexto_TextChanged(object sender, EventArgs e)
@@ -178,6 +178,18 @@ namespace ProyectoADSI2024
             }
 
             dataGridView1.DataSource = tabla.DefaultView.ToTable();
+        }
+
+        private void cmbCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbCampo.SelectedIndex != -1)
+            {
+                txtTexto.Enabled = true;
+            }
+            else
+            {
+                txtTexto.Enabled = false;
+            }
         }
     }
 }

@@ -128,6 +128,7 @@
             this.cmbCampoSalida.Name = "cmbCampoSalida";
             this.cmbCampoSalida.Size = new System.Drawing.Size(170, 25);
             this.cmbCampoSalida.TabIndex = 145;
+            this.cmbCampoSalida.SelectedIndexChanged += new System.EventHandler(this.cmbCampoSalida_SelectedIndexChanged);
             this.cmbCampoSalida.Click += new System.EventHandler(this.cmbCampoSalida_Click);
             // 
             // dataGridView1

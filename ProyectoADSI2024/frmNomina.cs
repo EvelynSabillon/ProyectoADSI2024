@@ -294,7 +294,14 @@ namespace ProyectoADSI2024
 
         private void cmbCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtTexto.Enabled = true;
+            if (cmbCampo.SelectedIndex != -1)
+            {
+                txtTexto.Enabled = true;
+            }
+            else
+            {
+                txtTexto.Enabled = false;
+            }
         }
 
         private void txtTexto_TextChanged(object sender, EventArgs e)

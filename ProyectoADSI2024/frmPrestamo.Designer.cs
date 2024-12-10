@@ -275,6 +275,7 @@
             this.cmbCampo.Name = "cmbCampo";
             this.cmbCampo.Size = new System.Drawing.Size(144, 25);
             this.cmbCampo.TabIndex = 13;
+            this.cmbCampo.SelectedIndexChanged += new System.EventHandler(this.cmbCampo_SelectedIndexChanged);
             this.cmbCampo.Click += new System.EventHandler(this.cmbCampo_Click);
             // 
             // txtPrestamoID
