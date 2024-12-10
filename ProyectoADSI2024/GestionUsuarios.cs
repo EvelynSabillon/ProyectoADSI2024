@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -63,6 +64,11 @@ namespace ProyectoADSI2024
                 dgUsuarios.Columns["activo"].Visible = false;
                 dgUsuarios.Columns["Contraseña"].Visible = false;
 
+                //NUEVO
+                // Ajustar tamaño automáticamente
+                dgUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgUsuarios.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
             }
             catch (Exception ex)
             {
@@ -113,14 +119,31 @@ namespace ProyectoADSI2024
             bool esValido = true;
 
             // Validar Nombre
+            //if (string.IsNullOrWhiteSpace(tboxNombre.Text))
+            //{
+            //    errorProvider1.SetError(tboxNombre, "El nombre no puede estar vacío.");
+            //    esValido = false;
+            //}
+            //else if (tboxNombre.Text.Any(char.IsDigit))
+            //{
+            //    errorProvider1.SetError(tboxNombre, "El nombre no puede contener números.");
+            //    esValido = false;
+            //}
+            //else
+            //{
+            //    errorProvider1.SetError(tboxNombre, string.Empty);
+            //}
+
+            //NUEVO
+            // Validar Nombre
             if (string.IsNullOrWhiteSpace(tboxNombre.Text))
             {
                 errorProvider1.SetError(tboxNombre, "El nombre no puede estar vacío.");
                 esValido = false;
             }
-            else if (tboxNombre.Text.Any(char.IsDigit))
+            else if (!Regex.IsMatch(tboxNombre.Text, @"^[a-zA-ZÁÉÍÓÚáéíóúÑñ\s]+$"))
             {
-                errorProvider1.SetError(tboxNombre, "El nombre no puede contener números.");
+                errorProvider1.SetError(tboxNombre, "El nombre solo puede contener letras, espacios y acentos.");
                 esValido = false;
             }
             else
@@ -150,6 +173,33 @@ namespace ProyectoADSI2024
             }
 
             // Validar Contraseña
+            //if (string.IsNullOrWhiteSpace(tboxContrasena.Text))
+            //{
+            //    errorProvider1.SetError(tboxContrasena, "La contraseña no puede estar vacía.");
+            //    esValido = false;
+            //}
+            //else if (tboxContrasena.Text.Length < 8)
+            //{
+            //    errorProvider1.SetError(tboxContrasena, "La contraseña debe tener al menos 8 caracteres.");
+            //    esValido = false;
+            //}
+            //else if (!tboxContrasena.Text.Any(char.IsDigit))
+            //{
+            //    errorProvider1.SetError(tboxContrasena, "La contraseña debe incluir al menos un número.");
+            //    esValido = false;
+            //}
+            //else if (!char.IsUpper(tboxContrasena.Text[0]))
+            //{
+            //    errorProvider1.SetError(tboxContrasena, "La primera letra de la contraseña debe ser mayúscula.");
+            //    esValido = false;
+            //}
+            //else
+            //{
+            //    errorProvider1.SetError(tboxContrasena, string.Empty);
+            //}
+
+            //NUEVO
+            // Validar Contraseña
             if (string.IsNullOrWhiteSpace(tboxContrasena.Text))
             {
                 errorProvider1.SetError(tboxContrasena, "La contraseña no puede estar vacía.");
@@ -163,6 +213,11 @@ namespace ProyectoADSI2024
             else if (!tboxContrasena.Text.Any(char.IsDigit))
             {
                 errorProvider1.SetError(tboxContrasena, "La contraseña debe incluir al menos un número.");
+                esValido = false;
+            }
+            else if (!tboxContrasena.Text.Any(ch => "!@#$%^&*()_+-=[]{}|;:',.<>?/".Contains(ch)))
+            {
+                errorProvider1.SetError(tboxContrasena, "La contraseña debe incluir al menos un carácter especial.");
                 esValido = false;
             }
             else if (!char.IsUpper(tboxContrasena.Text[0]))
@@ -220,12 +275,47 @@ namespace ProyectoADSI2024
 
 
         //FUNCION GUARDAR
+        //private void GuardarUsuario()
+        //{
+        //    if (!ValidarDatos())
+        //        return;
+
+        //    //string connectionString = "Server=192.168.1.10; database=DB20212030388;User ID=eugene.wu; password=EW20212030388";
+
+        //    using (SqlConnection connection = new SqlConnection(conexion))
+        //    {
+        //        SqlCommand command = new SqlCommand("sp_AgregarUsuario", connection);
+        //        command.CommandType = CommandType.StoredProcedure;
+
+        //        // Agregar parámetros
+        //        command.Parameters.AddWithValue("@Nombre", tboxNombre.Text);
+        //        command.Parameters.AddWithValue("@Usuario", tboxUsuario.Text);
+        //        command.Parameters.AddWithValue("@Contrasena", tboxContrasena.Text); // Considera cifrar la contraseña antes.
+        //        command.Parameters.AddWithValue("@FechaRegistro", dtpFecha.Value);
+        //        command.Parameters.AddWithValue("@PerfilID", cboxPerfil.SelectedValue);
+        //        command.Parameters.AddWithValue("@Activo", chboxActivo.Checked);
+
+        //        try
+        //        {
+        //            connection.Open();
+        //            command.ExecuteNonQuery();
+        //            //MessageBox.Show("Usuario guardado correctamente.");
+        //            MessageBox.Show("Registro guardado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //            LimpiarFormulario();
+        //            CargarDatos();
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show($"Error al guardar usuario: {ex.Message}");
+        //        }
+        //    }
+        //}
+
+        //NUEVO
         private void GuardarUsuario()
         {
             if (!ValidarDatos())
                 return;
-
-            //string connectionString = "Server=192.168.1.10; database=DB20212030388;User ID=eugene.wu; password=EW20212030388";
 
             using (SqlConnection connection = new SqlConnection(conexion))
             {
@@ -240,14 +330,30 @@ namespace ProyectoADSI2024
                 command.Parameters.AddWithValue("@PerfilID", cboxPerfil.SelectedValue);
                 command.Parameters.AddWithValue("@Activo", chboxActivo.Checked);
 
+                // Parámetro de salida
+                SqlParameter existeParam = new SqlParameter("@Existe", SqlDbType.Bit)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                command.Parameters.Add(existeParam);
+
                 try
                 {
                     connection.Open();
                     command.ExecuteNonQuery();
-                    //MessageBox.Show("Usuario guardado correctamente.");
-                    MessageBox.Show("Registro guardado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimpiarFormulario();
-                    CargarDatos();
+
+                    bool existe = Convert.ToBoolean(existeParam.Value);
+
+                    if (existe)
+                    {
+                        MessageBox.Show("El usuario ya existe. Por favor, elija un nombre de usuario diferente.", "Usuario Existente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Registro guardado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LimpiarFormulario();
+                        CargarDatos();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -255,7 +361,7 @@ namespace ProyectoADSI2024
                 }
             }
         }
-        //FIN FUNCION GUARDAR
+        //FIN Metodo GUARDAR
 
 
         //LIMPIAR FORMULARIO
