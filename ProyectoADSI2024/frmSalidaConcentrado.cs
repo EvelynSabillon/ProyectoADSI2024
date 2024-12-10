@@ -145,7 +145,7 @@ namespace ProyectoADSI2024
         {
             if (ValidarCamposSalida())
             {
-                if (MessageBox.Show("¿Desea guardar la Salida?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("¿Desea guardar el registro de la salida?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     try
                     {
@@ -164,7 +164,7 @@ namespace ProyectoADSI2024
 
                             // Ejecuta el procedimiento almacenado
                             cmdSalida.ExecuteNonQuery();
-                            MessageBox.Show("Salida registrada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Registro guardado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             //LIMPIO TODOS LOS CAMPOS LUEGO DEL REGISTRO.
                             txtSocioID.Text = "";
@@ -192,7 +192,7 @@ namespace ProyectoADSI2024
         {
             if (ValidarCamposSalida())
             {
-                if (MessageBox.Show("¿Desea editar la salida?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("¿¿Desea editar el registro seleccionado?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     //EDITAR UN REGISTRO, SELECCIONANDOLO EN EL DataGridView Y MODIFICANDO LOS CAMPOS EN LOS TEXTBOX
                     try
@@ -209,7 +209,7 @@ namespace ProyectoADSI2024
                                 cmdSalida.Parameters.AddWithValue("@Fecha", dtpFecha.Value);
                                 cmdSalida.Parameters.AddWithValue("@activo", true);
                                 cmdSalida.ExecuteNonQuery();
-                                MessageBox.Show("Salida actualizada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Registro actualizado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                                 //Actualizar la tabla
                                 tablaSalida.Clear();
@@ -265,7 +265,7 @@ namespace ProyectoADSI2024
         {
             if (ValidarCamposDet())
             {
-                if (MessageBox.Show("¿Desea guardar el Detalle de la Salida?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("¿Desea guardar el registro del detalle de la salida?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     try
                     {
@@ -286,7 +286,7 @@ namespace ProyectoADSI2024
 
                             // Ejecuta el procedimiento almacenado
                             cmdSalidaDet.ExecuteNonQuery();
-                            MessageBox.Show("Detalle de salida registrada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Registro guardado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             //Actualizar la tabla
                             CargarDetalles();
@@ -315,7 +315,7 @@ namespace ProyectoADSI2024
         {
             if (ValidarCamposDet())
             {
-                if (MessageBox.Show("¿Desea editar el Detalle de la Salida?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("¿Desea editar el registro seleccionado?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     //EDITAR UN REGISTRO, SELECCIONANDOLO EN EL DataGridView Y MODIFICANDO LOS CAMPOS EN LOS TEXTBOX
                     try
@@ -333,7 +333,7 @@ namespace ProyectoADSI2024
                                 cmdSalidaDet.Parameters.AddWithValue("@Precio", Convert.ToInt32(txtPrecio.Text));
                                 cmdSalidaDet.Parameters.AddWithValue("@Activo", true);
                                 cmdSalidaDet.ExecuteNonQuery();
-                                MessageBox.Show("Detalle de salida actualizado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Registro actualizado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                                 //Actualizar la tabla
                                 CargarDetalles();

@@ -123,7 +123,7 @@ namespace ProyectoADSI2024
         {
             if (ValidarCampos())
             {
-                if (MessageBox.Show("¿Desea guardar los registros de generados?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("¿Desea guardar los registros generados?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     try
                     {

@@ -123,7 +123,7 @@ namespace ProyectoADSI2024
         {
             if (ValidarCampos())
             {
-                if (MessageBox.Show("¿Desea guardar el préstamo?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("¿Desea guardar el registro?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     try
                     {
@@ -146,7 +146,7 @@ namespace ProyectoADSI2024
 
                             // Ejecuta el procedimiento almacenado
                             cmdPrestamo.ExecuteNonQuery();
-                            MessageBox.Show("Prestamo registrado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Registro guardado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
                             //LIMPIO TODOS LOS CAMPOS LUEGO DEL REGISTRO.
@@ -180,7 +180,7 @@ namespace ProyectoADSI2024
         {
             if (ValidarCampos())
             {
-                if (MessageBox.Show("¿Desea editar el préstamo?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("¿Desea editar el registro seleccionado?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     //EDITAR UN REGISTRO, SELECCIONANDOLO EN EL DataGridView Y MODIFICANDO LOS CAMPOS EN LOS TEXTBOX
                     try
@@ -287,7 +287,7 @@ namespace ProyectoADSI2024
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Desea eliminar el préstamo?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("¿Desea eliminar el registro seleccionado?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 //ELIMINAR UN REGISTRO seleccionado en el DataGridView
                 try
@@ -301,7 +301,7 @@ namespace ProyectoADSI2024
                             cmdPrestamo.CommandType = CommandType.StoredProcedure;
                             cmdPrestamo.Parameters.AddWithValue("@prestamoid", PrestamoID);
                             cmdPrestamo.ExecuteNonQuery();
-                            MessageBox.Show("Prestamo eliminado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Registro eliminado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             //Actualizar la tabla
                             tabla.Clear();
