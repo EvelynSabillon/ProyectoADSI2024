@@ -103,6 +103,7 @@ namespace ProyectoADSI2024
 
         private void btnAgregarCompraCon_Click(object sender, EventArgs e)
         {
+            /*
             try
 
 
@@ -159,7 +160,7 @@ namespace ProyectoADSI2024
             catch (Exception ex)
             {
                 MessageBox.Show("Error de formato: " + ex.Message + "\nAsegúrate de que los datos están en el formato correcto.");
-            }
+            }*/
         }
 
         private void LlenarComboProveedores()
@@ -206,7 +207,6 @@ namespace ProyectoADSI2024
                 epAgregar.SetError(txtNombeArticuloMed, "Debe agregar el nombre del concentrado.");
                 return false;
             }
-
             else if (txtCodigoMed.Text == string.Empty)
             {
                 epAgregar.SetError(txtCodigoMed, "El código del concentrado es obligatorio.");
