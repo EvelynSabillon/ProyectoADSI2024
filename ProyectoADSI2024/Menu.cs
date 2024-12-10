@@ -110,8 +110,22 @@ namespace ProyectoADSI2024
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Desea salir del sistema?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            // Mostrar cuadro de confirmación
+            if (MessageBox.Show("¿Desea salir del sistema?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                // Cerrar todos los formularios dentro del panel (si hay algún formulario abierto)
+                foreach (Control control in panelContenedor.Controls)
+                {
+                    if (control is Form form)
+                    {
+                        // Cerrar el formulario
+                        form.Close();
+                    }
+                }
+
+                // Salir de la aplicación
                 Application.Exit();
+            }
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)

@@ -87,6 +87,7 @@ namespace ProyectoADSI2024
 
                 txtTextoSalida.Enabled = false;
                 txtTextoDetalle.Enabled = false;
+                VerificarFecha();
             }
             catch (Exception ex)
             {
@@ -268,6 +269,20 @@ namespace ProyectoADSI2024
                     try
                     {
                         SqlConnection con = conexion.ObtenerConexion();
+
+                        // Crear una lista para almacenar mensajes informativos
+                        List<string> infoMessages = new List<string>();
+
+                        // Agregar un manejador de eventos para capturar mensajes informativos
+                        con.InfoMessage += (s, ev) =>
+                        {
+                            //HashSet<string> mensajesUnicos = new HashSet<string>(infoMessages);
+                            if (!infoMessages.Contains(ev.Message))
+                            {
+                                infoMessages.Add(ev.Message);
+                            }
+                        };
+
                         int ArticuloID = Convert.ToInt32(txtArticuloID.Text);
                         // Crear el comando y asociarlo con la conexión
                         using (SqlCommand cmdSalidaDet = new SqlCommand("spInsertSalidaDetalleMed", con))
@@ -286,6 +301,14 @@ namespace ProyectoADSI2024
                             cmdSalidaDet.ExecuteNonQuery();
                             MessageBox.Show("Registro guardado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                            // Mostrar mensajes informativos acumulados después del éxito
+                            if (infoMessages.Count > 0)
+                            {
+                                string mensajes = string.Join(Environment.NewLine, infoMessages);
+                                MessageBox.Show(mensajes, "Información adicional", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+
+
                             //Actualizar la tabla
                             CargarDetalles();
 
@@ -300,12 +323,38 @@ namespace ProyectoADSI2024
                             LlenarComboSocios();
                         }
                     }
+                    catch (SqlException ex)
+                    {
+                        // Validar si el error viene del trigger mediante la severidad
+                        if (ex.Class >= 16) // Error severo
+                        {
+                            MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Error SQL: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        //Validar error de duplicidad
+                        if (ex.Number == 2627)
+                        {
+                            MessageBox.Show("Error: El registro ya existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Error de formato: " + ex.Message + "\nAsegurese de que los datos están en el formato correcto.");
+                        MessageBox.Show("Error: " + ex.Message + "\nAsegurese de haber seleccionado un registro de salida primero.",
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     }
                 }
             }
+        }
+
+        private void con_InfoMessage(object sender, SqlInfoMessageEventArgs e)
+        {
+            // Mostrar el mensaje informativo cuando provenga de SQL Server
+            MessageBox.Show(e.Message, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnEditarDet_Click(object sender, EventArgs e)
@@ -798,6 +847,29 @@ namespace ProyectoADSI2024
             else
             {
                 txtTextoDetalle.Enabled = false;
+            }
+        }
+
+        private void dtpFecha_ValueChanged(object sender, EventArgs e)
+        {
+            VerificarFecha();
+        }
+
+        private void VerificarFecha()
+        {
+            // Obtener la fecha actual
+            DateTime fechaActual = DateTime.Today;
+
+            // Comparar la fecha del campo con la fecha actual
+            if (dtpFecha.Value.Date != fechaActual)
+            {
+                // Deshabilitar el botón si la fecha no es la actual
+                btnGuardarDet.Enabled = false;
+            }
+            else
+            {
+                // Habilitar el botón si la fecha es la actual
+                btnGuardarDet.Enabled = true;
             }
         }
     }
