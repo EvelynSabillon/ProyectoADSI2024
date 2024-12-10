@@ -30,14 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultaQuincenalLeche));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAtras = new System.Windows.Forms.PictureBox();
             this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
-            this.tboxQuincenaid = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.btnGenReporte = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -90,24 +88,6 @@
             this.dtpFechaInicio.Size = new System.Drawing.Size(246, 25);
             this.dtpFechaInicio.TabIndex = 48;
             // 
-            // tboxQuincenaid
-            // 
-            this.tboxQuincenaid.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxQuincenaid.Location = new System.Drawing.Point(204, 191);
-            this.tboxQuincenaid.Name = "tboxQuincenaid";
-            this.tboxQuincenaid.Size = new System.Drawing.Size(149, 25);
-            this.tboxQuincenaid.TabIndex = 45;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(75, 195);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(104, 21);
-            this.label7.TabIndex = 44;
-            this.label7.Text = "Quincena ID";
-            // 
             // btnGenReporte
             // 
             this.btnGenReporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
@@ -148,7 +128,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(78, 259);
+            this.label2.Location = new System.Drawing.Point(84, 259);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(101, 21);
             this.label2.TabIndex = 50;
@@ -215,34 +195,36 @@
             this.dgConsultaLeche.AllowUserToDeleteRows = false;
             this.dgConsultaLeche.AllowUserToResizeColumns = false;
             this.dgConsultaLeche.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgConsultaLeche.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dgConsultaLeche.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dgConsultaLeche.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgConsultaLeche.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgConsultaLeche.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgConsultaLeche.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgConsultaLeche.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgConsultaLeche.Location = new System.Drawing.Point(520, 142);
             this.dgConsultaLeche.MultiSelect = false;
             this.dgConsultaLeche.Name = "dgConsultaLeche";
             this.dgConsultaLeche.ReadOnly = true;
             this.dgConsultaLeche.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgConsultaLeche.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dgConsultaLeche.RowsDefaultCellStyle = dataGridViewCellStyle15;
             this.dgConsultaLeche.Size = new System.Drawing.Size(525, 346);
             this.dgConsultaLeche.TabIndex = 195;
             this.dgConsultaLeche.SelectionChanged += new System.EventHandler(this.dgConsultaLeche_SelectionChanged);
             // 
             // cmbCampo
             // 
+            this.cmbCampo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCampo.Font = new System.Drawing.Font("Segoe MDL2 Assets", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCampo.FormattingEnabled = true;
             this.cmbCampo.Items.AddRange(new object[] {
             "QuincenaID",
@@ -257,6 +239,7 @@
             // 
             // txtTexto
             // 
+            this.txtTexto.Font = new System.Drawing.Font("Segoe MDL2 Assets", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTexto.Location = new System.Drawing.Point(799, 109);
             this.txtTexto.Name = "txtTexto";
             this.txtTexto.Size = new System.Drawing.Size(246, 20);
@@ -266,10 +249,10 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Segoe MDL2 Assets", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(734, 109);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(59, 20);
+            this.label5.Size = new System.Drawing.Size(51, 16);
             this.label5.TabIndex = 198;
             this.label5.Text = "Buscar";
             // 
@@ -313,8 +296,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dtpFechaInicio);
-            this.Controls.Add(this.tboxQuincenaid);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.btnGenReporte);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnAtras);
@@ -336,8 +317,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox btnAtras;
         private System.Windows.Forms.DateTimePicker dtpFechaInicio;
-        private System.Windows.Forms.TextBox tboxQuincenaid;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnGenReporte;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label label2;

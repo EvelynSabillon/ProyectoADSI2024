@@ -64,7 +64,7 @@ namespace ProyectoADSI2024
             bool esValido = true;
 
             // Validar si el campo QuincenaID está vacío o no es un número válido
-            if (string.IsNullOrWhiteSpace(tboxQuincenaid.Text))
+            /*if (string.IsNullOrWhiteSpace(tboxQuincenaid.Text))
             {
                 errorProvider.SetError(tboxQuincenaid, "El campo Quincena ID no puede estar vacío.");
                 esValido = false;
@@ -73,7 +73,7 @@ namespace ProyectoADSI2024
             {
                 errorProvider.SetError(tboxQuincenaid, "El campo Quincena ID debe contener un número válido.");
                 esValido = false;
-            }
+            }*/
 
             // Validar si las fechas de los DateTimePickers están configuradas
             if (dtpFechaInicio.Value == DateTime.MinValue)
@@ -105,22 +105,23 @@ namespace ProyectoADSI2024
                 {
                     SqlCommand cmd = new SqlCommand("spConsultaQuincenalInsert", conexion);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    int quincenaID = int.Parse(tboxQuincenaid.Text);
 
-                    cmd.Parameters.AddWithValue("@QuincenaID", quincenaID);
-                    cmd.Parameters.AddWithValue("@FechaInicio", dtpFechaInicio.Value); //datetimepicker
-                    cmd.Parameters.AddWithValue("@FechaFinal", dtpFechaFinal.Value); //datetimepicker
+                    // No se pasa QuincenaID, el procedimiento lo calcula automáticamente
+                    cmd.Parameters.AddWithValue("@FechaInicio", dtpFechaInicio.Value);
+                    cmd.Parameters.AddWithValue("@FechaFinal", dtpFechaFinal.Value);
 
                     conexion.Open();
                     cmd.ExecuteNonQuery();
                     conexion.Close();
 
-                    //Limpiar txbos y dtp
+                    // Limpiar campos y notificar éxito
                     Limpiar();
                     MessageBox.Show("Registro guardado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //Actualizar tabla
+
+                    // Actualizar tabla
                     CargarDatos();
-                }catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show("Error de formato: " + ex.Message + "\nAsegurese de que los datos están en el formato correcto.");
                 }
@@ -163,7 +164,7 @@ namespace ProyectoADSI2024
                                     adapter.Fill(tabQuincena); // Llenar con los nuevos datos
 
                                     // Limpiar los campos del formulario
-                                    tboxQuincenaid.Text = "";
+                                    //tboxQuincenaid.Text = "";
                                     dtpFechaInicio.ResetText();
                                     dtpFechaFinal.ResetText();
 
@@ -247,7 +248,7 @@ namespace ProyectoADSI2024
             toolTips.ToolTipIcon = ToolTipIcon.Info;
             toolTips.ToolTipTitle = "Ayuda";
             toolTips.UseAnimation = true;
-            toolTips.SetToolTip(tboxQuincenaid, "Ingrese un número de Quincena válido");
+            //toolTips.SetToolTip(tboxQuincenaid, "Ingrese un número de Quincena válido");
             toolTips.SetToolTip(tboxMes, "Mes");
             toolTips.SetToolTip(dtpFechaInicio, "Seleccione la fecha en la que iniciará la quincena.");
             toolTips.SetToolTip(dtpFechaFinal, "Seleccione la fecha en la que terminará la quincena.");
@@ -263,7 +264,7 @@ namespace ProyectoADSI2024
         {
             errorProvider.Clear();
             txtTexto.Enabled = false;
-            tboxQuincenaid.Clear();
+            //tboxQuincenaid.Clear();
             dtpFechaInicio.Value = DateTime.Now;
             dtpFechaFinal.Value = DateTime.Now;
         }
@@ -275,7 +276,7 @@ namespace ProyectoADSI2024
                 if (dgConsultaLeche.SelectedRows.Count > 0)
                 {
                     DataGridViewRow row = dgConsultaLeche.SelectedRows[0];
-                    tboxQuincenaid.Text = row.Cells["QuincenaID"].Value.ToString();
+                    //tboxQuincenaid.Text = row.Cells["QuincenaID"].Value.ToString();
                     
                     dtpFechaInicio.Value = Convert.ToDateTime(row.Cells["FechaInicio"].Value);
                     dtpFechaFinal.Value = Convert.ToDateTime(row.Cells["FechaFinal"].Value);
