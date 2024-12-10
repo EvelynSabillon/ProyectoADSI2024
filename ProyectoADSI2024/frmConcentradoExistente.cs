@@ -20,6 +20,7 @@ namespace ProyectoADSI2024
         SqlDataAdapter adpConcentradoExistente;
         DataTable dtConcentradoExistente;
         private Conexion cnxConcentradoExistente;
+        System.Windows.Forms.ToolTip toolTipCompraExistenteCon;
         public frmConcentradoExistente()
         {
             InitializeComponent();
@@ -27,6 +28,7 @@ namespace ProyectoADSI2024
             dtConcentradoExistente = new DataTable();
             adpConcentradoExistente = new SqlDataAdapter("spArticulosMed", cnxConcentradoExistente.ObtenerConexion());
             adpConcentradoExistente.SelectCommand.CommandType = CommandType.StoredProcedure;
+
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -40,6 +42,7 @@ namespace ProyectoADSI2024
             LlenarComboProveedores();
             adpConcentradoExistente.Fill(dtConcentradoExistente);
             dgConcentradoExist.DataSource = dtConcentradoExistente;
+            toolTipsCompraConExistente();
 
         }
 
@@ -52,6 +55,9 @@ namespace ProyectoADSI2024
             txtNombreArticuloMed.Clear();
             txtDocumentoComEx.Clear();
             txtCantidadMed.Clear();
+            cbxEstadoCompraEx.SelectedIndex = -1;
+            cbxProvComEx.SelectedIndex = -1;
+            cbxTipoComEx.SelectedIndex = -1;
 
         }
 
@@ -117,6 +123,12 @@ namespace ProyectoADSI2024
         private void btnEditarCompraCon_Click(object sender, EventArgs e)
         {
 
+            if (!ValidarErrorAgregar())
+            {
+                return; // Si hay errores, salimos del método y no ejecutamos el procedimiento
+            }
+            //ESTE ES EL BOTON DE AGREGAR XD.
+
             //@ArticuloId int , 
             //@cantidad INT,
             //@fechacompra DATETIME,
@@ -154,7 +166,7 @@ namespace ProyectoADSI2024
                     txtNombreArticuloMed.Text = "";
                     txtCantidadMed.Text = "";
                     cbxProvComEx.SelectedIndex = -1;  // Deseleccionar proveedor
-                    dtpFechaConExist.Text = "";
+                    dtpFechaConExistVen.Text = "";
                     txtDocumentoComEx.Text = "";
                     cbxTipoComEx.SelectedIndex = -1;  // Deseleccionar proveedor
                     cbxEstadoCompraEx.SelectedIndex = -1; // Deseleccionar estado
@@ -170,7 +182,89 @@ namespace ProyectoADSI2024
             }
 
 
-}
+        }
+        private bool ValidarErrorAgregar()
+        {
+            // Limpiar cualquier error previo
+            epAgregar.Clear();
+            if (txtConIdCompraEx.Text == string.Empty)
+            {
+                epAgregar.SetError(txtConIdCompraEx, "Debe seleccionar un articulo.");
+                return false;
+            }
+            if (txtCodigoCompra.Text == string.Empty)
+            {
+                epAgregar.SetError(txtCodigoCompra, "Debe seleccionar un articulo.");
+                return false;
+            }
+            if (txtNombreArticuloMed.Text == string.Empty)
+            {
+                epAgregar.SetError(txtNombreArticuloMed, "Debe seleccionar un articulo.");
+                return false;
+            }
+            if (txtCantidadMed.Text == string.Empty)
+            {
+                epAgregar.SetError(txtCantidadMed, "Debe ingresar una cantidad de items del concentrado.");
+                return false;
+            }
+         
+            if (cbxProvComEx.SelectedIndex  == -1)
+            {
+                epAgregar.SetError(cbxProvComEx, "Debe elegir el proveedor de la compra.");
+                return false;
+            }
+            else if (dtpFechaCompraConExist.Text == string.Empty)
+            {
+                epAgregar.SetError(dtpFechaCompraConExist, "Fecha.");
+                return false;
+            }
+            else if (txtDocumentoComEx.Text == string.Empty)
+            {
+                epAgregar.SetError(txtDocumentoComEx, "Debe ingresar un documento de compra.");
+                return false;
+            }
+            else if (cbxTipoComEx.SelectedIndex == -1)
+            {
+                epAgregar.SetError(txtCantidadMed, "Debe seleccionar el tipo de compra.");
+                return false;
+            }
+
+            else if (cbxEstadoCompraEx.SelectedIndex == -1)
+            {
+                epAgregar.SetError(cbxEstadoCompraEx, "Debe ingresar el estado de compra.");
+                return false;
+            }
+            
+
+        
+
+            return true; // Si todas las validaciones son correctas, devuelve true
+
+        }
+        private void toolTipsCompraConExistente()
+        {
+            toolTipCompraExistenteCon = new System.Windows.Forms.ToolTip();
+            toolTipCompraExistenteCon.IsBalloon = true;
+            toolTipCompraExistenteCon.ToolTipIcon = ToolTipIcon.Info;
+            toolTipCompraExistenteCon.ToolTipTitle = "Ayuda";
+            toolTipCompraExistenteCon.UseAnimation = true;
+            toolTipCompraExistenteCon.SetToolTip(txtCantidadMed, "Cantidad de items del articulo a comprar.");
+            toolTipCompraExistenteCon.SetToolTip(cbxProvComEx, "Proveedor del concentrado.");
+            toolTipCompraExistenteCon.SetToolTip(dtpFechaConExistVen, "Fecha de vencimiento del concentrado.");
+            toolTipCompraExistenteCon.SetToolTip(txtDocumentoComEx, "Documento de la compra.");
+            toolTipCompraExistenteCon.SetToolTip(cbxTipoComEx, "Tipo de compra.");
+            toolTipCompraExistenteCon.SetToolTip(cbxEstadoCompraEx, "Estado de la compra");
+            toolTipCompraExistenteCon.SetToolTip(dtpFechaCompraConExist, "Fecha de compra.");
+            toolTipCompraExistenteCon.SetToolTip(button1, "Limpia los campos del formualroo.");
+            toolTipCompraExistenteCon.SetToolTip(btnEditarCompraCon, "Compra el item seleccionado.");
+
+            toolTipCompraExistenteCon.SetToolTip(txtConIdCompraEx, "ID del articulo a comprar.");
+            toolTipCompraExistenteCon.SetToolTip(txtCodigoCompra, "Codigo del articulo a comprar.");
+            toolTipCompraExistenteCon.SetToolTip(txtNombreArticuloMed, "Nombre del articulo a comprar.");
+
+
+
+        }
 
     }
 

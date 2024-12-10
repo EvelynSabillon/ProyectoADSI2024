@@ -17,6 +17,7 @@ namespace ProyectoADSI2024
         private Conexion cnxCompraExisMed;
         SqlDataAdapter adpCompraExisMed;
         DataTable dtCompraExisMed;
+        System.Windows.Forms.ToolTip toolTipCompraExistenteMed;
 
         public frmMedicamentoExistente()
         {
@@ -36,6 +37,7 @@ namespace ProyectoADSI2024
             LlenarComboProveedores();
             adpCompraExisMed.Fill(dtCompraExisMed);
             dgMedicamentoExist.DataSource = dtCompraExisMed;
+            toolTipsCompraConExistente();
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -64,8 +66,18 @@ namespace ProyectoADSI2024
 
         private void btnEditarCompraCon_Click(object sender, EventArgs e)
         {
+
+
             try
-            {  //COMPRA DE MEDICAMENTOO
+
+            {
+
+                if (!ValidarErrorAgregar())
+                {
+                    return; // Si hay errores, salimos del método y no ejecutamos el procedimiento
+                }
+
+                //COMPRA DE MEDICAMENTOO
                 SqlConnection conexion = cnxCompraExisMed.ObtenerConexion();
                 int proveedorID = Convert.ToInt32(cbxProveedorArticulo.SelectedValue);
                 // Crear el comando y asociarlo con la conexión
@@ -159,6 +171,88 @@ namespace ProyectoADSI2024
             {
                 MessageBox.Show("Error al llenar el ComboBox: " + ex.Message);
             }
+        }
+
+        private bool ValidarErrorAgregar()
+        {
+            // Limpiar cualquier error previo
+            epAgregar.Clear();
+            if (txtIDArticulo.Text == string.Empty)
+            {
+                epAgregar.SetError(txtIDArticulo, "Debe seleccionar un articulo.");
+                return false;
+            }
+            if (txtCodigoArticulo.Text == string.Empty)
+            {
+                epAgregar.SetError(txtCodigoArticulo, "Debe seleccionar un articulo.");
+                return false;
+            }
+            if (txtNombreArticulo.Text == string.Empty)
+            {
+                epAgregar.SetError(txtNombreArticulo, "Debe seleccionar un articulo.");
+                return false;
+            }
+            if (txtCantidadArt.Text == string.Empty)
+            {
+                epAgregar.SetError(txtCantidadArt, "Debe ingresar una cantidad de items del concentrado.");
+                return false;
+            }
+            if (cbxProveedorArticulo.SelectedIndex == -1)
+            {
+                epAgregar.SetError(cbxProveedorArticulo, "Debe elegir el proveedor de la compra.");
+                return false;
+            }
+            else if (dtpFechaCompArt.Text == string.Empty)
+            {
+                epAgregar.SetError(dtpFechaCompArt, "Fecha.");
+                return false;
+            }
+            else if (txtDocumentoArticulo.Text == string.Empty)
+            {
+                epAgregar.SetError(txtDocumentoArticulo, "Debe ingresar un documento de compra.");
+                return false;
+            }
+            else if (cbxTipoArticulo.SelectedIndex == -1)
+            {
+                epAgregar.SetError(cbxTipoArticulo, "Debe seleccionar el tipo de compra.");
+                return false;
+            }
+
+            else if (cbxEstadoCompraArticulo.SelectedIndex == -1)
+            {
+                epAgregar.SetError(cbxEstadoCompraArticulo, "Debe ingresar el estado de compra.");
+                return false;
+            }
+
+
+
+
+            return true; // Si todas las validaciones son correctas, devuelve true
+
+        }
+
+        private void toolTipsCompraConExistente()
+        {
+            toolTipCompraExistenteMed = new System.Windows.Forms.ToolTip();
+            toolTipCompraExistenteMed.IsBalloon = true;
+            toolTipCompraExistenteMed.ToolTipIcon = ToolTipIcon.Info;
+            toolTipCompraExistenteMed.ToolTipTitle = "Ayuda";
+            toolTipCompraExistenteMed.UseAnimation = true;
+            toolTipCompraExistenteMed.SetToolTip(txtCantidadArt, "Cantidad de items del articulo a comprar.");
+            toolTipCompraExistenteMed.SetToolTip(cbxProveedorArticulo, "Proveedor del concentrado.");
+          
+            toolTipCompraExistenteMed.SetToolTip(txtDocumentoArticulo, "Documento de la compra.");
+            toolTipCompraExistenteMed.SetToolTip(cbxTipoArticulo, "Tipo de compra.");
+            toolTipCompraExistenteMed.SetToolTip(cbxEstadoCompraArticulo, "Estado de la compra");
+            toolTipCompraExistenteMed.SetToolTip(dtpFechaCompArt, "Fecha de compra.");
+            toolTipCompraExistenteMed.SetToolTip(button1, "Limpia los campos del formualroo.");
+            toolTipCompraExistenteMed.SetToolTip(btnEditarCompraCon, "Compra el item seleccionado.");
+            toolTipCompraExistenteMed.SetToolTip(txtIDArticulo, "ID del articulo a comprar.");
+            toolTipCompraExistenteMed.SetToolTip(txtCodigoArticulo, "Codigo del articulo a comprar.");
+            toolTipCompraExistenteMed.SetToolTip(txtNombreArticulo, "Nombre del articulo a comprar.");
+
+
+
         }
     }
 }

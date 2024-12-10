@@ -59,6 +59,11 @@ namespace ProyectoADSI2024
             txtCantidadMed.Clear();
             txtDocumentoMed.Clear();
             txtCostoMed.Clear();
+            txtCompraIDMed.Clear();
+            txtconIDMed.Clear();
+            cbxEstadoCompraMed.SelectedIndex = -1;
+            cbxProveedorMed.SelectedIndex = -1;
+            cbxTipoMed.SelectedIndex = -1;
         }
 
         private void btnEliminarCompraMed_Click(object sender, EventArgs e)
@@ -201,6 +206,7 @@ namespace ProyectoADSI2024
                 epAgregar.SetError(txtNombeArticuloMed, "Debe agregar el nombre del concentrado.");
                 return false;
             }
+
             else if (txtCodigoMed.Text == string.Empty)
             {
                 epAgregar.SetError(txtCodigoMed, "El código del concentrado es obligatorio.");
@@ -334,6 +340,69 @@ namespace ProyectoADSI2024
             {
                 return; // Si hay errores, salimos del método y no ejecutamos el procedimiento
             }
+
+            try
+            {
+                if (!ValidarErrorEditar())
+                {
+                    return; // Si hay errores, salimos del método y no ejecutamos el procedimiento
+                }
+
+                using (SqlConnection conexion = cnxCompraMedic.ObtenerConexion())
+                {
+                    // Asegurarse de que la conexión esté abierta
+                    if (conexion.State == ConnectionState.Closed)
+                    {
+                        conexion.Open();
+                    }
+
+                    // Crear el comando y asociarlo con la conexión
+                    using (SqlCommand cmdModificarCompra = new SqlCommand("spModificarMedicamento", conexion))
+                    {
+                        cmdModificarCompra.CommandType = CommandType.StoredProcedure;
+                        int proveedorID = Convert.ToInt32(cbxProveedorMed.SelectedValue);
+
+
+                        // Agregar los parámetros necesarios
+                        cmdModificarCompra.Parameters.AddWithValue("@nombre", txtNombeArticuloMed.Text.Trim());
+                        cmdModificarCompra.Parameters.AddWithValue("@codigo", txtCodigoMed.Text.Trim());
+                        cmdModificarCompra.Parameters.AddWithValue("@precio", Convert.ToDouble(txtPrecioMed.Text));
+                        cmdModificarCompra.Parameters.AddWithValue("@fechaVencimiento", dtpFechaVenMed.Value);
+                        cmdModificarCompra.Parameters.AddWithValue("@cantidad", Convert.ToInt32(txtCantidadMed.Text));
+                        cmdModificarCompra.Parameters.AddWithValue("@fechaCompra", dtpFechaCompraMed.Value);
+                        cmdModificarCompra.Parameters.AddWithValue("@documento", txtDocumentoMed.Text.Trim());
+                        cmdModificarCompra.Parameters.AddWithValue("@tipo", cbxTipoMed.SelectedItem?.ToString() ?? string.Empty);
+                        cmdModificarCompra.Parameters.AddWithValue("@estadocompra", cbxEstadoCompraMed.SelectedItem?.ToString() ?? string.Empty);
+                        cmdModificarCompra.Parameters.AddWithValue("@proveedorID", proveedorID);
+                        cmdModificarCompra.Parameters.AddWithValue("@costo", Convert.ToDouble(txtCostoMed.Text));
+                        cmdModificarCompra.Parameters.AddWithValue("@compraid", Convert.ToInt32(txtCompraIDMed.Text));
+                        cmdModificarCompra.Parameters.AddWithValue("@medicamentoid", txtconIDMed.Text.Trim());
+
+                        // Ejecutar el procedimiento almacenado
+                        cmdModificarCompra.ExecuteNonQuery();
+                        MessageBox.Show("Compra Modificada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // Limpiar los datos después de la operación
+                        LimpiarDatos();
+                        dtCompraMed.Clear(); // Limpia los datos actuales del DataTable
+                        adpCompraMed.Fill(dtCompraMed); // Vuelve a cargar los datos desde la base de datos
+                        dgGestionMedCompra.Refresh(); // Refresca la interfaz
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show($"Error en la base de datos: {ex.Message}", "Error SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show($"Error de formato: {ex.Message}", "Error de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
         private void tooltipcompramedicamento1()
         {
@@ -384,5 +453,117 @@ namespace ProyectoADSI2024
 
             }
         }
+
+        //ESTE BOTON ES DE AGREGAR UN ITEM A LA COMPRA
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (!ValidaionAgregar())
+            {
+                return; // Si hay errores, salimos del método y no ejecutamos el procedimiento
+            }
+
+            string Nombre = txtNombeArticuloMed.Text;
+            string Codigo = txtCodigoMed.Text;
+            decimal Precio = decimal.Parse(txtPrecioMed.Text);
+            int Cantidad = int.Parse(txtCantidadMed.Text);
+
+            string Proveedor = cbxProveedorMed.Text;
+            string Documento = txtDocumentoMed.Text;
+
+            string Tipo = cbxTipoMed.SelectedItem?.ToString();
+            string Estado = cbxEstadoCompraMed.SelectedItem?.ToString();
+            decimal Costo = decimal.Parse(txtCostoMed.Text);
+
+            DateTime FechaCompra = dtpFechaCompraMed.Value;
+            DateTime FechaVencimiento = dtpFechaVenMed.Value;
+            // Validar datos
+            if (string.IsNullOrWhiteSpace(Codigo) || string.IsNullOrWhiteSpace(Nombre) ||
+                Cantidad <= 0 || Precio <= 0 || Proveedor == null || Tipo == null || Estado == null)
+            {
+                MessageBox.Show("Por favor, complete todos los campos.");
+                return;
+            }
+
+            // Agregar al DataGridView
+            dgarticuloscompra.Rows.Add(Nombre, Codigo, Precio, Cantidad, Proveedor, Documento, Tipo, Estado, Costo, FechaCompra, FechaVencimiento);
+
+            LimpiarDatos();
+        }
+
+
+        //BOTON COMPRAR ITEMS
+        private void button3_Click(object sender, EventArgs e)
+        {
+          
+
+            if (dgarticuloscompra.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay artículos para comprar.");
+                return;
+            }
+
+            // Conexión a la base de datos
+            SqlConnection conexion = cnxCompraMedic.ObtenerConexion();
+
+            SqlTransaction transaction = conexion.BeginTransaction();
+
+            try
+            {
+                foreach (DataGridViewRow row in dgarticuloscompra.Rows)
+                {
+                    if (row.IsNewRow) continue; // Saltar la fila nueva en DataGridView
+
+                    // Leer datos de la fila
+                    string codigo = row.Cells["Codigo"].Value.ToString();
+                    string nombre = row.Cells["Nombre"].Value.ToString();
+                    int cantidad = int.Parse(row.Cells["Cantidad"].Value.ToString());
+                    decimal precio = decimal.Parse(row.Cells["Precio"].Value.ToString());
+                    string proveedor = row.Cells["Proveedor"].Value.ToString();
+                    string tipo = row.Cells["Tipo"].Value.ToString();
+                    string estado = row.Cells["EstadoCompra"].Value.ToString();
+                    string documento = row.Cells["Documento"].Value.ToString();
+                    decimal costo = decimal.Parse(row.Cells["Costo"].Value.ToString());
+                    DateTime fechaCompra = DateTime.Parse(row.Cells["FechaCompra"].Value.ToString());
+                    DateTime fechaVencimiento = DateTime.Parse(row.Cells["FechaVencimiento"].Value.ToString());
+
+                    // Llamar al procedimiento almacenado
+                    using (SqlCommand cmd = new SqlCommand("spPruebaAgregarVariosMedicamentos", conexion, transaction))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@Codigo", codigo);
+                        cmd.Parameters.AddWithValue("@Nombre", nombre);
+                        cmd.Parameters.AddWithValue("@Cantidad", cantidad);
+                        cmd.Parameters.AddWithValue("@Precio", precio);
+                        cmd.Parameters.AddWithValue("@Proveedor", proveedor);
+                        cmd.Parameters.AddWithValue("@Tipo", tipo);
+                        cmd.Parameters.AddWithValue("@EstadoCompra", estado);
+                        cmd.Parameters.AddWithValue("@Documento", documento);
+                        cmd.Parameters.AddWithValue("@Costo", costo);
+                        cmd.Parameters.AddWithValue("@FechaCompra", fechaCompra);
+                        cmd.Parameters.AddWithValue("@FechaVencimiento", fechaVencimiento);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                // Confirmar la transacción
+                transaction.Commit();
+                MessageBox.Show("Compra realizada con éxito.");
+                dgarticuloscompra.Rows.Clear();
+
+                dtCompraMed.Clear(); // Limpia los datos actuales del DataTable
+                adpCompraMed.Fill(dtCompraMed); // Vuelve a cargar los datos desde la base de datos
+                dgGestionMedCompra.Refresh(); // Refresca la interfaz
+
+            }
+            catch (Exception ex)
+            {
+                // Revertir la transacción en caso de error
+                transaction.Rollback();
+                MessageBox.Show($"Ocurrió un error: {ex.Message}");
+            }
+        }
+      
+
     }
 }

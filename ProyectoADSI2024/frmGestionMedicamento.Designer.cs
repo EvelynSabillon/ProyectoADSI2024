@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGestionMedicamento));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAtras = new System.Windows.Forms.PictureBox();
@@ -70,11 +70,26 @@
             this.epAgregar = new System.Windows.Forms.ErrorProvider(this.components);
             this.epEditar = new System.Windows.Forms.ErrorProvider(this.components);
             this.epEliminar = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dgarticuloscompra = new System.Windows.Forms.DataGridView();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EstadoCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.btnAtras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgGestionMedCompra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epAgregar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epEditar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epEliminar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgarticuloscompra)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -118,28 +133,28 @@
             this.dgGestionMedCompra.AllowUserToDeleteRows = false;
             this.dgGestionMedCompra.AllowUserToResizeColumns = false;
             this.dgGestionMedCompra.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgGestionMedCompra.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dgGestionMedCompra.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle22;
             this.dgGestionMedCompra.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgGestionMedCompra.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgGestionMedCompra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgGestionMedCompra.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Gadugi", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgGestionMedCompra.DefaultCellStyle = dataGridViewCellStyle23;
             this.dgGestionMedCompra.Location = new System.Drawing.Point(23, 360);
             this.dgGestionMedCompra.MultiSelect = false;
             this.dgGestionMedCompra.Name = "dgGestionMedCompra";
             this.dgGestionMedCompra.ReadOnly = true;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
-            this.dgGestionMedCompra.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgGestionMedCompra.Size = new System.Drawing.Size(1023, 223);
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.dgGestionMedCompra.RowsDefaultCellStyle = dataGridViewCellStyle24;
+            this.dgGestionMedCompra.Size = new System.Drawing.Size(525, 223);
             this.dgGestionMedCompra.TabIndex = 105;
             this.dgGestionMedCompra.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgGestionMedCompra_CellDoubleClick);
             // 
@@ -308,10 +323,8 @@
             this.cbxTipoMed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxTipoMed.FormattingEnabled = true;
             this.cbxTipoMed.Items.AddRange(new object[] {
-            "Mantenimiento",
-            "Lechera",
-            "18% Lechera",
-            "Churro"});
+            "Credito",
+            "Contado"});
             this.cbxTipoMed.Location = new System.Drawing.Point(648, 226);
             this.cbxTipoMed.Name = "cbxTipoMed";
             this.cbxTipoMed.Size = new System.Drawing.Size(121, 25);
@@ -401,7 +414,7 @@
             this.btnAgregarCompraMed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarCompraMed.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarCompraMed.ForeColor = System.Drawing.Color.White;
-            this.btnAgregarCompraMed.Location = new System.Drawing.Point(851, 141);
+            this.btnAgregarCompraMed.Location = new System.Drawing.Point(851, 150);
             this.btnAgregarCompraMed.Name = "btnAgregarCompraMed";
             this.btnAgregarCompraMed.Size = new System.Drawing.Size(160, 38);
             this.btnAgregarCompraMed.TabIndex = 100;
@@ -475,11 +488,127 @@
             // 
             this.epEliminar.ContainerControl = this;
             // 
+            // dgarticuloscompra
+            // 
+            this.dgarticuloscompra.AllowUserToDeleteRows = false;
+            this.dgarticuloscompra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgarticuloscompra.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Nombre,
+            this.Codigo,
+            this.Precio,
+            this.Cantidad,
+            this.Proveedor,
+            this.Documento,
+            this.Tipo,
+            this.EstadoCompra,
+            this.Costo,
+            this.FechaCompra,
+            this.FechaVencimiento});
+            this.dgarticuloscompra.Location = new System.Drawing.Point(564, 360);
+            this.dgarticuloscompra.Name = "dgarticuloscompra";
+            this.dgarticuloscompra.ReadOnly = true;
+            this.dgarticuloscompra.Size = new System.Drawing.Size(482, 223);
+            this.dgarticuloscompra.TabIndex = 111;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            // 
+            // Codigo
+            // 
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            // 
+            // Proveedor
+            // 
+            this.Proveedor.HeaderText = "Proveedor";
+            this.Proveedor.Name = "Proveedor";
+            // 
+            // Documento
+            // 
+            this.Documento.HeaderText = "Documento";
+            this.Documento.Name = "Documento";
+            // 
+            // Tipo
+            // 
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            // 
+            // EstadoCompra
+            // 
+            this.EstadoCompra.HeaderText = "EstadoCompra";
+            this.EstadoCompra.Name = "EstadoCompra";
+            // 
+            // Costo
+            // 
+            this.Costo.HeaderText = "Costo";
+            this.Costo.Name = "Costo";
+            // 
+            // FechaCompra
+            // 
+            this.FechaCompra.HeaderText = "FechaCompra";
+            this.FechaCompra.Name = "FechaCompra";
+            // 
+            // FechaVencimiento
+            // 
+            this.FechaVencimiento.HeaderText = "FechaVencimiento";
+            this.FechaVencimiento.Name = "FechaVencimiento";
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(851, 94);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(160, 38);
+            this.button2.TabIndex = 112;
+            this.button2.Text = "AGREGAR";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(185)))), ((int)(((byte)(65)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(669, 94);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(160, 38);
+            this.button3.TabIndex = 113;
+            this.button3.Text = "COMPRAR";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // frmGestionMedicamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1070, 595);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.dgarticuloscompra);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.txtconIDMed);
             this.Controls.Add(this.label14);
@@ -524,6 +653,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.epAgregar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epEditar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epEliminar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgarticuloscompra)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -568,5 +698,19 @@
         private System.Windows.Forms.ErrorProvider epAgregar;
         private System.Windows.Forms.ErrorProvider epEditar;
         private System.Windows.Forms.ErrorProvider epEliminar;
+        private System.Windows.Forms.DataGridView dgarticuloscompra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Proveedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Documento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EstadoCompra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Costo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaCompra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaVencimiento;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
     }
 }

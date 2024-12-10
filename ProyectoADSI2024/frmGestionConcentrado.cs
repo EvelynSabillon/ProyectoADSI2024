@@ -390,7 +390,7 @@ namespace ProyectoADSI2024
 
                         // Ejecutar el procedimiento almacenado
                         cmdModificarCompra.ExecuteNonQuery();
-                        MessageBox.Show("Compra registrada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Compra Modificada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         // Limpiar los datos después de la operación
                         LimpiarDatos();
@@ -429,6 +429,7 @@ namespace ProyectoADSI2024
             txtCosto.Clear();
             txtconID.Clear();
             txtCompraID.Clear();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
