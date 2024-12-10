@@ -41,6 +41,8 @@ namespace ProyectoADSI2024
             LlenarComboProveedores();
             adpCompraMed.Fill(dtCompraMed);
             dgGestionMedCompra.DataSource = dtCompraMed;
+            dtpFechaVenMed.MinDate = DateTime.Today; // No permite fechas anteriores a hoy
+            dtpFechaVenMed.ValueChanged += dtpFechaVenMed_ValueChanged;
 
 
         }
@@ -202,9 +204,9 @@ namespace ProyectoADSI2024
             // Limpiar cualquier error previo
             epAgregar.Clear();
 
-            if (txtNombeArticuloMed.Text == string.Empty)
+            if (txtNombeArticuloMed.Text == string.Empty || !System.Text.RegularExpressions.Regex.IsMatch(txtNombeArticuloMed.Text, @"^[a-zA-Z\s]+$"))
             {
-                epAgregar.SetError(txtNombeArticuloMed, "Debe agregar el nombre del concentrado.");
+                epAgregar.SetError(txtNombeArticuloMed, "Debe agregar el nombre del concentrado y sin numeros.");
                 return false;
             }
             else if (txtCodigoMed.Text == string.Empty)
@@ -212,14 +214,14 @@ namespace ProyectoADSI2024
                 epAgregar.SetError(txtCodigoMed, "El código del concentrado es obligatorio.");
                 return false;
             }
-            else if (txtPrecioMed.Text == string.Empty)
+            else if (txtPrecioMed.Text == string.Empty || !decimal.TryParse(txtPrecioMed.Text, out _))
             {
-                epAgregar.SetError(txtPrecioMed, "El precio del artículo es obligatorio.");
+                epAgregar.SetError(txtPrecioMed, "El precio del artículo es obligatorio y un valor numerico.");
                 return false;
             }
-            else if (txtCantidadMed.Text == string.Empty)
+            else if (txtCantidadMed.Text == string.Empty || !int.TryParse(txtCantidadMed.Text, out _))
             {
-                epAgregar.SetError(txtCantidadMed, "La cantidad de entrada es obligatoria.");
+                epAgregar.SetError(txtCantidadMed, "La cantidad de entrada es obligatoria y debe ser cantidad entera, no decimal.");
                 return false;
             }
 
@@ -246,9 +248,9 @@ namespace ProyectoADSI2024
             }
 
 
-            else if (txtCostoMed.Text == string.Empty)
+            else if (txtCostoMed.Text == string.Empty || !decimal.TryParse(txtCostoMed.Text, out _))
             {
-                epAgregar.SetError(txtCostoMed, "El costo de compra es obligatorio.");
+                epAgregar.SetError(txtCostoMed, "El costo de compra es obligatorio y debe ser un valor numerico.");
                 return false;
             }
 
@@ -260,14 +262,14 @@ namespace ProyectoADSI2024
             // Limpiar cualquier error previo
             epEditar.Clear();
 
-            if (txtCompraIDMed.Text == string.Empty)
+            if (txtCompraIDMed.Text == string.Empty )
             {
                 epEditar.SetError(txtCompraIDMed, "Debe Seleccionar un articulo para actualizar su informacion.");
                 return false;
             }
-            if (txtNombeArticuloMed.Text == string.Empty)
+            if (txtNombeArticuloMed.Text == string.Empty|| !System.Text.RegularExpressions.Regex.IsMatch(txtNombeArticuloMed.Text, @"^[a-zA-Z\s]+$"))
             {
-                epEditar.SetError(txtNombeArticuloMed, "Debe agregar el nombre del concentrado.");
+                epEditar.SetError(txtNombeArticuloMed, "Debe agregar el nombre del concentrado y unicamente letras.");
                 return false;
             }
             else if (txtCodigoMed.Text == string.Empty)
@@ -275,14 +277,14 @@ namespace ProyectoADSI2024
                 epEditar.SetError(txtCodigoMed, "El código del concentrado es obligatorio.");
                 return false;
             }
-            else if (txtPrecioMed.Text == string.Empty)
+            else if (txtPrecioMed.Text == string.Empty || !decimal.TryParse(txtPrecioMed.Text, out _))
             {
-                epEditar.SetError(txtPrecioMed, "El precio del artículo es obligatorio.");
+                epEditar.SetError(txtPrecioMed, "El precio del artículo es obligatorio y valores numericos.");
                 return false;
             }
-            else if (txtCantidadMed.Text == string.Empty)
+            else if (txtCantidadMed.Text == string.Empty || !int.TryParse(txtCantidadMed.Text, out _))
             {
-                epEditar.SetError(txtCantidadMed, "La cantidad de entrada es obligatoria.");
+                epEditar.SetError(txtCantidadMed, "La cantidad de entrada es obligatoria y cantidad entra, no decimal.");
                 return false;
             }
 
@@ -309,9 +311,9 @@ namespace ProyectoADSI2024
             }
 
 
-            else if (txtCostoMed.Text == string.Empty)
+            else if (txtCostoMed.Text == string.Empty || !decimal.TryParse(txtCostoMed.Text, out _))
             {
-                epAgregar.SetError(txtCostoMed, "El costo de compra es obligatorio.");
+                epAgregar.SetError(txtCostoMed, "El costo de compra es obligatorio y debe ser un valor numerico.");
                 return false;
             }
 
@@ -461,7 +463,35 @@ namespace ProyectoADSI2024
             {
                 return; // Si hay errores, salimos del método y no ejecutamos el procedimiento
             }
+            //---------------------------
+            decimal costo = Convert.ToDecimal(txtCostoMed.Text);
+            decimal precio = Convert.ToDecimal(txtPrecioMed.Text);
 
+            // Validar que el costo no sea mayor que el precio
+            if (costo > precio)
+            {
+                // Usar ErrorProvider para mostrar un mensaje de error en el campo correspondiente
+                epAgregar.SetError(txtCostoMed, "El costo no puede ser mayor que el precio.");
+                epAgregar.SetError(txtPrecioMed, "El costo no puede ser mayor que el precio.");
+
+                // Cambiar el color de fondo a amarillo 
+                txtCostoMed.BackColor = Color.FromArgb(204, 185, 65);
+                txtPrecioMed.BackColor = Color.FromArgb(204, 185, 65);
+
+                // Evitar que el formulario se guarde si hay error
+                return;
+            }
+            else
+            {
+                // Limpiar el mensaje de error si la validación es correcta
+                epAgregar.SetError(txtCostoMed, string.Empty);
+                epAgregar.SetError(txtPrecioMed, string.Empty);
+
+                // Restablecer colores
+                txtCostoMed.BackColor = Color.White;
+                txtPrecioMed.BackColor = Color.White;
+            }
+            //-------------------------
             string Nombre = txtNombeArticuloMed.Text;
             string Codigo = txtCodigoMed.Text;
             decimal Precio = decimal.Parse(txtPrecioMed.Text);
@@ -602,6 +632,23 @@ namespace ProyectoADSI2024
             {
                 // Limpia el campo del código si no hay texto válido en el nombre
                 txtCodigoMed.Text = string.Empty;
+            }
+        }
+
+        private void dtpFechaVenMed_ValueChanged(object sender, EventArgs e)
+        {
+            // Obtener la fecha seleccionada
+            DateTime selectedDate = dtpFechaVenMed.Value.Date;
+
+            if (selectedDate == DateTime.Today)
+            {
+                // Mostrar mensaje con las opciones Sí o No
+                DialogResult result = MessageBox.Show(
+                    "El producto está próximo a vencer. ¿Desea realizar la compra?",
+                    "Aviso",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
             }
         }
     }

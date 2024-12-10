@@ -70,6 +70,9 @@ namespace ProyectoADSI2024
             LlenarComboProveedores(); //llena el cbx con los proveedores
             adapterCompraConcen.Fill(dtCompraConcen);
            dgGestionConcentrado.DataSource = dtCompraConcen;
+            // Configuración del DateTimePicker
+            dtpFechaVencimiento.MinDate = DateTime.Today; // No permite fechas anteriores a hoy
+            dtpFechaVencimiento.ValueChanged += dtpFechaVencimiento_ValueChanged;
         }
 
         private void label6_Click(object sender, EventArgs e)
@@ -121,9 +124,9 @@ namespace ProyectoADSI2024
             // Limpiar cualquier error previo
             epAgregar.Clear();
 
-            if (txtNombeArticulo.Text == string.Empty)
+            if (txtNombeArticulo.Text == string.Empty || !System.Text.RegularExpressions.Regex.IsMatch(txtNombeArticulo.Text, @"^[a-zA-Z\s]+$"))
             {
-                epAgregar.SetError(txtNombeArticulo, "Debe agregar el nombre del concentrado.");
+                epAgregar.SetError(txtNombeArticulo, "Debe agregar el nombre del concentrado y sin numeros.");
                 return false;
             }
             else if (txtCodigo.Text == string.Empty)
@@ -131,14 +134,14 @@ namespace ProyectoADSI2024
                 epAgregar.SetError(txtCodigo, "El código del concentrado es obligatorio.");
                 return false;
             }
-            else if (txtPrecio.Text == string.Empty)
+            else if (txtPrecio.Text == string.Empty || !decimal.TryParse(txtPrecio.Text, out _))
             {
-                epAgregar.SetError(txtPrecio, "El precio del artículo es obligatorio.");
+                epAgregar.SetError(txtPrecio, "El precio del artículo es obligatorio y deben ser valores numericos.");
                 return false;
             }
-            else if (txtCantidad.Text == string.Empty)
+            else if (txtCantidad.Text == string.Empty || !int.TryParse(txtCantidad.Text, out _))
             {
-                epAgregar.SetError(txtCantidad, "La cantidad de entrada es obligatoria.");
+                epAgregar.SetError(txtCantidad, "La cantidad de entrada es obligatoria y cantidades enteras, no decimales.");
                 return false;
             } 
            
@@ -165,9 +168,9 @@ namespace ProyectoADSI2024
             }
            
            
-            else if (txtCosto.Text == string.Empty)
+            else if (txtCosto.Text == string.Empty || !decimal.TryParse(txtCosto.Text, out _))
             {
-                epAgregar.SetError(txtCosto, "El costo de compra es obligatorio.");
+                epAgregar.SetError(txtCosto, "El costo de compra es obligatorio y deben ser valores numericos.");
                 return false;
             }
 
@@ -291,7 +294,7 @@ namespace ProyectoADSI2024
                 epEditar.SetError(txtCompraID, "Debe Seleccionar un articulo para actualizar su informacion.");
                 return false;
             }
-            if (txtNombeArticulo.Text == string.Empty)
+            if (string.IsNullOrWhiteSpace(txtNombeArticulo.Text) || !System.Text.RegularExpressions.Regex.IsMatch(txtNombeArticulo.Text, @"^[a-zA-Z\s]+$"))
             {
                 epEditar.SetError(txtNombeArticulo, "Debe agregar el nombre del concentrado.");
                 return false;
@@ -301,14 +304,14 @@ namespace ProyectoADSI2024
                 epEditar.SetError(txtCodigo, "El código del concentrado es obligatorio.");
                 return false;
             }
-            else if (txtPrecio.Text == string.Empty)
+            else if (txtPrecio.Text == string.Empty || !float.TryParse(txtPrecio.Text, out _))
             {
-                epEditar.SetError(txtPrecio, "El precio del artículo es obligatorio.");
+                epEditar.SetError(txtPrecio, "El precio del artículo es obligatorio y solo valores nuemericos.");
                 return false;
             }
-            else if (txtCantidad.Text == string.Empty)
+            else if (txtCantidad.Text == string.Empty || !int.TryParse(txtCantidad.Text, out _))
             {
-                epEditar.SetError(txtCantidad, "La cantidad de entrada es obligatoria.");
+                epEditar.SetError(txtCantidad, "La cantidad de entrada es obligatoria y debe ser cantidades enteras.");
                 return false;
             }
 
@@ -335,9 +338,9 @@ namespace ProyectoADSI2024
             }
 
 
-            else if (txtCosto.Text == string.Empty)
+            else if (txtCosto.Text == string.Empty || !float.TryParse(txtCosto.Text, out _))
             {
-                epAgregar.SetError(txtCosto, "El costo de compra es obligatorio.");
+                epAgregar.SetError(txtCosto, "El costo de compra es obligatorio y unicamente valores numericos.");
                 return false;
             }
 
@@ -520,6 +523,37 @@ namespace ProyectoADSI2024
             {
                 return; // Si hay errores, salimos del método y no ejecutamos el procedimiento
             }
+            //------------------------------------------------
+            decimal costo = Convert.ToDecimal(txtCosto.Text);
+            decimal precio = Convert.ToDecimal(txtPrecio.Text);
+
+            // Validar que el costo no sea mayor que el precio
+            if (costo > precio)
+            {
+                // Usar ErrorProvider para mostrar un mensaje de error en el campo correspondiente
+                epAgregar.SetError(txtCosto, "El costo no puede ser mayor que el precio.");
+                epAgregar.SetError(txtPrecio, "El costo no puede ser mayor que el precio.");
+
+                // Cambiar el color de fondo a rojo para resaltar el error
+                txtCosto.BackColor = Color.FromArgb(204, 185, 65);
+                txtPrecio.BackColor = Color.FromArgb(204, 185, 65);
+
+                // Evitar que el formulario se guarde si hay error
+                return;
+            }
+            else
+            {
+                // Limpiar el mensaje de error si la validación es correcta
+                epAgregar.SetError(txtCosto, string.Empty);
+                epAgregar.SetError(txtPrecio, string.Empty);
+
+                // Restablecer colores
+                txtCosto.BackColor = Color.White;
+                txtPrecio.BackColor = Color.White;
+            }
+
+
+            //--------------------------------------------------
 
             string Nombre = txtNombeArticulo.Text;
             string Codigo = txtCodigo.Text;
@@ -690,6 +724,23 @@ namespace ProyectoADSI2024
             {
                 // Limpia el campo del código si no hay texto válido en el nombre
                 txtCodigo.Text = string.Empty;
+            }
+        }
+
+        private void dtpFechaVencimiento_ValueChanged(object sender, EventArgs e)
+        {
+            // Obtener la fecha seleccionada
+            DateTime selectedDate = dtpFechaVencimiento.Value.Date;
+
+            if (selectedDate == DateTime.Today)
+            {
+                // Mostrar mensaje con las opciones Sí o No
+                DialogResult result = MessageBox.Show(
+                    "El producto está próximo a vencer. ¿Desea realizar la compra?",
+                    "Aviso",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
             }
         }
     }

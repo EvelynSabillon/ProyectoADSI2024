@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAtras = new System.Windows.Forms.PictureBox();
             this.dgGestionMedCompra = new System.Windows.Forms.DataGridView();
@@ -152,6 +153,7 @@
             this.dtpFechaVenMed.Name = "dtpFechaVenMed";
             this.dtpFechaVenMed.Size = new System.Drawing.Size(234, 25);
             this.dtpFechaVenMed.TabIndex = 104;
+            this.dtpFechaVenMed.ValueChanged += new System.EventHandler(this.dtpFechaVenMed_ValueChanged);
             // 
             // dtpFechaCompraMed
             // 
@@ -477,6 +479,14 @@
             this.Costo,
             this.FechaCompra,
             this.FechaVencimiento});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(142)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgarticuloscompra.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgarticuloscompra.Location = new System.Drawing.Point(564, 360);
             this.dgarticuloscompra.Name = "dgarticuloscompra";
             this.dgarticuloscompra.ReadOnly = true;
