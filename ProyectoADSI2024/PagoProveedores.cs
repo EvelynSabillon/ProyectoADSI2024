@@ -65,7 +65,7 @@ namespace ProyectoADSI2024
                 {
                     conn.Open();
 
-                    using (SqlCommand cmd = new SqlCommand("SELECT * FROM proyecto.PagoCompraCredito ORDER BY PagoID ASC", conn))
+                    using (SqlCommand cmd = new SqlCommand("SELECT * FROM proyecto.PagoCompraCredito WHERE Activo = 1 ORDER BY PagoID ASC", conn))
                     {
                         SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
@@ -244,6 +244,11 @@ namespace ProyectoADSI2024
                 tieneErrores = true;
             }
 
+            if (datePago.Value.Date > DateTime.Now.Date)
+            {
+                errorProvider1.SetError(datePago, "La fecha no puede ser mayor a la fecha actual");
+                tieneErrores = true;
+            }
             if (!decimal.TryParse(pagoMonto.Text, out decimal pagoMontoValue) || pagoMontoValue <= 0)
             {
                 errorProvider1.SetError(pagoMonto, "MontoPago debe ser un número mayor a cero.");
@@ -557,7 +562,6 @@ namespace ProyectoADSI2024
 
                     MessageBox.Show("Proveedor eliminado correctamente.");
                     LimpiarTxtBox();
-                    // Recargar los datos del DataGridView
                     CargarDatos();
                 }
                 catch (Exception ex)
