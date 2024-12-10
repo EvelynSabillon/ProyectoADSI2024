@@ -42,7 +42,7 @@ namespace ProyectoADSI2024
             toolTips();
 
             //Cambiar el tamaño de fuente del datagridview
-            dgIngresoLeche.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Bold); //Los titulos de columna
+            dgIngresoLeche.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10); //Los titulos de columna
             dgIngresoLeche.DefaultCellStyle.Font = new Font("Arial", 12); //Letra global del grid para filas
 
             //Impedir Resize de columnas y filas
