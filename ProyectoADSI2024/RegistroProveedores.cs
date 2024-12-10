@@ -12,6 +12,7 @@ using System.Data.Common;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Security.AccessControl;
 using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 namespace ProyectoADSI2024
 {
@@ -51,9 +52,22 @@ namespace ProyectoADSI2024
                 errorProvider1.SetError(provId, "El ID no puede estar vacío.");
                 tieneErrores = true;
             }
+            string idLength = provId.Text;
+            if (idLength.Length > 3)
+            {
+                errorProvider1.SetError(provId, "El ID no puede ser mayor a 999 caracteres.");
+                tieneErrores = true;
+            }
+
             if (string.IsNullOrWhiteSpace(provName.Text))
             {
                 errorProvider1.SetError(provName, "El nombre no puede estar vacío.");
+                tieneErrores = true;
+            }
+            string nameLength = provName.Text;
+            if (nameLength.Length > 50)
+            {
+                errorProvider1.SetError(provName, "El nombre no puede exceder los 50 caracteres.");
                 tieneErrores = true;
             }
             if (string.IsNullOrWhiteSpace(provRTN.Text))
@@ -66,6 +80,14 @@ namespace ProyectoADSI2024
                 errorProvider1.SetError(provDirec, "La dirección no puede estar vacía.");
                 tieneErrores = true;
             }
+            string direcLength= provDirec.Text;
+            if (direcLength.Length > 100)
+            {
+                errorProvider1.SetError(provDirec, "La dirección no puede exceder los 100 caracteres.");
+                tieneErrores = true;
+            }
+
+
             if (string.IsNullOrWhiteSpace(provTelef.Text))
             {
                 errorProvider1.SetError(provTelef, "El teléfono no puede estar vacío.");
@@ -95,6 +117,13 @@ namespace ProyectoADSI2024
             if (!Regex.IsMatch(provTelef.Text, @"^\(\d{3}\)\d{4}-\d{4}$"))
             {
                 errorProvider1.SetError(provTelef, "El formato del teléfono es inválido. Use el formato (***)****-****.");
+                tieneErrores = true;
+            }
+
+            string emailLength = provEmail.Text;
+            if (emailLength.Length > 40)
+            {
+                errorProvider1.SetError(provEmail, "El email no puede exceder los 40 caracteres.");
                 tieneErrores = true;
             }
 
@@ -149,9 +178,18 @@ namespace ProyectoADSI2024
                     LimpiarTxtBox();
                     CargarDatos();
                 }
-                catch (Exception ex)
+                catch (SqlException ex)
                 {
-                    MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (ex.Number == 2627) // Código de error para clave duplicada en SQL Server
+                    {
+                        MessageBox.Show($"El Proveedor ID ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        errorProvider1.SetError(provId, "El proveedor ID ingresado ya existe.");
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Error al guardar el Proveedor ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+                    }
                 }
             }
         }
@@ -179,7 +217,7 @@ namespace ProyectoADSI2024
                 {
                     conn.Open();
 
-                    using (SqlCommand cmd = new SqlCommand("SELECT * FROM proyecto.Proveedor WHERE Activo = 1 ORDER BY Nombre desc", conn))
+                    using (SqlCommand cmd = new SqlCommand("SELECT * FROM proyecto.Proveedor WHERE Activo = 1 ORDER BY ProveedorID ASC", conn))
                     {
                         SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
@@ -212,7 +250,7 @@ namespace ProyectoADSI2024
             CargarDatos();
             LimpiarTxtBox();
 
-            comboBusca.Items.Add("ProveedorID");
+            
             comboBusca.Items.Add("Nombre");
             comboBusca.Items.Add("RTN");
             comboBusca.Items.Add("Direccion");
@@ -319,6 +357,8 @@ namespace ProyectoADSI2024
                     MessageBox.Show("Registro editado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimpiarTxtBox();
                     CargarDatos();
+                    errorProvider1.Clear();
+                    errorProvider2.Clear();
                 }
                 catch (Exception ex)
                 {
@@ -358,7 +398,8 @@ namespace ProyectoADSI2024
 
                     MessageBox.Show("Registro eliminado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimpiarTxtBox();
-                    // Recargar los datos del DataGridView
+                    errorProvider1.Clear();
+                    errorProvider2.Clear();
                     CargarDatos();
                 }
                 catch (Exception ex)
@@ -401,7 +442,7 @@ namespace ProyectoADSI2024
         {
             // Suponiendo que tienes una conexión a la base de datos y ejecutas una consulta
             DataTable dt = new DataTable();
-            string query = "SELECT * FROM proyecto.Proveedor WHERE Activo = 1"; // Modificar según tus columnas
+            string query = "SELECT * FROM proyecto.Proveedor WHERE Activo = 1 ORDER BY ProveedorID ASC"; // Modificar según tus columnas
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -447,6 +488,22 @@ namespace ProyectoADSI2024
         private void dgRegProv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void dgRegProv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgRegProv.Rows[e.RowIndex];
+                provId.Text = row.Cells["ProveedorID"].Value.ToString();
+                provName.Text = row.Cells["Nombre"].Value.ToString();
+                provRTN.Text = row.Cells["RTN"].Value.ToString();
+                provDirec.Text = row.Cells["Direccion"].Value.ToString();
+                provTelef.Text = row.Cells["Telefono"].Value.ToString();
+                provEmail.Text = row.Cells["Email"].Value.ToString();
+                chboxActivo.Checked = true;
+                
+            }
         }
     }
 }
