@@ -148,6 +148,7 @@
             // 
             // tboxSocioID
             // 
+            this.tboxSocioID.Enabled = false;
             this.tboxSocioID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tboxSocioID.Location = new System.Drawing.Point(182, 161);
             this.tboxSocioID.Name = "tboxSocioID";
@@ -230,7 +231,7 @@
             // 
             this.mktboxTelefono.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mktboxTelefono.Location = new System.Drawing.Point(182, 371);
-            this.mktboxTelefono.Mask = "(000)0000-0000";
+            this.mktboxTelefono.Mask = "0000-0000";
             this.mktboxTelefono.Name = "mktboxTelefono";
             this.mktboxTelefono.Size = new System.Drawing.Size(181, 25);
             this.mktboxTelefono.TabIndex = 97;

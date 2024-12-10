@@ -97,8 +97,11 @@ namespace ProyectoADSI2024
             tboxEmail.Clear();
 
             //Utilizado para editar
-            tboxSocioID.Enabled = true;
+            //tboxSocioID.Enabled = true;
             dgGestionSocios.ClearSelection();
+
+            //NUEVO
+            btnGuardar.Enabled = true;
 
             //Limpiar mensajes de error
             LimpiarMensajesError();
@@ -164,69 +167,129 @@ namespace ProyectoADSI2024
 
 
         //UTILIZADO PARA EL BOTON GUARDAR
+        //private void btnGuardar_Click(object sender, EventArgs e)
+        //{
+        //    bool formularioValido = ValidarSocioID() && ValidarNombre() && ValidarDNI()
+        //     && ValidarDireccion() && ValidarTelefono() && ValidarEmail();
+
+        //    if (formularioValido)
+        //    {
+
+        //        int socioID = int.Parse(tboxSocioID.Text);
+        //        string nombre = tboxNombre.Text;
+        //        string dni = mktboxDNI.Text;
+        //        string direccion = tboxDireccion.Text;
+        //        string telefono = mktboxTelefono.Text;
+        //        string email = tboxEmail.Text;
+        //        bool activo = chboxActivo.Checked;
+
+        //        try
+        //        {
+        //            using (SqlConnection connection = new SqlConnection(conexion))
+        //            {
+        //                using (SqlCommand cmd = new SqlCommand("sp_AgregarSocio", connection))
+        //                {
+        //                    cmd.CommandType = CommandType.StoredProcedure;
+
+        //                    cmd.Parameters.AddWithValue("@SocioID", socioID);
+        //                    cmd.Parameters.AddWithValue("@Nombre", nombre);
+        //                    cmd.Parameters.AddWithValue("@DNI", dni);
+        //                    cmd.Parameters.AddWithValue("@Direccion", direccion);
+        //                    cmd.Parameters.AddWithValue("@Telefono", telefono);
+        //                    cmd.Parameters.AddWithValue("@Email", email);
+        //                    cmd.Parameters.AddWithValue("@Activo", activo);
+
+        //                    // Parámetros de salida
+        //                    SqlParameter existeParam = new SqlParameter("@Existe", SqlDbType.Bit) { Direction = ParameterDirection.Output };
+        //                    SqlParameter proximoIDParam = new SqlParameter("@ProximoID", SqlDbType.Int) { Direction = ParameterDirection.Output };
+        //                    cmd.Parameters.Add(existeParam);
+        //                    cmd.Parameters.Add(proximoIDParam);
+
+        //                    connection.Open();
+        //                    cmd.ExecuteNonQuery();
+
+        //                    bool existe = Convert.ToBoolean(existeParam.Value);
+        //                    int proximoID = proximoIDParam.Value != DBNull.Value ? Convert.ToInt32(proximoIDParam.Value) : 1;
+
+        //                    if (existe)
+        //                    {
+        //                        MessageBox.Show($"El SocioID {socioID} ya existe. El siguiente SocioID disponible es {proximoID}.", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //                        tboxSocioID.Text = proximoID.ToString();
+        //                        //CargarDatos();
+        //                    }
+        //                    else
+        //                    {
+        //                        MessageBox.Show("Registro guardado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //                        CargarDatos();  // Recargar datos en el DataGridView
+        //                        LimpiarCampos();
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show("Error al cargar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //    }
+        //}
+
+        //NUEVO
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            bool formularioValido = ValidarSocioID() && ValidarNombre() && ValidarDNI()
-             && ValidarDireccion() && ValidarTelefono() && ValidarEmail();
+            if (!ValidarNombre() || !ValidarDNI() || !ValidarDireccion() || !ValidarTelefono() || !ValidarEmail())
+                return;
 
-            if (formularioValido)
+            string nombre = tboxNombre.Text;
+            string dni = mktboxDNI.Text;
+            string direccion = tboxDireccion.Text;
+            string telefono = mktboxTelefono.Text;
+            string email = tboxEmail.Text;
+            bool activo = chboxActivo.Checked;
+
+            try
             {
-
-                int socioID = int.Parse(tboxSocioID.Text);
-                string nombre = tboxNombre.Text;
-                string dni = mktboxDNI.Text;
-                string direccion = tboxDireccion.Text;
-                string telefono = mktboxTelefono.Text;
-                string email = tboxEmail.Text;
-                bool activo = chboxActivo.Checked;
-
-                try
+                using (SqlConnection connection = new SqlConnection(conexion))
                 {
-                    using (SqlConnection connection = new SqlConnection(conexion))
+                    using (SqlCommand cmd = new SqlCommand("sp_AgregarSocio", connection))
                     {
-                        using (SqlCommand cmd = new SqlCommand("sp_AgregarSocio", connection))
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Parámetros de entrada
+                        cmd.Parameters.AddWithValue("@Nombre", nombre);
+                        cmd.Parameters.AddWithValue("@DNI", dni);
+                        cmd.Parameters.AddWithValue("@Direccion", direccion);
+                        cmd.Parameters.AddWithValue("@Telefono", telefono);
+                        cmd.Parameters.AddWithValue("@Email", email);
+                        cmd.Parameters.AddWithValue("@Activo", activo);
+
+                        // Parámetros de salida
+                        SqlParameter existeParam = new SqlParameter("@Existe", SqlDbType.Bit) { Direction = ParameterDirection.Output };
+                        SqlParameter proximoIDParam = new SqlParameter("@ProximoID", SqlDbType.Int) { Direction = ParameterDirection.Output };
+                        cmd.Parameters.Add(existeParam);
+                        cmd.Parameters.Add(proximoIDParam);
+
+                        connection.Open();
+                        cmd.ExecuteNonQuery();
+
+                        bool existe = Convert.ToBoolean(existeParam.Value);
+                        int proximoID = proximoIDParam.Value != DBNull.Value ? Convert.ToInt32(proximoIDParam.Value) : 1;
+
+                        if (existe)
                         {
-                            cmd.CommandType = CommandType.StoredProcedure;
-
-                            cmd.Parameters.AddWithValue("@SocioID", socioID);
-                            cmd.Parameters.AddWithValue("@Nombre", nombre);
-                            cmd.Parameters.AddWithValue("@DNI", dni);
-                            cmd.Parameters.AddWithValue("@Direccion", direccion);
-                            cmd.Parameters.AddWithValue("@Telefono", telefono);
-                            cmd.Parameters.AddWithValue("@Email", email);
-                            cmd.Parameters.AddWithValue("@Activo", activo);
-
-                            // Parámetros de salida
-                            SqlParameter existeParam = new SqlParameter("@Existe", SqlDbType.Bit) { Direction = ParameterDirection.Output };
-                            SqlParameter proximoIDParam = new SqlParameter("@ProximoID", SqlDbType.Int) { Direction = ParameterDirection.Output };
-                            cmd.Parameters.Add(existeParam);
-                            cmd.Parameters.Add(proximoIDParam);
-
-                            connection.Open();
-                            cmd.ExecuteNonQuery();
-
-                            bool existe = Convert.ToBoolean(existeParam.Value);
-                            int proximoID = proximoIDParam.Value != DBNull.Value ? Convert.ToInt32(proximoIDParam.Value) : 1;
-
-                            if (existe)
-                            {
-                                MessageBox.Show($"El SocioID {socioID} ya existe. El siguiente SocioID disponible es {proximoID}.", "Informativo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                tboxSocioID.Text = proximoID.ToString();
-                                //CargarDatos();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Registro guardado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                CargarDatos();  // Recargar datos en el DataGridView
-                                LimpiarCampos();
-                            }
+                            MessageBox.Show("El DNI ingresado ya existe. Por favor, verifique los datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Registro guardado con éxito. El SocioID asignado es {proximoID}.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            CargarDatos();  // Recargar datos en el DataGridView
+                            LimpiarCampos();
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al cargar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al guardar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         //FIN BOTON GUARDAR
@@ -314,6 +377,10 @@ namespace ProyectoADSI2024
                 chboxActivo.Checked = Convert.ToBoolean(filaSeleccionada.Cells["activo"].Value);
 
                 tboxSocioID.Enabled = false;
+
+                //NUEVO
+                btnGuardar.Enabled = false;
+                ButtonEnableDisableStyle.AttachPaintHandler(btnGuardar);
 
             }
         }
@@ -422,6 +489,8 @@ namespace ProyectoADSI2024
             toolTip1.SetToolTip(btnEliminar, "Se eliminará un registro al hacer click.");
             toolTip1.SetToolTip(btnAtras, "Regresara a la pantalla principal.");
             toolTip1.SetToolTip(chboxActivo, "Al desmarcarlo se ocultará el registro actual.");
+            //NUEVO
+            toolTip1.SetToolTip(cboxBuscar, "Seleccione un campo para poder realizar la busqueda");
         }
 
 
@@ -440,33 +509,119 @@ namespace ProyectoADSI2024
             }
         }
 
+        //private bool ValidarNombre()
+        //{
+        //    if (Regex.IsMatch(tboxNombre.Text, @"^[a-zA-Z\s]+$") && !string.IsNullOrWhiteSpace(tboxNombre.Text))
+        //    {
+        //        errorProvider.SetError(tboxNombre, string.Empty);
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        errorProvider.SetError(tboxNombre, "El Nombre es obligatorio y no debe contener números ni caracteres especiales.");
+        //        return false;
+        //    }
+        //}
+
+        //NUEVO
         private bool ValidarNombre()
         {
-            if (Regex.IsMatch(tboxNombre.Text, @"^[a-zA-Z\s]+$") && !string.IsNullOrWhiteSpace(tboxNombre.Text))
+            // Expresión regular para letras con y sin acentos, incluyendo espacios
+            if (Regex.IsMatch(tboxNombre.Text, @"^[a-zA-ZÁÉÍÓÚáéíóúÑñ\s]+$") && !string.IsNullOrWhiteSpace(tboxNombre.Text))
             {
                 errorProvider.SetError(tboxNombre, string.Empty);
                 return true;
             }
             else
             {
-                errorProvider.SetError(tboxNombre, "El Nombre es obligatorio y no debe contener números ni caracteres especiales.");
+                errorProvider.SetError(tboxNombre, "El Nombre es obligatorio y solo puede contener letras, espacios y acentos.");
                 return false;
             }
         }
 
+
+        //private bool ValidarDNI()
+        //{
+        //    if (Regex.IsMatch(mktboxDNI.Text, @"^\d{4}-\d{4}-\d{5}$"))
+        //    {
+        //        errorProvider.SetError(mktboxDNI, string.Empty);
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        errorProvider.SetError(mktboxDNI, "El DNI debe seguir el formato de: ####-####-#####.");
+        //        return false;
+        //    }
+        //}
+
+        //NUEVO
         private bool ValidarDNI()
         {
-            if (Regex.IsMatch(mktboxDNI.Text, @"^\d{4}-\d{4}-\d{5}$"))
+            // Diccionario con departamentos y el rango máximo de municipios para cada uno
+            Dictionary<string, int> municipiosPorDepartamento = new Dictionary<string, int>
+    {
+        { "08", 28 }, // Francisco Morazán ya
+        { "05", 12 }, // Cortés ya
+        { "01", 8  }, // Atlántida ya
+        { "02", 10 }, // Colón ya
+        { "03", 21 }, // Comayagua ya
+        { "04", 23 }, // Copán ya
+        { "06", 16 }, // Choluteca ya
+        { "07", 19 }, // El Paraíso ya
+        { "09", 6  }, // Gracias a Dios ya
+        { "10", 17 }, // Intibucá ya
+        { "11", 4  }, // Islas de la Bahía ya
+        { "12", 19 }, // La Paz ya
+        { "13", 28 }, // Lempira ya
+        { "14", 16 }, // Ocotepeque ya
+        { "15", 23 }, // Olancho
+        { "16", 28 }, // Santa Bárbara
+        { "17", 9  }, // Valle
+        { "18", 11 }  // Yoro
+    };
+
+            string dni = mktboxDNI.Text;
+
+            // Verificar que siga el formato ####-####-#####
+            if (!Regex.IsMatch(dni, @"^\d{4}-\d{4}-\d{5}$"))
             {
-                errorProvider.SetError(mktboxDNI, string.Empty);
-                return true;
-            }
-            else
-            {
-                errorProvider.SetError(mktboxDNI, "El DNI debe seguir el formato de: ####-####-#####.");
+                errorProvider.SetError(mktboxDNI, "El DNI debe seguir el formato ####-####-#####.");
                 return false;
             }
+
+            // Extraer partes del DNI
+            string codigoDepartamento = dni.Substring(0, 2); // Primeros 2 dígitos
+            string codigoMunicipio = dni.Substring(2, 2);    // Siguientes 2 dígitos
+            string anioNacimiento = dni.Substring(5, 4);     // Año de nacimiento (####)
+
+            // Validar código de departamento
+            if (!municipiosPorDepartamento.ContainsKey(codigoDepartamento))
+            {
+                errorProvider.SetError(mktboxDNI, "El código de departamento no es válido.");
+                return false;
+            }
+
+            // Validar código de municipio
+            int municipio = int.Parse(codigoMunicipio);
+            if (municipio < 1 || municipio > municipiosPorDepartamento[codigoDepartamento])
+            {
+                errorProvider.SetError(mktboxDNI, "El código de municipio no es válido para este departamento.");
+                return false;
+            }
+
+            // Validar año de nacimiento
+            int anio = int.Parse(anioNacimiento);
+            if (anio < 1924)
+            {
+                errorProvider.SetError(mktboxDNI, "El año de nacimiento no puede ser anterior a 1924.");
+                return false;
+            }
+
+            // Si todo es válido
+            errorProvider.SetError(mktboxDNI, string.Empty);
+            return true;
         }
+
 
         private bool ValidarDireccion()
         {
@@ -482,19 +637,37 @@ namespace ProyectoADSI2024
             }
         }
 
+        //private bool ValidarTelefono()
+        //{
+        //    if (Regex.IsMatch(mktboxTelefono.Text, @"^\(\d{1,3}\)\d{4}-\d{4}$"))
+        //    {
+        //        errorProvider.SetError(mktboxTelefono, string.Empty);
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        errorProvider.SetError(mktboxTelefono, "El Teléfono debe seguir el formato de: (###)####-####.");
+        //        return false;
+        //    }
+        //}
+
+        //NUEVO
         private bool ValidarTelefono()
         {
-            if (Regex.IsMatch(mktboxTelefono.Text, @"^\(\d{1,3}\)\d{4}-\d{4}$"))
+            // Expresión regular para validar números de teléfono en Honduras
+            // Formato esperado: ####-#### (ejemplo: 9999-9999 o 2222-2222)
+            if (Regex.IsMatch(mktboxTelefono.Text, @"^[2-9]\d{3}-\d{4}$"))
             {
                 errorProvider.SetError(mktboxTelefono, string.Empty);
                 return true;
             }
             else
             {
-                errorProvider.SetError(mktboxTelefono, "El Teléfono debe seguir el formato de: (###)####-####.");
+                errorProvider.SetError(mktboxTelefono, "El Teléfono debe seguir el formato ####-#### y comenzar con un número válido (2-9).");
                 return false;
             }
         }
+
 
         private bool ValidarEmail()
         {
