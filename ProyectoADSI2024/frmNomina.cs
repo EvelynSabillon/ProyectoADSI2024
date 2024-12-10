@@ -28,27 +28,6 @@ namespace ProyectoADSI2024
             tabla = new DataTable(); //Inicializar la tabla
 
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged; // Suscribirse al evento
-
-            // Configurar ToolTips
-            toolTip1.IsBalloon = true;
-            toolTip1.ToolTipIcon = ToolTipIcon.Info;
-            toolTip1.ToolTipTitle = "Ayuda";
-            toolTip1.UseAnimation = true;
-
-            toolTip1.SetToolTip(btnGenReporte, "Generar reporte de nomina");
-            toolTip1.SetToolTip(btnAtras, "Volver al menu principal");
-            toolTip1.SetToolTip(btnEditar, "Editar registro seleccionado");
-            toolTip1.SetToolTip(btnEliminar, "Eliminar registro seleccionado");
-            toolTip1.SetToolTip(btnGuardar, "Agregar nuevo registro");
-            toolTip1.SetToolTip(dataGridView1, "Seleccionar registro para editar o eliminar");
-            toolTip1.SetToolTip(lblMes, "Mes actual");
-            toolTip1.SetToolTip(txtPlanillaID, "ID de la planilla. Campo solo de lectura");
-            toolTip1.SetToolTip(txtQuincenaID, "Ingrese el ID de la quincena");
-            toolTip1.SetToolTip(dtpFechaInicio, "Seleccione una fecha de inicio de la quincena");
-            toolTip1.SetToolTip(dtpFechaFinal, "Selecione una fecha de fin de la quincena");
-            toolTip1.SetToolTip(txtPrecioLeche, "Ingrese el precio de la leche actual");
-            toolTip1.SetToolTip(btnSeleccionar, "Haga click aquí para seleccionar el Id de quincena y fechas correspondientes.");
-            toolTip1.SetToolTip(btnAyuda, "Haga click aquí para ver el modo de uso del formulario.");
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -66,6 +45,28 @@ namespace ProyectoADSI2024
                 adaptador.Fill(tabla); //Llenar la tabla
                 dataGridView1.DataSource = tabla; //Asignar la tabla al datagridview
 
+                // Configurar ToolTips
+                toolTip1.IsBalloon = true;
+                toolTip1.ToolTipIcon = ToolTipIcon.Info;
+                toolTip1.ToolTipTitle = "Ayuda";
+                toolTip1.UseAnimation = true;
+
+                toolTip1.SetToolTip(btnGenReporte, "Generar reporte de nomina");
+                toolTip1.SetToolTip(btnAtras, "Volver al menu principal");
+                toolTip1.SetToolTip(btnEditar, "Editar registro seleccionado");
+                toolTip1.SetToolTip(btnEliminar, "Eliminar registro seleccionado");
+                toolTip1.SetToolTip(btnGuardar, "Agregar nuevo registro");
+                toolTip1.SetToolTip(dataGridView1, "Seleccionar registro para editar o eliminar");
+                toolTip1.SetToolTip(lblMes, "Mes actual");
+                toolTip1.SetToolTip(txtPlanillaID, "ID de la planilla. Campo solo de lectura");
+                toolTip1.SetToolTip(txtQuincenaID, "Seleccione el ID de la quincena");
+                toolTip1.SetToolTip(dtpFechaInicio, "Seleccione una fecha de inicio de la quincena");
+                toolTip1.SetToolTip(dtpFechaFinal, "Selecione una fecha de fin de la quincena");
+                toolTip1.SetToolTip(txtPrecioLeche, "Ingrese el precio de la leche actual");
+                toolTip1.SetToolTip(btnSeleccionar, "Haga click aquí para seleccionar el Id de quincena y fechas correspondientes.");
+                toolTip1.SetToolTip(btnAyuda, "Haga click aquí para ver el modo de uso del formulario.");
+                toolTip1.SetToolTip(cmbCampo, "Seleccione el campo por el cual desea filtrar los registros.");
+                toolTip1.SetToolTip(txtTexto, "Ingrese el texto a buscar en el campo seleccionado.");
             }
             catch (Exception ex)
             {

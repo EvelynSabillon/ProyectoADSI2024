@@ -651,5 +651,46 @@ namespace ProyectoADSI2024
 
 
         }
+
+        private void txtNombeArticulo_TextChanged(object sender, EventArgs e)
+        {
+            // Obtén el texto ingresado y elimina espacios extra
+            string nombre = txtNombeArticulo.Text.Trim();
+
+            // Verifica que no esté vacío
+            if (!string.IsNullOrWhiteSpace(nombre))
+            {
+                // Divide el texto en palabras, eliminando palabras vacías generadas por múltiples espacios
+                string[] palabras = nombre.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                // Toma las tres primeras letras de la primera palabra
+                string inicialesPrimera = palabras.Length > 0
+                    ? (palabras[0].Length >= 3
+                        ? palabras[0].Substring(0, 3).ToUpper()
+                        : palabras[0].ToUpper())
+                    : "";
+
+                // Toma las tres primeras letras de la segunda palabra (si existe)
+                string inicialesSegunda = palabras.Length > 1
+                    ? (palabras[1].Length >= 3
+                        ? palabras[1].Substring(0, 3).ToUpper()
+                        : palabras[1].ToUpper())
+                    : "";
+
+                // Agrega el código de la bodega (por ejemplo: 001 para medicamentos)
+                string codigoBodega = "002";
+
+                // Combina las iniciales y el código de la bodega
+                string codigoArticulo = $"{inicialesPrimera}{inicialesSegunda}{codigoBodega}";
+
+                // Asigna el código generado al TextBox del código
+                txtCodigo.Text = codigoArticulo;
+            }
+            else
+            {
+                // Limpia el campo del código si no hay texto válido en el nombre
+                txtCodigo.Text = string.Empty;
+            }
+        }
     }
 }

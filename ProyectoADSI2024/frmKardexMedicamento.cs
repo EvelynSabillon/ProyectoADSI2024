@@ -46,9 +46,8 @@ namespace ProyectoADSI2024
             {
                 adaptador.Fill(tabla); //Llenar la tabla
                 dataGridView1.DataSource = tabla; //Mostrar la tabla en el DataGridView
+                toolTipKardexMedicamento();
 
-
-           
             }
             catch (Exception ex)
             {
@@ -133,10 +132,14 @@ namespace ProyectoADSI2024
                 epguardarMedicamKardex.SetError(txtCodigoKardexMed, "El código del artículo es obligatorio.");
                 return false;
             }
-          
             else if (txtPrecioKardexMed.Text == string.Empty)
             {
                 epguardarMedicamKardex.SetError(txtPrecioKardexMed, "El precio del artículo es obligatorio.");
+                return false;
+            }
+            else if (!decimal.TryParse(txtPrecioKardexMed.Text, out decimal precio) || precio < 0)
+            {
+                epguardarMedicamKardex.SetError(txtPrecioKardexMed, "El precio del artículo debe ser un número positivo.");
                 return false;
             }
             else if (txtEntradaMedKardex.Text == string.Empty)
@@ -144,9 +147,19 @@ namespace ProyectoADSI2024
                 epguardarMedicamKardex.SetError(txtEntradaMedKardex, "La cantidad de entrada es obligatoria.");
                 return false;
             }
+            else if (!int.TryParse(txtEntradaMedKardex.Text, out int entrada) || entrada < 0)
+            {
+                epguardarMedicamKardex.SetError(txtEntradaMedKardex, "La cantidad de entrada debe ser un número entero positivo.");
+                return false;
+            }
             else if (txtSalidaMedKardex.Text == string.Empty)
             {
                 epguardarMedicamKardex.SetError(txtSalidaMedKardex, "La cantidad de salida es obligatoria.");
+                return false;
+            }
+            else if (!int.TryParse(txtSalidaMedKardex.Text, out int salida) || salida <= 0)
+            {
+                epguardarMedicamKardex.SetError(txtSalidaMedKardex, "La cantidad de salida debe ser un número entero positivo  o 0.");
                 return false;
             }
             else if (dtpvencmed.Value == null)
@@ -154,10 +167,20 @@ namespace ProyectoADSI2024
                 epguardarMedicamKardex.SetError(dtpvencmed, "La fecha de vencimiento es obligatoria.");
                 return false;
             }
+            else if (dtpvencmed.Value < DateTime.Now)
+            {
+                epguardarMedicamKardex.SetError(dtpvencmed, "La fecha de vencimiento no puede ser menor a la fecha actual.");
+                return false;
+            }
+            else if (entrada == 0)
+            {
+                epguardarMedicamKardex.SetError(txtEntradaMedKardex, "La cantidad de entrada debe ser mayor a 0.");
+                return false;
+            }
 
             return true; // Si todas las validaciones son correctas, devuelve true
-
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -249,7 +272,6 @@ namespace ProyectoADSI2024
                 return false;
             }
 
-
             return true; // Si todas las validaciones son correctas, devuelve true
 
         }
@@ -272,9 +294,7 @@ namespace ProyectoADSI2024
                 txtPrecioKardexMed.Text = filaSeleccionada.Cells["Precio"].Value.ToString();
                 txtEntradaMedKardex.Text = filaSeleccionada.Cells["Entrada"].Value.ToString();
                 txtSalidaMedKardex.Text = filaSeleccionada.Cells["Salida"].Value.ToString();
-
-
-
+                dtpvencmed.Value = Convert.ToDateTime(filaSeleccionada.Cells["FechaVencimiento"].Value);
             }
         }
 
@@ -307,25 +327,27 @@ namespace ProyectoADSI2024
                 }
 
                 SqlConnection conexion = cnxkardexMed.ObtenerConexion();
-
-                if (MessageBox.Show("¿Desea Eliminar este medicamento/artiuclo de Kardex?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
+               
+                if (MessageBox.Show("¿Desea Eliminar este medicamento/articulolo de Kardex?", "Confirmacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
                     // Crear el comando y asociarlo con la conexión
                     using (SqlCommand cmdAgregarConKardex = new SqlCommand("spKardexMedicamentoEliminar", conexion))
                     {
-                        cmdAgregarConKardex.CommandType = CommandType.StoredProcedure;
-                        cmdAgregarConKardex.Parameters.AddWithValue("@medicamentoid", Convert.ToInt32(txtArticuloKardexid.Text));
+                         cmdAgregarConKardex.CommandType = CommandType.StoredProcedure;
+                         cmdAgregarConKardex.Parameters.AddWithValue("@medicamentoid", Convert.ToInt32(txtArticuloKardexid.Text));
 
-                        // Ejecuta el procedimiento almacenado
-                        cmdAgregarConKardex.ExecuteNonQuery();
-                        MessageBox.Show("Medicamento/articulo eliminado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                         // Ejecuta el procedimiento almacenado
+                         cmdAgregarConKardex.ExecuteNonQuery();
+                         MessageBox.Show("Medicamento/articulo eliminado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        //LIMPIO TODOS LOS CAMPOS LUEGO DE LA COMPRA.
+                         //LIMPIO TODOS LOS CAMPOS LUEGO DE LA COMPRA.
 
-                       txtArticuloKardexid.Clear();
+                         txtArticuloKardexid.Clear();
 
-
+                         tabla.Clear(); // Limpia los datos actuales del DataTable
+                         adaptador.Fill(tabla);
                     }
+                }
             }
             catch (Exception ex)
             {
@@ -343,6 +365,28 @@ namespace ProyectoADSI2024
                 return false;
             }
 
+            // Verificar si hay una fila seleccionada en el DataGridView
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                epEliminarKardexMed.SetError(dataGridView1, "Debe seleccionar un artículo de la lista.");
+                return false;
+            }
+
+            // Verificar si la columna "Existencia" tiene un valor válido y convertirlo a entero
+            DataGridViewRow filaSeleccionada = dataGridView1.SelectedRows[0];
+            if (filaSeleccionada.Cells["Existencia"].Value == null ||
+                !int.TryParse(filaSeleccionada.Cells["Existencia"].Value.ToString(), out int existencia))
+            {
+                epEliminarKardexMed.SetError(dataGridView1, "La columna 'Existencia' no contiene un valor válido.");
+                return false;
+            }
+
+            // Validar si la existencia es mayor a cero
+            if (existencia > 0)
+            {
+                MessageBox.Show("No se puede eliminar un artículo con existencia mayor a 0 en Kardex.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
 
             return true; // Si todas las validaciones son correctas, devuelve true
         }
@@ -354,18 +398,25 @@ namespace ProyectoADSI2024
             toolTipKardexMed.ToolTipIcon = ToolTipIcon.Info;
             toolTipKardexMed.ToolTipTitle = "Ayuda";
             toolTipKardexMed.UseAnimation = true;
-            toolTipKardexMed.SetToolTip(txtCodigoKardexMed, "Ingrese el codigo del concentrado");
-            toolTipKardexMed.SetToolTip(txtNombreMedKardex, "Ingrese el nombre del concentrado");
+
+            toolTipKardexMed.SetToolTip(cboxBuscar, "Seleccione el campo por el cual desea buscar.");
+            toolTipKardexMed.SetToolTip(tboxBuscar, "Ingrese el valor a buscar.");
+            toolTipKardexMed.SetToolTip(btnAtras, "Vuelve al menu principal.");
+
+            toolTipKardexMed.SetToolTip(txtArticuloKardexid, "El ID del articulo/medicamento es un campo de solo lectura. No debe llenarse.");
+            toolTipKardexMed.SetToolTip(txtCodigoKardexMed, "Ingrese el codigo del articulo/medicamento");
+            toolTipKardexMed.SetToolTip(txtNombreMedKardex, "Ingrese el nombre del articulo/medicamento");
             
-            toolTipKardexMed.SetToolTip(txtPrecioKardexMed, "Ingrese el precio del concentrado");
-            toolTipKardexMed.SetToolTip(txtEntradaMedKardex, "Ingrese la cantidad de entrada del concentrado");
-            toolTipKardexMed.SetToolTip(txtSalidaMedKardex, "Ingrese la cantidad de salida del concentrado");
-            toolTipKardexMed.SetToolTip(dtpvencmed, "Seleccione la fecha de vencimiento del concentrado");
+            toolTipKardexMed.SetToolTip(txtPrecioKardexMed, "Ingrese el precio del articulo/medicamento");
+            toolTipKardexMed.SetToolTip(txtEntradaMedKardex, "Ingrese la cantidad de entrada del articulo/medicamento");
+            toolTipKardexMed.SetToolTip(txtSalidaMedKardex, "Ingrese la cantidad de salida del articulo/medicamento");
+            toolTipKardexMed.SetToolTip(dtpvencmed, "Seleccione la fecha de vencimiento del articulo/medicamento");
             toolTipKardexMed.SetToolTip(btnGuardar, "Guarda el movimiento de Kardex");
             toolTipKardexMed.SetToolTip(btnEliminar, "Elimina el movimiento de Kardex");
-            toolTipKardexMed.SetToolTip(button1, "Editar el concentrado seleccioando.");
+            toolTipKardexMed.SetToolTip(button1, "Editar el articulo/medicamento seleccionado.");
             toolTipKardexMed.SetToolTip(button2, "Limpia los campos del formulario.");
-            toolTipKardexMed.SetToolTip(btnGenerarReporte, "Genera reporte de kardex de concentrado.");
+            toolTipKardexMed.SetToolTip(btnGenerarReporte, "Genera reporte de kardex de articulo/medicamento.");
+            toolTipKardexMed.SetToolTip(dataGridView1, "Doble click para seleccionar un articulo/medicamento en kardex.");
 
 
         }
@@ -413,6 +464,47 @@ namespace ProyectoADSI2024
             if (tboxBuscar.Enabled)
             {
                 FiltrarDatos();
+            }
+        }
+
+        private void txtNombreMedKardex_TextChanged(object sender, EventArgs e)
+        {
+            // Obtén el texto ingresado y elimina espacios extra
+            string nombre = txtNombreMedKardex.Text.Trim();
+
+            // Verifica que no esté vacío
+            if (!string.IsNullOrWhiteSpace(nombre))
+            {
+                // Divide el texto en palabras, eliminando palabras vacías generadas por múltiples espacios
+                string[] palabras = nombre.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                // Toma las tres primeras letras de la primera palabra
+                string inicialesPrimera = palabras.Length > 0
+                    ? (palabras[0].Length >= 3
+                        ? palabras[0].Substring(0, 3).ToUpper()
+                        : palabras[0].ToUpper())
+                    : "";
+
+                // Toma las tres primeras letras de la segunda palabra (si existe)
+                string inicialesSegunda = palabras.Length > 1
+                    ? (palabras[1].Length >= 3
+                        ? palabras[1].Substring(0, 3).ToUpper()
+                        : palabras[1].ToUpper())
+                    : "";
+
+                // Agrega el código de la bodega (por ejemplo: 001 para medicamentos)
+                string codigoBodega = "001";
+
+                // Combina las iniciales y el código de la bodega
+                string codigoArticulo = $"{inicialesPrimera}{inicialesSegunda}{codigoBodega}";
+
+                // Asigna el código generado al TextBox del código
+                txtCodigoKardexMed.Text = codigoArticulo;
+            }
+            else
+            {
+                // Limpia el campo del código si no hay texto válido en el nombre
+                txtCodigoKardexMed.Text = string.Empty;
             }
         }
     }

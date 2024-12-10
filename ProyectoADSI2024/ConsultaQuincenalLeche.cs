@@ -248,7 +248,7 @@ namespace ProyectoADSI2024
             toolTips.ToolTipIcon = ToolTipIcon.Info;
             toolTips.ToolTipTitle = "Ayuda";
             toolTips.UseAnimation = true;
-            //toolTips.SetToolTip(tboxQuincenaid, "Ingrese un número de Quincena válido");
+            toolTips.SetToolTip(txtQuincenaID, "QuincenaID es un campo de solo lectura, no debe llenarse.");
             toolTips.SetToolTip(tboxMes, "Mes");
             toolTips.SetToolTip(dtpFechaInicio, "Seleccione la fecha en la que iniciará la quincena.");
             toolTips.SetToolTip(dtpFechaFinal, "Seleccione la fecha en la que terminará la quincena.");
@@ -276,7 +276,7 @@ namespace ProyectoADSI2024
                 if (dgConsultaLeche.SelectedRows.Count > 0)
                 {
                     DataGridViewRow row = dgConsultaLeche.SelectedRows[0];
-                    //tboxQuincenaid.Text = row.Cells["QuincenaID"].Value.ToString();
+                    txtQuincenaID.Text = row.Cells["QuincenaID"].Value.ToString();
                     
                     dtpFechaInicio.Value = Convert.ToDateTime(row.Cells["FechaInicio"].Value);
                     dtpFechaFinal.Value = Convert.ToDateTime(row.Cells["FechaFinal"].Value);

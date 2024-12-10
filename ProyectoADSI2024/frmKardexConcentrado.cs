@@ -50,6 +50,7 @@ namespace ProyectoADSI2024
             {
                 adaptador.Fill(tabla); //Llenar la tabla
                 dataGridView1.DataSource = tabla; //Mostrar la tabla en el DataGridView
+                toolTipKardex();
             }
             catch (Exception ex)
             {
@@ -150,9 +151,19 @@ namespace ProyectoADSI2024
                 epValidaGuardar.SetError(txtKarPrecio, "El precio del artículo es obligatorio.");
                 return false;
             }
+            else if (!decimal.TryParse(txtKarPrecio.Text, out decimal precio) || precio < 0)
+            {
+                epValidaGuardar.SetError(txtKarPrecio, "El precio del artículo debe ser un número positivo.");
+                return false;
+            }
             else if (txtKarEntrada.Text == string.Empty)
             {
                 epValidaGuardar.SetError(txtKarEntrada, "La cantidad de entrada es obligatoria.");
+                return false;
+            }
+            else if (!int.TryParse(txtKarEntrada.Text, out int entrada) || entrada < 0)
+            {
+                epValidaGuardar.SetError(txtKarEntrada, "La cantidad de entrada debe ser un número entero positivo.");
                 return false;
             }
             else if (txtKarSalida.Text == string.Empty)
@@ -160,15 +171,30 @@ namespace ProyectoADSI2024
                 epValidaGuardar.SetError(txtKarSalida, "La cantidad de salida es obligatoria.");
                 return false;
             }
+            else if (!int.TryParse(txtKarSalida.Text, out int salida) || salida <= 0)
+            {
+                epValidaGuardar.SetError(txtKarSalida, "La cantidad de salida debe ser un número entero positivo o 0.");
+                return false;
+            }
             else if (dtpFechaVenKar.Value == null)
             {
                 epValidaGuardar.SetError(dtpFechaVenKar, "La fecha de vencimiento es obligatoria.");
                 return false;
             }
+            else if (dtpFechaVenKar.Value < DateTime.Now)
+            {
+                epValidaGuardar.SetError(dtpFechaVenKar, "La fecha de vencimiento no puede ser menor a la fecha actual.");
+                return false;
+            }
+            else if (entrada == 0)
+            {
+                epValidaGuardar.SetError(txtKarEntrada, "La cantidad de entrada debe ser mayor a 0.");
+                return false;
+            }
 
             return true; // Si todas las validaciones son correctas, devuelve true
-
         }
+
 
         private void LimpiarDatos()
         {
@@ -189,11 +215,10 @@ namespace ProyectoADSI2024
                 if (e.RowIndex >= 0)
                 {
 
-                
                     // Obtenemos la fila seleccionada
                     DataGridViewRow filaSeleccionada = dataGridView1.Rows[e.RowIndex];
               
-                // Asignamos los valores a los TextBox (ajusta los nombres de los TextBox y las columnas según tu diseño)
+                    // Asignamos los valores a los TextBox (ajusta los nombres de los TextBox y las columnas según tu diseño)
                     txtKardexConId.Text = filaSeleccionada.Cells["ArticuloConID"].Value.ToString();
                     txtNomKarCon.Text = filaSeleccionada.Cells["Nombre"].Value.ToString();
                     txtCodKarCon.Text = filaSeleccionada.Cells["Codigo"].Value.ToString();
@@ -201,10 +226,9 @@ namespace ProyectoADSI2024
                     cbxTipoKarCon.SelectedItem = filaSeleccionada.Cells["Tipo"].Value.ToString();
                     txtKarEntrada.Text = filaSeleccionada.Cells["Entrada"].Value.ToString();
                     txtKarSalida.Text = filaSeleccionada.Cells["Salida"].Value.ToString();
-                   
-             
+                    dtpFechaVenKar.Value = Convert.ToDateTime(filaSeleccionada.Cells["FechaVencimiento"].Value);
 
-            }
+                }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -243,9 +267,6 @@ namespace ProyectoADSI2024
                     tabla.Clear(); // Limpia los datos actuales del DataTable
                     adaptador.Fill(tabla); // Vuelve a cargar los datos desde la base de datos
                     dataGridView1.Refresh(); // Refresca la interfaz
-
-
-
                 }
             }
             catch (Exception ex)
@@ -339,8 +360,9 @@ namespace ProyectoADSI2024
 
                     txtKardexConId.Clear();
 
-
-                    }
+                    tabla.Clear(); // Limpia los datos actuales del DataTable
+                    adaptador.Fill(tabla);
+                }
             }
             catch (Exception ex)
             {
@@ -355,10 +377,32 @@ namespace ProyectoADSI2024
 
             if (txtKardexConId.Text == string.Empty)
             {
-                epValidarEliminar.SetError(txtKardexConId, "Debe Seleccionar un articulo a eliminar.");
+                epValidarEliminar.SetError(txtKardexConId, "Debe seleccionar un concentrado a eliminar.");
                 return false;
             }
 
+            // Verificar si hay una fila seleccionada en el DataGridView
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                epValidarEliminar.SetError(dataGridView1, "Debe seleccionar un concentrado de la lista.");
+                return false;
+            }
+
+            // Verificar si la columna "Existencia" tiene un valor válido y convertirlo a entero
+            DataGridViewRow filaSeleccionada = dataGridView1.SelectedRows[0];
+            if (filaSeleccionada.Cells["Existencia"].Value == null ||
+                !int.TryParse(filaSeleccionada.Cells["Existencia"].Value.ToString(), out int existencia))
+            {
+                epValidarEliminar.SetError(dataGridView1, "La columna 'Existencia' no contiene un valor válido.");
+                return false;
+            }
+
+            // Validar si la existencia es mayor a cero
+            if (existencia > 0)
+            {
+                MessageBox.Show("No se puede eliminar un concentrado con existencia mayor a 0 en Kardex.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
 
             return true; // Si todas las validaciones son correctas, devuelve true
         }
@@ -383,7 +427,12 @@ namespace ProyectoADSI2024
             toolTipKardex1.SetToolTip(button1, "Editar el concentrado seleccioando.");
             toolTipKardex1.SetToolTip(button2, "Limpia los campos del formulario.");
             toolTipKardex1.SetToolTip(btnGenerarReporte, "Genera reporte de kardex de concentrado.");
+            toolTipKardex1.SetToolTip(cboxBuscar, "Seleccione el campo por el cual desea buscar.");
+            toolTipKardex1.SetToolTip(tboxBuscar, "Ingrese el valor a buscar.");
+            toolTipKardex1.SetToolTip(btnAtras, "Vuelve al menu principal.");
 
+            toolTipKardex1.SetToolTip(txtKardexConId, "El ID del concentrado es un campo de solo lectura. No debe llenarse.");
+            toolTipKardex1.SetToolTip(dataGridView1, "Seleccione un concentrado de la lista para editar o eliminar.");
 
         }
 
@@ -423,6 +472,47 @@ namespace ProyectoADSI2024
             if (tboxBuscar.Enabled)
             {
                 FiltrarDatos();
+            }
+        }
+
+        private void txtNomKarCon_TextChanged(object sender, EventArgs e)
+        {
+            // Obtén el texto ingresado y elimina espacios extra
+            string nombre = txtNomKarCon.Text.Trim();
+
+            // Verifica que no esté vacío
+            if (!string.IsNullOrWhiteSpace(nombre))
+            {
+                // Divide el texto en palabras, eliminando palabras vacías generadas por múltiples espacios
+                string[] palabras = nombre.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                // Toma las tres primeras letras de la primera palabra
+                string inicialesPrimera = palabras.Length > 0
+                    ? (palabras[0].Length >= 3
+                        ? palabras[0].Substring(0, 3).ToUpper()
+                        : palabras[0].ToUpper())
+                    : "";
+
+                // Toma las tres primeras letras de la segunda palabra (si existe)
+                string inicialesSegunda = palabras.Length > 1
+                    ? (palabras[1].Length >= 3
+                        ? palabras[1].Substring(0, 3).ToUpper()
+                        : palabras[1].ToUpper())
+                    : "";
+
+                // Agrega el código de la bodega (por ejemplo: 001 para medicamentos)
+                string codigoBodega = "002";
+
+                // Combina las iniciales y el código de la bodega
+                string codigoArticulo = $"{inicialesPrimera}{inicialesSegunda}{codigoBodega}";
+
+                // Asigna el código generado al TextBox del código
+                txtCodKarCon.Text = codigoArticulo;
+            }
+            else
+            {
+                // Limpia el campo del código si no hay texto válido en el nombre
+                txtCodKarCon.Text = string.Empty;
             }
         }
     }
